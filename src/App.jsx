@@ -9,6 +9,9 @@ import ScrollToTop from './components/ScrollToTop';
 import Home from '@/pages/Home';
 import PricingPage from '@/pages/PricingPage';
 import MarketplacePage from '@/pages/MarketplacePage';
+import PlatformPage from '@/pages/PlatformPage';
+import SolutionsPage from '@/pages/SolutionsPage';
+import ResourcesPage from '@/pages/ResourcesPage';
 // Add page imports here
 
 const AuthenticatedApp = () => {
@@ -41,6 +44,9 @@ const AuthenticatedApp = () => {
       <Route path="/" element={<Home />} />
       <Route path="/pricing" element={<PricingPage />} />
       <Route path="/marketplace" element={<MarketplacePage />} />
+      <Route path="/platform" element={<PlatformPage />} />
+      <Route path="/solutions" element={<SolutionsPage />} />
+      <Route path="/resources" element={<ResourcesPage />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

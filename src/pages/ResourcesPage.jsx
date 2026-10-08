@@ -1,0 +1,24 @@
+import React from "react";
+import Navbar from "@/components/site/Navbar";
+import PageHeader from "@/components/site/PageHeader";
+import ResourceLibrary from "@/components/site/ResourceLibrary";
+import CTA from "@/components/site/CTA";
+import Footer from "@/components/site/Footer";
+
+export default function ResourcesPage() {
+  return (
+    <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
+      <Navbar />
+      <main className="pt-16">
+        <PageHeader eyebrow="Resources" title="Learn from teams already doing it.">
+          Blogs and guides on putting AI agents to work, from{" "}
+          <strong className="copy-focus">first process to full scale</strong>,{" "}
+          <em className="copy-aside">with governance throughout.</em>
+        </PageHeader>
+        <ResourceLibrary />
+      </main>
+      <CTA />
+      <Footer />
+    </div>
+  );
+}
