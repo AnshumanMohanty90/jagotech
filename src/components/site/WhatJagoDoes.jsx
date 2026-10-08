@@ -6,14 +6,12 @@ import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 const STEPS = [
   {
-    n: "01",
     icon: Plug,
     title: "Connect",
     desc: "Your CRM, ERP, databases, documents, and business applications.",
     bold: ["CRM, ERP, databases"],
   },
   {
-    n: "02",
     icon: BrainCircuit,
     title: "Understand",
     desc: "Your business data, processes, rules, and context.",
@@ -21,7 +19,6 @@ const STEPS = [
     accent: ["context"],
   },
   {
-    n: "03",
     icon: Workflow,
     title: "Act",
     desc: "Create, update, assign, approve, notify, and trigger workflows.",
@@ -38,7 +35,7 @@ export default function WhatJagoDoes() {
       <div className="absolute -right-32 top-10 w-[32rem] h-[32rem] rounded-full bg-violet/10 blur-[130px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro
-          eyebrow="02 · What Jago does"
+          eyebrow="What Jago does"
           title="Connect your systems. Give agents context. Let them act."
         >
           Jago gives AI agents access to the{" "}
@@ -51,20 +48,15 @@ export default function WhatJagoDoes() {
             const Icon = s.icon;
             return (
               <motion.div
-                key={s.n}
+                key={s.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
                 className="group rounded-3xl border border-border bg-card/40 p-7 hover:border-primary/40 transition-colors"
               >
-                <div className="flex items-center justify-between">
-                  <span className="grid place-items-center w-12 h-12 rounded-2xl border border-border bg-background/60 group-hover:border-primary/30 transition-colors">
-                    <Icon className="w-5 h-5 text-primary" />
-                  </span>
-                  <span className="font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">{s.n}</span>
-                </div>
-                <h3 className="mt-6 font-heading text-xl font-semibold uppercase tracking-wide">{s.title}</h3>
+                <Icon className="w-6 h-6 text-primary" />
+                <h3 className="mt-5 font-heading text-xl font-semibold uppercase tracking-wide">{s.title}</h3>
                 <p className="mt-3 text-base text-muted-foreground leading-relaxed">
                   <CopyEmphasis text={s.desc} bold={s.bold} accent={s.accent} />
                 </p>

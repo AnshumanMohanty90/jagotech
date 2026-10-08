@@ -126,13 +126,7 @@ export default function CTA() {
             ) : null}
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-            <span className="inline-flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> 1-week free, full access</span>
-            <span className="inline-flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> No seats, no lock-in</span>
-            <span className="inline-flex items-center gap-2"><Check className="w-4 h-4 text-primary" /> Marketplace BOTs from ₹1</span>
-          </div>
-
-          <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
             Prefer a guided walkthrough first?{" "}
             <a
               href="https://www.jago-tech.ai/contact"

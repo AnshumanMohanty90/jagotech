@@ -4,10 +4,10 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import Logo from "@/components/site/Logo";
 
 const links = [
-  { label: "Platform", href: "#platform" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Marketplace", href: "#marketplace" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Platform", href: "/#how" },
+  { label: "Solutions", href: "/#solutions" },
+  { label: "Marketplace", href: "/#marketplace" },
+  { label: "Pricing", href: "/pricing" },
 ];
 
 export default function Navbar() {
@@ -35,19 +35,16 @@ export default function Navbar() {
           <Logo className="h-7 sm:h-8 w-auto" />
         </a>
 
-        <div className="hidden lg:flex items-center gap-1">
+        <div className="hidden lg:flex items-center gap-7">
           {links.map((l) => (
             <a
               key={l.label}
               href={l.href}
-              className="px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-secondary/60"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               {l.label}
             </a>
           ))}
-        </div>
-
-        <div className="hidden lg:flex items-center gap-2">
           <a
             href="#contact"
             className="site-cta-primary group gap-1.5 px-4 py-2 text-sm rounded-lg"

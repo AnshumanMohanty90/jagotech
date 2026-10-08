@@ -16,7 +16,7 @@ export default function RoleManifesto() {
       </h3>
       <p className="mt-4 mx-auto max-w-3xl text-base leading-relaxed text-muted-foreground text-balance">
         Every win follows the exact same pattern: the right person sees the right finding in time,
-        <strong className="copy-focus"> reviews the evidence, and acts.</strong> In Cliq or WhatsApp,
+        <strong className="copy-focus"> reviews the evidence, and acts.</strong> In Slack or WhatsApp,
         <em className="copy-aside"> by text or voice, in their own language</em>, at low cost.
       </p>
       <p className="mt-5 font-mono text-xs leading-relaxed uppercase tracking-wide text-primary">

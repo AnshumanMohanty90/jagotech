@@ -12,7 +12,7 @@ const PLANS = [
     price: "1-week free",
     priceNote: "Full access to test with your team",
     specs: [
-      { icon: Building2, label: "1 department, 1 channel (WhatsApp or Cliq)" },
+      { icon: Building2, label: "1 department, 1 channel (WhatsApp or Slack)" },
       { icon: MessagesSquare, label: "Ask and Automate modules" },
       { icon: Radar, label: "Up to 50,000 monthly queries" },
       { icon: ShieldCheck, label: "Standard DPDPA compliance" },
@@ -28,7 +28,7 @@ const PLANS = [
     priceNote: "Access for up to 3 departments",
     specs: [
       { icon: Radar, label: "All four pillars: Ask, Automate, Predict, Analyze" },
-      { icon: MessagesSquare, label: "WhatsApp, Zoho Cliq and MS Teams" },
+      { icon: MessagesSquare, label: "WhatsApp, Slack and MS Teams" },
       { icon: Cpu, label: "Dynamic 100+ multi-LLM router" },
       { icon: ShieldCheck, label: "SOC 2 and GDPR compliance plane" },
     ],
@@ -63,10 +63,10 @@ export default function Pricing() {
     <section id="pricing" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute -right-32 top-20 w-[34rem] h-[34rem] rounded-full bg-primary/8 blur-[130px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="09 · Plans and pricing" title="Start with a 1-week free trial.">
+        <SectionIntro eyebrow="Plans and pricing" title="Start with a 1-week free trial.">
           <strong className="copy-accent">Any plan free for one week</strong>, or start with a
           <strong className="copy-focus"> single quick-win BOT</strong> from the{" "}
-          <a href="#marketplace" className="text-primary font-semibold underline underline-offset-4 decoration-primary/30 hover:decoration-primary whitespace-nowrap">
+          <a href="/#marketplace" className="text-primary font-semibold underline underline-offset-4 decoration-primary/30 hover:decoration-primary whitespace-nowrap">
             marketplace, from ₹1
           </a>
           , and scale as results come in.
@@ -148,7 +148,7 @@ export default function Pricing() {
 
         <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
-            WhatsApp, Zoho Cliq, Google Chat and Teams usage charges are billed by those platforms
+            WhatsApp, Slack, Google Chat and Teams usage charges are billed by those platforms
             to you. People keep review and oversight throughout.
           </p>
           <a

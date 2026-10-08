@@ -6,27 +6,22 @@ import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 const STILL_MANUAL = [
   {
-    n: "01",
     t: "Find the right information",
     d: "Across systems, folders and inboxes that never talk to each other.",
   },
   {
-    n: "02",
     t: "Move between systems",
     d: "Re-entering the same data in the CRM, the ERP and the ticket queue.",
   },
   {
-    n: "03",
     t: "Make the decisions",
     d: "Judging what matters, with half the picture and a deadline.",
   },
   {
-    n: "04",
     t: "Update the records",
     d: "Typing outcomes back into systems by hand, one field at a time.",
   },
   {
-    n: "05",
     t: "Follow through",
     d: "Chasing approvals, reminders and next steps across the team.",
   },
@@ -37,7 +32,7 @@ export default function Challenge() {
     <section id="challenge" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute -left-32 top-1/3 w-[30rem] h-[30rem] rounded-full bg-violet/8 blur-[130px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="01 · The challenge" title="Your people already have AI. They still have to do the work.">
+        <SectionIntro eyebrow="The challenge" title="Your people already have AI. They still have to do the work.">
           Most AI tools can answer questions and generate content, but the{" "}
           <strong className="copy-focus">real work still sits with your people.</strong>
         </SectionIntro>
@@ -76,18 +71,15 @@ export default function Challenge() {
             <ul className="border-t border-border">
               {STILL_MANUAL.map((m, i) => (
                 <motion.li
-                  key={m.n}
+                  key={m.t}
                   initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.4, delay: i * 0.06 }}
-                  className="flex items-start gap-4 border-b border-border py-4"
+                  className="border-b border-border py-4"
                 >
-                  <span className="font-mono text-xs leading-relaxed text-primary pt-1.5">{m.n}</span>
-                  <div className="min-w-0">
-                    <p className="text-base font-medium leading-relaxed text-foreground/90">{m.t}</p>
-                    <p className="mt-1 text-base leading-relaxed text-muted-foreground text-pretty">{m.d}</p>
-                  </div>
+                  <p className="text-base font-medium leading-relaxed text-foreground/90">{m.t}</p>
+                  <p className="mt-1 text-base leading-relaxed text-muted-foreground text-pretty">{m.d}</p>
                 </motion.li>
               ))}
             </ul>

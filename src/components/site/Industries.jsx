@@ -67,9 +67,7 @@ export default function Industries() {
               className="group rounded-2xl border border-border bg-card/40 p-5 hover:border-primary/40 hover:bg-card/70 transition-all"
             >
               <div className="flex items-center gap-3">
-                <span className="grid place-items-center w-11 h-11 rounded-xl border border-border bg-background/60 group-hover:border-primary/30 transition-colors shrink-0">
-                  <Icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                </span>
+                <Icon className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
                 <h4 className="min-w-0 font-heading text-lg font-semibold leading-snug">{it.name}</h4>
               </div>
               <p className="mt-3 text-base text-muted-foreground leading-relaxed">

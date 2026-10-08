@@ -8,7 +8,6 @@ const BOTS = [
   {
     icon: CreditCard,
     kind: "API + Widget",
-    free: "First 100 free",
     name: "Card Scanner BOT",
     desc: "Extract clean structured records from business cards and IDs straight into your CRM.",
     price: "₹2.00 / scan",
@@ -17,7 +16,6 @@ const BOTS = [
   {
     icon: FileText,
     kind: "API + Widget",
-    free: "First 50 pages free",
     name: "Document Analysis BOT",
     desc: "Pull clauses, liabilities and terms out of legal contracts, with no manual page reviews.",
     price: "₹5.00 / page",
@@ -26,7 +24,6 @@ const BOTS = [
   {
     icon: Mail,
     kind: "API + Widget",
-    free: "First 200 free",
     name: "Email Parser BOT",
     desc: "Turn inbound customer inquiries and purchase orders into ERP and CRM entries.",
     price: "₹1.00 / email",
@@ -35,7 +32,6 @@ const BOTS = [
   {
     icon: AudioLines,
     kind: "API",
-    free: "First 60 minutes free",
     name: "Voice-to-Text Transcription",
     desc: "Transcribe local-language audio into structured summaries and action triggers.",
     price: "₹3.00 / min",
@@ -44,7 +40,6 @@ const BOTS = [
   {
     icon: Image,
     kind: "API",
-    free: "First 100 free",
     name: "Image Analysis BOT",
     desc: "Inspect store shelves, warehouse racks and field photos for quality compliance.",
     price: "₹3.00 / image",
@@ -52,8 +47,7 @@ const BOTS = [
   },
   {
     icon: TrendingUp,
-    kind: "Predict model",
-    free: "Zoho CRM native",
+    kind: "Predict model · Zoho CRM native",
     name: "Jasper: Sales Predict Model",
     desc: "Ranks deals by value, chance and urgency, flags stalled pipelines and forecasts close rates.",
     price: "Pilot model",
@@ -66,9 +60,10 @@ export default function Marketplace() {
     <section id="marketplace" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute -right-32 top-20 w-[32rem] h-[32rem] rounded-full bg-violet/10 blur-[130px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="10 · Marketplace" title="Pick a single BOT. Pay only as you use.">
-          <strong className="copy-accent">No seats, no lock-in.</strong> Drop a capability in via API or widget,
-          <strong className="copy-focus"> prove the quick win</strong>, <em className="copy-aside">then scale.</em>
+        <SectionIntro eyebrow="Marketplace" title="Pick a single BOT. Pay only as you use.">
+          Drop a capability in via API or widget, <strong className="copy-focus">prove the quick win</strong>,
+          then scale — including{" "}
+          <strong className="copy-accent">document, audio and video analysis add-ons</strong>.
         </SectionIntro>
 
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -84,13 +79,8 @@ export default function Marketplace() {
                 className="flex flex-col rounded-2xl border border-border bg-card/40 p-6 hover:border-primary/30 transition-colors"
               >
                 <div className="flex items-center justify-between gap-2">
-                  <span className="grid place-items-center w-10 h-10 rounded-xl border border-border bg-background/60">
-                    <Icon className="w-5 h-5 text-primary" />
-                  </span>
-                  <div className="text-right">
-                    <div className="font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">{b.kind}</div>
-                    <div className="font-mono text-xs leading-relaxed text-primary">{b.free}</div>
-                  </div>
+                  <Icon className="w-5 h-5 text-primary shrink-0" />
+                  <span className="font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">{b.kind}</span>
                 </div>
                 <h3 className="mt-4 font-heading text-lg font-semibold leading-snug">{b.name}</h3>
                 <p className="mt-3 text-base text-muted-foreground leading-relaxed flex-1">

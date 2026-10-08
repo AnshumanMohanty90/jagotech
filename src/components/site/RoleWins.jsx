@@ -25,7 +25,7 @@ export default function RoleWins() {
     <section id="solutions" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute -left-32 top-1/3 w-[30rem] h-[30rem] rounded-full bg-emerald/8 blur-[130px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="05 · Built around your business" title="Real understanding. Decisive action.">
+        <SectionIntro eyebrow="Built around your business" title="Real understanding. Decisive action.">
           <strong className="copy-accent">One foundation, every department.</strong> The right person sees
           the right finding in time and acts. <em className="copy-aside">Select a role.</em>
         </SectionIntro>

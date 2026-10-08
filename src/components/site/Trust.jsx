@@ -50,7 +50,7 @@ export default function Trust() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div>
           <div className="min-w-0">
-            <SectionIntro eyebrow="08 · Security and governance" title="Bank-grade compliance, built in.">
+            <SectionIntro eyebrow="Security and governance" title="Bank-grade compliance, built in.">
               Engineered for <strong className="copy-focus">regulated industries.</strong>{" "}
               <strong className="copy-accent">Uniform access control and audit logging</strong>, everywhere.
             </SectionIntro>
@@ -75,10 +75,8 @@ export default function Trust() {
                   transition={{ duration: 0.4, delay: (i % 2) * 0.08 }}
                   className="rounded-2xl border border-border bg-card/40 p-6 hover:border-primary/30 transition-colors"
                 >
-                  <span className="grid place-items-center w-10 h-10 rounded-xl border border-border bg-background/60">
-                    <Icon className="w-5 h-5 text-primary" />
-                  </span>
-                  <h3 className="mt-4 font-heading text-lg font-semibold leading-snug">{t.title}</h3>
+                  <Icon className="w-5 h-5 text-primary" />
+                  <h3 className="mt-3 font-heading text-lg font-semibold leading-snug">{t.title}</h3>
                   <p className="mt-3 text-base text-muted-foreground leading-relaxed">
                     <CopyEmphasis text={t.desc} bold={["PII scrubbing", "Strictly isolated tenant databases", "European cloud residency", "AES-256 at rest, TLS 1.3 in transit", "50+ languages"]} accent={["zero training of public models", "human approval"]} />
                   </p>
@@ -91,9 +89,7 @@ export default function Trust() {
         {/* Dynamic engine band */}
         <div className="mt-8 sm:mt-10 rounded-3xl border border-border bg-card/40 backdrop-blur p-7 sm:p-9">
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-            <span className="grid place-items-center w-11 h-11 rounded-xl border border-border bg-background/60 shrink-0">
-              <Cpu className="w-5 h-5 text-primary" />
-            </span>
+            <Cpu className="w-5 h-5 text-primary shrink-0" />
             <div>
               <h3 className="font-heading text-lg font-semibold">100+ multi-LLM dynamic routing engine</h3>
               <p className="mt-2 text-base leading-relaxed text-muted-foreground">
