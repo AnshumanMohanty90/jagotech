@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 33% 3%;
+    --foreground: 210 40% 99%;
+    --card: 217 28% 7%;
+    --card-foreground: 210 40% 99%;
+    --popover: 217 28% 7%;
+    --popover-foreground: 210 40% 99%;
+    --primary: 183 100% 50%;
+    --primary-foreground: 222 33% 3%;
+    --secondary: 217 28% 12%;
+    --secondary-foreground: 210 40% 99%;
+    --muted: 217 28% 12%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 183 100% 50%;
+    --accent-foreground: 222 33% 3%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 99%;
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 183 100% 50%;
+    --emerald: 160 84% 39%;
+    --violet: 265 90% 65%;
+    --radius: 0.75rem;
+    --font-heading: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-color: #05070A;
+  }
+
+  ::selection {
+    background-color: rgba(0, 245, 255, 0.25);
+    color: #F8FAFC;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #05070A;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1E293B;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #334155;
+  }
+}
+
+@layer components {
+  .site-typography :where(p, li) {
+    text-wrap: pretty;
+  }
+
+  .site-typography :where(h1, h2, h3) {
+    text-wrap: balance;
+  }
+
+  .site-typography :where(input, select, textarea) {
+    min-width: 0;
+  }
+
+  .copy-focus {
+    @apply font-semibold text-foreground;
+  }
+
+  .copy-accent {
+    @apply font-semibold text-primary;
+  }
+
+  .copy-aside {
+    @apply italic text-foreground/80;
+  }
+
+  .site-cta-primary,
+  .site-cta-secondary {
+    @apply inline-flex items-center justify-center font-semibold border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+    min-height: 2.75rem;
+  }
+
+  .site-cta-primary {
+    @apply border-primary/60 bg-primary text-primary-foreground;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.82));
+    box-shadow: 0 4px 18px hsl(var(--primary) / 0.18), inset 0 1px 0 hsl(var(--foreground) / 0.3);
+  }
+
+  .site-cta-primary:hover:not(:disabled) {
+    box-shadow: 0 6px 28px hsl(var(--primary) / 0.3), inset 0 1px 0 hsl(var(--foreground) / 0.4);
+  }
+
+  .site-cta-secondary {
+    @apply border-primary/35 bg-primary/5 text-foreground hover:border-primary/70 hover:bg-primary/10;
+    box-shadow: inset 0 1px 0 hsl(var(--primary) / 0.08);
+  }
+
+  .site-cta-primary:disabled {
+    box-shadow: none;
+  }
+
+  .site-choice {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
+
+@layer utilities {
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(30, 41, 59, 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(30, 41, 59, 0.5) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .grid-bg-fine {
+    background-image:
+      linear-gradient(to right, rgba(30, 41, 59, 0.35) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(30, 41, 59, 0.35) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .glow-cyan {
+    box-shadow: 0 0 0 1px rgba(0, 245, 255, 0.15), 0 0 40px -8px rgba(0, 245, 255, 0.45);
+  }
+  .text-glow {
+    text-shadow: 0 0 24px rgba(0, 245, 255, 0.35);
+  }
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+  .mask-fade-edges {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+}
