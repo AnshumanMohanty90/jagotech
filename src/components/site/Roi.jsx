@@ -19,7 +19,7 @@ export default function Roi() {
     <section id="roi" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute inset-0 grid-bg-fine opacity-15 mask-fade-edges" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="10 · Financial impact" title="See what consolidation saves.">
+        <SectionIntro eyebrow="09 · Financial impact" title="See what consolidation saves.">
           Estimate savings from <strong className="copy-focus">retiring fragmented tools</strong> and routing
           every query to the <strong className="copy-accent">right model.</strong>
         </SectionIntro>

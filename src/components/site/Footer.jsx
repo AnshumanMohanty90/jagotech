@@ -16,7 +16,7 @@ const COLS = [
     title: "Platform",
     links: [
       { label: "Channels", href: "#channels" },
-      { label: "Role wins", href: "#roles" },
+      { label: "Solutions", href: "#solutions" },
       { label: "Security", href: "#trust" },
       { label: "ROI calculator", href: "#roi" },
       { label: "Start your trial", href: "#contact" },
@@ -25,11 +25,11 @@ const COLS = [
   {
     title: "Industries",
     links: [
-      { label: "Manufacturing", href: "#industries" },
-      { label: "Banking and Insurance", href: "#industries" },
-      { label: "Retail and E-commerce", href: "#industries" },
-      { label: "Healthcare", href: "#industries" },
-      { label: "Logistics", href: "#industries" },
+      { label: "Manufacturing", href: "#solutions" },
+      { label: "Banking and Insurance", href: "#solutions" },
+      { label: "Retail and E-commerce", href: "#solutions" },
+      { label: "Healthcare", href: "#solutions" },
+      { label: "Logistics", href: "#solutions" },
     ],
   },
   {

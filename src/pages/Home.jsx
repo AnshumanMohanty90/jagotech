@@ -1,16 +1,17 @@
 import React from "react";
 import Navbar from "@/components/site/Navbar";
 import Hero from "@/components/site/Hero";
+import Challenge from "@/components/site/Challenge";
+import WhatJagoDoes from "@/components/site/WhatJagoDoes";
 import ProductTrinity from "@/components/site/ProductTrinity";
 import Channels from "@/components/site/Channels";
 import RoleWins from "@/components/site/RoleWins";
-import Industries from "@/components/site/Industries";
 import GameChanger from "@/components/site/GameChanger";
 import GenAIAddons from "@/components/site/GenAIAddons";
 import Trust from "@/components/site/Trust";
 import Pricing from "@/components/site/Pricing";
-import Marketplace from "@/components/site/Marketplace";
 import Roi from "@/components/site/Roi";
+import Marketplace from "@/components/site/Marketplace";
 import CTA from "@/components/site/CTA";
 import Footer from "@/components/site/Footer";
 
@@ -20,16 +21,17 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Challenge />
+        <WhatJagoDoes />
         <ProductTrinity />
         <Channels />
         <RoleWins />
-        <Industries />
         <GameChanger />
         <GenAIAddons />
         <Trust />
         <Pricing />
-        <Marketplace />
         <Roi />
+        <Marketplace />
         <CTA />
       </main>
       <Footer />

@@ -35,7 +35,7 @@ export default function Channels() {
     <section id="channels" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro
-          eyebrow="02 · Ease of use"
+          eyebrow="04 · Ease of use"
           title="In any language, inside the apps they already use."
         >
           <strong className="copy-accent">Zero new software to learn.</strong> People send

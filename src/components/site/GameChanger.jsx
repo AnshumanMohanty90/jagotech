@@ -53,7 +53,7 @@ export default function GameChanger() {
     <section id="platform" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute -left-32 top-1/2 -translate-y-1/2 w-[36rem] h-[36rem] rounded-full bg-violet/10 blur-[130px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="05 · Suite advantage" title="Stop buying AI by the slice.">
+        <SectionIntro eyebrow="06 · Suite advantage" title="Stop buying AI by the slice.">
           Replace vendor sprawl, fragmented API integrations and <em className="copy-aside">overlapping subscription costs</em>{" "}
           with a <strong className="copy-accent">single governed AI platform.</strong>
         </SectionIntro>

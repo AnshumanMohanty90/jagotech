@@ -61,13 +61,13 @@ export default function CTA() {
         >
           <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-primary">Awareness · Clarity · Right action</p>
           <h2 className="mt-4 font-heading text-3xl sm:text-4xl font-semibold leading-tight tracking-tight text-balance">
-            Ready to unify your{" "}
-            <span className="whitespace-nowrap text-primary text-glow">enterprise AI?</span>
+            Give your business an{" "}
+            <span className="whitespace-nowrap text-primary text-glow">AI workforce.</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground max-w-3xl mx-auto text-balance">
-            Start a <strong className="copy-accent">1-week free trial</strong> for your department, or test a
-            <strong className="copy-focus"> single quick-win BOT</strong> first. Grounded answers,
-            <em className="copy-aside">approved actions</em>, analysis across text, audio and video.
+            Bring us <strong className="copy-focus">one process your team spends too much time managing</strong>.
+            We'll show you how Jago can <strong className="copy-accent">connect the systems</strong>,
+            understand the context, <em className="copy-aside">and move the work forward.</em>
           </p>
 
           <form onSubmit={submit} className="mt-8 mx-auto max-w-xl">

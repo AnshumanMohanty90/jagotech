@@ -5,6 +5,7 @@ import { ROLES, CATEGORIES } from "@/components/site/roleWinsData";
 import SectionIntro from "@/components/site/SectionIntro";
 import RoleTelemetry from "@/components/site/RoleTelemetry";
 import RoleManifesto from "@/components/site/RoleManifesto";
+import Industries from "@/components/site/Industries";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 export default function RoleWins() {
@@ -21,10 +22,10 @@ export default function RoleWins() {
   };
 
   return (
-    <section id="roles" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
+    <section id="solutions" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute -left-32 top-1/3 w-[30rem] h-[30rem] rounded-full bg-emerald/8 blur-[130px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="03 · A win for every role" title="Real understanding. Decisive action.">
+        <SectionIntro eyebrow="05 · Built around your business" title="Real understanding. Decisive action.">
           <strong className="copy-accent">One foundation, every department.</strong> The right person sees
           the right finding in time and acts. <em className="copy-aside">Select a role.</em>
         </SectionIntro>
@@ -112,6 +113,7 @@ export default function RoleWins() {
 
         <RoleTelemetry key={active.id} telemetry={active.telemetry} channel={active.channel} />
         <RoleManifesto />
+        <Industries />
       </div>
     </section>
   );

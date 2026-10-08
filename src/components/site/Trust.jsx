@@ -50,7 +50,7 @@ export default function Trust() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div>
           <div className="min-w-0">
-            <SectionIntro eyebrow="07 · Security and governance" title="Bank-grade compliance, built in.">
+            <SectionIntro eyebrow="08 · Security and governance" title="Bank-grade compliance, built in.">
               Engineered for <strong className="copy-focus">regulated industries.</strong>{" "}
               <strong className="copy-accent">Uniform access control and audit logging</strong>, everywhere.
             </SectionIntro>

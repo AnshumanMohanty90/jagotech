@@ -4,11 +4,9 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import Logo from "@/components/site/Logo";
 
 const links = [
-  { label: "Ask", href: "#ask" },
-  { label: "Automate", href: "#automate" },
-  { label: "Predict", href: "#predict" },
-  { label: "Analyze", href: "#analyze" },
   { label: "Platform", href: "#platform" },
+  { label: "Solutions", href: "#solutions" },
+  { label: "Marketplace", href: "#marketplace" },
   { label: "Pricing", href: "#pricing" },
 ];
 
@@ -54,7 +52,7 @@ export default function Navbar() {
             href="#contact"
             className="site-cta-primary group gap-1.5 px-4 py-2 text-sm rounded-lg"
           >
-            Start your trial
+            Start the trial
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
           </a>
         </div>
@@ -93,7 +91,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="site-cta-primary mt-2 px-3 py-2.5 text-center text-sm rounded-lg"
               >
-                Start your trial
+                Start the trial
               </a>
             </div>
           </motion.div>

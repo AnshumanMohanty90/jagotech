@@ -63,7 +63,7 @@ export default function Pricing() {
     <section id="pricing" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute -right-32 top-20 w-[34rem] h-[34rem] rounded-full bg-primary/8 blur-[130px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="08 · Plans and pricing" title="Start with a 1-week free trial.">
+        <SectionIntro eyebrow="09 · Plans and pricing" title="Start with a 1-week free trial.">
           <strong className="copy-accent">Any plan free for one week</strong>, or start with a
           <strong className="copy-focus"> single quick-win BOT</strong> from the{" "}
           <a href="#marketplace" className="text-primary font-semibold underline underline-offset-4 decoration-primary/30 hover:decoration-primary whitespace-nowrap">

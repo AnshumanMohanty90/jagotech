@@ -66,7 +66,7 @@ export default function Marketplace() {
     <section id="marketplace" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute -right-32 top-20 w-[32rem] h-[32rem] rounded-full bg-violet/10 blur-[130px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="09 · Marketplace" title="Pick a single BOT. Pay only as you use.">
+        <SectionIntro eyebrow="10 · Marketplace" title="Pick a single BOT. Pay only as you use.">
           <strong className="copy-accent">No seats, no lock-in.</strong> Drop a capability in via API or widget,
           <strong className="copy-focus"> prove the quick win</strong>, <em className="copy-aside">then scale.</em>
         </SectionIntro>

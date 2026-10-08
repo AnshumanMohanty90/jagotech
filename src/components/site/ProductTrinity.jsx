@@ -100,7 +100,7 @@ export default function ProductTrinity() {
       <div className="absolute inset-0 grid-bg-fine opacity-20 mask-fade-b" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro
-          eyebrow="01 · Core capabilities"
+          eyebrow="03 · Core capabilities"
           title={<>Four pillars. <span className="sm:whitespace-nowrap">One governed suite.</span></>}
         >
           Built for <strong className="copy-focus">non-technical teams</strong>: ask, act, see what is coming,
