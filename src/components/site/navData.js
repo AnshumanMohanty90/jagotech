@@ -17,7 +17,7 @@ export const NAV_GROUPS = [
         links: [
           { label: "Ask", href: "/platform#ask", desc: "Plain-language answers grounded in your data" },
           { label: "Predict", href: "/platform#predict", desc: "Flag risks and opportunities before they land" },
-          { label: "Compute", href: "/platform#compute", desc: "Reconciliations, variances and reporting" },
+          { label: "Analyze", href: "/platform#analyze", desc: "Plain-language analysis over your data" },
           { label: "Automate", href: "/platform#automate", desc: "Zero-code actions across your systems" },
         ],
       },

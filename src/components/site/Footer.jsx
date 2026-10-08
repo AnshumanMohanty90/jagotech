@@ -57,10 +57,6 @@ export default function Footer() {
               An <strong className="copy-focus">enterprise AI suite</strong> that asks, automates and analyzes across
               your data, <em className="copy-aside">documents, audio and video.</em>
             </p>
-            <div className="mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald/30 bg-emerald/5">
-              <span className="h-2 w-2 rounded-full bg-emerald animate-pulse" />
-              <span className="font-mono text-xs leading-relaxed text-emerald">Systems nominal · AI ready</span>
-            </div>
           </div>
 
           <div className="lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">

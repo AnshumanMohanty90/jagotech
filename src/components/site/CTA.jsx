@@ -103,10 +103,12 @@ export default function CTA() {
                 className="rounded-xl border border-border bg-card/60 backdrop-blur px-4 py-3.5 text-base leading-relaxed text-muted-foreground focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/20 transition"
               >
                 <option value="">Employees</option>
-                <option value="100-500">100 to 500</option>
-                <option value="500-2500">500 to 2,500</option>
-                <option value="2500-10000">2,500 to 10,000</option>
-                <option value="10000+">10,000+</option>
+                <option value="1-50">1 to 50</option>
+                <option value="51-100">51 to 100</option>
+                <option value="100-200">100 to 200</option>
+                <option value="200-500">200 to 500</option>
+                <option value="500-1000">500 to 1,000</option>
+                <option value="1000+">Greater than 1,000</option>
               </select>
             </div>
           </form>

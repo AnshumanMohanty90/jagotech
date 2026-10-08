@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { BookOpen, Compass, Clock } from "lucide-react";
+
 import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
@@ -77,10 +77,7 @@ export default function ResourceLibrary() {
                 <p className="mt-3 text-base text-muted-foreground leading-relaxed">
                   <CopyEmphasis text={b.excerpt} />
                 </p>
-                <div className="mt-5 inline-flex items-center gap-2 text-sm text-primary font-semibold">
-                  <BookOpen className="w-4 h-4" />
-                  Read on the Jago blog
-                </div>
+                <p className="mt-5 text-sm text-primary font-semibold">Read on the Jago blog</p>
               </motion.article>
             ))}
           </div>
@@ -105,20 +102,14 @@ export default function ResourceLibrary() {
                 transition={{ duration: 0.45, delay: i * 0.08 }}
                 className="group rounded-3xl border border-border bg-card/40 p-7 hover:border-primary/40 transition-colors"
               >
-                <div className="flex items-center gap-3">
-                  <Compass className="w-5 h-5 text-primary" />
-                  <span className="font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
-                    {g.meta}
-                  </span>
-                </div>
+                <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
+                  {g.meta}
+                </p>
                 <h3 className="mt-4 font-heading text-xl font-semibold leading-snug text-balance">
                   {g.title}
                 </h3>
                 <p className="mt-3 text-base text-muted-foreground leading-relaxed">{g.desc}</p>
-                <div className="mt-5 inline-flex items-center gap-2 text-sm text-muted-foreground">
-                  <Clock className="w-4 h-4" />
-                  Included with your trial workspace
-                </div>
+                <p className="mt-5 text-sm text-muted-foreground">Included with your trial workspace</p>
               </motion.div>
             ))}
           </div>

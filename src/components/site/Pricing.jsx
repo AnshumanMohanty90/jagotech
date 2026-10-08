@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Check, ArrowRight, Building2, MessagesSquare, Radar, ShieldCheck, Server, UserCheck, Cpu } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
@@ -12,10 +12,10 @@ const PLANS = [
     price: "1-week free",
     priceNote: "Full access to test with your team",
     specs: [
-      { icon: Building2, label: "1 department, 1 channel (WhatsApp or Slack)" },
-      { icon: MessagesSquare, label: "Ask and Automate modules" },
-      { icon: Radar, label: "Up to 50,000 monthly queries" },
-      { icon: ShieldCheck, label: "Standard DPDPA compliance" },
+      "1 department, 1 channel (WhatsApp or Slack)",
+      "Ask and Automate modules",
+      "Up to 50,000 monthly queries",
+      "Standard DPDPA compliance",
     ],
     cta: "Start 1-week free trial",
   },
@@ -27,10 +27,10 @@ const PLANS = [
     price: "1-week free",
     priceNote: "Access for up to 3 departments",
     specs: [
-      { icon: Radar, label: "All four pillars: Ask, Automate, Predict, Analyze" },
-      { icon: MessagesSquare, label: "WhatsApp, Slack and MS Teams" },
-      { icon: Cpu, label: "Dynamic 100+ multi-LLM router" },
-      { icon: ShieldCheck, label: "SOC 2 and GDPR compliance plane" },
+      "All four pillars: Ask, Automate, Predict, Analyze",
+      "WhatsApp, Slack and MS Teams",
+      "Dynamic 100+ multi-LLM router",
+      "SOC 2 and GDPR compliance plane",
     ],
     cta: "Start 1-week free trial",
   },
@@ -41,10 +41,10 @@ const PLANS = [
     price: "Custom POC",
     priceNote: "Tailored trial with private fine-tuning",
     specs: [
-      { icon: Building2, label: "Unlimited departments and modalities" },
-      { icon: Server, label: "On-premise or private cloud VPC air-gapping" },
-      { icon: UserCheck, label: "Dedicated enterprise solutions architect" },
-      { icon: Cpu, label: "Custom fine-tuned SLMs" },
+      "Unlimited departments and modalities",
+      "On-premise or private cloud VPC air-gapping",
+      "Dedicated enterprise solutions architect",
+      "Custom fine-tuned SLMs",
     ],
     cta: "Request enterprise POC",
   },
@@ -105,17 +105,13 @@ export default function Pricing() {
               </div>
 
               <ul className="mt-6 space-y-3.5">
-                {p.specs.map((s) => {
-                  const Icon = s.icon;
-                  return (
-                    <li key={s.label} className="flex items-start gap-3 text-base leading-relaxed">
-                      <Icon className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                      <span className="text-foreground/90">
-                        <CopyEmphasis text={s.label} bold={["1 department", "50,000 monthly queries", "All four pillars", "100+ multi-LLM router", "Unlimited departments", "private cloud VPC"]} />
-                      </span>
-                    </li>
-                  );
-                })}
+                {p.specs.map((s) => (
+                  <li key={s} className="text-base leading-relaxed">
+                    <span className="text-foreground/90">
+                      <CopyEmphasis text={s} bold={["1 department", "50,000 monthly queries", "All four pillars", "100+ multi-LLM router", "Unlimited departments", "private cloud VPC"]} />
+                    </span>
+                  </li>
+                ))}
               </ul>
 
               <a
@@ -137,9 +133,8 @@ export default function Pricing() {
             {COMMON.map((c) => (
               <span
                 key={c}
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-border bg-background/60 text-sm text-foreground/80"
+                className="inline-flex items-center px-3.5 py-1.5 rounded-full border border-border bg-background/60 text-sm text-foreground/80"
               >
-                <Check className="w-3 h-3 text-emerald" />
                 {c}
               </span>
             ))}

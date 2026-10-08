@@ -1,25 +1,22 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Plug, BrainCircuit, Workflow, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 const STEPS = [
   {
-    icon: Plug,
     title: "Connect",
     desc: "Your CRM, ERP, databases, documents, and business applications.",
     bold: ["CRM, ERP, databases"],
   },
   {
-    icon: BrainCircuit,
     title: "Understand",
     desc: "Your business data, processes, rules, and context.",
     bold: ["data, processes, rules"],
     accent: ["context"],
   },
   {
-    icon: Workflow,
     title: "Act",
     desc: "Create, update, assign, approve, notify, and trigger workflows.",
     bold: ["approve, notify"],
@@ -41,25 +38,21 @@ export default function PlatformOverview() {
         </SectionIntro>
 
         <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-5">
-          {STEPS.map((s, i) => {
-            const Icon = s.icon;
-            return (
-              <motion.div
-                key={s.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.45, delay: i * 0.08 }}
-                className="group rounded-3xl border border-border bg-card/40 p-7 hover:border-primary/40 transition-colors"
-              >
-                <Icon className="w-6 h-6 text-primary" />
-                <h3 className="mt-5 font-heading text-xl font-semibold uppercase tracking-wide">{s.title}</h3>
-                <p className="mt-3 text-base text-muted-foreground leading-relaxed">
-                  <CopyEmphasis text={s.desc} bold={s.bold} accent={s.accent} />
-                </p>
-              </motion.div>
-            );
-          })}
+          {STEPS.map((s, i) => (
+            <motion.div
+              key={s.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.45, delay: i * 0.08 }}
+              className="group rounded-3xl border border-border bg-card/40 p-7 hover:border-primary/40 transition-colors"
+            >
+              <h3 className="font-heading text-xl font-semibold uppercase tracking-wide">{s.title}</h3>
+              <p className="mt-3 text-base text-muted-foreground leading-relaxed">
+                <CopyEmphasis text={s.desc} bold={s.bold} accent={s.accent} />
+              </p>
+            </motion.div>
+          ))}
         </div>
 
         <div className="mt-8 rounded-2xl border border-border bg-card/30 p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
