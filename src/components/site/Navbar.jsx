@@ -102,7 +102,7 @@ export default function Navbar() {
           ))}
 
           <Link to="/#contact" className="site-cta-primary group gap-1.5 px-4 py-2 text-sm rounded-lg">
-            Start the trial
+            Start Trial
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </div>
@@ -193,7 +193,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="site-cta-primary mt-2 px-3 py-2.5 text-center text-sm rounded-lg"
               >
-                Start the trial
+                Start Trial
               </Link>
             </div>
           </motion.div>

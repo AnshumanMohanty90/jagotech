@@ -17,7 +17,8 @@ const PLANS = [
       "Up to 50,000 monthly queries",
       "Standard DPDPA compliance",
     ],
-    cta: "Start 1-week free trial",
+    cta: "Start Trial",
+    primary: true,
   },
   {
     name: "Growth",
@@ -32,7 +33,8 @@ const PLANS = [
       "Dynamic 100+ multi-LLM router",
       "SOC 2 and GDPR compliance plane",
     ],
-    cta: "Start 1-week free trial",
+    cta: "Start Trial",
+    primary: true,
   },
   {
     name: "Scale",
@@ -116,10 +118,10 @@ export default function Pricing() {
 
               <a
                 href="#contact"
-                className={`group mt-7 gap-2 px-4 py-2.5 rounded-xl text-sm ${p.tag ? "site-cta-primary" : "site-cta-secondary"}`}
+                className={`group mt-7 gap-2 px-4 py-2.5 rounded-xl text-sm ${p.primary ? "site-cta-primary" : "site-cta-secondary"}`}
               >
                 {p.cta}
-                <ArrowRight className={`w-4 h-4 group-hover:translate-x-0.5 transition-transform ${p.tag ? "text-primary-foreground" : "text-primary"}`} />
+                <ArrowRight className={`w-4 h-4 group-hover:translate-x-0.5 transition-transform ${p.primary ? "text-primary-foreground" : "text-primary"}`} />
               </a>
             </motion.div>
           ))}

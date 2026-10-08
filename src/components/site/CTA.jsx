@@ -85,7 +85,7 @@ export default function CTA() {
                 disabled={sending}
                 className="site-cta-primary group gap-2 px-5 py-3.5 rounded-xl text-sm disabled:opacity-60"
               >
-                Start your trial
+                Start Trial
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
             </div>

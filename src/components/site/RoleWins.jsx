@@ -99,10 +99,10 @@ export default function RoleWins() {
               </div>
               <a
                 href="#contact"
-                className="site-cta-secondary group mt-6 self-start gap-2 px-4 py-2.5 rounded-xl text-sm"
+                className="site-cta-primary group mt-6 self-start gap-2 px-4 py-2.5 rounded-xl text-sm"
               >
-                Start your trial
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                Start Trial
+                <ArrowRight className="w-4 h-4 text-primary-foreground group-hover:translate-x-0.5 transition-transform" />
               </a>
             </div>
           </motion.div>

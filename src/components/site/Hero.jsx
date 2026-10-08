@@ -83,7 +83,7 @@ export default function Hero() {
               className="mt-8 flex flex-wrap items-center gap-3"
             >
               <a href="#contact" className="site-cta-primary group gap-2 px-5 py-3 rounded-xl">
-                Start the trial
+                Start Trial
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </a>
               <a href="#how" className="site-cta-secondary gap-2 px-5 py-3 rounded-xl backdrop-blur">
