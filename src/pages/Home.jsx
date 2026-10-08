@@ -4,8 +4,6 @@ import Hero from "@/components/site/Hero";
 import Challenge from "@/components/site/Challenge";
 import WhatJagoDoes from "@/components/site/WhatJagoDoes";
 import RoleWins from "@/components/site/RoleWins";
-import Trust from "@/components/site/Trust";
-import Marketplace from "@/components/site/Marketplace";
 import CTA from "@/components/site/CTA";
 import Footer from "@/components/site/Footer";
 
@@ -18,8 +16,6 @@ export default function Home() {
         <Challenge />
         <WhatJagoDoes />
         <RoleWins />
-        <Trust />
-        <Marketplace />
         <CTA />
       </main>
       <Footer />

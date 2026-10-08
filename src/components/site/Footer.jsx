@@ -7,7 +7,7 @@ const COLS = [
     links: [
       { label: "What Jago does", href: "/#how" },
       { label: "Solutions", href: "/#solutions" },
-      { label: "Marketplace", href: "/#marketplace" },
+      { label: "Marketplace", href: "/marketplace" },
       { label: "Pricing", href: "/pricing" },
     ],
   },
@@ -15,7 +15,6 @@ const COLS = [
     title: "Platform",
     links: [
       { label: "Solutions", href: "/#solutions" },
-      { label: "Security", href: "/#trust" },
       { label: "Start the trial", href: "/#contact" },
     ],
   },
@@ -34,7 +33,6 @@ const COLS = [
     links: [
       { label: "About", href: "/#how" },
       { label: "Contact", href: "/#contact" },
-      { label: "Trust", href: "/#trust" },
     ],
   },
 ];
@@ -80,9 +78,6 @@ export default function Footer() {
           <p className="font-mono text-xs leading-relaxed text-muted-foreground">
             © {new Date().getFullYear()} Jago AI. All rights reserved.
           </p>
-          <div className="flex items-center gap-5 text-sm text-muted-foreground">
-            <a href="#trust" className="hover:text-foreground transition-colors">Security</a>
-          </div>
         </div>
       </div>
     </footer>

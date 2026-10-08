@@ -3,9 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import { ROLES, CATEGORIES } from "@/components/site/roleWinsData";
 import SectionIntro from "@/components/site/SectionIntro";
-import RoleTelemetry from "@/components/site/RoleTelemetry";
-import RoleManifesto from "@/components/site/RoleManifesto";
-import Industries from "@/components/site/Industries";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 export default function RoleWins() {
@@ -111,9 +108,6 @@ export default function RoleWins() {
           </motion.div>
         </AnimatePresence>
 
-        <RoleTelemetry key={active.id} telemetry={active.telemetry} channel={active.channel} />
-        <RoleManifesto />
-        <Industries />
       </div>
     </section>
   );

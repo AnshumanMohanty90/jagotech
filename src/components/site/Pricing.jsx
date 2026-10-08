@@ -66,7 +66,7 @@ export default function Pricing() {
         <SectionIntro eyebrow="Plans and pricing" title="Start with a 1-week free trial.">
           <strong className="copy-accent">Any plan free for one week</strong>, or start with a
           <strong className="copy-focus"> single quick-win BOT</strong> from the{" "}
-          <a href="/#marketplace" className="text-primary font-semibold underline underline-offset-4 decoration-primary/30 hover:decoration-primary whitespace-nowrap">
+          <a href="/marketplace" className="text-primary font-semibold underline underline-offset-4 decoration-primary/30 hover:decoration-primary whitespace-nowrap">
             marketplace, from ₹1
           </a>
           , and scale as results come in.

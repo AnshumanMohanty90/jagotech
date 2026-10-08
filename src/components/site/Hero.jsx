@@ -93,7 +93,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: live demo + pillar carousel */}
+          {/* Right: live demo */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -117,12 +117,18 @@ export default function Hero() {
                 <span className="text-primary">text or voice</span>
               </p>
             </div>
-
-            <div className="mt-4">
-              <PillarCarousel />
-            </div>
           </motion.div>
         </div>
+
+        {/* Centered pillar carousel */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.35 }}
+          className="mt-8 mx-auto w-full max-w-2xl"
+        >
+          <PillarCarousel />
+        </motion.div>
       </div>
     </section>
   );
