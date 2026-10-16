@@ -12,6 +12,7 @@ import MarketplacePage from '@/pages/MarketplacePage';
 import PlatformPage from '@/pages/PlatformPage';
 import SolutionsPage from '@/pages/SolutionsPage';
 import ResourcesPage from '@/pages/ResourcesPage';
+import CompliancePage from '@/pages/CompliancePage';
 // Add page imports here
 
 const AuthenticatedApp = () => {
@@ -47,6 +48,7 @@ const AuthenticatedApp = () => {
       <Route path="/platform" element={<PlatformPage />} />
       <Route path="/solutions" element={<SolutionsPage />} />
       <Route path="/resources" element={<ResourcesPage />} />
+      <Route path="/compliance" element={<CompliancePage />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
