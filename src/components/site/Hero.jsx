@@ -69,7 +69,7 @@ export default function Hero() {
               className="max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed text-pretty"
             >
               <CopyEmphasis
-                text="Jago AI connects your business systems, understands your data and processes, and puts AI agents to work across everyday operations, with governance and control built in."
+                text="Jagotech connects your business systems, understands your data and processes, and puts AI agents to work across everyday operations, with governance and control built in."
                 bold={["connects your business systems", "puts AI agents to work"]}
                 accent={["understands your data and processes"]}
                 italic={["with governance and control built in"]}

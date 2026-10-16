@@ -79,7 +79,7 @@ export default function Footer() {
 
         <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-mono text-xs leading-relaxed text-muted-foreground">
-            © {new Date().getFullYear()} Jago AI. All rights reserved.
+            © {new Date().getFullYear()} Jagotech. All rights reserved.
           </p>
         </div>
       </div>
