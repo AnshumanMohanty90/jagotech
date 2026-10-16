@@ -10,7 +10,7 @@ export const NAV_GROUPS = [
           { label: "AI Agents", href: "/platform#agents", desc: "Agents that watch, understand and do the work" },
           { label: "Integrations", href: "/platform#integrations", desc: "CRM, ERP, databases, documents and more" },
           { label: "Governance & Security", href: "/platform#security", desc: "Compliance, approvals and audit logging" },
-          { label: "Compliance", href: "/compliance", desc: "SOC 2, GDPR and the JShield posture" },
+          { label: "Compliance", href: "/compliance", desc: "DPDP, GDPR and SOC" },
         ],
       },
       {

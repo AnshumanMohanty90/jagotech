@@ -54,13 +54,12 @@ export default function Compliance() {
               <h2 className="font-heading text-3xl sm:text-4xl font-semibold leading-tight tracking-tight">
                 JShield
               </h2>
-              <span className="font-mono text-sm text-muted-foreground">jshield.ai</span>
             </div>
             <p className="mt-4 max-w-[70ch] text-base sm:text-lg leading-relaxed text-muted-foreground text-balance">
               <CopyEmphasis
-                text="From the makers of Jagotech, JShield is our dedicated compliance platform: it automates privacy operations, keeps regulatory evidence current, and works alongside your Jagotech agents, so compliance moves at the speed of the work itself."
+                text="From the makers of JagoTech, JShield is our dedicated compliance platform: it automates privacy operations, keeps regulatory evidence current, and works alongside your JagoTech agents, so compliance moves at the speed of the work itself."
                 bold={["dedicated compliance platform"]}
-                accent={["works alongside your Jagotech agents"]}
+                accent={["works alongside your JagoTech agents"]}
                 italic={["at the speed of the work itself"]}
               />
             </p>
@@ -84,9 +83,6 @@ export default function Compliance() {
                 Explore JShield
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
-              <span className="font-mono text-xs leading-relaxed text-muted-foreground">
-                Opens jshield.ai in a new tab
-              </span>
             </div>
           </div>
         </motion.div>
@@ -95,7 +91,7 @@ export default function Compliance() {
         <div className="mt-14 sm:mt-16">
           <SectionIntro eyebrow="Compliance posture" title="Certainty you can hand to your auditors.">
             <CopyEmphasis
-              text="Jagotech is built for regulated industries: security, privacy and governance are part of the platform, not a layer bolted on afterwards."
+              text="JagoTech is built for regulated industries: security, privacy and governance are part of the platform, not a layer bolted on afterwards."
               bold={["built for regulated industries"]}
               accent={["part of the platform"]}
               italic={["not a layer bolted on afterwards"]}
