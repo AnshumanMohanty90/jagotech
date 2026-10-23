@@ -24,8 +24,8 @@ const INTENT_TEXT = {
     thanks: "Thank you. We will email your workspace details within one working day.",
   },
   guide: {
-    button: "Email me this guide",
-    thanks: "Thank you. We will email the guide within one working day.",
+    button: "Notify me",
+    thanks: "Thank you. We will email you when this guide is ready.",
   },
 };
 

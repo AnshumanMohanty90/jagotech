@@ -123,7 +123,7 @@ export default function ResourceLibrary() {
                     onClick={() => setOpenGuide(g.title)}
                     className="site-cta-secondary group mt-5 gap-2 px-4 py-2.5 rounded-xl text-sm"
                   >
-                    Email me this guide
+                    Tell me when it is ready
                     <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-0.5 transition-transform" />
                   </button>
                 )}

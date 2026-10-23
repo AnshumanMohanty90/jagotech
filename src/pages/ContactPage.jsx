@@ -40,6 +40,15 @@ export default function ContactPage() {
                 sourcePage={isTrial ? "/contact?intent=trial" : "/contact?intent=plan"}
               />
             </div>
+            <p className="mt-6 text-center text-base leading-relaxed text-muted-foreground">
+              Or write to us at{" "}
+              <a
+                href="mailto:contact@jagoai.com"
+                className="copy-accent hover:underline underline-offset-4 transition-colors"
+              >
+                contact@jagoai.com
+              </a>
+            </p>
           </div>
         </section>
       </main>

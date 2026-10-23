@@ -78,10 +78,11 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.12 }}
               className="max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed text-pretty"
             >
-              Ask questions in your own language. Let Jago{" "}
-              <strong className="copy-focus">update records</strong> and{" "}
-              <strong className="copy-accent">warn you about risks</strong>. Your customer data stays
-              safe under India's new data protection law.
+              <strong className="copy-accent">Ask questions in your own language</strong> and{" "}
+              <strong className="copy-focus">see why a number moved</strong>.{" "}
+              <strong className="copy-accent">Get a warning</strong> before a risk hits your results, and
+              let Jago <strong className="copy-focus">update the records</strong> for you. Your customer
+              data stays safe under India's new data protection law.
             </motion.p>
 
             <motion.div

@@ -65,10 +65,10 @@ export default function HowJagoWorks() {
     <section id="how-jago-works" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute -right-32 top-10 w-[32rem] h-[32rem] rounded-full bg-violet/10 blur-[130px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="How Jago Works" title="Ask. Automate. Analyze. Predict.">
-          The full detail behind the four modules, {" "}
+        <SectionIntro eyebrow="How Jago Works" title="Ask, automate, analyze and predict.">
+          The full detail behind the four modules,{" "}
           <strong className="copy-focus">plus the engine underneath them.</strong>{" "}
-          <em className="copy-aside">One login, your rules.</em>
+          <em className="copy-aside">All of it sits behind one login.</em>
         </SectionIntro>
 
         <div className="mt-8 sm:mt-10 grid md:grid-cols-2 gap-5">

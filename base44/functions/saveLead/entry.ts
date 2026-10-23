@@ -63,31 +63,34 @@ export default async function(req) {
       ownerEmail = '';
     }
 
-    if (ownerEmail) {
-      waitUntil((async () => {
+    const recipients = ['contact@jagoai.com'];
+    if (ownerEmail && !recipients.includes(ownerEmail)) {
+      recipients.push(ownerEmail);
+    }
+
+    waitUntil((async () => {
+      const rows = [
+        ['Name', name],
+        ['Work email', workEmail],
+        ['Company', company],
+        ['Company size', companySize || 'Not given'],
+        ['Main task', mainTask],
+        ['Intent', intent],
+        ['Source page', sourcePage],
+      ]
+        .map(([k, v]) => `<tr><td style="padding:6px 12px;color:#666">${k}</td><td style="padding:6px 12px">${escapeHtml(v)}</td></tr>`)
+        .join('');
+      const subject = 'New ' + intent + ' lead: ' + name + ', ' + company;
+      const html = '<div style="font-family:Arial,sans-serif;max-width:520px"><h2 style="font-size:18px;margin:0 0 12px">New lead from your website</h2><table style="border-collapse:collapse;font-size:14px">' + rows + '</table><p style="font-size:12px;color:#999;margin-top:12px">Sent from the Jago AI website lead form.</p></div>';
+      const text = 'New lead: ' + name + ' (' + workEmail + ') at ' + company + '. Task: ' + mainTask + '. Intent: ' + intent + '. Source: ' + sourcePage + '.';
+      for (const to of recipients) {
         try {
-          const rows = [
-            ['Name', name],
-            ['Work email', workEmail],
-            ['Company', company],
-            ['Company size', companySize || 'Not given'],
-            ['Main task', mainTask],
-            ['Intent', intent],
-            ['Source page', sourcePage],
-          ]
-            .map(([k, v]) => `<tr><td style="padding:6px 12px;color:#666">${k}</td><td style="padding:6px 12px">${escapeHtml(v)}</td></tr>`)
-            .join('');
-          await base44.asServiceRole.integrations.Core.SendEmail({
-            to: ownerEmail,
-            subject: 'New ' + intent + ' lead: ' + name + ', ' + company,
-            html: '<div style="font-family:Arial,sans-serif;max-width:520px"><h2 style="font-size:18px;margin:0 0 12px">New lead from your website</h2><table style="border-collapse:collapse;font-size:14px">' + rows + '</table><p style="font-size:12px;color:#999;margin-top:12px">Sent from the Jago AI website lead form.</p></div>',
-            text: 'New lead: ' + name + ' (' + workEmail + ') at ' + company + '. Task: ' + mainTask + '. Intent: ' + intent + '. Source: ' + sourcePage + '.',
-          });
+          await base44.asServiceRole.integrations.Core.SendEmail({ to, subject, html, text });
         } catch {
           // The lead is saved. A failed notification must not affect the visitor.
         }
-      })());
-    }
+      }
+    })());
 
     return Response.json({ ok: true });
   } catch (error) {

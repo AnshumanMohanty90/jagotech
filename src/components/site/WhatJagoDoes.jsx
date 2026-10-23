@@ -44,7 +44,7 @@ export default function WhatJagoDoes() {
     <section id="modules" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute -right-32 top-10 w-[32rem] h-[32rem] rounded-full bg-violet/10 blur-[130px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="What Jago does" title="Four AI modules. One login. Your rules." />
+        <SectionIntro eyebrow="What Jago does" title="Four AI modules with one login, under your rules." />
 
         <div className="mt-8 sm:mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {MODULES.map((m, i) => (

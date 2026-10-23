@@ -62,6 +62,12 @@ export default function Footer({ logoVariant }) {
               documents and voice, <em className="copy-aside">with data protection built in.</em>{" "}
               Bengaluru, India.
             </p>
+            <a
+              href="mailto:contact@jagoai.com"
+              className="mt-3 inline-block text-sm text-primary hover:underline underline-offset-4 transition-colors"
+            >
+              contact@jagoai.com
+            </a>
           </div>
 
           <div className="lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
