@@ -38,7 +38,7 @@ export const NAV_ITEMS = [
         title: "Pricing",
         links: [
           { label: "Plans", href: "/pricing", desc: "Clear prices in rupees" },
-          { label: "ROI Calculator", href: "/pricing#roi", desc: "Estimate your savings" },
+          { label: "Savings Calculator", href: "/pricing#roi", desc: "Estimate your savings" },
         ],
       },
     ],

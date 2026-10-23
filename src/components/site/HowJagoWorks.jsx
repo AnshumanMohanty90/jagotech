@@ -7,7 +7,7 @@ const MODULES = [
   {
     id: "ask",
     title: "Ask",
-    desc: "Ask questions in plain words, by text or voice, in 50+ languages. Jago answers from your own data, not from generic guesses.",
+    desc: "Ask questions in plain words, by text or voice, in 50+ languages. Jago answers from your own data, with its source shown.",
     example: "\"What were North region sales against target?\"",
     result: "The number and the chart, in seconds.",
     bold: ["your own data"],
@@ -25,7 +25,7 @@ const MODULES = [
   {
     id: "analyze",
     title: "Analyze",
-    desc: "See why a number moved, not just that it moved. Jago shows the reasons behind a change, with the numbers it used.",
+    desc: "See why a number moved. Jago shows the reasons behind a change, with the numbers it used.",
     example: "\"Why did South miss target?\"",
     result: "The reasons, with the numbers behind them.",
     bold: ["why a number moved"],

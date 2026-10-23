@@ -41,9 +41,9 @@ export default function Roi() {
             className="rounded-3xl border border-border bg-card/50 backdrop-blur p-7 sm:p-9 space-y-8"
           >
             {[
-              { label: "Enterprise headcount", value: emp, set: setEmp, min: 100, max: 10000, step: 100, display: emp.toLocaleString("en-US") + " employees" },
-              { label: "Standalone tools replaced", value: tools, set: setTools, min: 1, max: 10, step: 1, display: tools + " tools" },
-              { label: "Monthly AI queries", value: queries, set: setQueries, min: 10000, max: 1000000, step: 10000, display: queries.toLocaleString("en-US") + " queries" },
+              { label: "People in your company", value: emp, set: setEmp, min: 100, max: 10000, step: 100, display: emp.toLocaleString("en-US") + " employees" },
+              { label: "Separate tools you replace", value: tools, set: setTools, min: 1, max: 10, step: 1, display: tools + " tools" },
+              { label: "Questions asked in a month", value: queries, set: setQueries, min: 10000, max: 1000000, step: 10000, display: queries.toLocaleString("en-US") + " questions" },
             ].map((s) => (
               <div key={s.label}>
                 <div className="flex flex-wrap items-center justify-between gap-2">
@@ -77,7 +77,7 @@ export default function Roi() {
             <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-primary">Estimated annual savings</p>
             <div className="mt-6 space-y-5">
               <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-4">
-                <span className="text-base leading-relaxed text-muted-foreground">Vendor consolidation</span>
+                <span className="text-base leading-relaxed text-muted-foreground">Savings from retiring separate tools</span>
                 <span className="font-heading text-2xl sm:text-3xl font-semibold text-emerald">{fmt(vendorSavings)}</span>
               </div>
               <div className="h-px bg-border" />
@@ -87,8 +87,8 @@ export default function Roi() {
               </div>
               <div className="h-px bg-border" />
               <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-4">
-                <span className="text-base leading-relaxed text-muted-foreground">Estimated net ROI</span>
-                <span className="font-heading text-3xl sm:text-4xl font-semibold text-violet">{netRoi}x ROI</span>
+                <span className="text-base leading-relaxed text-muted-foreground">Return on what you spend</span>
+                <span className="font-heading text-3xl sm:text-4xl font-semibold text-violet">Rs {netRoi} back for every rupee you spend</span>
               </div>
             </div>
             <Link

@@ -19,9 +19,9 @@ const MODULES = [
   },
   {
     title: "Analyze",
-    desc: "See why a number moved, not just that it moved. \"Why did South fall 4%?\"",
+    desc: "See why a number moved, with the reasons behind it. \"Why did South fall 4%?\"",
     bold: ["why a number moved"],
-    accent: ["not just that it moved"],
+    accent: ["the reasons behind it"],
   },
   {
     title: "Predict",

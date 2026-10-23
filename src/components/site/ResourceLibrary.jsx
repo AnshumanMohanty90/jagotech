@@ -94,7 +94,7 @@ export default function ResourceLibrary() {
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <SectionIntro eyebrow="Guides" title="Working guides, ready when you are.">
             Short documents for the decisions you will actually face,{" "}
-            <em className="copy-aside">written for managers, not researchers.</em>
+            <em className="copy-aside">written for managers in plain words.</em>
           </SectionIntro>
 
           <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-5">

@@ -91,7 +91,7 @@ export default function Compliance() {
 
         {/* DPDP duties and SOC 2 */}
         <div className="mt-14 sm:mt-16">
-          <SectionIntro eyebrow="Compliance posture" title="What the law asks of you.">
+          <SectionIntro eyebrow="Compliance" title="What the law asks of you.">
             <CopyEmphasis
               text="India's data protection law, the DPDP Act, applies to every company that holds personal data. The main duties start on 13 May 2027, and fines can reach Rs 250 crore."
               bold={["every company that holds personal data"]}
