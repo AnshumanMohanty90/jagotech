@@ -80,7 +80,7 @@ export default function Compliance() {
         </motion.div>
 
         {/* DPDP duties and SOC 2 */}
-        <div className="mt-12 sm:mt-20">
+        <div className="mt-6 sm:mt-8">
           <SectionIntro eyebrow="Compliance" title="What the law asks of you.">
             <CopyEmphasis
               text="India's data protection law, the DPDP Act, applies to every company that holds personal data. The main duties start on 13 May 2027, and fines can reach Rs 250 crore."
@@ -90,7 +90,7 @@ export default function Compliance() {
             />
           </SectionIntro>
 
-          <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:gap-10">
+          <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:gap-10">
             {FRAMEWORKS.map((f, i) => (
               <motion.div
                 key={f.tag}

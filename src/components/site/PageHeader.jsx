@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function PageHeader({ eyebrow, title, children }) {
   return (
-    <section className="relative overflow-hidden pt-12 sm:pt-20">
+    <section className="relative overflow-hidden pt-10 sm:pt-16">
       <div className="absolute inset-0 grid-bg opacity-25 mask-fade-b" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <motion.div

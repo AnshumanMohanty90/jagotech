@@ -40,10 +40,10 @@ export default function UseCases() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="By use case" title="The same platform, aimed at the result you need.">
           Start with the result you want.{" "}
-          <strong className="copy-focus">We set it up in 8 weeks.</strong>
+          We set it up in 8 weeks.
         </SectionIntro>
 
-        <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+        <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           {USE_CASES.map((u, i) => (
             <motion.div
               key={u.id}

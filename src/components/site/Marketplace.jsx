@@ -54,12 +54,12 @@ export default function Marketplace() {
     <section id="marketplace" className="relative site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Marketplace" title="Pick a single agent. Pay only as you use.">
-          Add one agent to your website or system, <strong className="copy-focus">pay per use</strong>, and
+          Add one agent to your website or system, pay per use, and
           expand when it proves its worth.{" "}
-          <strong className="copy-accent">Agents cover documents, audio and images.</strong>
+          Agents cover documents, audio and images.
         </SectionIntro>
 
-        <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+        <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {AGENTS.map((b, i) => (
             <motion.div
               key={b.name}

@@ -31,7 +31,7 @@ export default function HowItWorks() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="How it works" title="Live in 8 weeks." />
 
-        <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-8 sm:gap-10">
+        <div className="mt-6 sm:mt-8 grid md:grid-cols-3 gap-8 sm:gap-10">
           {PHASES.map((p, i) => (
             <motion.div
               key={p.title}

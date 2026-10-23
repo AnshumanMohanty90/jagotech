@@ -29,11 +29,11 @@ export default function AgentsOverview() {
     <section id="agents" className="relative scroll-mt-24 site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="AI agents" title="Agents that watch, check and do the work.">
-          An agent is <strong className="copy-focus">software that carries a job from question to finished
-          work</strong>, <em className="copy-aside">inside your systems, under your rules.</em>
+          An agent is software that carries a job from question to finished
+          work, inside your systems, under your rules.
         </SectionIntro>
 
-        <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+        <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           {LIFECYCLE.map((s, i) => (
             <motion.div
               key={s.title}
@@ -49,10 +49,10 @@ export default function AgentsOverview() {
           ))}
         </div>
 
-        <div className="mt-12 border-t border-border pt-6 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+        <div className="mt-8 border-t border-border pt-6 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
           <p className="text-base leading-relaxed text-muted-foreground">
-            <strong className="copy-focus">Every department has its own agent.</strong>{" "}
-            <em className="copy-aside">See what yours does.</em>
+            Every department has its own agent.{" "}
+            See what yours does.
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {DEPARTMENTS.map((d) => (

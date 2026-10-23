@@ -41,7 +41,7 @@ export default function Hero() {
   const typed = useTypewriter(PROMPTS);
 
   return (
-    <section id="top" className="relative overflow-hidden pt-28 sm:pt-36">
+    <section id="top" className="relative overflow-hidden pt-24 sm:pt-32">
       {/* Background layers */}
       <div className="absolute inset-0 grid-bg animate-grid-pan opacity-40" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
@@ -65,7 +65,7 @@ export default function Hero() {
           Put AI to work across your company <span className="text-primary">in 8 weeks.</span>
         </motion.h1>
 
-        <div className="mt-8 sm:mt-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="mt-6 sm:mt-8 grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left: copy and CTAs */}
           <div className="lg:col-span-6 min-w-0">
             <motion.p
@@ -103,7 +103,7 @@ export default function Hero() {
               className="mt-5 font-mono text-xs leading-relaxed text-muted-foreground"
             >
               Live at a major lending NBFC · Works on WhatsApp, Slack and Teams ·{" "}
-              <span className="text-primary">50+ languages</span>
+              50+ languages
             </motion.p>
           </div>
 

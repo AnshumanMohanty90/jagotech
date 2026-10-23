@@ -19,7 +19,7 @@ export default function CTA() {
           </h2>
           <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground max-w-3xl mx-auto text-pretty">
             Activate a trial workspace and see what Jago does on sample data. Want the roll-out plan
-            first? <strong className="copy-accent">Download the 8-week plan.</strong>
+            first? Download the 8-week plan.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

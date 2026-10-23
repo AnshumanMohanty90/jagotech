@@ -17,9 +17,9 @@ export default function PlatformPage() {
       <Navbar />
       <main className="pt-16">
         <PageHeader eyebrow="Platform" title="One platform for your systems, documents and voice.">
-          Jago connects your <strong className="copy-focus">sales, finance and HR systems</strong>, reads
+          Jago connects your sales, finance and HR systems, reads
           your documents and hears your voice notes.{" "}
-          <strong className="copy-accent">You choose which actions need a sign-off.</strong>
+          You choose which actions need a sign-off.
         </PageHeader>
         <PlatformOverview />
         <AgentsOverview />
@@ -29,7 +29,7 @@ export default function PlatformPage() {
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <div className="border-t border-border pt-6 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
               <p className="max-w-2xl text-base leading-relaxed text-foreground/90">
-                <strong className="copy-focus">Who can see and do what, with a record of every action.</strong>{" "}
+                Who can see and do what, with a record of every action.{" "}
                 Every change is logged with who approved it.
               </p>
               <Link

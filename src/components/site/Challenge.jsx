@@ -31,7 +31,7 @@ export default function Challenge() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="The problem" title="Your teams want to use AI. Three things stop them." />
 
-        <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-8 sm:gap-10">
+        <div className="mt-6 sm:mt-8 grid md:grid-cols-3 gap-8 sm:gap-10">
           {STOPPERS.map((s, i) => (
             <motion.div
               key={s.t}

@@ -18,11 +18,11 @@ export default function AboutPage() {
         <section className="site-section">
           <div className="mx-auto max-w-4xl px-5 sm:px-8">
             <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
-              <strong className="copy-focus">What we do:</strong> we help Indian companies put AI to work on
+              What we do: we help Indian companies put AI to work on
               real tasks, with customer data handled within India's data law.
             </p>
             <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
-              <strong className="copy-focus">Where we started:</strong> lending, where audit, collections and
+              Where we started: lending, where audit, collections and
               compliance work is heavy and the rules are strict.
             </p>
             <Link to="/contact?intent=plan" className="site-cta-primary mt-8 px-5 py-3 rounded-xl">

@@ -35,11 +35,11 @@ export default function Integrations() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Integrations" title="Connected to the systems you already run.">
           Nothing gets replaced. Jago reads and writes in the systems you already have, and{" "}
-          <strong className="copy-focus">who can see and do what</strong> stays{" "}
-          <strong className="copy-accent">under your control.</strong>
+          who can see and do what stays{" "}
+          under your control.
         </SectionIntro>
 
-        <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+        <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {INTEGRATIONS.map((it, i) => (
             <motion.div
               key={it.title}

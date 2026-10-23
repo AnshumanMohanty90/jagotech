@@ -14,8 +14,8 @@ export default function CompliancePage() {
       <main className="pt-16">
         <PageHeader eyebrow="Compliance" title="Built for India's data protection law.">
           Jago keeps a record of every action.{" "}
-          <strong className="copy-focus">JShield tracks consent and breaches</strong>, and the duties that
-          start on <strong className="copy-accent">13 May 2027.</strong>
+          JShield tracks consent and breaches, and the duties that
+          start on 13 May 2027.
         </PageHeader>
         <Compliance />
         <CTA />

@@ -57,8 +57,8 @@ export default function Footer({ logoVariant }) {
               <Logo variant={logoVariant} className="h-9 w-auto" />
             </Link>
             <p className="mt-4 text-base text-muted-foreground max-w-sm leading-relaxed">
-              Jago AI <strong className="copy-focus">puts AI to work</strong> in Indian companies,{" "}
-              <em className="copy-aside">with customer data kept within India's data law.</em>{" "}
+              Jago AI puts AI to work in Indian companies,{" "}
+              with customer data kept within India's data law.{" "}
               Bengaluru, India.
             </p>
             <a

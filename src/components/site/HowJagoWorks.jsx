@@ -66,11 +66,11 @@ export default function HowJagoWorks() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="How Jago Works" title="Ask, automate, analyze and predict.">
           The full detail behind the four modules,{" "}
-          <strong className="copy-focus">plus the engine underneath them.</strong>{" "}
-          <em className="copy-aside">All of it sits behind one login.</em>
+          plus the engine underneath them.{" "}
+          All of it sits behind one login.
         </SectionIntro>
 
-        <div className="mt-8 sm:mt-10 grid md:grid-cols-2 gap-8 lg:gap-10">
+        <div className="mt-6 sm:mt-8 grid md:grid-cols-2 gap-8 lg:gap-10">
           {MODULES.map((m, i) => (
             <motion.div
               key={m.id}
@@ -97,11 +97,11 @@ export default function HowJagoWorks() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.45 }}
-          className="mt-12 border-t border-border pt-6 min-w-0"
+          className="mt-8 border-t border-border pt-6 min-w-0"
         >
           <h3 className="font-heading text-xl font-semibold leading-snug text-balance">Jago Compute</h3>
           <p className="mt-3 max-w-3xl text-base text-muted-foreground leading-relaxed text-pretty">
-            <strong className="copy-focus">Averages hide problems.</strong> Jago looks one level down, by
+            Averages hide problems. Jago looks one level down, by
             region, product or team, and shows where a number really moved.
           </p>
           <div className="mt-6 grid gap-6 md:grid-cols-3">
@@ -122,8 +122,8 @@ export default function HowJagoWorks() {
             ))}
           </div>
           <p className="mt-6 max-w-3xl text-base text-muted-foreground leading-relaxed text-pretty">
-            Jago also <strong className="copy-accent">picks the right AI for each task from more than 100 AI
-            models</strong>, <strong className="copy-focus">so you pay less.</strong>
+            Jago also picks the right AI for each task from more than 100 AI
+            models, so you pay less.
           </p>
         </motion.div>
 
@@ -132,13 +132,13 @@ export default function HowJagoWorks() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.45 }}
-          className="mt-12 border-t border-border pt-6 min-w-0"
+          className="mt-8 border-t border-border pt-6 min-w-0"
         >
           <h3 className="font-heading text-xl font-semibold leading-snug text-balance">Ease of Use</h3>
           <p className="mt-3 max-w-3xl text-base text-muted-foreground leading-relaxed text-pretty">
-            Your team works in <strong className="copy-focus">WhatsApp, Slack and Teams</strong>, typed or
-            spoken, in <strong className="copy-accent">50+ languages.</strong> There is no new screen to
-            learn and no coding to write. <em className="copy-aside">A person approves the key steps.</em>
+            Your team works in WhatsApp, Slack and Teams, typed or
+            spoken, in 50+ languages. There is no new screen to
+            learn and no coding to write. A person approves the key steps.
           </p>
         </motion.div>
       </div>

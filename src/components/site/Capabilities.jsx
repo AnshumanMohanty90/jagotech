@@ -39,7 +39,7 @@ export default function Capabilities() {
           for the full detail.
         </SectionIntro>
 
-        <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+        <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           {CAPS.map((c, i) => (
             <motion.div
               key={c.id}

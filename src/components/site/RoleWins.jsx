@@ -23,7 +23,7 @@ export default function RoleWins() {
           <span className="text-sm">Examples of everyday use.</span>
         </SectionIntro>
 
-        <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
+        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
           {CATEGORIES.map((c) => (
             <button
               key={c.id}

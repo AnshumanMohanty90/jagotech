@@ -26,11 +26,11 @@ export default function Roi() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Your estimated savings" title="See what you could save.">
           Enter your team size and current AI spend. We estimate what you save by replacing{" "}
-          <strong className="copy-focus">separate tools</strong> with{" "}
-          <strong className="copy-accent">one platform.</strong>
+          separate tools with{" "}
+          one platform.
         </SectionIntro>
 
-        <div className="mt-8 sm:mt-10 grid lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="mt-6 sm:mt-8 grid lg:grid-cols-2 gap-8 lg:gap-12">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ export default function Roi() {
               </div>
             ))}
             <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
-              <em>Estimate only. Based on the numbers you enter. We confirm the real figure in your 8-week plan.</em>
+              Estimate only. Based on the numbers you enter. We confirm the real figure in your 8-week plan.
             </p>
           </motion.div>
 

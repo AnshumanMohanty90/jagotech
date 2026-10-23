@@ -74,7 +74,7 @@ export default function Industries() {
         </div>
 
         {/* department marquee */}
-        <div className="mt-12 relative overflow-hidden mask-fade-edges py-2">
+        <div className="mt-8 relative overflow-hidden mask-fade-edges py-2">
           <div className="flex gap-10 w-max animate-marquee">
             {[...DEPARTMENTS, ...DEPARTMENTS].map((d, i) => (
               <span

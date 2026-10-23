@@ -33,7 +33,7 @@ export default function PlatformOverview() {
           Jago sits on top of the tools you already run and carries the work from question to done.
         </SectionIntro>
 
-        <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-8 sm:gap-10">
+        <div className="mt-6 sm:mt-8 grid md:grid-cols-3 gap-8 sm:gap-10">
           {STEPS.map((s, i) => (
             <motion.div
               key={s.title}
@@ -51,10 +51,10 @@ export default function PlatformOverview() {
           ))}
         </div>
 
-        <div className="mt-12 border-t border-border pt-6 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+        <div className="mt-8 border-t border-border pt-6 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
           <p className="text-base leading-relaxed text-muted-foreground">
-            <strong className="copy-focus">One agent per job, ready in 8 weeks.</strong>{" "}
-            <em className="copy-aside">Meet them.</em>
+            One agent per job, ready in 8 weeks.{" "}
+            Meet them.
           </p>
           <a href="#agents" className="site-cta-secondary px-4 py-2.5 rounded-xl text-sm self-start lg:self-auto">
             Explore AI agents

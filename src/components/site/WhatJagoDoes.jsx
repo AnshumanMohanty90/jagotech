@@ -44,7 +44,7 @@ export default function WhatJagoDoes() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="What Jago does" title="Four AI modules with one login, under your rules." />
 
-        <div className="mt-8 sm:mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+        <div className="mt-6 sm:mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {MODULES.map((m, i) => (
             <motion.div
               key={m.title}

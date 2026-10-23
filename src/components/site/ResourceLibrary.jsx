@@ -56,10 +56,10 @@ export default function ResourceLibrary() {
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <SectionIntro eyebrow="Blogs" title="Notes from teams doing it.">
             Short pieces on putting AI agents to work,{" "}
-            <em className="copy-aside">not speculation about the future.</em>
+            not speculation about the future.
           </SectionIntro>
 
-          <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-8 sm:gap-10">
+          <div className="mt-6 sm:mt-8 grid md:grid-cols-3 gap-8 sm:gap-10">
             {BLOGS.map((b, i) => (
               <motion.article
                 key={b.title}
@@ -93,10 +93,10 @@ export default function ResourceLibrary() {
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <SectionIntro eyebrow="Guides" title="Working guides, ready when you are.">
             Short documents for the decisions you will actually face,{" "}
-            <em className="copy-aside">written for managers in plain words.</em>
+            written for managers in plain words.
           </SectionIntro>
 
-          <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-8 sm:gap-10">
+          <div className="mt-6 sm:mt-8 grid md:grid-cols-3 gap-8 sm:gap-10">
             {GUIDES.map((g, i) => (
               <motion.div
                 key={g.title}

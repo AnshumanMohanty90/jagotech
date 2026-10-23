@@ -56,11 +56,11 @@ export default function Pricing() {
     <section id="pricing" className="relative site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Plans" title="Start with one team. Grow into the whole company.">
-          <strong className="copy-accent">Clear prices in rupees.</strong>{" "}
-          <strong className="copy-focus">Try any plan free for a week.</strong>
+          Clear prices in rupees.{" "}
+          Try any plan free for a week.
         </SectionIntro>
 
-        <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {PLANS.map((p, i) => (
             <motion.div
               key={p.name}
@@ -103,7 +103,7 @@ export default function Pricing() {
           ))}
         </div>
 
-        <div className="mt-12 border-t border-border pt-6">
+        <div className="mt-8 border-t border-border pt-6">
           <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
             Every plan includes
           </p>
@@ -114,10 +114,10 @@ export default function Pricing() {
 
         <div className="mt-8 flex flex-col gap-3">
           <p className="text-sm leading-relaxed text-muted-foreground">
-            <strong className="copy-focus">Built to a global security standard (SOC 2); certification under way.</strong>
+            Built to a global security standard (SOC 2); certification under way.
           </p>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            <em className="copy-aside">WhatsApp, Slack and Teams may charge their own messaging fees.</em>
+            WhatsApp, Slack and Teams may charge their own messaging fees.
           </p>
         </div>
       </div>

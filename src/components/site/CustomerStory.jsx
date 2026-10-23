@@ -37,7 +37,7 @@ export default function CustomerStory({ showLink = true }) {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Customer story" title="A major lending NBFC now knows which branches to audit first" />
 
-        <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 gap-8 sm:gap-10">
+        <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 gap-8 sm:gap-10">
           {STORY.map((s, i) => (
             <motion.div
               key={s.label}

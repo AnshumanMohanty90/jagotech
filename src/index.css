@@ -71,7 +71,7 @@
 
 @layer components {
   .site-section {
-    @apply pt-12 pb-12 sm:pt-20 sm:pb-20;
+    @apply pt-10 pb-10 sm:pt-16 sm:pb-16;
   }
 
   .site-col {

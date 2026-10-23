@@ -17,11 +17,11 @@ export default function CustomersStory() {
           <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">The problem</p>
           <p className="mt-3 max-w-3xl text-base sm:text-lg leading-relaxed text-foreground/90 text-pretty">
             Audits kept slipping. Risk reports used old data, and no tool showed which branches were likely
-            to have problems. <strong className="copy-focus">Auditors could not tell where to go first.</strong>
+            to have problems. Auditors could not tell where to go first.
           </p>
         </div>
 
-        <div className="mt-12 min-w-0">
+        <div className="mt-8 min-w-0">
           <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">What Jago does</p>
           <div className="mt-5 grid gap-6 sm:grid-cols-2 sm:gap-8">
             {DOES.map((d, i) => (
@@ -39,7 +39,7 @@ export default function CustomersStory() {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-10">
+        <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-10">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -61,22 +61,22 @@ export default function CustomersStory() {
           >
             <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">The cost</p>
             <p className="mt-3 text-base leading-relaxed text-foreground/90 text-pretty">
-              About <strong className="copy-accent">Rs 13 of AI cost</strong> each time Jago checks a branch,
+              About Rs 13 of AI cost each time Jago checks a branch,
               before setup and hosting. Checking all 1,600 branches costs about{" "}
-              <strong className="copy-focus">Rs 21,000 in AI.</strong>
+              Rs 21,000 in AI.
             </p>
           </motion.div>
         </div>
 
-        <div className="mt-12 min-w-0">
+        <div className="mt-8 min-w-0">
           <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">What comes next</p>
           <p className="mt-3 max-w-3xl text-base sm:text-lg leading-relaxed text-foreground/90 text-pretty">
             Staff will ask questions in local languages, customers will give consent on WhatsApp, and Jago
-            will flag likely fraud <em className="copy-aside">for a person to check.</em>
+            will flag likely fraud for a person to check.
           </p>
         </div>
 
-        <Link to="/contact?intent=trial" className="site-cta-primary mt-12 px-5 py-3 rounded-xl">
+        <Link to="/contact?intent=trial" className="site-cta-primary mt-8 px-5 py-3 rounded-xl">
           Try it free for a week
         </Link>
       </div>
