@@ -1,5 +1,5 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.54';
-import { secrets, waitUntil } from 'base44:runtime';
+import { secrets } from 'base44:runtime';
 
 const INTENTS = ['plan', 'trial', 'enterprise', 'guide', 'pricing'];
 
@@ -70,32 +70,35 @@ export default async function(req) {
       recipients.push(ownerEmail);
     }
 
-    waitUntil((async () => {
-      const rows = [
-        ['Name', name],
-        ['Work email', workEmail],
-        ['Company', company],
-        ['Company size', companySize || 'Not given'],
-        ['Main task', mainTask],
-        ['Plan of interest', planOfInterest || 'Not given'],
-        ['Intent', intent],
-        ['Source page', sourcePage],
-      ]
-        .map(([k, v]) => `<tr><td style="padding:6px 12px;color:#666">${k}</td><td style="padding:6px 12px">${escapeHtml(v)}</td></tr>`)
-        .join('');
-      const subject = 'New ' + intent + ' lead: ' + name + ', ' + company;
-      const html = '<div style="font-family:Arial,sans-serif;max-width:520px"><h2 style="font-size:18px;margin:0 0 12px">New lead from your website</h2><table style="border-collapse:collapse;font-size:14px">' + rows + '</table><p style="font-size:12px;color:#999;margin-top:12px">Sent from the Jago AI website lead form.</p></div>';
-      const text = 'New lead: ' + name + ' (' + workEmail + ') at ' + company + '. Task: ' + mainTask + '. Intent: ' + intent + '. Source: ' + sourcePage + '.';
-      for (const to of recipients) {
-        try {
-          await base44.asServiceRole.integrations.Core.SendEmail({ to, subject, html, text });
-        } catch {
-          // The lead is saved. A failed notification must not affect the visitor.
-        }
-      }
-    })());
+    const rows = [
+      ['Name', name],
+      ['Work email', workEmail],
+      ['Company', company],
+      ['Company size', companySize || 'Not given'],
+      ['Main task', mainTask],
+      ['Plan of interest', planOfInterest || 'Not given'],
+      ['Intent', intent],
+      ['Source page', sourcePage],
+    ]
+      .map(([k, v]) => `<tr><td style="padding:6px 12px;color:#666">${k}</td><td style="padding:6px 12px">${escapeHtml(v)}</td></tr>`)
+      .join('');
+    const subject = 'New ' + intent + ' lead: ' + name + ', ' + company;
+    const html = '<div style="font-family:Arial,sans-serif;max-width:520px"><h2 style="font-size:18px;margin:0 0 12px">New lead from your website</h2><table style="border-collapse:collapse;font-size:14px">' + rows + '</table><p style="font-size:12px;color:#999;margin-top:12px">Sent from the Jago AI website lead form.</p></div>';
+    const text = 'New lead: ' + name + ' (' + workEmail + ') at ' + company + '. Task: ' + mainTask + '. Intent: ' + intent + '. Source: ' + sourcePage + '.';
 
-    return Response.json({ ok: true });
+    // Each recipient is tried on its own: one failure never stops the others.
+    const notified = [];
+    for (const to of recipients) {
+      try {
+        await base44.asServiceRole.integrations.Core.SendEmail({ to, subject, html, text });
+        notified.push({ to, sent: true });
+      } catch (error) {
+        // The lead is saved. A failed notification must not affect the visitor.
+        notified.push({ to, sent: false, error: error.message });
+      }
+    }
+
+    return Response.json({ ok: true, notified });
   } catch (error) {
     return Response.json({ error: error.message }, { status: 500 });
   }
