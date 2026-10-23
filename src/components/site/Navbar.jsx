@@ -1,7 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import Logo from "@/components/site/Logo";
 import { NAV_ITEMS } from "@/components/site/navData";
+
+// Menu panels load on demand, off the critical path.
+const NavPanel = lazy(() => import("@/components/site/NavPanels"));
 
 const OPEN_DELAY = 120;
 const CLOSE_DELAY = 220;
@@ -104,43 +107,6 @@ export default function Navbar({ logoVariant }) {
     };
   }, [drawerOpen]);
 
-  const renderMenuLink = (l, compact = false) =>
-    l.external ? (
-      <a
-        key={l.label}
-        href={l.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => closeMenu()}
-        className="block rounded-lg px-2.5 py-2 hover:bg-secondary/60 transition-colors"
-      >
-        <span className="block text-sm font-medium text-foreground/90">{l.label}</span>
-        {l.desc && (
-          <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground/80">{l.desc}</span>
-        )}
-      </a>
-    ) : (
-      <Link
-        key={l.label}
-        to={l.href}
-        onClick={() => closeMenu()}
-        className={
-          compact
-            ? "block rounded-lg px-3 py-2.5 text-sm font-medium text-foreground/90 hover:bg-secondary/60 transition-colors"
-            : "block rounded-lg px-2.5 py-2 hover:bg-secondary/60 transition-colors"
-        }
-      >
-        {!compact && <span className="block text-sm font-medium text-foreground/90">{l.label}</span>}
-        {compact ? (
-          l.label
-        ) : (
-          l.desc && (
-            <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground/80">{l.desc}</span>
-          )
-        )}
-      </Link>
-    );
-
   return (
     <header
       className={`sticky top-0 z-50 bg-background border-b transition-colors ${
@@ -214,24 +180,9 @@ export default function Navbar({ logoVariant }) {
                         : "absolute left-0 top-full pt-3 z-50"
                     }
                   >
-                    {item.type === "mega" ? (
-                      <div className="grid grid-cols-3 gap-8 rounded-xl border border-border bg-card/95 backdrop-blur-xl p-6 shadow-2xl shadow-background/60">
-                        {item.columns.map((col) => (
-                          <div key={col.title} className="min-w-0">
-                            <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
-                              {col.title}
-                            </p>
-                            <div className="mt-3 space-y-1">
-                              {col.links.map((l) => renderMenuLink(l))}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <div className="min-w-[15rem] rounded-xl border border-border bg-card/95 backdrop-blur-xl p-3 shadow-2xl shadow-background/60">
-                        {item.links.map((l) => renderMenuLink(l, true))}
-                      </div>
-                    )}
+                    <Suspense fallback={null}>
+                      <NavPanel item={item} closeMenu={() => closeMenu()} />
+                    </Suspense>
                   </div>
                 )}
               </div>

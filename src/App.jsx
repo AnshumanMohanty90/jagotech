@@ -3,27 +3,36 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { MotionConfig } from 'framer-motion';
+import { Suspense, lazy } from 'react';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
 import Home from '@/pages/Home';
-import PricingPage from '@/pages/PricingPage';
-import MarketplacePage from '@/pages/MarketplacePage';
-import PlatformPage from '@/pages/PlatformPage';
-import SolutionsPage from '@/pages/SolutionsPage';
-import ResourcesPage from '@/pages/ResourcesPage';
-import CompliancePage from '@/pages/CompliancePage';
-import CustomersPage from '@/pages/CustomersPage';
-import SecurityPage from '@/pages/SecurityPage';
-import AboutPage from '@/pages/AboutPage';
-import ContactPage from '@/pages/ContactPage';
-import HowJagoWorksPage from '@/pages/HowJagoWorksPage';
-import RoleWinsPage from '@/pages/RoleWinsPage';
-import IndustriesPage from '@/pages/IndustriesPage';
-import PrivacyPage from '@/pages/PrivacyPage';
-import TermsPage from '@/pages/TermsPage';
 // Add page imports here
+
+// Every page except Home loads on demand, so the home bundle stays small.
+const PricingPage = lazy(() => import('@/pages/PricingPage'));
+const MarketplacePage = lazy(() => import('@/pages/MarketplacePage'));
+const PlatformPage = lazy(() => import('@/pages/PlatformPage'));
+const SolutionsPage = lazy(() => import('@/pages/SolutionsPage'));
+const ResourcesPage = lazy(() => import('@/pages/ResourcesPage'));
+const CompliancePage = lazy(() => import('@/pages/CompliancePage'));
+const CustomersPage = lazy(() => import('@/pages/CustomersPage'));
+const SecurityPage = lazy(() => import('@/pages/SecurityPage'));
+const AboutPage = lazy(() => import('@/pages/AboutPage'));
+const ContactPage = lazy(() => import('@/pages/ContactPage'));
+const HowJagoWorksPage = lazy(() => import('@/pages/HowJagoWorksPage'));
+const RoleWinsPage = lazy(() => import('@/pages/RoleWinsPage'));
+const IndustriesPage = lazy(() => import('@/pages/IndustriesPage'));
+const PrivacyPage = lazy(() => import('@/pages/PrivacyPage'));
+const TermsPage = lazy(() => import('@/pages/TermsPage'));
+
+const PageFallback = () => (
+  <div className="fixed inset-0 flex items-center justify-center">
+    <div className="w-8 h-8 border-4 border-slate-200 border-t-slate-800 rounded-full animate-spin"></div>
+  </div>
+);
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -53,21 +62,21 @@ const AuthenticatedApp = () => {
     <Routes>
       {/* Add your page Route elements here */}
       <Route path="/" element={<Home />} />
-      <Route path="/pricing" element={<PricingPage />} />
-      <Route path="/marketplace" element={<MarketplacePage />} />
-      <Route path="/platform" element={<PlatformPage />} />
-      <Route path="/solutions" element={<SolutionsPage />} />
-      <Route path="/resources" element={<ResourcesPage />} />
-      <Route path="/compliance" element={<CompliancePage />} />
-      <Route path="/customers" element={<CustomersPage />} />
-      <Route path="/security" element={<SecurityPage />} />
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="/how-jago-works" element={<HowJagoWorksPage />} />
-      <Route path="/role-wins" element={<RoleWinsPage />} />
-      <Route path="/industries" element={<IndustriesPage />} />
-      <Route path="/privacy" element={<PrivacyPage />} />
-      <Route path="/terms" element={<TermsPage />} />
+      <Route path="/pricing" element={<Suspense fallback={<PageFallback />}><PricingPage /></Suspense>} />
+      <Route path="/marketplace" element={<Suspense fallback={<PageFallback />}><MarketplacePage /></Suspense>} />
+      <Route path="/platform" element={<Suspense fallback={<PageFallback />}><PlatformPage /></Suspense>} />
+      <Route path="/solutions" element={<Suspense fallback={<PageFallback />}><SolutionsPage /></Suspense>} />
+      <Route path="/resources" element={<Suspense fallback={<PageFallback />}><ResourcesPage /></Suspense>} />
+      <Route path="/compliance" element={<Suspense fallback={<PageFallback />}><CompliancePage /></Suspense>} />
+      <Route path="/customers" element={<Suspense fallback={<PageFallback />}><CustomersPage /></Suspense>} />
+      <Route path="/security" element={<Suspense fallback={<PageFallback />}><SecurityPage /></Suspense>} />
+      <Route path="/about" element={<Suspense fallback={<PageFallback />}><AboutPage /></Suspense>} />
+      <Route path="/contact" element={<Suspense fallback={<PageFallback />}><ContactPage /></Suspense>} />
+      <Route path="/how-jago-works" element={<Suspense fallback={<PageFallback />}><HowJagoWorksPage /></Suspense>} />
+      <Route path="/role-wins" element={<Suspense fallback={<PageFallback />}><RoleWinsPage /></Suspense>} />
+      <Route path="/industries" element={<Suspense fallback={<PageFallback />}><IndustriesPage /></Suspense>} />
+      <Route path="/privacy" element={<Suspense fallback={<PageFallback />}><PrivacyPage /></Suspense>} />
+      <Route path="/terms" element={<Suspense fallback={<PageFallback />}><TermsPage /></Suspense>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
