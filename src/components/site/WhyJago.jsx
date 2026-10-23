@@ -6,20 +6,20 @@ import CopyEmphasis from "@/components/site/CopyEmphasis";
 const REASONS = [
   {
     t: "Built for India",
-    d: "50+ languages, WhatsApp, and India's data law built in.",
-    bold: ["50+ languages"],
+    d: "Indian languages, WhatsApp and India's data law, built in.",
+    bold: ["Indian languages"],
     accent: ["India's data law"],
   },
   {
     t: "You stay in control",
-    d: "A person approves the key steps, and every action is on record.",
-    bold: ["A person approves"],
-    accent: ["every action is on record"],
+    d: "You choose what needs a sign-off. Every action is logged.",
+    bold: ["You choose"],
+    accent: ["Every action is logged"],
   },
   {
     t: "Costs less to run",
-    d: "Jago picks the right AI for each task, and can run on your own servers.",
-    bold: ["the right AI for each task"],
+    d: "Simple tasks go to lower-cost AI. Runs on your own servers if you prefer.",
+    bold: ["lower-cost AI"],
     italic: ["your own servers"],
   },
 ];

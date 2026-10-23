@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
-import { ArrowRight, Check } from "lucide-react";
 import { ROLES, CATEGORIES } from "@/components/site/roleWinsData";
 import SectionIntro from "@/components/site/SectionIntro";
-import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 export default function RoleWins() {
   const [cat, setCat] = useState("all");
@@ -69,49 +66,24 @@ export default function RoleWins() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3 }}
-            className="mt-6 grid lg:grid-cols-2 gap-5"
+            className="mt-6"
           >
             <div className="rounded-3xl border border-border bg-card/50 backdrop-blur p-7 sm:p-9">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <h3 className="font-heading text-2xl font-semibold">{active.role}</h3>
                 <span className="font-mono text-xs leading-relaxed text-muted-foreground">{active.modules}</span>
               </div>
-              <div className="mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald/30 bg-emerald/10">
-                <Check className="w-3.5 h-3.5 text-emerald" />
-                <span className="font-heading text-sm font-semibold text-emerald">{active.impact}</span>
-              </div>
-              <p className="mt-5 text-foreground/90 leading-relaxed"><em>{active.aha}</em></p>
 
-              {active.before && (
-                <div className="mt-6 grid sm:grid-cols-2 gap-3">
-                  <div className="rounded-xl border border-border bg-background/60 p-4">
-                    <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">Before</p>
-                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{active.before}</p>
-                  </div>
-                  <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
-                    <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-primary">With Jago</p>
-                    <p className="mt-1.5 text-sm leading-relaxed text-foreground/90">{active.with}</p>
-                  </div>
+              <div className="mt-6 grid sm:grid-cols-2 gap-3">
+                <div className="rounded-xl border border-border bg-background/60 p-4">
+                  <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">Before</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{active.before}</p>
                 </div>
-              )}
-            </div>
-
-            <div className="rounded-3xl border border-border bg-card/40 backdrop-blur p-7 sm:p-9 flex flex-col">
-              <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-primary">What changes</p>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                <CopyEmphasis text={active.gain} bold={["voice note", "ready-made agent", "in their own language", "on WhatsApp", "more than 100 AI models"]} accent={["50+ languages", "so you pay less"]} />
-              </p>
-              <div className="mt-6 inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-lg border border-border bg-background/60 font-mono text-xs leading-relaxed text-muted-foreground">
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                {active.channel}
+                <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
+                  <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-primary">With Jago</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-foreground/90">{active.with}</p>
+                </div>
               </div>
-              <Link
-                to="/contact?intent=plan"
-                className="site-cta-primary group mt-6 self-start gap-2 px-4 py-2.5 rounded-xl text-sm"
-              >
-                Get your free 8-week plan
-                <ArrowRight className="w-4 h-4 text-primary-foreground group-hover:translate-x-0.5 transition-transform" />
-              </Link>
             </div>
           </motion.div>
         </AnimatePresence>

@@ -56,7 +56,7 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary"
         >
-          AI agents that understand your business and get work done
+          AI agents for Indian companies
         </motion.p>
 
         <motion.h1
@@ -78,11 +78,12 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.12 }}
               className="max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed text-pretty"
             >
-              <strong className="copy-accent">Ask questions in your own language</strong> and{" "}
-              <strong className="copy-focus">see why a number moved</strong>.{" "}
-              <strong className="copy-accent">Get a warning</strong> before a risk hits your results, and
-              let Jago <strong className="copy-focus">update the records</strong> for you. Your customer
-              data stays safe under India's new data protection law.
+              Jago connects to the systems you already use. Your teams{" "}
+              <strong className="copy-accent">ask questions</strong>,{" "}
+              <strong className="copy-focus">see why numbers move</strong>,{" "}
+              <strong className="copy-accent">get early warnings</strong> and{" "}
+              <strong className="copy-focus">hand routine updates</strong> to Jago. Customer data stays
+              within India's data law.
             </motion.p>
 
             <motion.div
@@ -106,7 +107,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.24 }}
               className="mt-5 font-mono text-xs leading-relaxed text-muted-foreground"
             >
-              Live at a major lending NBFC (a non-bank lender) · Works on WhatsApp, Slack and Teams ·{" "}
+              Live at a major lending NBFC · Works on WhatsApp, Slack and Teams ·{" "}
               <span className="text-primary">50+ languages</span>
             </motion.p>
           </div>
@@ -131,7 +132,7 @@ export default function Hero() {
               </div>
               <AskDemo placeholder={typed} />
               <p className="mt-3 px-1 font-mono text-xs leading-relaxed text-muted-foreground">
-                Grounded in your systems · 50+ languages ·{" "}
+                Uses your own data · 50+ languages ·{" "}
                 <span className="text-primary">text or voice</span>
               </p>
             </div>

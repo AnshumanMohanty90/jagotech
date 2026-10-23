@@ -57,9 +57,8 @@ export default function Footer({ logoVariant }) {
               <Logo variant={logoVariant} className="h-9 w-auto" />
             </Link>
             <p className="mt-4 text-base text-muted-foreground max-w-sm leading-relaxed">
-              Jago AI helps Indian companies put AI to work safely:{" "}
-              <strong className="copy-focus">ask, automate, analyze and predict</strong> across data,
-              documents and voice, <em className="copy-aside">with data protection built in.</em>{" "}
+              Jago AI <strong className="copy-focus">puts AI to work</strong> in Indian companies,{" "}
+              <em className="copy-aside">with customer data kept within India's data law.</em>{" "}
               Bengaluru, India.
             </p>
             <a
@@ -101,7 +100,7 @@ export default function Footer({ logoVariant }) {
 
         <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-mono text-xs leading-relaxed text-muted-foreground">
-            © 2026 Jago AI · Part of the Jago AI platform with{" "}
+            © 2026 Jago AI ·{" "}
             <a
               href="https://jshield.ai"
               target="_blank"
@@ -109,7 +108,8 @@ export default function Footer({ logoVariant }) {
               className="text-primary hover:underline underline-offset-4 transition-colors"
             >
               JShield
-            </a>
+            </a>{" "}
+            is part of Jago AI
           </p>
         </div>
       </div>
