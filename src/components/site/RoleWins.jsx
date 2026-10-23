@@ -22,9 +22,8 @@ export default function RoleWins() {
     <section id="solutions" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute -left-32 top-1/3 w-[30rem] h-[30rem] rounded-full bg-emerald/8 blur-[130px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="Built around your business" title="Real understanding. Decisive action.">
-          <strong className="copy-accent">One foundation, every department.</strong> The right person sees
-          the right finding in time and acts. <em className="copy-aside">Select a role.</em>
+        <SectionIntro eyebrow="Jago in your role" title="How teams use Jago">
+          <span className="text-sm">Examples of everyday use.</span>
         </SectionIntro>
 
         <div className="mt-8 flex flex-wrap gap-2">
@@ -86,6 +85,19 @@ export default function RoleWins() {
                 <span className="font-heading text-sm font-semibold text-emerald">{active.impact}</span>
               </div>
               <p className="mt-5 text-foreground/90 leading-relaxed"><em>{active.aha}</em></p>
+
+              {active.before && (
+                <div className="mt-6 grid sm:grid-cols-2 gap-3">
+                  <div className="rounded-xl border border-border bg-background/60 p-4">
+                    <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">Before</p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{active.before}</p>
+                  </div>
+                  <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
+                    <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-primary">With Jago</p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-foreground/90">{active.with}</p>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="rounded-3xl border border-border bg-card/40 backdrop-blur p-7 sm:p-9 flex flex-col">
@@ -101,7 +113,7 @@ export default function RoleWins() {
                 href="#contact"
                 className="site-cta-primary group mt-6 self-start gap-2 px-4 py-2.5 rounded-xl text-sm"
               >
-                Start Trial
+                Get your free 8-week plan
                 <ArrowRight className="w-4 h-4 text-primary-foreground group-hover:translate-x-0.5 transition-transform" />
               </a>
             </div>

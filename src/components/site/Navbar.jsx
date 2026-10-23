@@ -91,18 +91,30 @@ export default function Navbar({ logoVariant }) {
             </div>
           ))}
 
-          {NAV_LINKS.map((l) => (
-            <Link
-              key={l.label}
-              to={l.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {l.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((l) =>
+            l.external ? (
+              <a
+                key={l.label}
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {l.label}
+              </a>
+            ) : (
+              <Link
+                key={l.label}
+                to={l.href}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {l.label}
+              </Link>
+            )
+          )}
 
           <Link to="/#contact" className="site-cta-primary group gap-1.5 px-4 py-2 text-sm rounded-lg">
-            Start Trial
+            Get your free 8-week plan
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </div>
@@ -177,23 +189,36 @@ export default function Navbar({ logoVariant }) {
                 </div>
               ))}
 
-              {NAV_LINKS.map((l) => (
-                <Link
-                  key={l.label}
-                  to={l.href}
-                  onClick={() => setOpen(false)}
-                  className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-secondary"
-                >
-                  {l.label}
-                </Link>
-              ))}
+              {NAV_LINKS.map((l) =>
+                l.external ? (
+                  <a
+                    key={l.label}
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-secondary"
+                  >
+                    {l.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={l.label}
+                    to={l.href}
+                    onClick={() => setOpen(false)}
+                    className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-secondary"
+                  >
+                    {l.label}
+                  </Link>
+                )
+              )}
 
               <Link
                 to="/#contact"
                 onClick={() => setOpen(false)}
                 className="site-cta-primary mt-2 px-3 py-2.5 text-center text-sm rounded-lg"
               >
-                Start Trial
+                Get your free 8-week plan
               </Link>
             </div>
           </motion.div>

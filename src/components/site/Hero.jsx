@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Play, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import AskDemo from "@/components/site/AskDemo";
 import PillarCarousel from "@/components/site/PillarCarousel";
-import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 const PROMPTS = [
   "Finance: which invoices risk slipping past due?",
@@ -50,14 +49,23 @@ export default function Hero() {
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 w-full">
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary"
+        >
+          AI agents that understand your business and get work done
+        </motion.p>
+
         <motion.h1
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="font-heading text-[clamp(2rem,4.6vw,3.25rem)] font-semibold leading-[1.12] tracking-tight text-balance"
+          className="mt-3 font-heading text-[clamp(2rem,4.6vw,3.25rem)] font-semibold leading-[1.12] tracking-tight text-balance"
         >
-          <span className="block">AI agents that understand your business</span>
-          <span className="block text-primary text-glow">and get work done.</span>
+          <span className="block">Put AI to work across your company</span>
+          <span className="block text-primary text-glow">in 8 weeks.</span>
         </motion.h1>
 
         <div className="mt-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -69,12 +77,10 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.12 }}
               className="max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed text-pretty"
             >
-              <CopyEmphasis
-                text="JagoTech connects your business systems, understands your data and processes, and puts AI agents to work across everyday operations, with governance and control built in."
-                bold={["connects your business systems", "puts AI agents to work"]}
-                accent={["understands your data and processes"]}
-                italic={["with governance and control built in"]}
-              />
+              Ask questions in your own language. Let Jago{" "}
+              <strong className="copy-focus">update records</strong> and{" "}
+              <strong className="copy-accent">warn you about risks</strong>. Your customer data stays
+              safe under India's new data protection law.
             </motion.p>
 
             <motion.div
@@ -84,14 +90,23 @@ export default function Hero() {
               className="mt-8 flex flex-wrap items-center gap-3"
             >
               <a href="#contact" className="site-cta-primary group gap-2 px-5 py-3 rounded-xl">
-                Start Trial
+                Get your free 8-week plan
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </a>
-              <a href="#how" className="site-cta-secondary gap-2 px-5 py-3 rounded-xl backdrop-blur">
-                <Play className="w-4 h-4 text-primary" />
-                See how Jago works
+              <a href="#contact" className="site-cta-secondary px-5 py-3 rounded-xl backdrop-blur">
+                Try it free for a week
               </a>
             </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.24 }}
+              className="mt-5 font-mono text-xs leading-relaxed text-muted-foreground"
+            >
+              Live at a major lending NBFC (a non-bank lender) · Works on WhatsApp, Slack and Teams ·{" "}
+              <span className="text-primary">50+ languages</span>
+            </motion.p>
           </div>
 
           {/* Right: live demo */}

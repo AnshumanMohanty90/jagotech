@@ -4,42 +4,45 @@ import Logo from "@/components/site/Logo";
 
 const COLS = [
   {
-    title: "Products",
+    title: "Product",
     links: [
-      { label: "Marketplace", href: "/marketplace" },
-      { label: "Pricing", href: "/pricing" },
-    ],
-  },
-  {
-    title: "Platform",
-    links: [
-      { label: "Overview", href: "/platform#overview" },
-      { label: "AI Agents", href: "/platform#agents" },
-      { label: "Capabilities", href: "/platform#capabilities" },
-      { label: "Integrations", href: "/platform#integrations" },
-      { label: "Governance & Security", href: "/platform#security" },
+      { label: "Ask", href: "/platform#ask" },
+      { label: "Automate", href: "/platform#automate" },
+      { label: "Analyze", href: "/platform#analyze" },
+      { label: "Predict", href: "/platform#predict" },
+      { label: "JShield", href: "https://jshield.ai", external: true },
     ],
   },
   {
     title: "Solutions",
     links: [
-      { label: "By Industry", href: "/solutions#industries" },
-      { label: "By Use Case", href: "/solutions#use-cases" },
-      { label: "By User", href: "/solutions#by-user" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { label: "Blogs", href: "/resources#blogs" },
-      { label: "Guides", href: "/resources#guides" },
+      { label: "By industry", href: "/solutions#industries" },
+      { label: "By role", href: "/solutions#by-user" },
+      { label: "By use case", href: "/solutions#use-cases" },
     ],
   },
   {
     title: "Company",
     links: [
+      { label: "Customers", href: "/customers" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Security", href: "/platform#security" },
       { label: "About", href: "/#how" },
       { label: "Contact", href: "/#contact" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { label: "Blog", href: "/resources#blogs" },
+      { label: "Guides", href: "/resources#guides" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy policy", href: "/privacy" },
+      { label: "Terms", href: "/terms" },
     ],
   },
 ];
@@ -54,8 +57,10 @@ export default function Footer({ logoVariant }) {
               <Logo variant={logoVariant} className="h-9 w-auto" />
             </Link>
             <p className="mt-4 text-base text-muted-foreground max-w-sm leading-relaxed">
-              An <strong className="copy-focus">enterprise AI suite</strong> that asks, automates and analyzes across
-              your data, <em className="copy-aside">documents, audio and video.</em>
+              Jago AI helps Indian companies put AI to work safely:{" "}
+              <strong className="copy-focus">ask, automate, analyze and predict</strong> across data,
+              documents and voice, <em className="copy-aside">with data protection built in.</em>{" "}
+              Bengaluru, India.
             </p>
           </div>
 
@@ -66,9 +71,20 @@ export default function Footer({ logoVariant }) {
                 <ul className="mt-4 space-y-2.5">
                   {c.links.map((l) => (
                     <li key={l.label}>
-                      <Link to={l.href} className="text-sm text-foreground/80 hover:text-primary transition-colors">
-                        {l.label}
-                      </Link>
+                      {l.external ? (
+                        <a
+                          href={l.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-foreground/80 hover:text-primary transition-colors"
+                        >
+                          {l.label}
+                        </a>
+                      ) : (
+                        <Link to={l.href} className="text-sm text-foreground/80 hover:text-primary transition-colors">
+                          {l.label}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -79,7 +95,15 @@ export default function Footer({ logoVariant }) {
 
         <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-mono text-xs leading-relaxed text-muted-foreground">
-            © {new Date().getFullYear()} JagoTech. All rights reserved.
+            © 2026 Jago AI · Part of the Jago AI platform with{" "}
+            <a
+              href="https://jshield.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline underline-offset-4 transition-colors"
+            >
+              JShield
+            </a>
           </p>
         </div>
       </div>

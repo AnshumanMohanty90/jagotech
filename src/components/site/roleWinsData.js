@@ -12,8 +12,8 @@ export const ROLES = [
     category: "csuite",
     role: "CEO / COO",
     modules: "Ask · Predict · Analyze · Radar",
-    impact: "Protected 3 points of profit this year",
-    aha: "You saw margin quietly leaking in one division before it showed in the P&L, so you corrected pricing and cost early, and protected 3 points of profit this year.",
+    impact: "Caught a margin leak before it hit the P&L",
+    aha: "You saw margin quietly leaking in one division before it showed in the P&L, so you corrected pricing and cost early.",
     unlock: "A Radar alert flags the margin dip the week it starts, and you ask follow-up questions from WhatsApp between meetings.",
     channel: "WhatsApp Mobile + Radar",
     telemetry: {
@@ -32,6 +32,8 @@ export const ROLES = [
     aha: "You found the biggest delay was at the quote stage, so you added a coordinator to push quotes out faster, and revenue grew 15% this quarter.",
     unlock: "Statistics in Ask shows which deal factors really drive win rate, explained in plain language.",
     channel: "Zoho CRM Native + Ask",
+    before: "Waiting for analysts to pull regional numbers",
+    with: "Ask in plain words and get the chart in seconds",
     telemetry: {
       alert: "Jasper flags 3 deals with a high risk of slipping past month-end.",
       query: "Show the stage where these deals are losing the most time.",
@@ -97,6 +99,8 @@ export const ROLES = [
     aha: "You caught ₹40 lakhs of invoices about to slip past due, so you chased those first, and pulled the cash in 9 days sooner.",
     unlock: "A Radar alert warns you the day a large invoice crosses its due date, not at month-end.",
     channel: "Finance Console and Radar",
+    before: "Matching invoices by hand at month end",
+    with: "Jago flags only the mismatches for you to check",
     telemetry: {
       alert: "₹40 lakhs of invoices cross their due date within the next 9 days.",
       query: "List the invoices most at risk and the customers behind them.",
@@ -195,6 +199,8 @@ export const ROLES = [
     aha: "You found three contracts missing a required clause, so you fixed them before the audit, and cleared it with zero findings.",
     unlock: "Ask about audit evidence in plain language, with every answer traceable to its source document.",
     channel: "Compliance Radar and Scanner",
+    before: "Chasing teams for consent records before an audit",
+    with: "Every consent stored with proof, ready to export",
     telemetry: {
       alert: "3 contracts flagged without the updated DPDPA clause.",
       query: "Show the affected contracts with the missing clause highlighted.",
@@ -227,6 +233,8 @@ export const ROLES = [
     aha: "You saw the same safety risk recurring at one zone on the camera feed, so you fixed it, and drove incidents to zero for the quarter.",
     unlock: "Vision flags the risk on camera and a Radar alert reaches you on WhatsApp instantly.",
     channel: "CCTV Vision AI + WhatsApp",
+    before: "Finding a problem in next month's report",
+    with: "A WhatsApp alert when a number starts to slip",
     telemetry: {
       alert: "Vision AI flags repeated safety violations in loading zone B.",
       query: "Show the clips and the recurrence pattern for zone B.",

@@ -59,15 +59,13 @@ export default function CTA() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-primary">Awareness · Clarity · Right action</p>
-          <h2 className="mt-4 font-heading text-3xl sm:text-4xl font-semibold leading-tight tracking-tight text-balance">
-            Give your business an{" "}
-            <span className="whitespace-nowrap text-primary text-glow">AI workforce.</span>
+          <h2 className="font-heading text-3xl sm:text-4xl font-semibold leading-tight tracking-tight text-balance">
+            Bring one process. We will show you Jago running it{" "}
+            <span className="whitespace-nowrap text-primary text-glow">in 8 weeks.</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground max-w-3xl mx-auto text-balance">
-            Bring us <strong className="copy-focus">one process your team spends too much time managing</strong>.
-            We'll show you how Jago can <strong className="copy-accent">connect the systems</strong>,
-            understand the context, <em className="copy-aside">and move the work forward.</em>
+            Tell us the work that takes your team the most time. In one call, we map it and give you a{" "}
+            <strong className="copy-accent">free 8-week plan</strong>.
           </p>
 
           <form onSubmit={submit} className="mt-8 mx-auto max-w-xl">
@@ -85,7 +83,7 @@ export default function CTA() {
                 disabled={sending}
                 className="site-cta-primary group gap-2 px-5 py-3.5 rounded-xl text-sm disabled:opacity-60"
               >
-                Start Trial
+                Get your free 8-week plan
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
             </div>
@@ -128,18 +126,11 @@ export default function CTA() {
             ) : null}
           </div>
 
-          <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
-            Prefer a guided walkthrough first?{" "}
-            <a
-              href="https://www.jago-tech.ai/contact"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary font-semibold underline underline-offset-4 decoration-primary/40 hover:decoration-primary transition-colors"
-            >
-              Book a demo
+          <div className="mt-6">
+            <a href="https://www.jago-tech.ai/contact" className="site-cta-secondary px-5 py-3 rounded-xl">
+              Try it free for a week
             </a>
-            .
-          </p>
+          </div>
         </motion.div>
       </div>
     </section>
