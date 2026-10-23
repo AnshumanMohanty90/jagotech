@@ -91,7 +91,7 @@ export default function RoleWins() {
             <div className="rounded-3xl border border-border bg-card/40 backdrop-blur p-7 sm:p-9 flex flex-col">
               <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-primary">What Jago unlocks</p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                <CopyEmphasis text={active.unlock} bold={["Radar alert", "voice note", "ready-made Marketplace bot", "every channel and language", "source document", "50+ models"]} accent={["in your own language", "no vendor lock-in"]} />
+                <CopyEmphasis text={active.unlock} bold={["Radar alert", "voice note", "ready-made Marketplace agent", "every channel and language", "source document", "50+ models"]} accent={["in your own language", "no vendor lock-in"]} />
               </p>
               <div className="mt-6 inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-lg border border-border bg-background/60 font-mono text-xs leading-relaxed text-muted-foreground">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />

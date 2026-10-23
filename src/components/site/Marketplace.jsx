@@ -4,24 +4,24 @@ import { ArrowRight } from "lucide-react";
 import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
-const BOTS = [
+const AGENTS = [
   {
     kind: "API + Widget",
-    name: "Card Scanner BOT",
+    name: "Card Scanner Agent",
     desc: "Extract clean structured records from business cards and IDs straight into your CRM.",
     price: "₹2.00 / scan",
     cta: "Get key",
   },
   {
     kind: "API + Widget",
-    name: "Document Analysis BOT",
+    name: "Document Analysis Agent",
     desc: "Pull clauses, liabilities and terms out of legal contracts, with no manual page reviews.",
     price: "₹5.00 / page",
     cta: "Get key",
   },
   {
     kind: "API + Widget",
-    name: "Email Parser BOT",
+    name: "Email Parser Agent",
     desc: "Turn inbound customer inquiries and purchase orders into ERP and CRM entries.",
     price: "₹1.00 / email",
     cta: "Get key",
@@ -35,7 +35,7 @@ const BOTS = [
   },
   {
     kind: "API",
-    name: "Image Analysis BOT",
+    name: "Image Analysis Agent",
     desc: "Inspect store shelves, warehouse racks and field photos for quality compliance.",
     price: "₹3.00 / image",
     cta: "Get key",
@@ -54,14 +54,14 @@ export default function Marketplace() {
     <section id="marketplace" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute -right-32 top-20 w-[32rem] h-[32rem] rounded-full bg-violet/10 blur-[130px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="Marketplace" title="Pick a single BOT. Pay only as you use.">
+        <SectionIntro eyebrow="Marketplace" title="Pick a single agent. Pay only as you use.">
           Drop a capability in via API or widget, <strong className="copy-focus">prove the quick win</strong>,
           then scale — including{" "}
           <strong className="copy-accent">document, audio and video analysis add-ons</strong>.
         </SectionIntro>
 
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {BOTS.map((b, i) => (
+          {AGENTS.map((b, i) => (
             <motion.div
               key={b.name}
               initial={{ opacity: 0, y: 16 }}

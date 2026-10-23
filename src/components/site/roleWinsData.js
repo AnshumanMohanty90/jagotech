@@ -128,13 +128,13 @@ export const ROLES = [
     modules: "BPM · Automate · Marketplace",
     impact: "Halved end-to-end process turnaround time",
     aha: "You found approvals were stuck for 3 days on average, so you automated the sign-off step, and halved the end-to-end process time.",
-    unlock: "Start from a ready-made Marketplace bot instead of building the workflow from scratch.",
-    channel: "Marketplace Bot Workflow",
+    unlock: "Start from a ready-made Marketplace agent instead of building the workflow from scratch.",
+    channel: "Marketplace Agent Workflow",
     telemetry: {
       alert: "Approval step averaging 3 days across departmental workflows.",
       query: "Where do approvals wait the longest?",
       findings: "Single approver bottleneck on purchase requests above ₹1 lakh. Most of the queue time sits idle overnight.",
-      action: "Automate the sign-off step with a Marketplace approval bot.",
+      action: "Automate the sign-off step with a Marketplace approval agent.",
     },
   },
   {
@@ -145,7 +145,7 @@ export const ROLES = [
     impact: "Grew a top account 20% instead of losing it",
     aha: "You noticed your top client's usage dropping before renewal, so you stepped in early, and grew the account 20% instead of losing it.",
     unlock: "Account health on demand in Slack, by text or voice, before every client call.",
-    channel: "Slack Account Bot",
+    channel: "Slack Account Agent",
     telemetry: {
       alert: "Top client usage down 22% against their trailing 90-day average.",
       query: "Prepare an account health brief before my renewal call.",
