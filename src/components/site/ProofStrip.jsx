@@ -10,9 +10,9 @@ const STATS = [
 
 export default function ProofStrip() {
   return (
-    <section className="relative pt-2 sm:pt-4 pb-12 sm:pb-16">
+    <section className="relative site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10">
           {STATS.map((s, i) => (
             <motion.div
               key={s.l}
@@ -20,7 +20,7 @@ export default function ProofStrip() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.45, delay: i * 0.07 }}
-              className="rounded-2xl border border-border bg-card/40 p-6 text-center"
+              className="site-col"
             >
               <div className="font-heading text-2xl sm:text-3xl font-semibold text-primary">{s.v}</div>
               <div className="mt-2 text-sm leading-relaxed text-muted-foreground text-pretty">{s.l}</div>

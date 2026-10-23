@@ -45,52 +45,48 @@ const DEPARTMENTS = ["Customer Support", "Finance", "Operations", "HR", "IT", "M
 
 export default function Industries() {
   return (
-    <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+    <section className="relative site-section">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="min-w-0">
           <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">By industry</p>
-          <h3 className="mt-2 font-heading text-2xl sm:text-3xl font-semibold leading-snug tracking-tight">
+          <h3 className="mt-2 font-heading text-2xl sm:text-3xl font-semibold leading-tight tracking-tight text-balance">
             Made for your industry.
           </h3>
         </div>
-      </div>
 
-      <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {INDUSTRIES.map((it, i) => (
-          <motion.div
-            key={it.name}
-            id={it.slug}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.4, delay: (i % 3) * 0.06 }}
-            className={`group scroll-mt-24 rounded-2xl border p-5 transition-all ${
-              i === 0
-                ? "border-primary/40 bg-primary/5 hover:border-primary/60"
-                : "border-border bg-card/40 hover:border-primary/40 hover:bg-card/70"
-            }`}
-          >
-            <h4 className="min-w-0 font-heading text-lg font-semibold leading-snug">{it.name}</h4>
-            <p className="mt-3 text-base text-muted-foreground leading-relaxed">
-              <CopyEmphasis text={it.desc} bold={it.bold} />
-            </p>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* department marquee */}
-      <div className="mt-10 relative overflow-hidden mask-fade-edges py-2">
-        <div className="flex gap-3 w-max animate-marquee">
-          {[...DEPARTMENTS, ...DEPARTMENTS].map((d, i) => (
-            <span
-              key={i}
-              className="shrink-0 px-4 py-2 rounded-full border border-border bg-card/40 font-mono text-xs text-muted-foreground"
+        <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 sm:gap-10">
+          {INDUSTRIES.map((it, i) => (
+            <motion.div
+              key={it.name}
+              id={it.slug}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.4, delay: (i % 3) * 0.06 }}
+              className="site-col scroll-mt-24"
             >
-              {d}
-            </span>
+              <h4 className="font-heading text-xl font-semibold leading-snug text-balance">{it.name}</h4>
+              <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty">
+                <CopyEmphasis text={it.desc} bold={it.bold} />
+              </p>
+            </motion.div>
           ))}
         </div>
+
+        {/* department marquee */}
+        <div className="mt-12 relative overflow-hidden mask-fade-edges py-2">
+          <div className="flex gap-10 w-max animate-marquee">
+            {[...DEPARTMENTS, ...DEPARTMENTS].map((d, i) => (
+              <span
+                key={i}
+                className="shrink-0 font-mono text-xs uppercase tracking-wide text-muted-foreground"
+              >
+                {d}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

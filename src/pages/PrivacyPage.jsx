@@ -9,9 +9,9 @@ export default function PrivacyPage() {
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      <main>
+      <main className="pt-16">
         <PageHeader eyebrow="Legal" title="Privacy Policy" />
-        <section className="pt-4 pb-24">
+        <section className="site-section">
           <div className="mx-auto max-w-4xl px-5 sm:px-8">
             <p className="text-base leading-relaxed text-muted-foreground">This page is being updated.</p>
           </div>

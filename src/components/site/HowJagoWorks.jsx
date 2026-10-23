@@ -62,8 +62,7 @@ const COMPUTE_EXAMPLES = [
 
 export default function HowJagoWorks() {
   return (
-    <section id="how-jago-works" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
-      <div className="absolute -right-32 top-10 w-[32rem] h-[32rem] rounded-full bg-violet/10 blur-[130px]" />
+    <section id="how-jago-works" className="relative site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="How Jago Works" title="Ask, automate, analyze and predict.">
           The full detail behind the four modules,{" "}
@@ -71,7 +70,7 @@ export default function HowJagoWorks() {
           <em className="copy-aside">All of it sits behind one login.</em>
         </SectionIntro>
 
-        <div className="mt-8 sm:mt-10 grid md:grid-cols-2 gap-5">
+        <div className="mt-8 sm:mt-10 grid md:grid-cols-2 gap-8 lg:gap-10">
           {MODULES.map((m, i) => (
             <motion.div
               key={m.id}
@@ -79,13 +78,13 @@ export default function HowJagoWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.45, delay: (i % 2) * 0.08 }}
-              className="scroll-mt-24 rounded-3xl border border-border bg-card/40 p-7 hover:border-primary/40 transition-colors"
+              className="site-col scroll-mt-24"
             >
-              <h3 className="font-heading text-xl font-semibold uppercase tracking-wide">{m.title}</h3>
-              <p className="mt-4 text-base text-muted-foreground leading-relaxed">
+              <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{m.title}</h3>
+              <p className="mt-4 text-base text-muted-foreground leading-relaxed text-pretty">
                 <CopyEmphasis text={m.desc} bold={m.bold} accent={m.accent} />
               </p>
-              <div className="mt-5 rounded-2xl border border-border bg-background/60 p-4">
+              <div className="mt-5 border-t border-border pt-4">
                 <p className="text-sm leading-relaxed text-foreground/80">{m.example}</p>
                 <p className="mt-2 font-mono text-sm leading-relaxed text-primary">{m.result}</p>
               </div>
@@ -98,14 +97,14 @@ export default function HowJagoWorks() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.45 }}
-          className="mt-8 rounded-3xl border border-primary/30 bg-primary/5 p-7 sm:p-9"
+          className="mt-12 border-t border-border pt-6 min-w-0"
         >
-          <h3 className="font-heading text-xl font-semibold tracking-tight">Jago Compute</h3>
-          <p className="mt-3 max-w-3xl text-base text-muted-foreground leading-relaxed">
+          <h3 className="font-heading text-xl font-semibold leading-snug text-balance">Jago Compute</h3>
+          <p className="mt-3 max-w-3xl text-base text-muted-foreground leading-relaxed text-pretty">
             <strong className="copy-focus">Averages hide problems.</strong> Jago looks one level down, by
             region, product or team, and shows where a number really moved.
           </p>
-          <div className="mt-6 grid md:grid-cols-3 gap-4">
+          <div className="mt-6 grid gap-6 md:grid-cols-3">
             {COMPUTE_EXAMPLES.map((c, i) => (
               <motion.div
                 key={c.label}
@@ -113,16 +112,16 @@ export default function HowJagoWorks() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.4, delay: i * 0.07 }}
-                className="rounded-2xl border border-border bg-background/60 p-5"
+                className="min-w-0"
               >
                 <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">{c.label}</p>
-                <p className="mt-2 text-sm leading-relaxed text-foreground/90">
+                <p className="mt-2 text-sm sm:text-base leading-relaxed text-foreground/90 text-pretty">
                   <CopyEmphasis text={c.text} bold={c.bold} />
                 </p>
               </motion.div>
             ))}
           </div>
-          <p className="mt-6 max-w-3xl text-base text-muted-foreground leading-relaxed">
+          <p className="mt-6 max-w-3xl text-base text-muted-foreground leading-relaxed text-pretty">
             Jago also <strong className="copy-accent">picks the right AI for each task from more than 100 AI
             models</strong>, <strong className="copy-focus">so you pay less.</strong>
           </p>
@@ -133,10 +132,10 @@ export default function HowJagoWorks() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.45 }}
-          className="mt-8 rounded-3xl border border-border bg-card/40 p-7 sm:p-9"
+          className="mt-12 border-t border-border pt-6 min-w-0"
         >
-          <h3 className="font-heading text-xl font-semibold tracking-tight">Ease of Use</h3>
-          <p className="mt-3 max-w-3xl text-base text-muted-foreground leading-relaxed">
+          <h3 className="font-heading text-xl font-semibold leading-snug text-balance">Ease of Use</h3>
+          <p className="mt-3 max-w-3xl text-base text-muted-foreground leading-relaxed text-pretty">
             Your team works in <strong className="copy-focus">WhatsApp, Slack and Teams</strong>, typed or
             spoken, in <strong className="copy-accent">50+ languages.</strong> There is no new screen to
             learn and no coding to write. <em className="copy-aside">A person approves the key steps.</em>

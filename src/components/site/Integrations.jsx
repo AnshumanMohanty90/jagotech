@@ -31,8 +31,7 @@ const INTEGRATIONS = [
 
 export default function Integrations() {
   return (
-    <section id="integrations" className="relative scroll-mt-24 pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
-      <div className="absolute -left-32 top-1/3 w-[30rem] h-[30rem] rounded-full bg-emerald/8 blur-[130px]" />
+    <section id="integrations" className="relative scroll-mt-24 site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Integrations" title="Connected to the systems you already run.">
           Nothing gets replaced. Jago reads and writes in the systems you already have, and{" "}
@@ -40,7 +39,7 @@ export default function Integrations() {
           <strong className="copy-accent">under your control.</strong>
         </SectionIntro>
 
-        <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {INTEGRATIONS.map((it, i) => (
             <motion.div
               key={it.title}
@@ -48,10 +47,10 @@ export default function Integrations() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.4, delay: (i % 3) * 0.06 }}
-              className="group rounded-2xl border border-border bg-card/40 p-5 hover:border-primary/40 hover:bg-card/70 transition-all"
+              className="site-col"
             >
-              <h4 className="font-heading text-base font-semibold leading-snug">{it.title}</h4>
-              <p className="mt-3 text-base text-muted-foreground leading-relaxed">{it.desc}</p>
+              <h4 className="font-heading text-xl font-semibold leading-snug text-balance">{it.title}</h4>
+              <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty">{it.desc}</p>
             </motion.div>
           ))}
         </div>

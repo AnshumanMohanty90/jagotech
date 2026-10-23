@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 
 import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
@@ -53,14 +52,14 @@ export default function ResourceLibrary() {
 
   return (
     <>
-      <section id="blogs" className="relative scroll-mt-24 pt-4 sm:pt-6 pb-12 sm:pb-16">
+      <section id="blogs" className="relative scroll-mt-24 site-section">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <SectionIntro eyebrow="Blogs" title="Notes from teams doing it.">
             Short pieces on putting AI agents to work,{" "}
             <em className="copy-aside">not speculation about the future.</em>
           </SectionIntro>
 
-          <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-5">
+          <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-8 sm:gap-10">
             {BLOGS.map((b, i) => (
               <motion.article
                 key={b.title}
@@ -68,9 +67,9 @@ export default function ResourceLibrary() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
-                className="group rounded-3xl border border-border bg-card/40 p-7 hover:border-primary/40 transition-colors"
+                className="site-col"
               >
-                <div className="flex items-center justify-between">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                   <span className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">
                     {b.tag}
                   </span>
@@ -79,7 +78,7 @@ export default function ResourceLibrary() {
                 <h3 className="mt-4 font-heading text-xl font-semibold leading-snug text-balance">
                   {b.title}
                 </h3>
-                <p className="mt-3 text-base text-muted-foreground leading-relaxed">
+                <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty">
                   <CopyEmphasis text={b.excerpt} />
                 </p>
                 <p className="mt-5 text-sm text-muted-foreground">Coming soon</p>
@@ -89,7 +88,7 @@ export default function ResourceLibrary() {
         </div>
       </section>
 
-      <section id="guides" className="relative scroll-mt-24 pt-4 sm:pt-6 pb-12 sm:pb-16">
+      <section id="guides" className="relative scroll-mt-24 site-section">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <SectionIntro eyebrow="Guides" title="Working guides, ready when you are.">
@@ -97,7 +96,7 @@ export default function ResourceLibrary() {
             <em className="copy-aside">written for managers in plain words.</em>
           </SectionIntro>
 
-          <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-5">
+          <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-8 sm:gap-10">
             {GUIDES.map((g, i) => (
               <motion.div
                 key={g.title}
@@ -105,7 +104,7 @@ export default function ResourceLibrary() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
-                className="group rounded-3xl border border-border bg-card/40 p-7 hover:border-primary/40 transition-colors"
+                className="site-col"
               >
                 <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
                   {g.meta}
@@ -113,18 +112,17 @@ export default function ResourceLibrary() {
                 <h3 className="mt-4 font-heading text-xl font-semibold leading-snug text-balance">
                   {g.title}
                 </h3>
-                <p className="mt-3 text-base text-muted-foreground leading-relaxed">{g.desc}</p>
+                <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty">{g.desc}</p>
                 {openGuide === g.title ? (
-                  <div className="mt-5 rounded-2xl border border-border bg-background/60 p-5 text-left">
+                  <div className="mt-5 border-t border-border pt-5">
                     <LeadForm mini intent="guide" sourcePage="/resources" defaultTask={g.title} />
                   </div>
                 ) : (
                   <button
                     onClick={() => setOpenGuide(g.title)}
-                    className="site-cta-secondary group mt-5 gap-2 px-4 py-2.5 rounded-xl text-sm"
+                    className="site-cta-secondary mt-5 px-4 py-2.5 rounded-xl text-sm"
                   >
                     Tell me when it is ready
-                    <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-0.5 transition-transform" />
                   </button>
                 )}
               </motion.div>

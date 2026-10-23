@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 import SectionIntro from "@/components/site/SectionIntro";
 
 const LIFECYCLE = [
@@ -27,15 +26,14 @@ const DEPARTMENTS = ["Sales", "Customer Experience", "Operations", "Finance", "H
 
 export default function AgentsOverview() {
   return (
-    <section id="agents" className="relative scroll-mt-24 pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
-      <div className="absolute -right-32 top-10 w-[32rem] h-[32rem] rounded-full bg-violet/10 blur-[130px]" />
+    <section id="agents" className="relative scroll-mt-24 site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="AI agents" title="Agents that watch, check and do the work.">
           An agent is <strong className="copy-focus">software that carries a job from question to finished
           work</strong>, <em className="copy-aside">inside your systems, under your rules.</em>
         </SectionIntro>
 
-        <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           {LIFECYCLE.map((s, i) => (
             <motion.div
               key={s.title}
@@ -43,31 +41,27 @@ export default function AgentsOverview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.45, delay: i * 0.08 }}
-              className="rounded-3xl border border-border bg-card/40 p-6 hover:border-primary/40 transition-colors"
+              className="site-col"
             >
-              <h3 className="font-heading text-lg font-semibold uppercase tracking-wide">{s.title}</h3>
-              <p className="mt-2 text-base text-muted-foreground leading-relaxed">{s.desc}</p>
+              <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{s.title}</h3>
+              <p className="mt-2 text-base text-muted-foreground leading-relaxed text-pretty">{s.desc}</p>
             </motion.div>
           ))}
         </div>
 
-        <div className="mt-8 rounded-2xl border border-border bg-card/30 p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+        <div className="mt-12 border-t border-border pt-6 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
           <p className="text-base leading-relaxed text-muted-foreground">
             <strong className="copy-focus">Every department has its own agent.</strong>{" "}
             <em className="copy-aside">See what yours does.</em>
           </p>
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {DEPARTMENTS.map((d) => (
-              <span
-                key={d}
-                className="px-3.5 py-1.5 rounded-full border border-border bg-background/60 text-sm text-foreground/80"
-              >
+              <span key={d} className="font-mono text-xs uppercase tracking-wide text-foreground/80">
                 {d}
               </span>
             ))}
-            <Link to="/role-wins" className="site-cta-secondary group gap-1.5 px-4 py-2 rounded-lg text-sm">
+            <Link to="/role-wins" className="site-cta-secondary px-4 py-2.5 rounded-xl text-sm">
               See the role examples
-              <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>
         </div>

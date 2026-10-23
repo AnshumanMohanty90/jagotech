@@ -10,7 +10,7 @@ export default function CustomersPage() {
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      <main>
+      <main className="pt-16">
         <PageHeader eyebrow="Customers" title="How a major lending NBFC decides which branches to audit first">
           A non-bank lender (NBFC) with about Rs 11,000 crore of loans to small borrowers across 22 states,
           mostly rural and semi-urban.

@@ -27,12 +27,11 @@ const STOPPERS = [
 
 export default function Challenge() {
   return (
-    <section id="problem" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
-      <div className="absolute -left-32 top-1/3 w-[30rem] h-[30rem] rounded-full bg-violet/8 blur-[130px]" />
+    <section id="problem" className="relative site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="The problem" title="Your teams want to use AI. Three things stop them." />
 
-        <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-5">
+        <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-8 sm:gap-10">
           {STOPPERS.map((s, i) => (
             <motion.div
               key={s.t}
@@ -40,9 +39,9 @@ export default function Challenge() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.45, delay: i * 0.08 }}
-              className="group rounded-3xl border border-border bg-card/40 p-7 hover:border-primary/40 transition-colors"
+              className="site-col"
             >
-              <h3 className="font-heading text-xl font-semibold tracking-tight">{s.t}</h3>
+              <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{s.t}</h3>
               <p className="mt-3 text-base text-muted-foreground leading-relaxed">
                 <CopyEmphasis text={s.d} bold={s.bold} accent={s.accent} italic={s.italic} />
               </p>

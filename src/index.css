@@ -70,6 +70,14 @@
 }
 
 @layer components {
+  .site-section {
+    @apply pt-12 pb-12 sm:pt-20 sm:pb-20;
+  }
+
+  .site-col {
+    @apply border-t border-border pt-6 min-w-0;
+  }
+
   .site-typography :where(p, li) {
     text-wrap: pretty;
   }

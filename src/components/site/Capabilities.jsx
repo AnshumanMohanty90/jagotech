@@ -28,18 +28,18 @@ const CAPS = [
 
 export default function Capabilities() {
   return (
-    <section id="capabilities" className="relative scroll-mt-24 pt-4 sm:pt-6 pb-12 sm:pb-16">
+    <section id="capabilities" className="relative scroll-mt-24 site-section">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="The four modules" title="Four modules, one login.">
           Each one works on your data, under your rules.{" "}
-          <Link to="/how-jago-works" className="text-primary font-semibold underline underline-offset-4 decoration-primary/30 hover:decoration-primary whitespace-nowrap">
+          <Link to="/how-jago-works" className="text-primary font-semibold underline underline-offset-4 decoration-primary/30 hover:decoration-primary">
             See How Jago Works
           </Link>{" "}
           for the full detail.
         </SectionIntro>
 
-        <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           {CAPS.map((c, i) => (
             <motion.div
               key={c.id}
@@ -48,10 +48,10 @@ export default function Capabilities() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.4, delay: (i % 4) * 0.06 }}
-              className="scroll-mt-24 rounded-2xl border border-border bg-card/40 p-6 hover:border-primary/40 hover:bg-card/70 transition-all"
+              className="site-col scroll-mt-24"
             >
-              <h3 className="font-heading text-lg font-semibold uppercase tracking-wide">{c.title}</h3>
-              <p className="mt-3 text-base text-muted-foreground leading-relaxed">{c.desc}</p>
+              <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{c.title}</h3>
+              <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty">{c.desc}</p>
             </motion.div>
           ))}
         </div>

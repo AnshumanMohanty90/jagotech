@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
@@ -37,7 +36,7 @@ const FRAMEWORKS = [
 
 export default function Compliance() {
   return (
-    <section id="compliance" className="relative pb-12 sm:pb-16">
+    <section id="compliance" className="relative site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         {/* JShield spotlight */}
         <motion.div
@@ -45,52 +44,43 @@ export default function Compliance() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5 }}
-          className="relative overflow-hidden rounded-3xl border border-primary/25 bg-card/40 backdrop-blur p-7 sm:p-10 glow-cyan"
+          className="min-w-0"
         >
-          <div className="absolute -top-24 right-0 w-[28rem] h-[28rem] rounded-full bg-primary/10 blur-[110px] animate-pulse-glow" />
-          <div className="relative">
-            <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">
-              Companion product
-            </p>
-            <div className="mt-3 flex flex-wrap items-baseline gap-x-3">
-              <h2 className="font-heading text-3xl sm:text-4xl font-semibold leading-tight tracking-tight">
-                JShield
-              </h2>
-            </div>
-            <p className="mt-4 max-w-[70ch] text-base sm:text-lg leading-relaxed text-muted-foreground text-balance">
-              <CopyEmphasis
-                text="JShield is our companion product for India's data protection law. It tracks consent, breaches and the duties that start on 13 May 2027, alongside your Jago agents."
-                bold={["companion product for India's data protection law"]}
-                accent={["consent, breaches"]}
-                italic={["alongside your Jago agents"]}
-              />
-            </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-3">
-              {JSHIELD_POINTS.map((point) => (
-                <li
-                  key={point}
-                  className="rounded-2xl border border-border bg-background/60 px-5 py-4 text-sm leading-relaxed text-foreground/90"
-                >
-                  {point}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-7 flex flex-wrap items-center gap-3">
-              <a
-                href="https://jshield.ai/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="site-cta-primary group gap-2 px-5 py-3 rounded-xl"
-              >
-                Explore JShield
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
-            </div>
+          <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">
+            Companion product
+          </p>
+          <h2 className="mt-3 font-heading text-3xl sm:text-4xl font-semibold leading-tight tracking-tight text-balance">
+            JShield
+          </h2>
+          <p className="mt-3 max-w-[75ch] text-base sm:text-lg leading-relaxed text-muted-foreground text-pretty">
+            <CopyEmphasis
+              text="JShield is our companion product for India's data protection law. It tracks consent, breaches and the duties that start on 13 May 2027, alongside your Jago agents."
+              bold={["companion product for India's data protection law"]}
+              accent={["consent, breaches"]}
+              italic={["alongside your Jago agents"]}
+            />
+          </p>
+          <ul className="mt-6 grid gap-4 sm:grid-cols-3 sm:gap-6">
+            {JSHIELD_POINTS.map((point) => (
+              <li key={point} className="min-w-0 text-sm sm:text-base leading-relaxed text-foreground/90">
+                {point}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-7 flex flex-wrap items-center gap-3">
+            <a
+              href="https://jshield.ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="site-cta-primary px-5 py-3 rounded-xl"
+            >
+              Explore JShield
+            </a>
           </div>
         </motion.div>
 
         {/* DPDP duties and SOC 2 */}
-        <div className="mt-14 sm:mt-16">
+        <div className="mt-12 sm:mt-20">
           <SectionIntro eyebrow="Compliance" title="What the law asks of you.">
             <CopyEmphasis
               text="India's data protection law, the DPDP Act, applies to every company that holds personal data. The main duties start on 13 May 2027, and fines can reach Rs 250 crore."
@@ -100,7 +90,7 @@ export default function Compliance() {
             />
           </SectionIntro>
 
-          <div className="mt-8 grid lg:grid-cols-2 gap-5">
+          <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:gap-10">
             {FRAMEWORKS.map((f, i) => (
               <motion.div
                 key={f.tag}
@@ -108,7 +98,7 @@ export default function Compliance() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="rounded-2xl border border-border bg-card/40 p-6 sm:p-7 hover:border-primary/30 transition-colors"
+                className="site-col"
               >
                 <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">
                   {f.tag}
@@ -125,7 +115,7 @@ export default function Compliance() {
                 </p>
                 <ul className="mt-5 space-y-2.5">
                   {f.points.map((point) => (
-                    <li key={point} className="text-sm leading-relaxed text-foreground/90 border-l border-primary/40 pl-4">
+                    <li key={point} className="text-sm sm:text-base leading-relaxed text-foreground/90">
                       {point}
                     </li>
                   ))}
@@ -139,7 +129,7 @@ export default function Compliance() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.4 }}
-            className="mt-8 max-w-[70ch] text-sm leading-relaxed text-muted-foreground"
+            className="mt-8 max-w-[75ch] text-sm sm:text-base leading-relaxed text-muted-foreground"
           >
             <CopyEmphasis
               text="A person approves the key steps before anything changes, and every action is on record, ready for an audit."

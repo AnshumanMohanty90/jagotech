@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Check } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { base44 } from "@/api/base44Client";
 
@@ -107,12 +106,9 @@ export default function LeadForm({
   if (sent && intent === "plan") {
     return (
       <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-5">
-        <div className="flex items-start gap-3">
-          <Check className="mt-1 h-5 w-5 shrink-0 text-emerald" />
-          <p className="text-base leading-relaxed text-foreground/90">
-            Thank you. Your download has started.
-          </p>
-        </div>
+        <p className="text-base leading-relaxed text-foreground/90">
+          Thank you. Your download has started.
+        </p>
         <div className="flex flex-wrap items-center gap-3">
           <a href={PLAN_PDF_URL} download="jago-8-week-plan.pdf" className="site-cta-secondary px-5 py-3 rounded-xl">
             Download again
@@ -127,11 +123,8 @@ export default function LeadForm({
 
   if (sent) {
     return (
-      <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="flex items-start gap-3">
-        <Check className="mt-1 h-5 w-5 shrink-0 text-emerald" />
-        <p className="text-base leading-relaxed text-foreground/90">
-          {thankYou || INTENT_TEXT[intent].thanks}
-        </p>
+      <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-base leading-relaxed text-foreground/90">
+        {thankYou || INTENT_TEXT[intent].thanks}
       </motion.div>
     );
   }
@@ -193,10 +186,9 @@ export default function LeadForm({
         <button
           type="submit"
           disabled={sending}
-          className="site-cta-primary group gap-2 px-5 py-3.5 rounded-xl text-sm disabled:opacity-60"
+          className="site-cta-primary px-5 py-3.5 rounded-xl text-sm disabled:opacity-60"
         >
           {buttonLabel || INTENT_TEXT[intent].button}
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
         </button>
         <p className="text-sm leading-relaxed text-muted-foreground">{note}</p>
       </div>

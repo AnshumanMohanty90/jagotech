@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 
 const DOES = [
   "Ranks every branch by risk, using live data",
@@ -12,10 +11,9 @@ const DOES = [
 
 export default function CustomersStory() {
   return (
-    <section className="relative pt-4 pb-16 overflow-hidden">
-      <div className="absolute -left-32 top-1/3 w-[30rem] h-[30rem] rounded-full bg-primary/8 blur-[130px]" />
+    <section className="relative site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <div>
+        <div className="min-w-0">
           <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">The problem</p>
           <p className="mt-3 max-w-3xl text-base sm:text-lg leading-relaxed text-foreground/90 text-pretty">
             Audits kept slipping. Risk reports used old data, and no tool showed which branches were likely
@@ -23,9 +21,9 @@ export default function CustomersStory() {
           </p>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-12 min-w-0">
           <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">What Jago does</p>
-          <div className="mt-4 grid sm:grid-cols-2 gap-4">
+          <div className="mt-5 grid gap-6 sm:grid-cols-2 sm:gap-8">
             {DOES.map((d, i) => (
               <motion.div
                 key={d}
@@ -33,7 +31,7 @@ export default function CustomersStory() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.4, delay: i * 0.07 }}
-                className="rounded-2xl border border-border bg-card/40 p-5"
+                className="site-col"
               >
                 <p className="text-base leading-relaxed text-foreground/90">{d}</p>
               </motion.div>
@@ -41,13 +39,13 @@ export default function CustomersStory() {
           </div>
         </div>
 
-        <div className="mt-10 grid md:grid-cols-2 gap-5">
+        <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-10">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.4 }}
-            className="rounded-2xl border border-border bg-card/40 p-6"
+            className="site-col"
           >
             <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">The scale</p>
             <p className="mt-3 font-heading text-lg sm:text-xl font-semibold leading-snug">
@@ -59,7 +57,7 @@ export default function CustomersStory() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.4, delay: 0.08 }}
-            className="rounded-2xl border border-primary/30 bg-primary/5 p-6"
+            className="site-col"
           >
             <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">The cost</p>
             <p className="mt-3 text-base leading-relaxed text-foreground/90 text-pretty">
@@ -70,7 +68,7 @@ export default function CustomersStory() {
           </motion.div>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-12 min-w-0">
           <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">What comes next</p>
           <p className="mt-3 max-w-3xl text-base sm:text-lg leading-relaxed text-foreground/90 text-pretty">
             Staff will ask questions in local languages, customers will give consent on WhatsApp, and Jago
@@ -78,9 +76,8 @@ export default function CustomersStory() {
           </p>
         </div>
 
-        <Link to="/contact?intent=trial" className="site-cta-primary group mt-10 gap-2 px-5 py-3 rounded-xl">
+        <Link to="/contact?intent=trial" className="site-cta-primary mt-12 px-5 py-3 rounded-xl">
           Try it free for a week
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
         </Link>
       </div>
     </section>

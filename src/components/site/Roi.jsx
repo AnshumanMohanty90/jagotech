@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 import SectionIntro from "@/components/site/SectionIntro";
 
 const USD_TO_INR = 83;
@@ -23,8 +22,7 @@ export default function Roi() {
   const netRoi = ((vendorSavings + routingSavings) / platformLicense).toFixed(1);
 
   return (
-    <section id="roi" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
-      <div className="absolute inset-0 grid-bg-fine opacity-15 mask-fade-edges" />
+    <section id="roi" className="relative site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Your estimated savings" title="See what you could save.">
           Enter your team size and current AI spend. We estimate what you save by replacing{" "}
@@ -32,13 +30,13 @@ export default function Roi() {
           <strong className="copy-accent">one platform.</strong>
         </SectionIntro>
 
-        <div className="mt-8 grid lg:grid-cols-2 gap-6">
+        <div className="mt-8 sm:mt-10 grid lg:grid-cols-2 gap-8 lg:gap-12">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.45 }}
-            className="rounded-3xl border border-border bg-card/50 backdrop-blur p-7 sm:p-9 space-y-8"
+            className="site-col"
           >
             {[
               { label: "People in your company", value: emp, set: setEmp, min: 100, max: 10000, step: 100, display: emp.toLocaleString("en-US") + " employees" },
@@ -48,7 +46,7 @@ export default function Roi() {
               <div key={s.label}>
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="text-base font-medium leading-relaxed">{s.label}</span>
-                  <span className="font-mono text-sm leading-relaxed text-primary whitespace-nowrap">{s.display}</span>
+                  <span className="font-mono text-sm leading-relaxed text-primary">{s.display}</span>
                 </div>
                 <input
                   type="range"
@@ -62,7 +60,7 @@ export default function Roi() {
                 />
               </div>
             ))}
-            <p className="text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
               <em>Estimate only. Based on the numbers you enter. We confirm the real figure in your 8-week plan.</em>
             </p>
           </motion.div>
@@ -72,7 +70,7 @@ export default function Roi() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.45, delay: 0.08 }}
-            className="rounded-3xl border border-primary/40 bg-card/60 backdrop-blur p-7 sm:p-9 glow-cyan flex flex-col"
+            className="site-col flex flex-col"
           >
             <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-primary">Estimated annual savings</p>
             <div className="mt-6 space-y-5">
@@ -93,10 +91,9 @@ export default function Roi() {
             </div>
             <Link
               to="/contact?intent=plan"
-              className="site-cta-primary group mt-8 gap-2 px-5 py-3 rounded-xl"
+              className="site-cta-primary mt-8 self-start px-5 py-3 rounded-xl"
             >
               Download the 8-week plan
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </motion.div>
         </div>

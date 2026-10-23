@@ -30,11 +30,11 @@ export default function ContactPage() {
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      <main>
+      <main className="pt-16">
         <PageHeader eyebrow="Contact" title={content.headline}>
           {content.sub}
         </PageHeader>
-        <section className="pt-2 pb-16 overflow-hidden">
+        <section className="relative site-section">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <div className="rounded-3xl border border-primary/40 bg-card/50 backdrop-blur p-7 sm:p-9 glow-cyan">
               <LeadForm

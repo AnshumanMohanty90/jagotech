@@ -26,12 +26,12 @@ const PHASES = [
 
 export default function HowItWorks() {
   return (
-    <section id="how" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
+    <section id="how" className="relative site-section">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="How it works" title="Live in 8 weeks." />
 
-        <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-5">
+        <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-8 sm:gap-10">
           {PHASES.map((p, i) => (
             <motion.div
               key={p.title}
@@ -39,9 +39,9 @@ export default function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.45, delay: i * 0.08 }}
-              className="group rounded-3xl border border-border bg-card/40 p-7 hover:border-primary/40 transition-colors"
+              className="site-col"
             >
-              <h3 className="font-heading text-lg font-semibold tracking-tight">{p.title}</h3>
+              <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{p.title}</h3>
               <p className="mt-3 text-base text-muted-foreground leading-relaxed">
                 <CopyEmphasis text={p.desc} bold={p.bold} accent={p.accent} italic={p.italic} />
               </p>

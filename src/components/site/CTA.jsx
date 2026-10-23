@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 
 export default function CTA() {
   return (
-    <section id="contact" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
+    <section id="contact" className="relative site-section overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-30 mask-fade-edges" />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[44rem] h-[44rem] rounded-full bg-primary/15 blur-[140px] animate-pulse-glow" />
 
       <div className="relative mx-auto max-w-4xl px-5 sm:px-8 text-center">
         <motion.div
@@ -18,7 +17,7 @@ export default function CTA() {
           <h2 className="font-heading text-3xl sm:text-4xl font-semibold leading-tight tracking-tight text-balance">
             Try Jago free for a week.
           </h2>
-          <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground max-w-3xl mx-auto text-balance">
+          <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground max-w-3xl mx-auto text-pretty">
             Activate a trial workspace and see what Jago does on sample data. Want the roll-out plan
             first? <strong className="copy-accent">Download the 8-week plan.</strong>
           </p>

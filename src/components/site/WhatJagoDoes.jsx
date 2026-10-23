@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
@@ -41,12 +40,11 @@ const MODULES = [
 
 export default function WhatJagoDoes() {
   return (
-    <section id="modules" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
-      <div className="absolute -right-32 top-10 w-[32rem] h-[32rem] rounded-full bg-violet/10 blur-[130px]" />
+    <section id="modules" className="relative site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="What Jago does" title="Four AI modules with one login, under your rules." />
 
-        <div className="mt-8 sm:mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="mt-8 sm:mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {MODULES.map((m, i) => (
             <motion.div
               key={m.title}
@@ -54,9 +52,9 @@ export default function WhatJagoDoes() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.45, delay: i * 0.07 }}
-              className="group rounded-3xl border border-border bg-card/40 p-7 hover:border-primary/40 transition-colors flex flex-col"
+              className="site-col flex flex-col"
             >
-              <h3 className="font-heading text-xl font-semibold uppercase tracking-wide">{m.title}</h3>
+              <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{m.title}</h3>
               <p className="mt-3 text-base text-muted-foreground leading-relaxed">
                 <CopyEmphasis text={m.desc} bold={m.bold} accent={m.accent} />
               </p>
@@ -65,10 +63,9 @@ export default function WhatJagoDoes() {
                   href={m.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="site-cta-secondary group/link mt-5 self-start gap-1.5 px-4 py-2 rounded-lg text-sm"
+                  className="site-cta-secondary mt-5 self-start px-4 py-2.5 rounded-xl text-sm"
                 >
                   {m.linkLabel}
-                  <ArrowRight className="w-4 h-4 text-primary group-hover/link:translate-x-0.5 transition-transform" />
                 </a>
               )}
             </motion.div>

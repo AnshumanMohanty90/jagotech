@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
@@ -52,8 +51,7 @@ const AGENTS = [
 
 export default function Marketplace() {
   return (
-    <section id="marketplace" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
-      <div className="absolute -right-32 top-20 w-[32rem] h-[32rem] rounded-full bg-violet/10 blur-[130px]" />
+    <section id="marketplace" className="relative site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Marketplace" title="Pick a single agent. Pay only as you use.">
           Add one agent to your website or system, <strong className="copy-focus">pay per use</strong>, and
@@ -61,7 +59,7 @@ export default function Marketplace() {
           <strong className="copy-accent">Agents cover documents, audio and images.</strong>
         </SectionIntro>
 
-        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {AGENTS.map((b, i) => (
             <motion.div
               key={b.name}
@@ -69,21 +67,20 @@ export default function Marketplace() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.4, delay: (i % 3) * 0.07 }}
-              className="flex flex-col rounded-2xl border border-border bg-card/40 p-6 hover:border-primary/30 transition-colors"
+              className="site-col flex flex-col"
             >
               <span className="font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">{b.kind}</span>
-              <h3 className="mt-4 font-heading text-lg font-semibold leading-snug">{b.name}</h3>
-              <p className="mt-3 text-base text-muted-foreground leading-relaxed flex-1">
+              <h3 className="mt-3 font-heading text-xl font-semibold leading-snug text-balance">{b.name}</h3>
+              <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty flex-1">
                 <CopyEmphasis text={b.desc} bold={["structured records", "clauses, liabilities and terms", "ERP and CRM entries", "structured summaries and action triggers", "quality compliance", "forecasts close rates"]} italic={["with no manual page reviews"]} />
               </p>
-              <div className="mt-5 pt-4 border-t border-border flex flex-wrap items-center justify-between gap-3">
+              <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
                 <span className="font-heading text-lg font-semibold">{b.price}</span>
                 <Link
                   to={`/contact?intent=trial&task=${encodeURIComponent(b.name)}`}
-                  className="site-cta-secondary group gap-1.5 px-3 py-1.5 rounded-lg text-sm"
+                  className="site-cta-secondary px-4 py-2.5 rounded-xl text-sm"
                 >
                   {b.cta}
-                  <ArrowRight className="w-3.5 h-3.5 text-primary group-hover:translate-x-0.5 transition-transform" />
                 </Link>
               </div>
             </motion.div>

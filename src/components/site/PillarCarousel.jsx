@@ -44,17 +44,17 @@ export default function PillarCarousel() {
     <div
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      className="rounded-2xl bg-card/30 backdrop-blur p-4 sm:p-5"
+      className="border-t border-border pt-5 min-w-0"
     >
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
         {PILLARS.map((pl, i) => (
           <button
             key={pl.id}
             onClick={() => setActive(i)}
-            className={`site-choice flex-1 px-3 py-2 rounded-xl font-heading text-sm font-semibold transition-colors ${
+            className={`site-choice pb-1 font-heading text-sm font-semibold border-b-2 transition-colors ${
               i === active
-                ? "bg-primary/10 text-primary"
-                : "text-muted-foreground hover:text-foreground"
+                ? "text-primary border-primary"
+                : "text-muted-foreground hover:text-foreground border-transparent"
             }`}
           >
             {pl.label}
@@ -62,7 +62,7 @@ export default function PillarCarousel() {
         ))}
       </div>
 
-      <div className="mt-4 min-h-[9.5rem]">
+      <div className="mt-4 min-h-[9rem]">
         <AnimatePresence mode="wait">
           <motion.div
             key={p.id}
@@ -72,24 +72,11 @@ export default function PillarCarousel() {
             transition={{ duration: 0.3 }}
           >
             <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">{p.tag}</p>
-            <h3 className="mt-1.5 font-heading text-lg font-semibold leading-snug">{p.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-foreground/80">"{p.prompt}"</p>
+            <h3 className="mt-1.5 font-heading text-lg font-semibold leading-snug text-balance">{p.title}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-foreground/80">{p.prompt}</p>
             <p className="mt-1.5 font-mono text-sm leading-relaxed text-primary">{p.output}</p>
           </motion.div>
         </AnimatePresence>
-      </div>
-
-      <div className="mt-3 flex items-center gap-1.5">
-        {PILLARS.map((pl, i) => (
-          <button
-            key={pl.id}
-            onClick={() => setActive(i)}
-            aria-label={`Show ${pl.label}`}
-            className={`site-choice h-1.5 rounded-full transition-all ${
-              i === active ? "w-6 bg-primary" : "w-1.5 bg-muted-foreground/40 hover:bg-muted-foreground"
-            }`}
-          />
-        ))}
       </div>
     </div>
   );

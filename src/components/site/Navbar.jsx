@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import Logo from "@/components/site/Logo";
 import { NAV_ITEMS } from "@/components/site/navData";
 
@@ -111,9 +111,8 @@ export default function Navbar({ logoVariant }) {
             )
           )}
 
-          <Link to="/contact?intent=trial" className="site-cta-primary group gap-1.5 px-4 py-2 text-sm rounded-lg">
+          <Link to="/contact?intent=trial" className="site-cta-primary px-4 py-2 text-sm rounded-lg">
             Try it free for a week
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </div>
 

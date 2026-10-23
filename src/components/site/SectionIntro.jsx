@@ -9,7 +9,7 @@ export default function SectionIntro({ eyebrow, title, children }) {
       <h2 className="mt-3 font-heading text-3xl sm:text-4xl font-semibold leading-tight tracking-tight text-balance">
         {title}
       </h2>
-      <p className="mt-3 max-w-[75ch] text-base sm:text-lg leading-relaxed text-muted-foreground text-balance">
+      <p className="mt-3 max-w-[75ch] text-base sm:text-lg leading-relaxed text-muted-foreground text-pretty">
         {children}
       </p>
     </div>

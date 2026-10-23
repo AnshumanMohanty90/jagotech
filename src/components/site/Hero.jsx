@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import AskDemo from "@/components/site/AskDemo";
 import PillarCarousel from "@/components/site/PillarCarousel";
 
@@ -41,12 +41,9 @@ export default function Hero() {
   const typed = useTypewriter(PROMPTS);
 
   return (
-    <section id="top" className="relative overflow-hidden pt-28 sm:pt-32 pb-12 sm:pb-16">
+    <section id="top" className="relative overflow-hidden pt-28 sm:pt-36">
       {/* Background layers */}
       <div className="absolute inset-0 grid-bg animate-grid-pan opacity-40" />
-      <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[54rem] h-[34rem] rounded-full bg-primary/20 blur-[130px] animate-pulse-glow" />
-      <div className="absolute -top-24 -left-40 w-[28rem] h-[28rem] rounded-full bg-primary/10 blur-[120px]" />
-      <div className="absolute top-8 -right-40 w-[30rem] h-[30rem] rounded-full bg-violet/10 blur-[130px]" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 w-full">
@@ -63,13 +60,12 @@ export default function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="mt-3 font-heading text-[clamp(2rem,4.6vw,3.25rem)] font-semibold leading-[1.12] tracking-tight text-balance"
+          className="mt-3 max-w-4xl font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight text-balance"
         >
-          <span className="block">Put AI to work across your company</span>
-          <span className="block text-primary text-glow">in 8 weeks.</span>
+          Put AI to work across your company <span className="text-primary">in 8 weeks.</span>
         </motion.h1>
 
-        <div className="mt-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="mt-8 sm:mt-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left: copy and CTAs */}
           <div className="lg:col-span-6 min-w-0">
             <motion.p
@@ -92,11 +88,10 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.18 }}
               className="mt-8 flex flex-wrap items-center gap-3"
             >
-              <Link to="/contact?intent=trial" className="site-cta-primary group gap-2 px-5 py-3 rounded-xl">
+              <Link to="/contact?intent=trial" className="site-cta-primary px-5 py-3 rounded-xl">
                 Try it free for a week
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>
-              <Link to="/contact?intent=plan" className="site-cta-secondary px-5 py-3 rounded-xl backdrop-blur">
+              <Link to="/contact?intent=plan" className="site-cta-secondary px-5 py-3 rounded-xl">
                 Download the 8-week plan
               </Link>
             </motion.div>
@@ -139,7 +134,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Centered pillar carousel */}
+        {/* Pillar carousel */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}

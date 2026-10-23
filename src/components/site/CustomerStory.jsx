@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
@@ -34,12 +33,11 @@ const STORY = [
 
 export default function CustomerStory({ showLink = true }) {
   return (
-    <section id="story" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
-      <div className="absolute -left-32 top-1/3 w-[30rem] h-[30rem] rounded-full bg-primary/8 blur-[130px]" />
+    <section id="story" className="relative site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Customer story" title="A major lending NBFC now knows which branches to audit first" />
 
-        <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 gap-5">
+        <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 gap-8 sm:gap-10">
           {STORY.map((s, i) => (
             <motion.div
               key={s.label}
@@ -47,7 +45,7 @@ export default function CustomerStory({ showLink = true }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.45, delay: i * 0.07 }}
-              className="rounded-2xl border border-border bg-card/40 p-6"
+              className="site-col"
             >
               <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">{s.label}</p>
               <p className="mt-3 text-base leading-relaxed text-foreground/90 text-pretty">
@@ -59,9 +57,8 @@ export default function CustomerStory({ showLink = true }) {
 
         {showLink && (
           <div className="mt-8">
-            <Link to="/customers" className="site-cta-secondary group gap-2 px-5 py-3 rounded-xl">
+            <Link to="/customers" className="site-cta-secondary px-5 py-3 rounded-xl">
               Read the story
-              <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>
         )}
