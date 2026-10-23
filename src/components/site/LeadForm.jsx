@@ -42,7 +42,13 @@ const INTENT_TEXT = {
     button: "Notify me",
     thanks: "Thank you. We will email you when this guide is ready.",
   },
+  pricing: {
+    button: "Get my quote",
+    thanks: "Thank you. We will email your quote to you.",
+  },
 };
+
+const PLANS_OF_INTEREST = ["Growth", "Enterprise", "JShield add-on", "Own servers"];
 
 const inputCls =
   "rounded-xl border border-border bg-card/60 backdrop-blur px-4 py-3.5 text-base leading-relaxed placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/20 transition";
@@ -51,6 +57,7 @@ export default function LeadForm({
   intent = "plan",
   sourcePage,
   defaultTask = "",
+  planOfInterest = "",
   buttonLabel,
   thankYou,
   note = "We do not share your details.",
@@ -63,6 +70,7 @@ export default function LeadForm({
     company: "",
     companySize: "",
     mainTask: defaultTask,
+    planOfInterest: PLANS_OF_INTEREST.includes(planOfInterest) ? planOfInterest : "",
   });
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
@@ -89,6 +97,7 @@ export default function LeadForm({
         company: form.company.trim(),
         companySize: mini ? "" : form.companySize,
         mainTask: mini ? defaultTask : form.mainTask.trim(),
+        planOfInterest: intent === "pricing" ? form.planOfInterest : "",
         sourcePage: sourcePage || pathname,
       });
       if (!res.data || res.data.ok !== true) {
@@ -167,6 +176,21 @@ export default function LeadForm({
             {SIZES.map((s) => (
               <option key={s} value={s}>
                 {s}
+              </option>
+            ))}
+          </select>
+        )}
+        {intent === "pricing" && (
+          <select
+            required
+            value={form.planOfInterest}
+            onChange={set("planOfInterest")}
+            className={`${inputCls} text-muted-foreground`}
+          >
+            <option value="">Plan of interest</option>
+            {PLANS_OF_INTEREST.map((p) => (
+              <option key={p} value={p}>
+                {p}
               </option>
             ))}
           </select>

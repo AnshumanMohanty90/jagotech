@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
+const CUSTOM_PRICING_NOTE = "Priced on your team size and the modules you use.";
+
 const PLANS = [
   {
     name: "Starter",
@@ -13,33 +15,37 @@ const PLANS = [
   },
   {
     name: "Growth",
-    price: "Rs 8 lakh a year",
+    price: "Custom pricing",
+    priceNote: CUSTOM_PRICING_NOTE,
     desc: "All four modules for up to 50 people, on WhatsApp, Slack and Teams.",
-    cta: "Try it free for a week",
-    href: "/contact?intent=trial",
+    cta: "Get pricing",
+    href: "/contact?intent=pricing&plan=Growth",
+    trialHref: "/contact?intent=trial",
   },
   {
     name: "Enterprise",
-    price: "Rs 30 lakh a year",
+    price: "Custom pricing",
+    priceNote: CUSTOM_PRICING_NOTE,
     desc: "Every module, with as many AI agents and people as you need.",
-    cta: "Talk to us",
-    href: "/contact?intent=enterprise",
+    cta: "Get pricing",
+    href: "/contact?intent=pricing&plan=Enterprise",
     primary: true,
   },
   {
     name: "JShield add-on",
-    price: "Rs 12 lakh a year",
+    price: "Custom pricing",
+    priceNote: CUSTOM_PRICING_NOTE,
     desc: "Customer consent, breach response and a record of the personal data you hold.",
-    cta: "Check your readiness",
-    href: "https://jshield.ai",
-    external: true,
+    cta: "Get pricing",
+    href: "/contact?intent=pricing&plan=JShield%20add-on",
   },
   {
     name: "Own servers",
-    price: "From Rs 60 lakh a year, plus Rs 15 lakh set-up",
+    price: "Custom pricing",
+    priceNote: CUSTOM_PRICING_NOTE,
     desc: "Jago runs on your own servers, with AI tuned to your data.",
-    cta: "Talk to us",
-    href: "/contact?intent=enterprise",
+    cta: "Get pricing",
+    href: "/contact?intent=pricing&plan=Own%20servers",
   },
 ];
 
@@ -70,29 +76,34 @@ export default function Pricing() {
                 {p.price}
               </p>
 
+              {p.priceNote && (
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground text-pretty">
+                  {p.priceNote}
+                </p>
+              )}
+
               <p className="mt-3 text-base leading-relaxed text-muted-foreground text-pretty flex-1">
                 <CopyEmphasis text={p.desc} bold={["up to 10 people", "up to 50 people", "as many AI agents and people as you need", "personal data you hold", "your own servers"]} />
               </p>
 
-              {p.external ? (
-                <a
-                  href={p.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="site-cta-secondary mt-6 self-start px-4 py-2.5 rounded-xl text-sm"
-                >
-                  {p.cta}
-                </a>
-              ) : (
+              <div className="mt-6 flex flex-col items-start gap-3">
                 <Link
                   to={p.href}
-                  className={`mt-6 self-start px-4 py-2.5 rounded-xl text-sm ${
+                  className={`self-start px-4 py-2.5 rounded-xl text-sm ${
                     p.primary ? "site-cta-primary" : "site-cta-secondary"
                   }`}
                 >
                   {p.cta}
                 </Link>
-              )}
+                {p.trialHref && (
+                  <Link
+                    to={p.trialHref}
+                    className="text-sm leading-relaxed text-muted-foreground hover:text-primary underline-offset-4 hover:underline transition-colors"
+                  >
+                    Try it free for a week
+                  </Link>
+                )}
+              </div>
             </motion.div>
           ))}
         </div>

@@ -18,6 +18,10 @@ const INTENTS = {
   enterprise: {
     headline: "Talk to us about Jago for your enterprise.",
   },
+  pricing: {
+    headline: "Get pricing for your company.",
+    sub: "Tell us your team size and the work you want Jago to take on. We will send you a quote.",
+  },
 };
 
 export default function ContactPage() {
@@ -25,6 +29,7 @@ export default function ContactPage() {
   const [params] = useSearchParams();
   const intent = params.get("intent") || "plan";
   const presetTask = params.get("task") || "";
+  const planOfInterest = params.get("plan") || "";
   const content = INTENTS[intent] || INTENTS.plan;
 
   return (
@@ -40,6 +45,7 @@ export default function ContactPage() {
               <LeadForm
                 intent={intent}
                 defaultTask={presetTask}
+                planOfInterest={planOfInterest}
                 sourcePage={`/contact?intent=${intent}`}
               />
             </div>

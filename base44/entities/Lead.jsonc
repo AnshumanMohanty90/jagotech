@@ -17,13 +17,17 @@
     "main_task": {
       "type": "string"
     },
+    "plan_of_interest": {
+      "type": "string"
+    },
     "intent": {
       "type": "string",
       "enum": [
         "plan",
         "trial",
         "enterprise",
-        "guide"
+        "guide",
+        "pricing"
       ]
     },
     "source_page": {

@@ -1,7 +1,7 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.54';
 import { secrets, waitUntil } from 'base44:runtime';
 
-const INTENTS = ['plan', 'trial', 'enterprise', 'guide'];
+const INTENTS = ['plan', 'trial', 'enterprise', 'guide', 'pricing'];
 
 const PERSONAL_DOMAINS = [
   'gmail.com', 'googlemail.com', 'yahoo.com', 'yahoo.co.in', 'yahoo.in',
@@ -35,6 +35,7 @@ export default async function(req) {
     const companySize = str(body.companySize);
     const mainTask = str(body.mainTask);
     const intent = str(body.intent);
+    const planOfInterest = str(body.planOfInterest);
     const sourcePage = str(body.sourcePage) || 'unknown';
 
     if (!name || !company || !mainTask || !INTENTS.includes(intent)) {
@@ -52,6 +53,7 @@ export default async function(req) {
       company,
       company_size: companySize,
       main_task: mainTask,
+      plan_of_interest: planOfInterest,
       intent,
       source_page: sourcePage,
     });
@@ -75,6 +77,7 @@ export default async function(req) {
         ['Company', company],
         ['Company size', companySize || 'Not given'],
         ['Main task', mainTask],
+        ['Plan of interest', planOfInterest || 'Not given'],
         ['Intent', intent],
         ['Source page', sourcePage],
       ]
