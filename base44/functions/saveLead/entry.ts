@@ -1,0 +1,96 @@
+import { createClientFromRequest } from 'npm:@base44/sdk@0.8.54';
+import { secrets, waitUntil } from 'base44:runtime';
+
+const INTENTS = ['plan', 'trial', 'guide'];
+
+const PERSONAL_DOMAINS = [
+  'gmail.com', 'googlemail.com', 'yahoo.com', 'yahoo.co.in', 'yahoo.in',
+  'outlook.com', 'hotmail.com', 'hotmail.co.in', 'live.com', 'msn.com',
+  'aol.com', 'icloud.com', 'me.com', 'proton.me', 'protonmail.com',
+  'rediffmail.com', 'yandex.com', 'yandex.ru', 'gmx.com', 'mail.com',
+];
+
+const escapeHtml = (value) => value
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+  .replace(/'/g, '&#39;');
+
+export default async function(req) {
+  try {
+    const base44 = createClientFromRequest(req);
+
+    let body;
+    try {
+      body = await req.json();
+    } catch {
+      return Response.json({ error: 'Invalid request body.' }, { status: 400 });
+    }
+
+    const str = (value) => (typeof value === 'string' ? value.trim() : '');
+    const name = str(body.name);
+    const workEmail = str(body.workEmail).toLowerCase();
+    const company = str(body.company);
+    const companySize = str(body.companySize);
+    const mainTask = str(body.mainTask);
+    const intent = str(body.intent);
+    const sourcePage = str(body.sourcePage) || 'unknown';
+
+    if (!name || !company || !mainTask || !INTENTS.includes(intent)) {
+      return Response.json({ error: 'Missing required fields.' }, { status: 400 });
+    }
+
+    const domain = workEmail.split('@')[1] || '';
+    if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/.test(workEmail) || PERSONAL_DOMAINS.includes(domain)) {
+      return Response.json({ error: 'Please use your work email so we can set up your plan.' }, { status: 400 });
+    }
+
+    await base44.asServiceRole.entities.Lead.create({
+      name,
+      work_email: workEmail,
+      company,
+      company_size: companySize,
+      main_task: mainTask,
+      intent,
+      source_page: sourcePage,
+    });
+
+    let ownerEmail = '';
+    try {
+      ownerEmail = secrets.get('SITE_OWNER_EMAIL') || '';
+    } catch {
+      ownerEmail = '';
+    }
+
+    if (ownerEmail) {
+      waitUntil((async () => {
+        try {
+          const rows = [
+            ['Name', name],
+            ['Work email', workEmail],
+            ['Company', company],
+            ['Company size', companySize || 'Not given'],
+            ['Main task', mainTask],
+            ['Intent', intent],
+            ['Source page', sourcePage],
+          ]
+            .map(([k, v]) => `<tr><td style="padding:6px 12px;color:#666">${k}</td><td style="padding:6px 12px">${escapeHtml(v)}</td></tr>`)
+            .join('');
+          await base44.asServiceRole.integrations.Core.SendEmail({
+            to: ownerEmail,
+            subject: 'New ' + intent + ' lead: ' + name + ', ' + company,
+            html: '<div style="font-family:Arial,sans-serif;max-width:520px"><h2 style="font-size:18px;margin:0 0 12px">New lead from your website</h2><table style="border-collapse:collapse;font-size:14px">' + rows + '</table><p style="font-size:12px;color:#999;margin-top:12px">Sent from the Jago AI website lead form.</p></div>',
+            text: 'New lead: ' + name + ' (' + workEmail + ') at ' + company + '. Task: ' + mainTask + '. Intent: ' + intent + '. Source: ' + sourcePage + '.',
+          });
+        } catch {
+          // The lead is saved. A failed notification must not affect the visitor.
+        }
+      })());
+    }
+
+    return Response.json({ ok: true });
+  } catch (error) {
+    return Response.json({ error: error.message }, { status: 500 });
+  }
+}

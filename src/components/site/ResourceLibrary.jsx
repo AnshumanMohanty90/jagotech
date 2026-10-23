@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
+import LeadForm from "@/components/site/LeadForm";
 
 const BLOGS = [
   {
@@ -47,6 +49,8 @@ const GUIDES = [
 ];
 
 export default function ResourceLibrary() {
+  const [openGuide, setOpenGuide] = useState(null);
+
   return (
     <>
       <section id="blogs" className="relative scroll-mt-24 pt-4 sm:pt-6 pb-12 sm:pb-16">
@@ -78,7 +82,7 @@ export default function ResourceLibrary() {
                 <p className="mt-3 text-base text-muted-foreground leading-relaxed">
                   <CopyEmphasis text={b.excerpt} />
                 </p>
-                <p className="mt-5 text-sm text-primary font-semibold">Read on the Jago blog</p>
+                <p className="mt-5 text-sm text-muted-foreground">Coming soon</p>
               </motion.article>
             ))}
           </div>
@@ -110,7 +114,19 @@ export default function ResourceLibrary() {
                   {g.title}
                 </h3>
                 <p className="mt-3 text-base text-muted-foreground leading-relaxed">{g.desc}</p>
-                <p className="mt-5 text-sm text-muted-foreground">Included with your trial workspace</p>
+                {openGuide === g.title ? (
+                  <div className="mt-5 rounded-2xl border border-border bg-background/60 p-5 text-left">
+                    <LeadForm mini intent="guide" sourcePage="/resources" defaultTask={g.title} />
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => setOpenGuide(g.title)}
+                    className="site-cta-secondary group mt-5 gap-2 px-4 py-2.5 rounded-xl text-sm"
+                  >
+                    Email me this guide
+                    <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-0.5 transition-transform" />
+                  </button>
+                )}
               </motion.div>
             ))}
           </div>

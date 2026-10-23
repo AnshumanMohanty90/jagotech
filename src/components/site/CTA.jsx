@@ -1,53 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Check } from "lucide-react";
-import { base44 } from "@/api/base44Client";
+import LeadForm from "@/components/site/LeadForm";
 
 export default function CTA() {
-  const [email, setEmail] = useState("");
-  const [company, setCompany] = useState("");
-  const [employees, setEmployees] = useState("");
-  const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
-  const [error, setError] = useState("");
-
-  const submit = async (e) => {
-    e.preventDefault();
-    if (!email || sending) return;
-    const trimmed = email.trim().toLowerCase();
-    const domain = trimmed.split("@")[1] || "";
-    const PERSONAL_DOMAINS = [
-      "gmail.com", "googlemail.com", "yahoo.com", "yahoo.co.in", "yahoo.in",
-      "outlook.com", "hotmail.com", "hotmail.co.in", "live.com", "msn.com",
-      "aol.com", "icloud.com", "me.com", "proton.me", "protonmail.com",
-      "rediffmail.com", "yandex.com", "yandex.ru", "gmx.com", "mail.com",
-    ];
-    if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/.test(trimmed) || PERSONAL_DOMAINS.includes(domain)) {
-      setError("Please use your work email. Personal addresses like Gmail are not accepted.");
-      return;
-    }
-    setSending(true);
-    setError("");
-    try {
-      await base44.entities.Lead.create({
-        email: trimmed,
-        company: company.trim(),
-        employees,
-        source: "trial_start",
-      });
-      setSent(true);
-      setEmail("");
-      setCompany("");
-      setEmployees("");
-      setTimeout(() => setSent(false), 5000);
-    } catch {
-      setError("Something went wrong. Please try again in a moment.");
-    } finally {
-      setSending(false);
-    }
-  };
-
   return (
     <section id="contact" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-30 mask-fade-edges" />
@@ -69,66 +25,12 @@ export default function CTA() {
             <strong className="copy-accent">free 8-week plan</strong>.
           </p>
 
-          <form onSubmit={submit} className="mt-8 mx-auto max-w-xl">
-            <div className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Work email"
-                className="flex-1 rounded-xl border border-border bg-card/60 backdrop-blur px-4 py-3.5 text-base leading-relaxed placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/20 transition"
-              />
-              <button
-                type="submit"
-                disabled={sending}
-                className="site-cta-primary group gap-2 px-5 py-3.5 rounded-xl text-sm disabled:opacity-60"
-              >
-                Get your free 8-week plan
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </button>
-            </div>
-            <div className="mt-3 grid grid-cols-2 gap-3">
-              <input
-                type="text"
-                value={company}
-                onChange={(e) => setCompany(e.target.value)}
-                placeholder="Company"
-                className="rounded-xl border border-border bg-card/60 backdrop-blur px-4 py-3.5 text-base leading-relaxed placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/20 transition"
-              />
-              <select
-                value={employees}
-                onChange={(e) => setEmployees(e.target.value)}
-                className="rounded-xl border border-border bg-card/60 backdrop-blur px-4 py-3.5 text-base leading-relaxed text-muted-foreground focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/20 transition"
-              >
-                <option value="">Employees</option>
-                <option value="1-50">1 to 50</option>
-                <option value="51-100">51 to 100</option>
-                <option value="100-200">100 to 200</option>
-                <option value="200-500">200 to 500</option>
-                <option value="500-1000">500 to 1,000</option>
-                <option value="1000+">Greater than 1,000</option>
-              </select>
-            </div>
-          </form>
-
-          <div className="mt-4 min-h-6">
-            {sent ? (
-              <motion.span
-                initial={{ opacity: 0, y: 4 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-start gap-2 text-base leading-relaxed text-emerald"
-              >
-                <Check className="mt-1 h-4 w-4 shrink-0" /> Thanks. We will set up your trial workspace and
-                reach out shortly.
-              </motion.span>
-            ) : error ? (
-              <span className="text-base leading-relaxed text-destructive">{error}</span>
-            ) : null}
+          <div className="mt-8 mx-auto max-w-xl text-left">
+            <LeadForm intent="plan" buttonLabel="Get my 8-week plan" />
           </div>
 
-          <div className="mt-6">
-            <Link to="/contact" className="site-cta-secondary px-5 py-3 rounded-xl">
+          <div className="mt-8">
+            <Link to="/contact?intent=trial" className="site-cta-secondary px-5 py-3 rounded-xl">
               Try it free for a week
             </Link>
           </div>

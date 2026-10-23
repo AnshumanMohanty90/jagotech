@@ -2,27 +2,39 @@
   "name": "Lead",
   "type": "object",
   "properties": {
-    "email": {
+    "name": {
       "type": "string"
     },
-    "name": {
+    "work_email": {
       "type": "string"
     },
     "company": {
       "type": "string"
     },
-    "employees": {
+    "company_size": {
       "type": "string"
     },
-    "task": {
+    "main_task": {
       "type": "string"
     },
-    "source": {
+    "intent": {
+      "type": "string",
+      "enum": [
+        "plan",
+        "trial",
+        "guide"
+      ]
+    },
+    "source_page": {
       "type": "string"
     }
   },
   "required": [
-    "email"
+    "name",
+    "work_email",
+    "company",
+    "main_task",
+    "intent"
   ],
   "rls": {
     "create": {},
