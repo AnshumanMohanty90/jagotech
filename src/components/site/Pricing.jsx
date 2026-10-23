@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Reveal from "@/components/site/Reveal";
-import Accordion from "@/components/site/Accordion";
-import CopyEmphasis from "@/components/site/CopyEmphasis";
+import PlanColumn from "@/components/site/PlanColumn";
 
 const CUSTOM_PRICING_NOTE = "Priced on your team size and the modules you use.";
 
@@ -61,40 +60,18 @@ export default function Pricing() {
   return (
     <Reveal id="pricing" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="max-w-3xl">
-          <Accordion
-            firstOpen
-            items={PLANS.map((p) => ({
-              key: p.name,
-              title: `${p.name} · ${p.price}`,
-              body: (
-                <div className="min-w-0">
-                  {p.priceNote && (
-                    <p className="text-sm leading-relaxed text-pretty">{p.priceNote}</p>
-                  )}
-                  <p className="mt-2 text-base leading-relaxed text-pretty">
-                    <CopyEmphasis text={p.desc} bold={["up to 10 people", "up to 50 people", "as many AI agents and people as you need", "personal data you hold", "your own servers"]} />
-                  </p>
-                  <div className="mt-4 flex flex-col items-start gap-3">
-                    <Link
-                      to={p.href}
-                      className={p.primary ? "site-cta-primary px-4 py-2.5 rounded-xl text-sm" : "site-cta-secondary px-4 py-2.5 rounded-xl text-sm"}
-                    >
-                      {p.cta}
-                    </Link>
-                    {p.trialHref && (
-                      <Link
-                        to={p.trialHref}
-                        className="text-sm leading-relaxed hover:text-primary underline-offset-4 hover:underline transition-colors"
-                      >
-                        Try it free for a week
-                      </Link>
-                    )}
-                  </div>
-                </div>
-              ),
-            }))}
-          />
+        <h2 className="font-heading text-balance">Plans</h2>
+
+        <div className="mt-8 grid gap-6 sm:grid-cols-3">
+          {PLANS.slice(0, 3).map((p) => (
+            <PlanColumn key={p.name} plan={p} />
+          ))}
+        </div>
+
+        <div className="mt-6 grid gap-6 sm:grid-cols-2">
+          {PLANS.slice(3).map((p) => (
+            <PlanColumn key={p.name} plan={p} />
+          ))}
         </div>
 
         <div className="mt-8">
