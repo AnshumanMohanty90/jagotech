@@ -71,12 +71,12 @@ export default function Hero() {
 
         <div className="mt-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left: copy and CTAs */}
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-6 min-w-0">
             <motion.p
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.12 }}
-              className="max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed text-pretty"
+              className="max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed text-pretty break-words"
             >
               Jago connects to the systems you already use. Your teams{" "}
               <strong className="copy-accent">ask questions</strong>,{" "}
@@ -117,7 +117,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="lg:col-span-6"
+            className="lg:col-span-6 min-w-0"
           >
             <div className="rounded-2xl border border-border bg-card/30 backdrop-blur-xl p-4 sm:p-5 glow-cyan">
               <div className="flex items-center justify-between px-1 pb-3">
@@ -144,7 +144,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35 }}
-          className="mt-8 mx-auto w-full max-w-2xl"
+          className="mt-8 mx-auto w-full max-w-2xl min-w-0"
         >
           <PillarCarousel />
         </motion.div>
