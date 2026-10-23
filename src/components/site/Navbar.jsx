@@ -151,7 +151,7 @@ export default function Navbar({ logoVariant }) {
         Skip to content
       </a>
 
-      <nav className="mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between">
+      <nav className="relative mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center" aria-label="JagoTech home">
           <Logo variant={logoVariant} className="h-7 sm:h-8 w-auto" />
         </Link>
@@ -176,7 +176,7 @@ export default function Navbar({ logoVariant }) {
               <div
                 key={item.label}
                 data-nav-menu
-                className="relative"
+                className={item.type === "mega" ? "" : "relative"}
                 onMouseEnter={() => openAfter(item.label, OPEN_DELAY)}
                 onMouseLeave={() => closeAfter(CLOSE_DELAY)}
               >
@@ -208,10 +208,14 @@ export default function Navbar({ logoVariant }) {
                         closeMenu(item.label, true);
                       }
                     }}
-                    className="absolute left-0 top-full pt-3 z-50"
+                    className={
+                      item.type === "mega"
+                        ? "absolute inset-x-0 top-full pt-3 z-50"
+                        : "absolute left-0 top-full pt-3 z-50"
+                    }
                   >
                     {item.type === "mega" ? (
-                      <div className="grid grid-cols-3 gap-8 min-w-[42rem] rounded-xl border border-border bg-card/95 backdrop-blur-xl p-6 shadow-2xl shadow-background/60">
+                      <div className="grid grid-cols-3 gap-8 rounded-xl border border-border bg-card/95 backdrop-blur-xl p-6 shadow-2xl shadow-background/60">
                         {item.columns.map((col) => (
                           <div key={col.title} className="min-w-0">
                             <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
