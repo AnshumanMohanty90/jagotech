@@ -9,8 +9,8 @@ import Footer from "@/components/site/Footer";
 
 export default function Home() {
   return (
-    <div className="jago-home site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
-      <Navbar logoVariant="ink" />
+    <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
+      <Navbar />
       <main>
         <Hero />
         <Challenge />
@@ -18,7 +18,7 @@ export default function Home() {
         <RoleWins />
         <CTA />
       </main>
-      <Footer logoVariant="ink" />
+      <Footer />
     </div>
   );
 }
