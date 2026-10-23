@@ -127,16 +127,15 @@ export default function Hero() {
               <div className="flex items-center justify-between px-1 pb-3">
                 <span className="inline-flex items-center gap-2 font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">
                   <Sparkles className="w-3.5 h-3.5 text-primary" />
-                  Ask Jago · live demo
+                  Ask Jago · demo
                 </span>
-                <span className="inline-flex items-center gap-1.5 font-mono text-xs leading-relaxed text-emerald">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald animate-pulse" />
-                  live
+                <span className="font-mono text-xs leading-relaxed text-muted-foreground">
+                  Sample data
                 </span>
               </div>
               <AskDemo placeholder={typed} />
               <p className="mt-3 px-1 font-mono text-xs leading-relaxed text-muted-foreground">
-                Uses your own data · 50+ languages ·{" "}
+                Answers from sample data · 50+ languages ·{" "}
                 <span className="text-primary">text or voice</span>
               </p>
             </div>

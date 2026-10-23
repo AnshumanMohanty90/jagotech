@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { base44 } from "@/api/base44Client";
@@ -15,15 +15,6 @@ const PERSONAL_DOMAINS = [
 // The 8-week plan PDF (stored publicly).
 export const PLAN_PDF_URL =
   "https://media.base44.com/files/public/6ac78b627ed759581c8a0fea/df70a7026_JagoAI_8-WeekPlan.pdf";
-
-const downloadPlanPdf = () => {
-  const a = document.createElement("a");
-  a.href = PLAN_PDF_URL;
-  a.download = "jago-8-week-plan.pdf";
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-};
 
 const INTENT_TEXT = {
   plan: {
@@ -50,8 +41,26 @@ const INTENT_TEXT = {
 
 const PLANS_OF_INTEREST = ["Growth", "Enterprise", "JShield add-on", "Own servers"];
 
+const FIELD_ORDER = ["name", "workEmail", "company", "companySize", "planOfInterest", "mainTask"];
+
 const inputCls =
-  "rounded-xl border border-border bg-card/60 backdrop-blur px-4 py-3.5 text-base leading-relaxed placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/20 transition";
+  "w-full rounded-xl border border-border bg-card/60 backdrop-blur px-4 py-3.5 text-base leading-relaxed placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/20 transition";
+
+function Field({ id, label, error, children }) {
+  return (
+    <div className="min-w-0">
+      <label htmlFor={id} className="block text-sm font-medium leading-relaxed text-foreground/90">
+        {label}
+      </label>
+      <div className="mt-1.5">{children}</div>
+      {error && (
+        <p id={`${id}-error`} role="alert" className="mt-1.5 text-sm leading-relaxed text-destructive">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
 
 export default function LeadForm({
   intent = "plan",
@@ -72,24 +81,68 @@ export default function LeadForm({
     mainTask: defaultTask,
     planOfInterest: PLANS_OF_INTEREST.includes(planOfInterest) ? planOfInterest : "",
   });
+  const [errors, setErrors] = useState({});
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
-  const [error, setError] = useState("");
+  const [serverError, setServerError] = useState("");
+  const refs = useRef({});
 
-  const set = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
+  const set = (key) => (e) => {
+    setForm((f) => ({ ...f, [key]: e.target.value }));
+    if (errors[key]) setErrors((prev) => ({ ...prev, [key]: "" }));
+  };
+
+  const cls = (key) => `${inputCls} ${errors[key] ? "border-destructive/70" : ""}`;
+  const a11y = (key) => ({
+    id: key,
+    "aria-invalid": errors[key] ? "true" : "false",
+    ...(errors[key] ? { "aria-describedby": `${key}-error` } : {}),
+  });
+  const ref = (key) => (el) => {
+    refs.current[key] = el;
+  };
+
+  const validate = () => {
+    const next = {};
+    if (!form.name.trim()) next.name = "Please enter your name.";
+    const trimmed = form.workEmail.trim().toLowerCase();
+    const domain = trimmed.split("@")[1] || "";
+    if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/.test(trimmed)) {
+      next.workEmail = "Please enter your work email.";
+    } else if (PERSONAL_DOMAINS.includes(domain)) {
+      next.workEmail = "Please use your work email so we can set up your plan.";
+    }
+    if (!form.company.trim()) next.company = "Please enter your company.";
+    if (!mini && !form.companySize) next.companySize = "Please select your company size.";
+    if (intent === "pricing" && !form.planOfInterest) next.planOfInterest = "Please select a plan.";
+    if (!mini && !form.mainTask.trim()) {
+      next.mainTask = "Please tell us the task that takes your team the most time.";
+    }
+    return next;
+  };
 
   const submit = async (e) => {
     e.preventDefault();
     if (sending) return;
-    const trimmed = form.workEmail.trim().toLowerCase();
-    const domain = trimmed.split("@")[1] || "";
-    if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/.test(trimmed) || PERSONAL_DOMAINS.includes(domain)) {
-      setError("Please use your work email so we can set up your plan.");
+    const next = validate();
+    setErrors(next);
+    if (FIELD_ORDER.some((k) => next[k])) {
+      for (const key of FIELD_ORDER) {
+        if (next[key]) {
+          refs.current[key]?.focus();
+          break;
+        }
+      }
       return;
     }
+
+    // Open the tab now, inside the click, so the browser allows it.
+    const downloadWindow = intent === "plan" ? window.open("", "_blank") : null;
+
     setSending(true);
-    setError("");
+    setServerError("");
     try {
+      const trimmed = form.workEmail.trim().toLowerCase();
       const res = await base44.functions.invoke("saveLead", {
         intent,
         name: form.name.trim(),
@@ -103,10 +156,11 @@ export default function LeadForm({
       if (!res.data || res.data.ok !== true) {
         throw new Error("Save failed");
       }
+      if (downloadWindow) downloadWindow.location.href = PLAN_PDF_URL;
       setSent(true);
-      if (intent === "plan") downloadPlanPdf();
     } catch {
-      setError("Something went wrong. Please try again in a moment.");
+      if (downloadWindow) downloadWindow.close();
+      setServerError("Something went wrong. Please try again in a moment.");
     } finally {
       setSending(false);
     }
@@ -119,7 +173,12 @@ export default function LeadForm({
           Thank you. Your download has started.
         </p>
         <div className="flex flex-wrap items-center gap-3">
-          <a href={PLAN_PDF_URL} download="jago-8-week-plan.pdf" className="site-cta-secondary px-5 py-3 rounded-xl">
+          <a
+            href={PLAN_PDF_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="site-cta-secondary px-5 py-3 rounded-xl"
+          >
             Download again
           </a>
           <Link to="/contact?intent=trial" className="site-cta-primary px-5 py-3 rounded-xl">
@@ -139,72 +198,99 @@ export default function LeadForm({
   }
 
   return (
-    <form onSubmit={submit} className="space-y-4">
+    <form onSubmit={submit} noValidate className="space-y-4">
       <div className="grid sm:grid-cols-2 gap-4">
-        <input
-          type="text"
-          required
-          value={form.name}
-          onChange={set("name")}
-          placeholder="Name"
-          className={inputCls}
-        />
-        <input
-          type="email"
-          required
-          value={form.workEmail}
-          onChange={set("workEmail")}
-          placeholder="Work email"
-          className={inputCls}
-        />
-        <input
-          type="text"
-          required
-          value={form.company}
-          onChange={set("company")}
-          placeholder="Company"
-          className={inputCls}
-        />
-        {!mini && (
-          <select
+        <Field id="name" label="Name" error={errors.name}>
+          <input
+            ref={ref("name")}
+            type="text"
             required
-            value={form.companySize}
-            onChange={set("companySize")}
-            className={`${inputCls} text-muted-foreground`}
-          >
-            <option value="">Company size</option>
-            {SIZES.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-          </select>
+            value={form.name}
+            onChange={set("name")}
+            autoComplete="name"
+            placeholder="Name"
+            className={cls("name")}
+            {...a11y("name")}
+          />
+        </Field>
+        <Field id="workEmail" label="Work email" error={errors.workEmail}>
+          <input
+            ref={ref("workEmail")}
+            type="email"
+            required
+            value={form.workEmail}
+            onChange={set("workEmail")}
+            autoComplete="email"
+            placeholder="Work email"
+            className={cls("workEmail")}
+            {...a11y("workEmail")}
+          />
+        </Field>
+        <Field id="company" label="Company" error={errors.company}>
+          <input
+            ref={ref("company")}
+            type="text"
+            required
+            value={form.company}
+            onChange={set("company")}
+            autoComplete="organization"
+            placeholder="Company"
+            className={cls("company")}
+            {...a11y("company")}
+          />
+        </Field>
+        {!mini && (
+          <Field id="companySize" label="Company size" error={errors.companySize}>
+            <select
+              ref={ref("companySize")}
+              required
+              value={form.companySize}
+              onChange={set("companySize")}
+              className={`${cls("companySize")} text-muted-foreground`}
+              {...a11y("companySize")}
+            >
+              <option value="">Company size</option>
+              {SIZES.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+          </Field>
         )}
         {intent === "pricing" && (
-          <select
-            required
-            value={form.planOfInterest}
-            onChange={set("planOfInterest")}
-            className={`${inputCls} text-muted-foreground`}
-          >
-            <option value="">Plan of interest</option>
-            {PLANS_OF_INTEREST.map((p) => (
-              <option key={p} value={p}>
-                {p}
-              </option>
-            ))}
-          </select>
+          <Field id="planOfInterest" label="Plan of interest" error={errors.planOfInterest}>
+            <select
+              ref={ref("planOfInterest")}
+              required
+              value={form.planOfInterest}
+              onChange={set("planOfInterest")}
+              className={`${cls("planOfInterest")} text-muted-foreground`}
+              {...a11y("planOfInterest")}
+            >
+              <option value="">Plan of interest</option>
+              {PLANS_OF_INTEREST.map((p) => (
+                <option key={p} value={p}>
+                  {p}
+                </option>
+              ))}
+            </select>
+          </Field>
         )}
       </div>
       {!mini && (
-        <textarea
-          rows={4}
-          required
-          value={form.mainTask}
-          onChange={set("mainTask")}
-          placeholder="Which task takes your team the most time?"
-          className={`${inputCls} w-full`}
-        />
+        <Field id="mainTask" label="Which task takes your team the most time?" error={errors.mainTask}>
+          <textarea
+            ref={ref("mainTask")}
+            rows={4}
+            required
+            value={form.mainTask}
+            onChange={set("mainTask")}
+            placeholder="Which task takes your team the most time?"
+            className={`${cls("mainTask")} w-full`}
+            {...a11y("mainTask")}
+          />
+        </Field>
       )}
       <div className="flex flex-col sm:flex-row sm:items-center gap-4">
         <button
@@ -216,7 +302,11 @@ export default function LeadForm({
         </button>
         <p className="text-sm leading-relaxed text-muted-foreground">{note}</p>
       </div>
-      {error && <p className="text-sm leading-relaxed text-destructive">{error}</p>}
+      {serverError && (
+        <p role="alert" className="text-sm leading-relaxed text-destructive">
+          {serverError}
+        </p>
+      )}
     </form>
   );
 }

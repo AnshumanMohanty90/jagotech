@@ -1,26 +1,35 @@
 import React, { useState } from "react";
-import { Sparkles, ArrowRight, Loader2 } from "lucide-react";
-import { base44 } from "@/api/base44Client";
+import { Sparkles, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const EXAMPLE_TABS = [
-  {
-    id: "analyze",
+const SCRIPTED = {
+  ask: {
+    label: "Ask",
+    example: "Show regional sales performance against target for Q3.",
+    answer:
+      "North is 18% ahead of target. South is 4% behind. West and East are on target. Chart attached.",
+  },
+  analyze: {
     label: "Analyze",
     example: "Why did South region sales fall behind target last quarter?",
+    answer:
+      "Two branches account for most of the gap: collections slowed in the last six weeks of the quarter and three large orders moved to the next quarter.",
   },
-  {
-    id: "predict",
+  predict: {
     label: "Predict",
     example: "Which branches are likely to miss target this month?",
+    answer:
+      "Three branches are likely to miss target: Pune East, Nashik and Indore. Collections are 12% behind the usual pace. An alert has gone to the regional heads on WhatsApp.",
   },
-  {
-    id: "automate",
+  automate: {
     label: "Automate",
     example: "Update the CRM with this order and notify the finance team.",
+    answer:
+      "Draft ready: the order is filled in the CRM and a note for the finance team is written. Nothing changes until you approve.",
   },
-];
+};
 
-const TABS = [{ id: "ask", label: "Ask" }, ...EXAMPLE_TABS];
+const TAB_ORDER = ["ask", "analyze", "predict", "automate"];
 
 const TAB_CLS =
   "site-choice font-mono text-xs leading-relaxed uppercase tracking-wide px-2.5 py-1.5 rounded-lg border transition-colors";
@@ -29,13 +38,14 @@ const activeTabCls = (active) =>
     ? `${TAB_CLS} text-primary bg-primary/10 border-primary/40`
     : `${TAB_CLS} text-muted-foreground border-transparent hover:text-foreground`;
 
-function AnswerBox({ answer, language }) {
+function AnswerBox({ language, text, children }) {
   return (
     <div className="mt-2 rounded-xl border border-primary/25 bg-background/80 px-4 py-3">
       <span className="font-mono text-xs leading-relaxed uppercase tracking-wide text-primary">jago · answer</span>
       <p lang={language} className="mt-2 font-body text-base leading-relaxed text-foreground/90 whitespace-pre-line break-words">
-        {answer}
+        {text}
       </p>
+      {children}
     </div>
   );
 }
@@ -43,59 +53,32 @@ function AnswerBox({ answer, language }) {
 export default function AskDemo({ placeholder, language }) {
   const [tab, setTab] = useState("ask");
   const [value, setValue] = useState("");
-  const [answer, setAnswer] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [examples, setExamples] = useState({});
+  const [typedReply, setTypedReply] = useState(false);
+  const [exampleShown, setExampleShown] = useState(false);
+  const [shown, setShown] = useState({});
+  const [actionNote, setActionNote] = useState("");
 
-  const runExample = async (t) => {
-    setExamples((prev) => ({ ...prev, [t.id]: { loading: true, answer: null } }));
-    try {
-      const res = await base44.functions.invoke("askDemo", {
-        prompt: t.example,
-        ...(language ? { language } : {}),
-      });
-      setExamples((prev) => ({ ...prev, [t.id]: { loading: false, answer: res.data.answer } }));
-    } catch {
-      setExamples((prev) => ({ ...prev, [t.id]: { loading: false, answer: null, error: true } }));
-    }
-  };
-
-  const ask = async (e) => {
+  const ask = (e) => {
     e.preventDefault();
-    const prompt = value.trim();
-    if (!prompt || loading) return;
-    setLoading(true);
-    setError("");
-    setAnswer(null);
-    try {
-      const res = await base44.functions.invoke("askDemo", {
-        prompt,
-        ...(language ? { language } : {}),
-      });
-      setAnswer(res.data.answer);
-    } catch {
-      setError("The demo could not answer right now. Please try again in a moment.");
-    } finally {
-      setLoading(false);
-    }
+    if (!value.trim()) return;
+    setExampleShown(false);
+    setTypedReply(true);
   };
 
-  const activeExample = EXAMPLE_TABS.find((t) => t.id === tab);
-  const exampleState = examples[tab] || {};
+  const current = SCRIPTED[tab];
 
   return (
     <>
       <div className="flex flex-wrap items-center gap-1.5 px-1 pb-3" role="tablist" aria-label="Demo modes">
-        {TABS.map((t) => (
+        {TAB_ORDER.map((id) => (
           <button
-            key={t.id}
+            key={id}
             role="tab"
-            aria-selected={tab === t.id}
-            onClick={() => setTab(t.id)}
-            className={activeTabCls(tab === t.id)}
+            aria-selected={tab === id}
+            onClick={() => setTab(id)}
+            className={activeTabCls(tab === id)}
           >
-            {t.label}
+            {SCRIPTED[id].label}
           </button>
         ))}
       </div>
@@ -113,53 +96,82 @@ export default function AskDemo({ placeholder, language }) {
             />
             <button
               type="submit"
-              disabled={loading || !value.trim()}
+              disabled={!value.trim()}
               className="site-cta-primary shrink-0 gap-1.5 px-3.5 py-2 rounded-lg text-sm disabled:opacity-50"
             >
-              {loading ? (
-                <Loader2 className="w-3.5 h-3.5 animate-spin" />
-              ) : (
-                <>
-                  Ask Jago
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </>
-              )}
+              Ask Jago
+              <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </form>
-          {answer && <AnswerBox answer={answer} language={language} />}
-          {error && <p className="mt-2 px-1 text-sm leading-relaxed text-destructive">{error}</p>}
+          <button
+            type="button"
+            onClick={() => {
+              setTypedReply(false);
+              setExampleShown(true);
+            }}
+            className="mt-2 px-1 block text-left font-mono text-xs leading-relaxed text-muted-foreground hover:text-primary transition-colors"
+          >
+            Try an example: {SCRIPTED.ask.example}
+          </button>
+          {exampleShown && <AnswerBox language={language} text={SCRIPTED.ask.answer} />}
+          {typedReply && (
+            <AnswerBox
+              language={language}
+              text={
+                <>
+                  This demo uses sample data.{" "}
+                  <Link to="/contact?intent=trial" className="text-primary underline underline-offset-4">
+                    Start a free week
+                  </Link>{" "}
+                  to ask questions about your own data.
+                </>
+              }
+            />
+          )}
         </>
       ) : (
-        activeExample && (
-          <>
-            <div className="flex items-center gap-3 rounded-xl border border-border bg-background/80 px-4 py-3.5">
-              <Sparkles className="w-5 h-5 text-primary shrink-0" />
-              <p className="flex-1 min-w-0 font-body text-base leading-relaxed text-foreground/90">
-                {activeExample.example}
-              </p>
-              <button
-                onClick={() => runExample(activeExample)}
-                disabled={exampleState.loading}
-                className="site-cta-primary shrink-0 gap-1.5 px-3.5 py-2 rounded-lg text-sm disabled:opacity-50"
-              >
-                {exampleState.loading ? (
-                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                ) : (
-                  <>
-                    See the answer
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </>
-                )}
-              </button>
-            </div>
-            {exampleState.answer && <AnswerBox answer={exampleState.answer} language={language} />}
-            {exampleState.error && (
-              <p className="mt-2 px-1 text-sm leading-relaxed text-destructive">
-                The demo could not answer right now. Please try again in a moment.
-              </p>
-            )}
-          </>
-        )
+        <>
+          <div className="flex items-center gap-3 rounded-xl border border-border bg-background/80 px-4 py-3.5">
+            <Sparkles className="w-5 h-5 text-primary shrink-0" />
+            <p className="flex-1 min-w-0 font-body text-base leading-relaxed text-foreground/90">
+              {current.example}
+            </p>
+            <button
+              onClick={() => setShown((prev) => ({ ...prev, [tab]: true }))}
+              className="site-cta-primary shrink-0 gap-1.5 px-3.5 py-2 rounded-lg text-sm"
+            >
+              See the answer
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+          {shown[tab] && (
+            <AnswerBox language={language} text={current.answer}>
+              {tab === "automate" && (
+                <>
+                  <div className="mt-3 flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setActionNote("This is a demo. Start a free week to try it on your data.")}
+                      className="site-cta-primary px-3.5 py-2 rounded-lg text-sm"
+                    >
+                      Approve
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setActionNote("This is a demo. Start a free week to try it on your data.")}
+                      className="site-cta-secondary px-3.5 py-2 rounded-lg text-sm"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                  {actionNote && (
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{actionNote}</p>
+                  )}
+                </>
+              )}
+            </AnswerBox>
+          )}
+        </>
       )}
     </>
   );
