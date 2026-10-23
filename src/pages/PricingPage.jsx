@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "@/components/site/Navbar";
 import Pricing from "@/components/site/Pricing";
 import Roi from "@/components/site/Roi";
-import CTA from "@/components/site/CTA";
 import Footer from "@/components/site/Footer";
 
 export default function PricingPage() {
@@ -12,7 +11,6 @@ export default function PricingPage() {
       <main className="pt-16">
         <Pricing />
         <Roi />
-        <CTA />
       </main>
       <Footer />
     </div>

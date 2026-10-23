@@ -15,7 +15,7 @@ const BLOGS = [
   {
     tag: "Transformation",
     date: "Sep 2026",
-    title: "Your first 90 days with an AI workforce.",
+    title: "Your first 90 days with AI agents.",
     excerpt:
       "A practical sequence: pick one process, connect the systems, prove the win, then scale across departments.",
   },

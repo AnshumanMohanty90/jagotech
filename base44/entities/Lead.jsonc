@@ -5,10 +5,16 @@
     "email": {
       "type": "string"
     },
+    "name": {
+      "type": "string"
+    },
     "company": {
       "type": "string"
     },
     "employees": {
+      "type": "string"
+    },
+    "task": {
       "type": "string"
     },
     "source": {

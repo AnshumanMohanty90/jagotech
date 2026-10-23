@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import Logo from "@/components/site/Logo";
-import { NAV_GROUPS, NAV_LINKS } from "@/components/site/navData";
+import { NAV_ITEMS } from "@/components/site/navData";
 
 export default function Navbar({ logoVariant }) {
   const [scrolled, setScrolled] = useState(false);
@@ -28,92 +28,90 @@ export default function Navbar({ logoVariant }) {
       }`}
     >
       <nav className="mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between">
-        <Link to="/#top" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <Logo variant={logoVariant} className="h-7 sm:h-8 w-auto" />
         </Link>
 
         <div className="hidden lg:flex items-center gap-6">
-          {NAV_GROUPS.map((g) => (
-            <div
-              key={g.label}
-              className="relative"
-              onMouseEnter={() => setOpenGroup(g.label)}
-              onMouseLeave={() => setOpenGroup(null)}
-            >
-              <Link
-                to={g.href}
-                className="flex items-center gap-1 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          {NAV_ITEMS.map((item) =>
+            item.type === "group" ? (
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => setOpenGroup(item.label)}
+                onMouseLeave={() => setOpenGroup(null)}
               >
-                {g.label}
-                <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform ${openGroup === g.label ? "rotate-180" : ""}`}
-                />
-              </Link>
+                <Link
+                  to={item.href}
+                  className="flex items-center gap-1 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {item.label}
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 transition-transform ${openGroup === item.label ? "rotate-180" : ""}`}
+                  />
+                </Link>
 
-              <AnimatePresence>
-                {openGroup === g.label && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 6 }}
-                    transition={{ duration: 0.18 }}
-                    className="absolute left-0 top-full pt-2 z-50"
-                  >
-                    <div className="flex gap-8 rounded-2xl border border-border bg-card/95 backdrop-blur-xl p-5 shadow-2xl shadow-background/60 min-w-[19rem]">
-                      {g.columns.map((col) => (
-                        <div key={col.title} className="min-w-[12.5rem]">
-                          <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
-                            {col.title}
-                          </p>
-                          <div className="mt-3 space-y-1">
-                            {col.links.map((l) => (
-                              <Link
-                                key={`${l.label}-${l.href}`}
-                                to={l.href}
-                                onClick={() => setOpenGroup(null)}
-                                className="block rounded-lg px-2.5 py-1.5 hover:bg-secondary/60 transition-colors"
-                              >
-                                <span className="block text-sm font-medium text-foreground/90">{l.label}</span>
-                                {l.desc && (
-                                  <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground/80">
-                                    {l.desc}
-                                  </span>
-                                )}
-                              </Link>
-                            ))}
+                <AnimatePresence>
+                  {openGroup === item.label && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 6 }}
+                      transition={{ duration: 0.18 }}
+                      className="absolute left-0 top-full pt-2 z-50"
+                    >
+                      <div className="flex gap-8 rounded-2xl border border-border bg-card/95 backdrop-blur-xl p-5 shadow-2xl shadow-background/60 min-w-[19rem]">
+                        {item.columns.map((col) => (
+                          <div key={col.title} className="min-w-[12.5rem]">
+                            <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
+                              {col.title}
+                            </p>
+                            <div className="mt-3 space-y-1">
+                              {col.links.map((l) => (
+                                <Link
+                                  key={`${l.label}-${l.href}`}
+                                  to={l.href}
+                                  onClick={() => setOpenGroup(null)}
+                                  className="block rounded-lg px-2.5 py-1.5 hover:bg-secondary/60 transition-colors"
+                                >
+                                  <span className="block text-sm font-medium text-foreground/90">{l.label}</span>
+                                  {l.desc && (
+                                    <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground/80">
+                                      {l.desc}
+                                    </span>
+                                  )}
+                                </Link>
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
-
-          {NAV_LINKS.map((l) =>
-            l.external ? (
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : item.external ? (
               <a
-                key={l.label}
-                href={l.href}
+                key={item.label}
+                href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                {l.label}
+                {item.label}
               </a>
             ) : (
               <Link
-                key={l.label}
-                to={l.href}
+                key={item.label}
+                to={item.href}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                {l.label}
+                {item.label}
               </Link>
             )
           )}
 
-          <Link to="/#contact" className="site-cta-primary group gap-1.5 px-4 py-2 text-sm rounded-lg">
+          <Link to="/contact" className="site-cta-primary group gap-1.5 px-4 py-2 text-sm rounded-lg">
             Get your free 8-week plan
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
           </Link>
@@ -138,83 +136,81 @@ export default function Navbar({ logoVariant }) {
             className="lg:hidden overflow-hidden border-t border-border bg-background/95 backdrop-blur-xl"
           >
             <div className="px-5 py-4 flex flex-col gap-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
-              {NAV_GROUPS.map((g) => (
-                <div key={g.label} className="border-b border-border/60 last:border-0">
-                  <button
-                    onClick={() => setMobileGroup((m) => (m === g.label ? null : g.label))}
-                    className="site-choice w-full flex items-center justify-between px-3 py-2.5 text-sm text-foreground/90"
-                  >
-                    {g.label}
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform ${mobileGroup === g.label ? "rotate-180" : ""}`}
-                    />
-                  </button>
-                  <AnimatePresence>
-                    {mobileGroup === g.label && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="pb-2 space-y-2">
-                          {g.columns.map((col) => (
-                            <div key={col.title}>
-                              <p className="px-3 pt-1 font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
-                                {col.title}
-                              </p>
-                              {col.links.map((l) => (
-                                <Link
-                                  key={`${l.label}-${l.href}`}
-                                  to={l.href}
-                                  onClick={() => setOpen(false)}
-                                  className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-secondary"
-                                >
-                                  {l.label}
-                                </Link>
-                              ))}
-                            </div>
-                          ))}
-                          <Link
-                            to={g.href}
-                            onClick={() => setOpen(false)}
-                            className="block px-3 py-1.5 text-sm font-semibold text-primary"
-                          >
-                            {g.label} overview
-                          </Link>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
-
-              {NAV_LINKS.map((l) =>
-                l.external ? (
+              {NAV_ITEMS.map((item) =>
+                item.type === "group" ? (
+                  <div key={item.label} className="border-b border-border/60 last:border-0">
+                    <button
+                      onClick={() => setMobileGroup((m) => (m === item.label ? null : item.label))}
+                      className="site-choice w-full flex items-center justify-between px-3 py-2.5 text-sm text-foreground/90"
+                    >
+                      {item.label}
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform ${mobileGroup === item.label ? "rotate-180" : ""}`}
+                      />
+                    </button>
+                    <AnimatePresence>
+                      {mobileGroup === item.label && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pb-2 space-y-2">
+                            {item.columns.map((col) => (
+                              <div key={col.title}>
+                                <p className="px-3 pt-1 font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
+                                  {col.title}
+                                </p>
+                                {col.links.map((l) => (
+                                  <Link
+                                    key={`${l.label}-${l.href}`}
+                                    to={l.href}
+                                    onClick={() => setOpen(false)}
+                                    className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-secondary"
+                                  >
+                                    {l.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            ))}
+                            <Link
+                              to={item.href}
+                              onClick={() => setOpen(false)}
+                              className="block px-3 py-1.5 text-sm font-semibold text-primary"
+                            >
+                              {item.label} overview
+                            </Link>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : item.external ? (
                   <a
-                    key={l.label}
-                    href={l.href}
+                    key={item.label}
+                    href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setOpen(false)}
                     className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-secondary"
                   >
-                    {l.label}
+                    {item.label}
                   </a>
                 ) : (
                   <Link
-                    key={l.label}
-                    to={l.href}
+                    key={item.label}
+                    to={item.href}
                     onClick={() => setOpen(false)}
                     className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-secondary"
                   >
-                    {l.label}
+                    {item.label}
                   </Link>
                 )
               )}
 
               <Link
-                to="/#contact"
+                to="/contact"
                 onClick={() => setOpen(false)}
                 className="site-cta-primary mt-2 px-3 py-2.5 text-center text-sm rounded-lg"
               >

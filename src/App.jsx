@@ -14,6 +14,14 @@ import SolutionsPage from '@/pages/SolutionsPage';
 import ResourcesPage from '@/pages/ResourcesPage';
 import CompliancePage from '@/pages/CompliancePage';
 import CustomersPage from '@/pages/CustomersPage';
+import SecurityPage from '@/pages/SecurityPage';
+import AboutPage from '@/pages/AboutPage';
+import ContactPage from '@/pages/ContactPage';
+import HowJagoWorksPage from '@/pages/HowJagoWorksPage';
+import RoleWinsPage from '@/pages/RoleWinsPage';
+import IndustriesPage from '@/pages/IndustriesPage';
+import PrivacyPage from '@/pages/PrivacyPage';
+import TermsPage from '@/pages/TermsPage';
 // Add page imports here
 
 const AuthenticatedApp = () => {
@@ -51,6 +59,14 @@ const AuthenticatedApp = () => {
       <Route path="/resources" element={<ResourcesPage />} />
       <Route path="/compliance" element={<CompliancePage />} />
       <Route path="/customers" element={<CustomersPage />} />
+      <Route path="/security" element={<SecurityPage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/how-jago-works" element={<HowJagoWorksPage />} />
+      <Route path="/role-wins" element={<RoleWinsPage />} />
+      <Route path="/industries" element={<IndustriesPage />} />
+      <Route path="/privacy" element={<PrivacyPage />} />
+      <Route path="/terms" element={<TermsPage />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

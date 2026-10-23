@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ArrowRight, Check } from "lucide-react";
 import { ROLES, CATEGORIES } from "@/components/site/roleWinsData";
 import SectionIntro from "@/components/site/SectionIntro";
@@ -109,13 +110,13 @@ export default function RoleWins() {
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />
                 {active.channel}
               </div>
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="site-cta-primary group mt-6 self-start gap-2 px-4 py-2.5 rounded-xl text-sm"
               >
                 Get your free 8-week plan
                 <ArrowRight className="w-4 h-4 text-primary-foreground group-hover:translate-x-0.5 transition-transform" />
-              </a>
+              </Link>
             </div>
           </motion.div>
         </AnimatePresence>

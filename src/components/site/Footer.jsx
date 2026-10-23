@@ -16,8 +16,8 @@ const COLS = [
   {
     title: "Solutions",
     links: [
-      { label: "By industry", href: "/solutions#industries" },
-      { label: "By role", href: "/solutions#by-user" },
+      { label: "By industry", href: "/industries" },
+      { label: "By role", href: "/role-wins" },
       { label: "By use case", href: "/solutions#use-cases" },
     ],
   },
@@ -26,9 +26,9 @@ const COLS = [
     links: [
       { label: "Customers", href: "/customers" },
       { label: "Pricing", href: "/pricing" },
-      { label: "Security", href: "/platform#security" },
-      { label: "About", href: "/#how" },
-      { label: "Contact", href: "/#contact" },
+      { label: "Security", href: "/security" },
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {

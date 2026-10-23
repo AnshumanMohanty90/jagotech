@@ -1,85 +1,48 @@
-export const NAV_GROUPS = [
+export const NAV_ITEMS = [
   {
+    type: "group",
     label: "Platform",
     href: "/platform",
     columns: [
       {
         title: "Platform",
         links: [
-          { label: "Overview", href: "/platform#overview", desc: "Connect systems, give agents context, let them act" },
-          { label: "AI Agents", href: "/platform#agents", desc: "Agents that watch, understand and do the work" },
-          { label: "Integrations", href: "/platform#integrations", desc: "CRM, ERP, databases, documents and more" },
-          { label: "Governance & Security", href: "/platform#security", desc: "Compliance, approvals and audit logging" },
-          { label: "Security", href: "/platform#security" },
-          { label: "Compliance", href: "/compliance", desc: "DPDP, GDPR and SOC" },
-        ],
-      },
-      {
-        title: "Capabilities",
-        links: [
-          { label: "Ask", href: "/platform#ask", desc: "Plain-language answers grounded in your data" },
-          { label: "Predict", href: "/platform#predict", desc: "Flag risks and opportunities before they land" },
-          { label: "Analyze", href: "/platform#analyze", desc: "Plain-language analysis over your data" },
-          { label: "Automate", href: "/platform#automate", desc: "Zero-code actions across your systems" },
+          { label: "Platform Overview", href: "/platform", desc: "Connect systems, give agents context, let them act" },
+          { label: "Security Controls", href: "/security", desc: "Who sees what, approvals and audit records" },
         ],
       },
     ],
   },
   {
+    type: "group",
     label: "Solutions",
     href: "/solutions",
     columns: [
       {
-        title: "By Industry",
+        title: "Solutions",
         links: [
-          { label: "BFSI and Banking", href: "/solutions#bfsi" },
-          { label: "Supply Chain and Logistics", href: "/solutions#logistics" },
-          { label: "Retail and FMCG", href: "/solutions#retail-fmcg" },
-          { label: "Healthcare and Pharma", href: "/solutions#healthcare" },
-          { label: "Manufacturing", href: "/solutions#manufacturing" },
-          { label: "Telecom and Services", href: "/solutions#telecom" },
-        ],
-      },
-      {
-        title: "By Use Case",
-        links: [
-          { label: "Employee Productivity", href: "/solutions#employee-productivity" },
-          { label: "Customer Experience", href: "/solutions#customer-experience" },
-          { label: "Workflow Automation", href: "/solutions#workflow-automation" },
-          { label: "Business Decision Support", href: "/solutions#decision-support" },
-        ],
-      },
-      {
-        title: "By User",
-        links: [
-          { label: "CEO / Leadership", href: "/solutions#by-user" },
-          { label: "Sales", href: "/solutions#by-user" },
-          { label: "Customer Experience", href: "/solutions#by-user" },
-          { label: "Operations", href: "/solutions#by-user" },
-          { label: "Finance", href: "/solutions#by-user" },
-          { label: "HR", href: "/solutions#by-user" },
+          { label: "How Jago Works", href: "/how-jago-works", desc: "Ask, Automate, Analyze and Predict in detail" },
+          { label: "Role Wins", href: "/role-wins", desc: "What changes in each role's day" },
+          { label: "Industries", href: "/industries", desc: "Ready-made workflows for your sector" },
         ],
       },
     ],
   },
+  { type: "link", label: "Marketplace", href: "/marketplace" },
   {
-    label: "Resources",
-    href: "/resources",
+    type: "group",
+    label: "Pricing",
+    href: "/pricing",
     columns: [
       {
-        title: "Resources",
+        title: "Pricing",
         links: [
-          { label: "Blogs", href: "/resources#blogs", desc: "Perspectives on putting AI agents to work" },
-          { label: "Guides", href: "/resources#guides", desc: "Practical playbooks for your first agents" },
+          { label: "Plans", href: "/pricing", desc: "Clear prices in rupees" },
+          { label: "ROI Calculator", href: "/pricing#roi", desc: "Estimate your savings" },
         ],
       },
     ],
   },
-];
-
-export const NAV_LINKS = [
-  { label: "Marketplace", href: "/marketplace" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "JShield", href: "https://jshield.ai", external: true },
-  { label: "Customers", href: "/customers" },
+  { type: "link", label: "JShield", href: "https://jshield.ai", external: true },
+  { type: "link", label: "Customers", href: "/customers" },
 ];

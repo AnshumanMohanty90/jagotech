@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import SectionIntro from "@/components/site/SectionIntro";
 
-const fmt = (n) => "$" + Math.round(n).toLocaleString("en-US");
+const USD_TO_INR = 83;
+const fmt = (n) => `Rs ${Math.round(n * USD_TO_INR).toLocaleString("en-IN")} (about $${Math.round(n).toLocaleString("en-US")})`;
 
 export default function Roi() {
   const [emp, setEmp] = useState(1200);
@@ -83,13 +85,13 @@ export default function Roi() {
                 <span className="font-heading text-3xl sm:text-4xl font-semibold text-violet">{netRoi}x ROI</span>
               </div>
             </div>
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="site-cta-primary group mt-8 gap-2 px-5 py-3 rounded-xl"
             >
-              Get custom ROI assessment
+              Get your free 8-week plan
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>

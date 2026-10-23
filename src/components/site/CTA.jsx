@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ArrowRight, Check } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 
@@ -127,9 +128,9 @@ export default function CTA() {
           </div>
 
           <div className="mt-6">
-            <a href="https://www.jago-tech.ai/contact" className="site-cta-secondary px-5 py-3 rounded-xl">
+            <Link to="/contact" className="site-cta-secondary px-5 py-3 rounded-xl">
               Try it free for a week
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>
