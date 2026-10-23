@@ -78,9 +78,8 @@ export default function Hero() {
               No payment details needed.
             </p>
 
-            <p className="mt-5 font-mono text-xs leading-relaxed text-muted-foreground">
-              Live at a major lending NBFC · Works on WhatsApp, Slack and Teams ·{" "}
-              50+ languages
+            <p className="mt-5 text-[15px] font-medium leading-relaxed text-slate-300">
+              Live at a major lending NBFC, works on WhatsApp, Slack and Teams, in 50+ languages
             </p>
           </div>
 

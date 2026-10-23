@@ -99,8 +99,8 @@ export default function Footer({ logoVariant }) {
         </div>
 
         <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-mono text-xs leading-relaxed text-muted-foreground">
-            © 2026 Jago AI ·{" "}
+          <p className="text-[15px] font-medium leading-relaxed text-slate-300">
+            © 2026 Jago AI.{" "}
             <a
               href="https://jshield.ai"
               target="_blank"

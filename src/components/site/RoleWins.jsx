@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { ROLES, CATEGORIES } from "@/components/site/roleWinsData";
 import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
@@ -89,16 +90,23 @@ export default function RoleWins({ withIntro = true, tinted = false }) {
               <span className="text-[15px] text-muted-foreground">{usesText(active.modules)}</span>
             </div>
 
-            <div className="mt-5 space-y-5">
+            <div className="mt-5 space-y-6">
               <div>
                 <p className="site-label">Before</p>
-                <p className="mt-2 text-base sm:text-lg leading-relaxed text-pretty text-slate-400">{active.before}</p>
+                <p className="mt-2 text-xl leading-relaxed text-pretty text-slate-400">{active.before}</p>
               </div>
               <div>
                 <p className="site-label">With Jago</p>
-                <p className="mt-2 text-base sm:text-lg leading-relaxed text-pretty text-foreground">{active.with}</p>
+                <p className="mt-2 text-xl leading-relaxed text-pretty text-foreground">{active.with}</p>
               </div>
             </div>
+
+            <Link
+              to="/contact?intent=trial"
+              className="site-cta-primary mt-6 px-5 py-3 rounded-xl"
+            >
+              Try it free for a week
+            </Link>
           </div>
         </div>
       </div>
