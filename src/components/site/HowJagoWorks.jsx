@@ -26,7 +26,7 @@ const MODULES = [
     id: "analyze",
     title: "Analyze",
     desc: "See why a number moved, not just that it moved. Jago shows the reasons behind a change, with the numbers it used.",
-    example: "\"Why did South fall 4%?\"",
+    example: "\"Why did South miss target?\"",
     result: "The reasons, with the numbers behind them.",
     bold: ["why a number moved"],
     accent: ["the numbers it used"],
@@ -42,18 +42,21 @@ const MODULES = [
   },
 ];
 
-const BLOCKS = [
+const COMPUTE_EXAMPLES = [
   {
-    title: "Jago Compute",
-    desc: "Jago picks the right AI for each task from more than 100 AI models, so simple jobs do not need expensive AI. It can also run on your own servers.",
-    bold: ["the right AI for each task"],
-    accent: ["more than 100 AI models"],
+    label: "Sales",
+    text: "Total sales look fine. Jago shows the region behind the slip, and the deals that caused it.",
+    bold: ["the region behind the slip"],
   },
   {
-    title: "Ease of Use",
-    desc: "Your team keeps working in WhatsApp, Slack and Teams. There is no new screen to learn. A person approves the key steps, and every action is on record.",
-    bold: ["WhatsApp, Slack and Teams"],
-    accent: ["every action is on record"],
+    label: "Finance",
+    text: "Costs look flat for the quarter. Jago shows the expense head that moved, and the invoice behind it.",
+    bold: ["the expense head that moved"],
+  },
+  {
+    label: "Operations",
+    text: "Output looks steady. Jago shows the line and the shift behind most of the delay.",
+    bold: ["the line and the shift"],
   },
 ];
 
@@ -63,7 +66,7 @@ export default function HowJagoWorks() {
       <div className="absolute -right-32 top-10 w-[32rem] h-[32rem] rounded-full bg-violet/10 blur-[130px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="How Jago Works" title="Ask. Automate. Analyze. Predict.">
-          The full detail behind the four modules,{" "}
+          The full detail behind the four modules, {" "}
           <strong className="copy-focus">plus the engine underneath them.</strong>{" "}
           <em className="copy-aside">One login, your rules.</em>
         </SectionIntro>
@@ -90,23 +93,55 @@ export default function HowJagoWorks() {
           ))}
         </div>
 
-        <div className="mt-8 grid md:grid-cols-2 gap-5">
-          {BLOCKS.map((b, i) => (
-            <motion.div
-              key={b.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.45, delay: i * 0.08 }}
-              className="rounded-3xl border border-primary/30 bg-primary/5 p-7"
-            >
-              <h3 className="font-heading text-xl font-semibold tracking-tight">{b.title}</h3>
-              <p className="mt-3 text-base text-muted-foreground leading-relaxed">
-                <CopyEmphasis text={b.desc} bold={b.bold} accent={b.accent} />
-              </p>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.45 }}
+          className="mt-8 rounded-3xl border border-primary/30 bg-primary/5 p-7 sm:p-9"
+        >
+          <h3 className="font-heading text-xl font-semibold tracking-tight">Jago Compute</h3>
+          <p className="mt-3 max-w-3xl text-base text-muted-foreground leading-relaxed">
+            <strong className="copy-focus">Averages hide problems.</strong> Jago looks one level down, by
+            region, product or team, and shows where a number really moved.
+          </p>
+          <div className="mt-6 grid md:grid-cols-3 gap-4">
+            {COMPUTE_EXAMPLES.map((c, i) => (
+              <motion.div
+                key={c.label}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4, delay: i * 0.07 }}
+                className="rounded-2xl border border-border bg-background/60 p-5"
+              >
+                <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">{c.label}</p>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/90">
+                  <CopyEmphasis text={c.text} bold={c.bold} />
+                </p>
+              </motion.div>
+            ))}
+          </div>
+          <p className="mt-6 max-w-3xl text-base text-muted-foreground leading-relaxed">
+            Jago also <strong className="copy-accent">picks the right AI for each task from more than 100 AI
+            models</strong>, <strong className="copy-focus">so you pay less.</strong>
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.45 }}
+          className="mt-8 rounded-3xl border border-border bg-card/40 p-7 sm:p-9"
+        >
+          <h3 className="font-heading text-xl font-semibold tracking-tight">Ease of Use</h3>
+          <p className="mt-3 max-w-3xl text-base text-muted-foreground leading-relaxed">
+            Your team works in <strong className="copy-focus">WhatsApp, Slack and Teams</strong>, typed or
+            spoken, in <strong className="copy-accent">50+ languages.</strong> There is no new screen to
+            learn and no coding to write. <em className="copy-aside">A person approves the key steps.</em>
+          </p>
+        </motion.div>
       </div>
     </section>
   );

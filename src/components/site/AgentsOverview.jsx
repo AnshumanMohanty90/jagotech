@@ -6,20 +6,20 @@ import SectionIntro from "@/components/site/SectionIntro";
 
 const LIFECYCLE = [
   {
-    title: "Detect",
-    desc: "Watches your connected systems around the clock, so nothing waits for someone to notice.",
+    title: "Watch",
+    desc: "Jago keeps an eye on your systems, so nothing waits for someone to notice.",
   },
   {
-    title: "Analyze",
-    desc: "Pulls context across records, documents and history before drawing a conclusion.",
+    title: "Check",
+    desc: "Jago reads the records and documents behind a question before it answers.",
   },
   {
-    title: "Act",
-    desc: "Creates, updates, assigns and notifies inside the systems where the work lives.",
+    title: "Do",
+    desc: "Jago creates, updates, assigns and notifies in the systems where the work lives.",
   },
   {
-    title: "Govern",
-    desc: "Waits for human approval where stakes are high, and logs every step it takes.",
+    title: "Approve",
+    desc: "A person approves the key steps, and every action is on record.",
   },
 ];
 
@@ -30,9 +30,9 @@ export default function AgentsOverview() {
     <section id="agents" className="relative scroll-mt-24 pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute -right-32 top-10 w-[32rem] h-[32rem] rounded-full bg-violet/10 blur-[130px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="AI agents" title="Agents that watch, understand, and do the work.">
-          An agent is <strong className="copy-focus">not a chatbot</strong>. It carries a job from signal to
-          finished outcome, <em className="copy-aside">inside your systems, under your rules.</em>
+        <SectionIntro eyebrow="AI agents" title="Agents that watch, check and do the work.">
+          An agent is <strong className="copy-focus">software that carries a job from question to finished
+          work</strong>, <em className="copy-aside">inside your systems, under your rules.</em>
         </SectionIntro>
 
         <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -65,8 +65,8 @@ export default function AgentsOverview() {
                 {d}
               </span>
             ))}
-            <Link to="/solutions#by-user" className="site-cta-secondary group gap-1.5 px-4 py-2 rounded-lg text-sm">
-              Explore by user
+            <Link to="/role-wins" className="site-cta-secondary group gap-1.5 px-4 py-2 rounded-lg text-sm">
+              See the role examples
               <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>

@@ -5,30 +5,32 @@ import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 const JSHIELD_POINTS = [
-  "Purpose-built privacy and compliance automation, from consent capture to breach readiness",
-  "Continuous compliance monitoring across your systems, with evidence gathered as work happens",
-  "Regulatory coverage spanning DPDPA, GDPR and SOC 2 workflows in a single control plane",
+  "Takes customer consent and keeps the proof",
+  "Plans your response if data is lost, before you need it",
+  "Keeps a record of the personal data you hold, ready for an audit",
 ];
 
 const FRAMEWORKS = [
   {
-    tag: "SOC 2 Type II",
-    title: "Audited security, independently verified.",
-    desc: "Strictly isolated tenant databases, with zero training of public models on your data. Access is uniform and role-scoped, and every agent action lands in an immutable audit log your auditors can actually read.",
+    tag: "The DPDP Act",
+    title: "India's data protection law, in plain words.",
+    desc: "The law sets duties for every company that holds personal data. The main duties apply from 13 May 2027, and fines can reach Rs 250 crore. JShield tracks each duty for you.",
     points: [
-      "Strictly isolated tenant databases",
-      "Zero training of public models on your data",
-      "Uniform access control and audit logging across every department",
+      "Ask for consent and keep the proof",
+      "Keep personal data safe",
+      "Delete it when the customer asks",
+      "Report a loss of data quickly",
     ],
   },
   {
-    tag: "GDPR",
-    title: "EU data protection, engineered in.",
-    desc: "Right-to-be-forgotten controls and European cloud residency guarantees, with PII handled consistently in every language your teams work in.",
+    tag: "SOC 2",
+    title: "Built to a global security standard.",
+    desc: "SOC 2 is a global security standard. Jago is built to it, and certification is under way. We will show the certificate when it is issued.",
     points: [
-      "Right-to-be-forgotten controls",
-      "European cloud residency guarantees",
-      "Consent and PII handling applied across 50+ languages",
+      "Who can see and do what, set by you",
+      "A record of every action",
+      "A person approves the key steps",
+      "Your data stays in India",
     ],
   },
 ];
@@ -57,10 +59,10 @@ export default function Compliance() {
             </div>
             <p className="mt-4 max-w-[70ch] text-base sm:text-lg leading-relaxed text-muted-foreground text-balance">
               <CopyEmphasis
-                text="From the makers of JagoTech, JShield is our dedicated compliance platform: it automates privacy operations, keeps regulatory evidence current, and works alongside your JagoTech agents, so compliance moves at the speed of the work itself."
-                bold={["dedicated compliance platform"]}
-                accent={["works alongside your JagoTech agents"]}
-                italic={["at the speed of the work itself"]}
+                text="JShield is our companion product for India's data protection law. It tracks consent, breaches and the duties that start on 13 May 2027, alongside your Jago agents."
+                bold={["companion product for India's data protection law"]}
+                accent={["consent, breaches"]}
+                italic={["alongside your Jago agents"]}
               />
             </p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-3">
@@ -87,14 +89,14 @@ export default function Compliance() {
           </div>
         </motion.div>
 
-        {/* SOC 2 and GDPR */}
+        {/* DPDP duties and SOC 2 */}
         <div className="mt-14 sm:mt-16">
-          <SectionIntro eyebrow="Compliance posture" title="Certainty you can hand to your auditors.">
+          <SectionIntro eyebrow="Compliance posture" title="What the law asks of you.">
             <CopyEmphasis
-              text="JagoTech is built for regulated industries: security, privacy and governance are part of the platform, not a layer bolted on afterwards."
-              bold={["built for regulated industries"]}
-              accent={["part of the platform"]}
-              italic={["not a layer bolted on afterwards"]}
+              text="India's data protection law, the DPDP Act, applies to every company that holds personal data. The main duties start on 13 May 2027, and fines can reach Rs 250 crore."
+              bold={["every company that holds personal data"]}
+              accent={["13 May 2027", "Rs 250 crore"]}
+              italic={["the DPDP Act"]}
             />
           </SectionIntro>
 
@@ -117,8 +119,8 @@ export default function Compliance() {
                 <p className="mt-3 text-base leading-relaxed text-muted-foreground text-pretty">
                   <CopyEmphasis
                     text={f.desc}
-                    bold={["Strictly isolated tenant databases", "Right-to-be-forgotten controls", "European cloud residency guarantees"]}
-                    accent={["zero training of public models", "immutable audit log"]}
+                    bold={["The main duties apply from 13 May 2027", "built to it"]}
+                    accent={["certification is under way", "Your data stays in India"]}
                   />
                 </p>
                 <ul className="mt-5 space-y-2.5">
@@ -140,10 +142,10 @@ export default function Compliance() {
             className="mt-8 max-w-[70ch] text-sm leading-relaxed text-muted-foreground"
           >
             <CopyEmphasis
-              text="Consequential actions wait for human approval before they run, and every department works under the same governance, so your compliance story stays consistent no matter where agents operate."
-              bold={["same governance"]}
-              accent={["human approval"]}
-              italic={["no matter where agents operate"]}
+              text="A person approves the key steps before anything changes, and every action is on record, ready for an audit."
+              bold={["A person approves the key steps"]}
+              accent={["on record"]}
+              italic={["ready for an audit"]}
             />
           </motion.p>
         </div>

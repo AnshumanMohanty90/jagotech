@@ -11,9 +11,9 @@ export default function ResourcesPage() {
       <Navbar />
       <main className="pt-16">
         <PageHeader eyebrow="Resources" title="Learn from teams already doing it.">
-          Blogs and guides on putting AI agents to work, from{" "}
-          <strong className="copy-focus">first process to full scale</strong>,{" "}
-          <em className="copy-aside">with governance throughout.</em>
+          Short notes and working guides on putting AI agents to work,{" "}
+          <strong className="copy-focus">from your first process to company-wide.</strong>{" "}
+          <em className="copy-aside">No theory.</em>
         </PageHeader>
         <ResourceLibrary />
       </main>

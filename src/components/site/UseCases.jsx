@@ -6,30 +6,30 @@ import CopyEmphasis from "@/components/site/CopyEmphasis";
 const USE_CASES = [
   {
     id: "employee-productivity",
-    title: "Employee Productivity",
-    desc: "Instant answers from connected systems, automated reports and multilingual drafting, so people spend their time on judgment, not on searching.",
-    bold: ["Instant answers", "automated reports"],
+    title: "Team Productivity",
+    desc: "Your team asks questions and gets answers from your own systems, so the morning is not spent hunting for numbers.",
+    bold: ["answers from your own systems"],
   },
   {
     id: "customer-experience",
     title: "Customer Experience",
-    desc: "Resolve issues, understand customers, and create and route tickets automatically, with full context on every conversation.",
-    bold: ["Resolve issues"],
-    accent: ["full context"],
+    desc: "Jago reads complaints from every channel and language, groups them by cause, and routes them to the right person.",
+    bold: ["every channel and language"],
+    accent: ["groups them by cause"],
   },
   {
     id: "workflow-automation",
     title: "Workflow Automation",
-    desc: "Move workflows forward, manage exceptions and assign work, without swivel-chair handoffs between systems.",
-    bold: ["manage exceptions"],
-    accent: ["without swivel-chair handoffs"],
+    desc: "Jago moves work between your systems and assigns it, so nothing waits in a queue for someone to notice.",
+    bold: ["moves work between your systems"],
+    accent: ["nothing waits in a queue"],
   },
   {
     id: "decision-support",
     title: "Business Decision Support",
-    desc: "Ask business questions in plain language, spot risks early, and make informed decisions on grounded numbers.",
-    bold: ["Ask business questions"],
-    accent: ["grounded numbers"],
+    desc: "Ask a business question in plain words, get the number, and see the reason behind it.",
+    bold: ["in plain words"],
+    accent: ["the reason behind it"],
   },
 ];
 
@@ -38,9 +38,9 @@ export default function UseCases() {
     <section id="use-cases" className="relative scroll-mt-24 pt-4 sm:pt-6 pb-12 sm:pb-16">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="By use case" title="Start with the outcome you need.">
-          The same platform, aimed at the result that matters to you,{" "}
-          <em className="copy-aside">in whatever order you want to move.</em>
+        <SectionIntro eyebrow="By use case" title="The same platform, aimed at the result you need.">
+          Pick the outcome first. <strong className="copy-focus">The work starts in 8 weeks.</strong>{" "}
+          <em className="copy-aside">Whatever you pick.</em>
         </SectionIntro>
 
         <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">

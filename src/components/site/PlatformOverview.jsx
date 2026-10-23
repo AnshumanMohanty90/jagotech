@@ -7,20 +7,19 @@ import CopyEmphasis from "@/components/site/CopyEmphasis";
 const STEPS = [
   {
     title: "Connect",
-    desc: "Your CRM, ERP, databases, documents, and business applications.",
-    bold: ["CRM, ERP, databases"],
+    desc: "Your sales, finance and HR systems, your documents and your voice notes, in one place.",
+    bold: ["sales, finance and HR systems"],
   },
   {
     title: "Understand",
-    desc: "Your business data, processes, rules, and context.",
-    bold: ["data, processes, rules"],
-    accent: ["context"],
+    desc: "Jago learns your data, your rules and how your team works.",
+    bold: ["your data, your rules"],
+    accent: ["how your team works"],
   },
   {
     title: "Act",
-    desc: "Create, update, assign, approve, notify, and trigger workflows.",
-    bold: ["approve, notify"],
-    accent: ["trigger workflows"],
+    desc: "Jago creates, updates, assigns and notifies. A person approves the key steps.",
+    bold: ["A person approves the key steps"],
   },
 ];
 
@@ -30,11 +29,10 @@ export default function PlatformOverview() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro
           eyebrow="Platform overview"
-          title="Connect your systems. Give agents context. Let them act."
+          title="Connect your systems. Let Jago do the work."
         >
-          Jago gives AI agents access to the{" "}
-          <strong className="copy-focus">information, systems and workflows</strong> your business
-          already relies on, <em className="copy-aside">so the work gets done, not just discussed.</em>
+          Jago sits on top of the tools you already run and carries the work from question to done,{" "}
+          <em className="copy-aside">so the work gets done, not just discussed.</em>
         </SectionIntro>
 
         <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-5">
@@ -57,8 +55,8 @@ export default function PlatformOverview() {
 
         <div className="mt-8 rounded-2xl border border-border bg-card/30 p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
           <p className="text-base leading-relaxed text-muted-foreground">
-            <strong className="copy-focus">AI agents for the work that matters</strong>, deployed across
-            every department. <em className="copy-aside">Meet them.</em>
+            <strong className="copy-focus">One agent per job, ready in 8 weeks.</strong>{" "}
+            <em className="copy-aside">Meet them.</em>
           </p>
           <a href="#agents" className="site-cta-secondary group gap-1.5 px-4 py-2 rounded-lg text-sm self-start lg:self-auto">
             Explore AI agents

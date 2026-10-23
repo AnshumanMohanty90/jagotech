@@ -4,28 +4,28 @@ import SectionIntro from "@/components/site/SectionIntro";
 
 const INTEGRATIONS = [
   {
-    title: "CRM and Sales",
-    desc: "Pipeline records, deal history and account context, read and written in place.",
+    title: "Sales systems",
+    desc: "Deals, accounts and call history in your CRM, read and updated in place.",
   },
   {
-    title: "ERP and Finance",
-    desc: "Invoices, purchase orders, approvals and ledgers across your ERP.",
+    title: "Finance systems",
+    desc: "Invoices, purchase orders and ledgers in your ERP.",
   },
   {
-    title: "Databases and Warehouses",
-    desc: "Plain-language queries translated to governed SQL over your data.",
+    title: "HR systems",
+    desc: "Leave, attendance and payroll records, in one place.",
   },
   {
-    title: "Documents and Files",
-    desc: "Contracts, reports, images and audio, parsed and understood.",
+    title: "Documents",
+    desc: "Contracts, reports and PDFs, read and summarised.",
   },
   {
-    title: "Business Applications",
-    desc: "Tickets, HR systems and internal tools, connected without rip-and-replace.",
+    title: "Voice",
+    desc: "Meeting recordings and voice notes, written out and searchable.",
   },
   {
-    title: "Messaging Channels",
-    desc: "Slack, email and voice, so agents meet people where work happens.",
+    title: "Messaging channels",
+    desc: "WhatsApp, Slack and Teams, where your people already work.",
   },
 ];
 
@@ -35,8 +35,9 @@ export default function Integrations() {
       <div className="absolute -left-32 top-1/3 w-[30rem] h-[30rem] rounded-full bg-emerald/8 blur-[130px]" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Integrations" title="Connected to the systems you already run.">
-          No rip-and-replace. Jago sits <strong className="copy-focus">on top of your existing stack</strong>,
-          with governance applied to <strong className="copy-accent">every read and write</strong>.
+          Nothing gets replaced. Jago reads and writes in the systems you already have, and{" "}
+          <strong className="copy-focus">who can see and do what</strong> stays{" "}
+          <strong className="copy-accent">under your control.</strong>
         </SectionIntro>
 
         <div className="mt-8 sm:mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">

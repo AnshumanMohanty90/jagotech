@@ -10,9 +10,10 @@ export default function CompliancePage() {
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
       <main className="pt-16">
-        <PageHeader eyebrow="Compliance" title="Compliance, built into everything JagoTech does.">
-          Security and privacy are not add-ons here. Meet the posture behind the platform, and
-          JShield, our dedicated compliance companion.
+        <PageHeader eyebrow="Compliance" title="Built for India's data protection law.">
+          Jago keeps a record of every action.{" "}
+          <strong className="copy-focus">JShield tracks consent and breaches</strong>, and the duties that
+          start on <strong className="copy-accent">13 May 2027.</strong>
         </PageHeader>
         <Compliance />
         <CTA />

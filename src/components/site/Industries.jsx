@@ -4,34 +4,40 @@ import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 const INDUSTRIES = [
   {
-    slug: "bfsi",
-    name: "BFSI and Banking",
-    desc: "Instant KYC parsing from mobile snapshots, automated loan eligibility triage, and compliance audit log generation.",
+    slug: "banks-and-lenders",
+    name: "Banks and Lenders",
+    desc: "Branch risk checks with live data, customer consent on WhatsApp, and audit reports that write themselves.",
+    bold: ["Branch risk checks with live data", "consent on WhatsApp", "audit reports"],
   },
   {
     slug: "logistics",
     name: "Supply Chain and Logistics",
-    desc: "Voice-based warehouse stock checks, automated bill-of-lading parsing, and predictive shipment delay warnings.",
+    desc: "Check stock by voice in the warehouse, read shipping documents, and get a warning before a shipment runs late.",
+    bold: ["by voice in the warehouse", "before a shipment runs late"],
   },
   {
     slug: "retail-fmcg",
     name: "Retail and FMCG",
-    desc: "Field sales orders placed by voice message, store display audit photo analysis, and automated reorder alerts.",
+    desc: "Field teams place orders by voice message, shelf photos are checked against display rules, and reorder alerts go out on time.",
+    bold: ["orders by voice message", "reorder alerts"],
   },
   {
     slug: "healthcare",
     name: "Healthcare and Pharma",
-    desc: "Clinical research document questions, lab report parsing, and compliant multilingual patient support.",
+    desc: "Ask questions across research documents and lab reports, and answer patients in their own language.",
+    bold: ["research documents and lab reports", "in their own language"],
   },
   {
     slug: "manufacturing",
     name: "Manufacturing",
-    desc: "Equipment maintenance voice lookup, shop-floor quality inspection, and automated spare parts procurement.",
+    desc: "Ask about a machine by voice on the shop floor, check quality from line photos, and order parts without the paperwork.",
+    bold: ["by voice on the shop floor", "without the paperwork"],
   },
   {
     slug: "telecom",
     name: "Telecom and Services",
-    desc: "Customer service ticket classification, SLA breach predictions, and voice assistant support for field engineers.",
+    desc: "Sort customer tickets as they arrive, get a warning before a service promise is broken, and help field engineers by voice.",
+    bold: ["as they arrive", "help field engineers by voice"],
   },
 ];
 
@@ -44,12 +50,12 @@ export default function Industries() {
         <div className="min-w-0">
           <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">By industry</p>
           <h3 className="mt-2 font-heading text-2xl sm:text-3xl font-semibold leading-snug tracking-tight">
-            Vertical workflows, ready on day one.
+            Made for your industry.
           </h3>
         </div>
         <p className="max-w-md text-base leading-relaxed text-muted-foreground text-pretty">
-          <strong className="copy-focus">Tailored pipelines for your sector.</strong>{" "}
-          <em className="copy-aside">No months of bespoke build.</em>
+          <strong className="copy-focus">Banks and lenders first.</strong>{" "}
+          <em className="copy-aside">Then the same plain style for every sector.</em>
         </p>
       </div>
 
@@ -62,11 +68,15 @@ export default function Industries() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.4, delay: (i % 3) * 0.06 }}
-            className="group scroll-mt-24 rounded-2xl border border-border bg-card/40 p-5 hover:border-primary/40 hover:bg-card/70 transition-all"
+            className={`group scroll-mt-24 rounded-2xl border p-5 transition-all ${
+              i === 0
+                ? "border-primary/40 bg-primary/5 hover:border-primary/60"
+                : "border-border bg-card/40 hover:border-primary/40 hover:bg-card/70"
+            }`}
           >
             <h4 className="min-w-0 font-heading text-lg font-semibold leading-snug">{it.name}</h4>
             <p className="mt-3 text-base text-muted-foreground leading-relaxed">
-              <CopyEmphasis text={it.desc} bold={["Instant KYC parsing", "predictive shipment delay warnings", "automated reorder alerts", "compliant multilingual patient support", "automated spare parts procurement", "SLA breach predictions"]} />
+              <CopyEmphasis text={it.desc} bold={it.bold} />
             </p>
           </motion.div>
         ))}
