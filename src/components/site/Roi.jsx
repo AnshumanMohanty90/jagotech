@@ -5,7 +5,12 @@ import { ArrowRight } from "lucide-react";
 import SectionIntro from "@/components/site/SectionIntro";
 
 const USD_TO_INR = 83;
-const fmt = (n) => `Rs ${Math.round(n * USD_TO_INR).toLocaleString("en-IN")} (about $${Math.round(n).toLocaleString("en-US")})`;
+const fmtInr = (inr) => {
+  if (inr >= 10000000) return `Rs ${(inr / 10000000).toFixed(1)} crore a year`;
+  if (inr >= 100000) return `Rs ${(inr / 100000).toFixed(1)} lakh a year`;
+  return `Rs ${Math.round(inr).toLocaleString("en-IN")} a year`;
+};
+const fmt = (n) => `${fmtInr(n * USD_TO_INR)} (about $${Math.round(n).toLocaleString("en-US")})`;
 
 export default function Roi() {
   const [emp, setEmp] = useState(1200);
@@ -21,9 +26,10 @@ export default function Roi() {
     <section id="roi" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute inset-0 grid-bg-fine opacity-15 mask-fade-edges" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="Financial impact" title="See what consolidation saves.">
-          Estimate savings from <strong className="copy-focus">retiring fragmented tools</strong> and routing
-          every query to the <strong className="copy-accent">right model.</strong>
+        <SectionIntro eyebrow="Your estimated savings" title="See what you could save.">
+          Enter your team size and current AI spend. We estimate what you save by replacing{" "}
+          <strong className="copy-focus">separate tools</strong> with{" "}
+          <strong className="copy-accent">one platform.</strong>
         </SectionIntro>
 
         <div className="mt-8 grid lg:grid-cols-2 gap-6">
@@ -57,7 +63,7 @@ export default function Roi() {
               </div>
             ))}
             <p className="text-sm leading-relaxed text-muted-foreground">
-              <em>Estimate based on typical enterprise benchmarks. Your assessment may vary.</em>
+              <em>Estimate only. Based on the numbers you enter. We confirm the real figure in your 8-week plan.</em>
             </p>
           </motion.div>
 
@@ -76,7 +82,7 @@ export default function Roi() {
               </div>
               <div className="h-px bg-border" />
               <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-4">
-                <span className="text-base leading-relaxed text-muted-foreground">LLM routing efficiency</span>
+                <span className="text-base leading-relaxed text-muted-foreground">Savings from using lower-cost AI for simple tasks</span>
                 <span className="font-heading text-2xl sm:text-3xl font-semibold text-primary">{fmt(routingSavings)}</span>
               </div>
               <div className="h-px bg-border" />
@@ -86,7 +92,7 @@ export default function Roi() {
               </div>
             </div>
             <Link
-              to="/contact"
+              to="/contact?intent=plan"
               className="site-cta-primary group mt-8 gap-2 px-5 py-3 rounded-xl"
             >
               Get your free 8-week plan

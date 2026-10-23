@@ -6,7 +6,7 @@ const INDUSTRIES = [
   {
     slug: "banks-and-lenders",
     name: "Banks and Lenders",
-    desc: "Branch risk checks with live data, customer consent on WhatsApp, and audit reports that write themselves.",
+    desc: "Branch risk checks with live data, customer consent on WhatsApp, and audit reports drafted for your team to review.",
     bold: ["Branch risk checks with live data", "consent on WhatsApp", "audit reports"],
   },
   {
@@ -53,10 +53,6 @@ export default function Industries() {
             Made for your industry.
           </h3>
         </div>
-        <p className="max-w-md text-base leading-relaxed text-muted-foreground text-pretty">
-          <strong className="copy-focus">Banks and lenders first.</strong>{" "}
-          <em className="copy-aside">Then the same plain style for every sector.</em>
-        </p>
       </div>
 
       <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">

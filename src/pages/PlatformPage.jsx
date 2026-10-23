@@ -1,4 +1,5 @@
 import React from "react";
+import usePageMeta from "@/hooks/usePageMeta";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/site/Navbar";
@@ -11,6 +12,7 @@ import CTA from "@/components/site/CTA";
 import Footer from "@/components/site/Footer";
 
 export default function PlatformPage() {
+  usePageMeta("Platform | Jago AI");
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
@@ -18,7 +20,7 @@ export default function PlatformPage() {
         <PageHeader eyebrow="Platform" title="One platform for your systems, documents and voice.">
           Jago connects your <strong className="copy-focus">sales, finance and HR systems</strong>, reads
           your documents and hears your voice notes.{" "}
-          <strong className="copy-accent">A person approves the key steps.</strong>
+          <strong className="copy-accent">You choose which actions need a sign-off.</strong>
         </PageHeader>
         <PlatformOverview />
         <AgentsOverview />
@@ -29,7 +31,7 @@ export default function PlatformPage() {
             <div className="rounded-2xl border border-primary/30 bg-primary/5 p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
               <p className="max-w-2xl text-base leading-relaxed text-foreground/90">
                 <strong className="copy-focus">Who can see and do what, with a record of every action.</strong>{" "}
-                A person approves the key steps before anything changes.
+                Every change is logged with who approved it.
               </p>
               <Link
                 to="/security"

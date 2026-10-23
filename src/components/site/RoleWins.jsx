@@ -57,11 +57,6 @@ export default function RoleWins() {
                 }`}
               >
                 {r.role}
-                {r.isNew && (
-                  <span className="absolute -top-2 -right-2 font-mono text-xs leading-relaxed uppercase px-1.5 py-0.5 rounded-md bg-primary text-primary-foreground">
-                    New
-                  </span>
-                )}
               </button>
             );
           })}
@@ -102,7 +97,7 @@ export default function RoleWins() {
             </div>
 
             <div className="rounded-3xl border border-border bg-card/40 backdrop-blur p-7 sm:p-9 flex flex-col">
-              <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-primary">What Jago unlocks</p>
+              <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-primary">What changes</p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
                 <CopyEmphasis text={active.unlock} bold={["voice note", "ready-made agent", "in their own language", "on WhatsApp", "more than 100 AI models"]} accent={["50+ languages", "so you pay less"]} />
               </p>
@@ -111,7 +106,7 @@ export default function RoleWins() {
                 {active.channel}
               </div>
               <Link
-                to="/contact"
+                to="/contact?intent=plan"
                 className="site-cta-primary group mt-6 self-start gap-2 px-4 py-2.5 rounded-xl text-sm"
               >
                 Get your free 8-week plan

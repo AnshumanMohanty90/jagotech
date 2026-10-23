@@ -11,22 +11,21 @@ const PLANS = [
     price: "Rs 15,000 a month",
     desc: "Ask questions and see why numbers move, for up to 10 people.",
     cta: "Try it free for a week",
-    href: "/contact",
+    href: "/contact?intent=trial",
   },
   {
     name: "Growth",
-    tag: "Most popular",
     price: "Rs 8 lakh a year",
     desc: "All four modules for up to 50 people, on WhatsApp, Slack and Teams.",
     cta: "Try it free for a week",
-    href: "/contact",
+    href: "/contact?intent=trial",
   },
   {
     name: "Enterprise",
     price: "Rs 30 lakh a year",
     desc: "Every module, with as many AI agents and people as you need.",
     cta: "Get your free 8-week plan",
-    href: "/contact",
+    href: "/contact?intent=plan",
     primary: true,
   },
   {
@@ -42,7 +41,7 @@ const PLANS = [
     price: "From Rs 60 lakh a year, plus Rs 15 lakh set-up",
     desc: "Jago runs on your own servers, with AI tuned to your data.",
     cta: "Talk to us",
-    href: "/contact",
+    href: "/contact?intent=plan",
   },
 ];
 
@@ -71,19 +70,10 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.4, delay: (i % 3) * 0.08 }}
-              className={`relative rounded-3xl border p-7 flex flex-col ${
-                p.tag
-                  ? "border-primary/50 bg-card/70 backdrop-blur glow-cyan"
-                  : "border-border bg-card/40 hover:border-primary/30 transition-colors"
-              }`}
+              className="relative rounded-3xl border border-border bg-card/40 hover:border-primary/30 transition-colors p-7 flex flex-col"
             >
               <div className="flex items-center justify-between gap-2">
                 <h3 className="font-heading text-xl font-semibold">{p.name}</h3>
-                {p.tag && (
-                  <span className="font-mono text-xs leading-relaxed uppercase tracking-wide text-primary border border-primary/30 bg-primary/10 rounded-full px-2.5 py-1">
-                    {p.tag}
-                  </span>
-                )}
               </div>
 
               <div className="mt-4 flex flex-col items-start gap-1">

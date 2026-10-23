@@ -78,7 +78,7 @@ export default function CustomersStory() {
           </p>
         </div>
 
-        <Link to="/contact" className="site-cta-primary group mt-10 gap-2 px-5 py-3 rounded-xl">
+        <Link to="/contact?intent=plan" className="site-cta-primary group mt-10 gap-2 px-5 py-3 rounded-xl">
           Get your free 8-week plan
           <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
         </Link>

@@ -5,10 +5,10 @@ const PILLARS = [
   {
     id: "analyze",
     label: "Analyze",
-    tag: "Conversational BI",
-    title: "Query data warehouses in plain language.",
+    tag: "Ask your data",
+    title: "Ask a question, get the answer with the numbers behind it.",
     prompt: "Show regional sales performance against target for Q3.",
-    output: "SQL executed in 0.04s. Chart created: North +18%, South -4%.",
+    output: "Answered in 2 seconds. Chart created: North +18%, South -4%.",
   },
   {
     id: "predict",

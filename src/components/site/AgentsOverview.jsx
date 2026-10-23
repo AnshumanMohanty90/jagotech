@@ -19,7 +19,7 @@ const LIFECYCLE = [
   },
   {
     title: "Approve",
-    desc: "A person approves the key steps, and every action is on record.",
+    desc: "You choose which actions need a sign-off, and every action is on record.",
   },
 ];
 
@@ -53,7 +53,7 @@ export default function AgentsOverview() {
 
         <div className="mt-8 rounded-2xl border border-border bg-card/30 p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
           <p className="text-base leading-relaxed text-muted-foreground">
-            <strong className="copy-focus">One agent per job</strong>, across every department.{" "}
+            <strong className="copy-focus">Every department has its own agent.</strong>{" "}
             <em className="copy-aside">See what yours does.</em>
           </p>
           <div className="flex flex-wrap items-center gap-2">

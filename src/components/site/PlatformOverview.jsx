@@ -18,8 +18,8 @@ const STEPS = [
   },
   {
     title: "Act",
-    desc: "Jago creates, updates, assigns and notifies. A person approves the key steps.",
-    bold: ["A person approves the key steps"],
+    desc: "Jago creates, updates, assigns and notifies. Every change is logged with who approved it.",
+    bold: ["Every change is logged with who approved it"],
   },
 ];
 
@@ -31,8 +31,7 @@ export default function PlatformOverview() {
           eyebrow="Platform overview"
           title="Connect your systems. Let Jago do the work."
         >
-          Jago sits on top of the tools you already run and carries the work from question to done,{" "}
-          <em className="copy-aside">so the work gets done, not just discussed.</em>
+          Jago sits on top of the tools you already run and carries the work from question to done.
         </SectionIntro>
 
         <div className="mt-8 sm:mt-10 grid md:grid-cols-3 gap-5">

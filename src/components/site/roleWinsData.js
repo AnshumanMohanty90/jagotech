@@ -42,7 +42,6 @@ export const ROLES = [
     with: "A voice note on WhatsApp, answered in your language",
     unlock: "No laptop, no call to the office. Typed or spoken, in 50+ languages.",
     channel: "WhatsApp voice note",
-    isNew: true,
   },
   {
     id: "delivery_dir",
@@ -91,7 +90,6 @@ export const ROLES = [
     with: "An alert before the renewal window opens",
     unlock: "Supplier emails are read and summarised, and every renewal is flagged early.",
     channel: "Email",
-    isNew: true,
   },
   {
     id: "process_mgr",
@@ -140,7 +138,6 @@ export const ROLES = [
     with: "Complaints from every channel, grouped by cause",
     unlock: "Complaints from calls, email and WhatsApp are read and grouped in one place, in any language.",
     channel: "WhatsApp and email",
-    isNew: true,
   },
   {
     id: "compliance_mgr",
@@ -189,6 +186,5 @@ export const ROLES = [
     with: "One platform, one set of who-sees-what rules",
     unlock: "Jago picks the right AI for each task from more than 100 AI models, so you pay less. It can run on your own servers.",
     channel: "Web",
-    isNew: true,
   },
 ];

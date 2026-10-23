@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 import AskDemo from "@/components/site/AskDemo";
 import PillarCarousel from "@/components/site/PillarCarousel";
@@ -89,13 +90,13 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.18 }}
               className="mt-8 flex flex-wrap items-center gap-3"
             >
-              <a href="#contact" className="site-cta-primary group gap-2 px-5 py-3 rounded-xl">
+              <Link to="/contact?intent=plan" className="site-cta-primary group gap-2 px-5 py-3 rounded-xl">
                 Get your free 8-week plan
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </a>
-              <a href="#contact" className="site-cta-secondary px-5 py-3 rounded-xl backdrop-blur">
+              </Link>
+              <Link to="/contact?intent=trial" className="site-cta-secondary px-5 py-3 rounded-xl backdrop-blur">
                 Try it free for a week
-              </a>
+              </Link>
             </motion.div>
 
             <motion.p
