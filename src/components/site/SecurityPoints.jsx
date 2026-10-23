@@ -37,7 +37,7 @@ export default function SecurityPoints() {
           Security certification (SOC 2 and ISO 27001, two global standards) is under way.
         </p>
 
-        <Link to="/contact?intent=plan" className="site-cta-primary group mt-8 gap-2 px-5 py-3 rounded-xl">
+        <Link to="/contact?intent=enterprise" className="site-cta-primary group mt-8 gap-2 px-5 py-3 rounded-xl">
           Talk to us
           <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
         </Link>

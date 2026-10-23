@@ -92,12 +92,12 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.18 }}
               className="mt-8 flex flex-wrap items-center gap-3"
             >
-              <Link to="/contact?intent=plan" className="site-cta-primary group gap-2 px-5 py-3 rounded-xl">
-                Get your free 8-week plan
+              <Link to="/contact?intent=trial" className="site-cta-primary group gap-2 px-5 py-3 rounded-xl">
+                Try it free for a week
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>
-              <Link to="/contact?intent=trial" className="site-cta-secondary px-5 py-3 rounded-xl backdrop-blur">
-                Try it free for a week
+              <Link to="/contact?intent=plan" className="site-cta-secondary px-5 py-3 rounded-xl backdrop-blur">
+                Download the 8-week plan
               </Link>
             </motion.div>
 

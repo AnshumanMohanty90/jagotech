@@ -24,8 +24,8 @@ const PLANS = [
     name: "Enterprise",
     price: "Rs 30 lakh a year",
     desc: "Every module, with as many AI agents and people as you need.",
-    cta: "Get your free 8-week plan",
-    href: "/contact?intent=plan",
+    cta: "Talk to us",
+    href: "/contact?intent=enterprise",
     primary: true,
   },
   {
@@ -41,7 +41,7 @@ const PLANS = [
     price: "From Rs 60 lakh a year, plus Rs 15 lakh set-up",
     desc: "Jago runs on your own servers, with AI tuned to your data.",
     cta: "Talk to us",
-    href: "/contact?intent=plan",
+    href: "/contact?intent=enterprise",
   },
 ];
 

@@ -27,7 +27,7 @@ export default function AboutPage() {
               compliance work is heavy and the rules are strict.
             </p>
             <Link to="/contact?intent=plan" className="site-cta-primary group mt-8 gap-2 px-5 py-3 rounded-xl">
-              Get your free 8-week plan
+              Download the 8-week plan
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>

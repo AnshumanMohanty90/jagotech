@@ -111,8 +111,8 @@ export default function Navbar({ logoVariant }) {
             )
           )}
 
-          <Link to="/contact?intent=plan" className="site-cta-primary group gap-1.5 px-4 py-2 text-sm rounded-lg">
-            Get your free 8-week plan
+          <Link to="/contact?intent=trial" className="site-cta-primary group gap-1.5 px-4 py-2 text-sm rounded-lg">
+            Try it free for a week
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </div>
@@ -210,11 +210,11 @@ export default function Navbar({ logoVariant }) {
               )}
 
               <Link
-                to="/contact?intent=plan"
+                to="/contact?intent=trial"
                 onClick={() => setOpen(false)}
                 className="site-cta-primary mt-2 px-3 py-2.5 text-center text-sm rounded-lg"
               >
-                Get your free 8-week plan
+                Try it free for a week
               </Link>
             </div>
           </motion.div>

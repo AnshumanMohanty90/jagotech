@@ -1,7 +1,7 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.54';
 import { secrets, waitUntil } from 'base44:runtime';
 
-const INTENTS = ['plan', 'trial', 'guide'];
+const INTENTS = ['plan', 'trial', 'enterprise', 'guide'];
 
 const PERSONAL_DOMAINS = [
   'gmail.com', 'googlemail.com', 'yahoo.com', 'yahoo.co.in', 'yahoo.in',

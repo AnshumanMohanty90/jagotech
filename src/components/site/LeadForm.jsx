@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { base44 } from "@/api/base44Client";
 
 const SIZES = ["1 to 50", "51 to 200", "201 to 500", "501 to 1,000", "Over 1,000"];
@@ -13,15 +13,30 @@ const PERSONAL_DOMAINS = [
   "rediffmail.com", "yandex.com", "yandex.ru", "gmx.com", "mail.com",
 ];
 
+// Placeholder for the 8-week plan PDF. Swap this single URL when the file is ready.
+export const PLAN_PDF_URL = "/8-week-plan.pdf";
+
+const downloadPlanPdf = () => {
+  const a = document.createElement("a");
+  a.href = PLAN_PDF_URL;
+  a.download = "jago-8-week-plan.pdf";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+};
+
 const INTENT_TEXT = {
   plan: {
-    button: "Get my 8-week plan",
-    thanks:
-      "Thank you. We will email you within one working day to fix a 30-minute call. Have one example of the task ready, such as a report or a file your team prepares by hand.",
+    button: "Download the plan",
+    thanks: "Thank you. Your download has started.",
   },
   trial: {
-    button: "Start my free week",
-    thanks: "Thank you. We will email your workspace details within one working day.",
+    button: "Activate my free week",
+    thanks: "Thank you. Your trial request is in. We will email your login details to you.",
+  },
+  enterprise: {
+    button: "Send",
+    thanks: "Thank you. Our team will be in touch.",
   },
   guide: {
     button: "Notify me",
@@ -38,7 +53,7 @@ export default function LeadForm({
   defaultTask = "",
   buttonLabel,
   thankYou,
-  note = "We reply within one working day. We do not share your details.",
+  note = "We do not share your details.",
   mini = false,
 }) {
   const { pathname } = useLocation();
@@ -80,12 +95,34 @@ export default function LeadForm({
         throw new Error("Save failed");
       }
       setSent(true);
+      if (intent === "plan") downloadPlanPdf();
     } catch {
       setError("Something went wrong. Please try again in a moment.");
     } finally {
       setSending(false);
     }
   };
+
+  if (sent && intent === "plan") {
+    return (
+      <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-5">
+        <div className="flex items-start gap-3">
+          <Check className="mt-1 h-5 w-5 shrink-0 text-emerald" />
+          <p className="text-base leading-relaxed text-foreground/90">
+            Thank you. Your download has started.
+          </p>
+        </div>
+        <div className="flex flex-wrap items-center gap-3">
+          <a href={PLAN_PDF_URL} download="jago-8-week-plan.pdf" className="site-cta-secondary px-5 py-3 rounded-xl">
+            Download again
+          </a>
+          <Link to="/contact?intent=trial" className="site-cta-primary px-5 py-3 rounded-xl">
+            Try it free for a week
+          </Link>
+        </div>
+      </motion.div>
+    );
+  }
 
   if (sent) {
     return (
