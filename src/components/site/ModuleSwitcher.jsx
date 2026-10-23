@@ -1,48 +1,51 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
-import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 const MODULES = [
   {
+    id: "ask",
     title: "Ask",
+    desc: "Get the answer.",
     anchor: "ask",
-    desc: "Get answers from your company data in seconds. \"What were North region sales against target?\"",
-    bold: ["answers from your company data"],
-    accent: ["in seconds"],
+    example: "Show regional sales performance against target for Q3.",
+    answer:
+      "North is 18% ahead of target. South is 4% behind. West and East are on target. Chart attached.",
+    result: "Answered in 2 seconds.",
   },
   {
+    id: "analyze",
     title: "Analyze",
+    desc: "See why it moved.",
     anchor: "analyze",
-    desc: "See why a number moved, with the reasons behind it. \"Why did South fall 4%?\"",
-    bold: ["why a number moved"],
-    accent: ["the reasons behind it"],
+    example: "Why did South region sales fall behind target last quarter?",
+    answer:
+      "Two branches account for most of the gap: collections slowed in the last six weeks of the quarter and three large orders moved to the next quarter.",
+    result: "Answered in 2 seconds, with the reasons behind it.",
   },
   {
+    id: "predict",
     title: "Predict",
+    desc: "See what comes next.",
     anchor: "predict",
-    desc: "Hear about a problem before it hits your results. Alerts arrive on WhatsApp.",
-    bold: ["before it hits your results"],
-    accent: ["Alerts arrive on WhatsApp"],
+    example: "Which deals will slip this quarter?",
+    answer:
+      "Three deals are likely to slip: two are waiting on procurement sign-off and one has gone quiet for two weeks. An alert has gone to the deal owners on WhatsApp.",
+    result: "3 deals flagged. Alert logged.",
   },
   {
+    id: "automate",
     title: "Automate",
+    desc: "Act on it, with sign-off.",
     anchor: "automate",
-    desc: "Stop retyping the same data into three systems. Jago updates the records; you approve the important steps.",
-    bold: ["Jago updates the records"],
-    accent: ["you approve the important steps"],
+    example: "Update the CRM with this order and notify the finance team.",
+    answer:
+      "Draft ready: the order is filled in the CRM and a note for the finance team is written. Nothing changes until you approve.",
+    result: "Order drafted. Waiting for your sign-off.",
   },
 ];
-
-const JSHIELD = {
-  desc: "Keep your handling of customer data within the law, with proof ready for any audit.",
-  bold: ["within the law"],
-  accent: ["proof ready for any audit"],
-  link: "https://jshield.ai",
-  linkLabel: "Read about JShield",
-};
 
 export default function ModuleSwitcher() {
   const [active, setActive] = useState(0);
@@ -69,7 +72,7 @@ export default function ModuleSwitcher() {
         <SectionIntro eyebrow="What Jago does" title="Four AI modules with one login, under your rules." />
 
         <div
-          className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,260px),minmax(0,1fr)] lg:gap-12"
+          className="mt-6 grid gap-6 lg:grid-cols-2 lg:items-stretch"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onFocus={() => setPaused(true)}
@@ -77,55 +80,68 @@ export default function ModuleSwitcher() {
             if (!e.currentTarget.contains(e.relatedTarget)) setPaused(false);
           }}
         >
-          <div role="tablist" aria-label="Jago modules" className="flex flex-row gap-1 overflow-x-auto min-w-0 lg:flex-col">
+          {/* Left: the four modules, in the order a team uses Jago */}
+          <div role="tablist" aria-label="Jago modules" className="flex flex-col min-w-0">
             {MODULES.map((mod, i) => (
               <button
-                key={mod.title}
+                key={mod.id}
                 type="button"
                 role="tab"
                 aria-selected={active === i}
                 onClick={() => pick(i)}
-                className={`site-row site-choice flex shrink-0 items-center gap-3 rounded-lg px-3 py-3 text-left min-h-[44px] transition-colors ${
+                className={`site-row site-choice flex flex-col rounded-lg px-3 py-3 text-left min-h-[44px] transition-colors ${
                   active === i ? "text-foreground" : "text-muted-foreground"
                 }`}
               >
-                <span
-                  aria-hidden="true"
-                  className={`h-6 w-1 rounded-full shrink-0 transition-colors ${active === i ? "bg-primary" : "bg-transparent"}`}
-                />
-                <span className="font-heading text-base sm:text-lg font-semibold leading-snug">{mod.title}</span>
+                <span className="flex items-center gap-3 min-w-0">
+                  <span
+                    aria-hidden="true"
+                    className={`h-6 w-1 rounded-full shrink-0 transition-colors ${active === i ? "bg-primary" : "bg-transparent"}`}
+                  />
+                  <span className="font-heading text-lg font-semibold leading-snug">{mod.title}</span>
+                </span>
+                <span className="mt-1 pl-7 text-[15px] leading-relaxed text-muted-foreground">
+                  {mod.desc}
+                </span>
               </button>
             ))}
           </div>
 
+          {/* Right: scripted sample panel for the selected module */}
           <div className="min-w-0" role="tabpanel">
-            <p className="text-base sm:text-lg leading-relaxed text-pretty max-w-2xl">
-              <CopyEmphasis text={m.desc} bold={m.bold} accent={m.accent} />
-            </p>
-            <Link
-              to={`/platform#${m.anchor}`}
-              className="site-row site-choice mt-4 inline-flex items-center gap-1.5 -mx-2 rounded-lg px-2 py-2 text-primary font-semibold underline underline-offset-4 decoration-primary/40 hover:decoration-primary min-h-[44px]"
-            >
-              See how {m.title} works
-              <ArrowRight aria-hidden="true" className="site-row-arrow w-4 h-4" />
-            </Link>
+            <div className="h-full rounded-2xl border border-border bg-card/30 p-5">
+              <div className="flex items-start gap-3 min-w-0">
+                <Sparkles aria-hidden="true" className="w-5 h-5 text-primary shrink-0 mt-1" />
+                <p className="min-w-0 font-body text-base leading-relaxed text-foreground/90">
+                  {m.example}
+                </p>
+              </div>
+              <p className="mt-3 text-base leading-relaxed text-foreground/80">{m.answer}</p>
+              <p className="mt-3 text-[15px] font-medium leading-relaxed text-foreground">
+                {m.result}
+              </p>
+              <Link
+                to={`/platform#${m.anchor}`}
+                className="site-row site-choice mt-4 inline-flex items-center gap-1.5 -mx-2 rounded-lg px-2 py-2 text-primary font-semibold underline underline-offset-4 decoration-primary/40 hover:decoration-primary min-h-[44px]"
+              >
+                See how {m.title} works
+                <ArrowRight aria-hidden="true" className="site-row-arrow w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="mt-8 min-w-0">
-          <h3 className="font-heading text-xl font-semibold leading-snug text-balance">JShield</h3>
-          <p className="mt-3 max-w-2xl text-base leading-relaxed">
-            <CopyEmphasis text={JSHIELD.desc} bold={JSHIELD.bold} accent={JSHIELD.accent} />
-          </p>
+        <p className="mt-6 text-base leading-relaxed">
+          Add <span className="copy-focus">JShield</span> to keep customer data within the law.{" "}
           <a
-            href={JSHIELD.link}
+            href="https://jshield.ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="site-cta-secondary mt-4 inline-flex px-4 py-2.5 rounded-xl text-sm"
+            className="text-primary underline underline-offset-4 hover:decoration-primary/60 transition-colors"
           >
-            {JSHIELD.linkLabel}
+            Read about JShield
           </a>
-        </div>
+        </p>
       </div>
     </Reveal>
   );

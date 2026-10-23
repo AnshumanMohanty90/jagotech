@@ -30,7 +30,7 @@ export default function Roi() {
           one platform.
         </SectionIntro>
 
-        <div className="mt-8 grid lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="mt-6 grid lg:grid-cols-2 gap-8 lg:gap-12">
           <div className="site-col">
             {[
               { label: "People in your company", value: emp, set: setEmp, min: 100, max: 10000, step: 100, display: emp.toLocaleString("en-US") + " employees" },

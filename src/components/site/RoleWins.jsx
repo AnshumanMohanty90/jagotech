@@ -37,7 +37,7 @@ export default function RoleWins({ withIntro = true, tinted = false }) {
           </SectionIntro>
         )}
 
-        <div className={`${withIntro ? "mt-8 " : ""}flex flex-wrap gap-x-5 gap-y-2`}>
+        <div className={`${withIntro ? "mt-6 " : ""}flex flex-wrap gap-x-5 gap-y-2`}>
           {CATEGORIES.map((c) => (
             <button
               key={c.id}

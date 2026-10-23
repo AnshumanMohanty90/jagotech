@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Sparkles } from "lucide-react";
 import AskDemo from "@/components/site/AskDemo";
-import PillarCarousel from "@/components/site/PillarCarousel";
 
 const PROMPTS = [
   "Finance: which invoices risk slipping past due?",
@@ -65,7 +64,7 @@ export default function Hero() {
               within India's data law.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-6 flex flex-wrap items-center gap-3">
               <Link to="/contact?intent=trial" className="site-cta-primary px-5 py-3 rounded-xl">
                 Try it free for a week
               </Link>
@@ -74,11 +73,11 @@ export default function Hero() {
               </Link>
             </div>
 
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-4 text-base font-semibold leading-relaxed text-foreground">
               No payment details needed.
             </p>
 
-            <p className="mt-5 text-[15px] font-medium leading-relaxed text-slate-300">
+            <p className="mt-4 text-sm font-normal leading-relaxed text-slate-400 lg:whitespace-nowrap">
               Live at a major lending NBFC, works on WhatsApp, Slack and Teams, in 50+ languages
             </p>
           </div>
@@ -104,10 +103,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Pillar carousel */}
-        <div className="mt-8 mx-auto w-full max-w-2xl min-w-0">
-          <PillarCarousel />
-        </div>
       </div>
     </section>
   );

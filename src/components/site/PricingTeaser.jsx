@@ -12,7 +12,7 @@ export default function PricingTeaser() {
         </SectionIntro>
         <Link
           to="/pricing"
-          className="mt-8 inline-block text-primary font-semibold underline underline-offset-4 decoration-primary/40 hover:decoration-primary"
+          className="mt-6 inline-block text-primary font-semibold underline underline-offset-4 decoration-primary/40 hover:decoration-primary"
         >
           See pricing
         </Link>

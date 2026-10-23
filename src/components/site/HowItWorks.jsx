@@ -47,7 +47,7 @@ export default function HowItWorks() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="How it works" title="Live in 8 weeks." />
 
-        <div ref={trackRef} className="mt-8 min-w-0">
+        <div ref={trackRef} className="mt-6 min-w-0">
           {/* Progress track: weeks 1 to 8 */}
           <div className="flex gap-1.5 min-w-0" aria-hidden="true">
             {ticks.map((seg, i) => (

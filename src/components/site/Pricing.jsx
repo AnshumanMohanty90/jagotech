@@ -62,7 +62,7 @@ export default function Pricing() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <h2 className="font-heading text-balance">Plans</h2>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-3">
+        <div className="mt-6 grid gap-6 sm:grid-cols-3">
           {PLANS.slice(0, 3).map((p) => (
             <PlanColumn key={p.name} plan={p} />
           ))}

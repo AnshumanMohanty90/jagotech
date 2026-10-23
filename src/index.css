@@ -98,13 +98,13 @@
 @layer components {
   /* Section padding: 88px desktop, 56px mobile. */
   .site-section {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
   }
   @media (min-width: 640px) {
     .site-section {
-      padding-top: 5.5rem;
-      padding-bottom: 5.5rem;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
     }
   }
 
@@ -120,7 +120,7 @@
   /* Section label: Space Grotesk 15px, weight 600, cyan, sentence case. */
   .site-label {
     font-family: var(--font-heading);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 1.45;
     color: hsl(var(--primary));
@@ -302,13 +302,13 @@ html {
 }
 .site-typography h2 {
   font-family: var(--font-heading);
-  font-size: 1.875rem;
+  font-size: 1.625rem;
   line-height: 1.15;
   font-weight: 700;
 }
 .site-typography h3 {
   font-family: var(--font-heading);
-  font-size: 1.375rem;
+  font-size: 1.25rem;
   line-height: 1.35;
   font-weight: 600;
 }
@@ -317,7 +317,7 @@ html {
     font-size: 3.5rem;
   }
   .site-typography h2 {
-    font-size: 2.75rem;
+    font-size: 2.125rem;
   }
 }
 .site-typography p:not(.font-mono):not(.font-heading):not(.site-label):not([role="alert"]) {

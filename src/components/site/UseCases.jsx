@@ -42,7 +42,7 @@ export default function UseCases() {
           We set it up in 8 weeks.
         </SectionIntro>
 
-        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+        <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           {USE_CASES.map((u) => (
             <div key={u.id} id={u.id} className="site-col scroll-mt-24">
               <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{u.title}</h3>

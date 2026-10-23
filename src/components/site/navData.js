@@ -39,13 +39,4 @@ export const NAV_ITEMS = [
   },
   { type: "link", label: "Customers", href: "/customers" },
   { type: "link", label: "Pricing", href: "/pricing" },
-  {
-    type: "dropdown",
-    label: "Resources",
-    links: [
-      { label: "Blog", href: "/resources#blogs" },
-      { label: "Guides", href: "/resources#guides" },
-      { label: "Download the 8-week plan", href: "/contact?intent=plan" },
-    ],
-  },
 ];

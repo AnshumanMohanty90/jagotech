@@ -40,7 +40,7 @@ export default function Integrations() {
           under your control.
         </SectionIntro>
 
-        <div className="mt-8 max-w-3xl">
+        <div className="mt-6 max-w-3xl">
           <Accordion
             firstOpen
             items={INTEGRATIONS.map((it) => ({

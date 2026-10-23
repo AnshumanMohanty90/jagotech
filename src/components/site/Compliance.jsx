@@ -82,7 +82,7 @@ export default function Compliance() {
             />
           </SectionIntro>
 
-          <div className="mt-8 grid gap-8 lg:grid-cols-2 lg:gap-10">
+          <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:gap-10">
             {FRAMEWORKS.map((f) => (
               <div key={f.tag} className="site-col">
                 <p className="site-label">{f.tag}</p>

@@ -38,7 +38,7 @@ export default function CustomerStory({ showLink = true }) {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Customer story" title="A major lending NBFC now knows which branches to audit first" />
 
-        <div className="mt-8 flex flex-wrap gap-x-16 gap-y-8">
+        <div className="mt-6 flex flex-wrap gap-x-16 gap-y-8">
           <div>
             <CountUp
               value={1600}

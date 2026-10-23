@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import { MotionConfig } from 'framer-motion';
 import { Suspense, lazy } from 'react';
 import PageNotFound from './lib/PageNotFound';
@@ -16,7 +16,6 @@ const PricingPage = lazy(() => import('@/pages/PricingPage'));
 const MarketplacePage = lazy(() => import('@/pages/MarketplacePage'));
 const PlatformPage = lazy(() => import('@/pages/PlatformPage'));
 const SolutionsPage = lazy(() => import('@/pages/SolutionsPage'));
-const ResourcesPage = lazy(() => import('@/pages/ResourcesPage'));
 const CompliancePage = lazy(() => import('@/pages/CompliancePage'));
 const CustomersPage = lazy(() => import('@/pages/CustomersPage'));
 const SecurityPage = lazy(() => import('@/pages/SecurityPage'));
@@ -66,7 +65,7 @@ const AuthenticatedApp = () => {
       <Route path="/marketplace" element={<Suspense fallback={<PageFallback />}><MarketplacePage /></Suspense>} />
       <Route path="/platform" element={<Suspense fallback={<PageFallback />}><PlatformPage /></Suspense>} />
       <Route path="/solutions" element={<Suspense fallback={<PageFallback />}><SolutionsPage /></Suspense>} />
-      <Route path="/resources" element={<Suspense fallback={<PageFallback />}><ResourcesPage /></Suspense>} />
+      <Route path="/resources" element={<Navigate to="/" replace />} />
       <Route path="/compliance" element={<Suspense fallback={<PageFallback />}><CompliancePage /></Suspense>} />
       <Route path="/customers" element={<Suspense fallback={<PageFallback />}><CustomersPage /></Suspense>} />
       <Route path="/security" element={<Suspense fallback={<PageFallback />}><SecurityPage /></Suspense>} />

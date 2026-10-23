@@ -29,7 +29,7 @@ export default function Trust() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Trust" title="Built for companies that handle customer data." />
 
-        <div className="mt-8 max-w-3xl">
+        <div className="mt-6 max-w-3xl">
           <Accordion
             firstOpen
             items={POINTS.map((p) => ({

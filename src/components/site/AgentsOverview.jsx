@@ -33,7 +33,7 @@ export default function AgentsOverview() {
           work, inside your systems, under your rules.
         </SectionIntro>
 
-        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+        <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           {LIFECYCLE.map((s) => (
             <div key={s.title} className="site-col">
               <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{s.title}</h3>

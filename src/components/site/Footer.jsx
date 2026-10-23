@@ -32,13 +32,6 @@ const COLS = [
     ],
   },
   {
-    title: "Resources",
-    links: [
-      { label: "Blog", href: "/resources#blogs" },
-      { label: "Guides", href: "/resources#guides" },
-    ],
-  },
-  {
     title: "Legal",
     links: [
       { label: "Privacy policy", href: "/privacy" },
@@ -69,7 +62,7 @@ export default function Footer({ logoVariant }) {
             </a>
           </div>
 
-          <div className="lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
+          <div className="lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
             {COLS.map((c) => (
               <div key={c.title}>
                 <p className="site-label">{c.title}</p>

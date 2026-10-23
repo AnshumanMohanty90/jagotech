@@ -33,7 +33,7 @@ export default function PlatformOverview() {
           Jago sits on top of the tools you already run and carries the work from question to done.
         </SectionIntro>
 
-        <div className="mt-8 grid md:grid-cols-3 gap-8 sm:gap-10">
+        <div className="mt-6 grid md:grid-cols-3 gap-8 sm:gap-10">
           {STEPS.map((s) => (
             <div key={s.title} className="site-col">
               <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{s.title}</h3>
