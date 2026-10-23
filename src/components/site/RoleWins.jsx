@@ -55,10 +55,10 @@ export default function RoleWins({ withIntro = true, tinted = false }) {
           ))}
         </div>
 
-        <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,260px),minmax(0,1fr)] lg:gap-12">
+        <div className="mt-4 grid gap-6 lg:grid-cols-[minmax(0,260px),minmax(0,1fr)] lg:gap-12">
           {/* Role list */}
           <div className="min-w-0">
-            <div className="flex flex-col max-h-96 overflow-y-auto pr-1" role="listbox" aria-label="Roles">
+            <div className="flex flex-col max-h-[360px] overflow-y-auto pr-1" role="listbox" aria-label="Roles">
               {filtered.map((r) => {
                 const on = r.id === active.id;
                 return (

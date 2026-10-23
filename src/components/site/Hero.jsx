@@ -73,11 +73,11 @@ export default function Hero() {
               </Link>
             </div>
 
-            <p className="mt-4 text-base font-semibold leading-relaxed text-foreground">
+            <p className="site-line mt-4 text-base font-semibold leading-relaxed text-slate-50">
               No payment details needed.
             </p>
 
-            <p className="mt-4 text-sm font-normal leading-relaxed text-slate-400 lg:whitespace-nowrap">
+            <p className="site-line mt-4 text-sm font-normal leading-relaxed text-slate-400 lg:whitespace-nowrap">
               Live at a major lending NBFC, works on WhatsApp, Slack and Teams, in 50+ languages
             </p>
           </div>
