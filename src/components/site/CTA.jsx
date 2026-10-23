@@ -50,7 +50,7 @@ export default function CTA() {
   return (
     <section id="contact" className="relative pt-4 sm:pt-6 pb-12 sm:pb-16 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-30 mask-fade-edges" />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[44rem] h-[44rem] rounded-full bg-primary/10 blur-[140px] animate-pulse-glow" />
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[44rem] h-[44rem] rounded-full jago-gradient opacity-[0.12] blur-[140px] animate-pulse-glow" />
 
       <div className="relative mx-auto max-w-4xl px-5 sm:px-8 text-center">
         <motion.div
@@ -62,7 +62,7 @@ export default function CTA() {
           <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-primary">Awareness · Clarity · Right action</p>
           <h2 className="mt-4 font-heading text-3xl sm:text-4xl font-semibold leading-tight tracking-tight text-balance">
             Give your business an{" "}
-            <span className="whitespace-nowrap text-primary text-glow">AI workforce.</span>
+            <span className="whitespace-nowrap jago-text-gradient">AI workforce.</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg leading-relaxed text-muted-foreground max-w-3xl mx-auto text-balance">
             Bring us <strong className="copy-focus">one process your team spends too much time managing</strong>.

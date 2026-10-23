@@ -30,7 +30,7 @@ export default function AskDemo({ placeholder, language }) {
 
   return (
     <>
-      <form onSubmit={ask} className="flex items-center gap-3 rounded-xl bg-background/80 px-4 py-3.5">
+      <form onSubmit={ask} className="flex items-center gap-3 rounded-xl border border-border bg-background/80 px-4 py-3.5">
         <Sparkles className="w-5 h-5 text-primary shrink-0" />
         <input
           value={value}

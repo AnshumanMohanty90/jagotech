@@ -86,7 +86,7 @@ export default function PillarCarousel() {
             onClick={() => setActive(i)}
             aria-label={`Show ${pl.label}`}
             className={`site-choice h-1.5 rounded-full transition-all ${
-              i === active ? "w-6 bg-primary" : "w-1.5 bg-muted-foreground/40 hover:bg-muted-foreground"
+              i === active ? "w-6 jago-gradient" : "w-1.5 bg-muted-foreground/40 hover:bg-muted-foreground"
             }`}
           />
         ))}

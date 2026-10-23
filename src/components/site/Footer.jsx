@@ -44,14 +44,14 @@ const COLS = [
   },
 ];
 
-export default function Footer() {
+export default function Footer({ logoVariant }) {
   return (
     <footer className="relative border-t border-border bg-background">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 py-12">
         <div className="grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-3">
             <Link to="/#top" className="inline-block">
-              <Logo className="h-9 w-auto" />
+              <Logo variant={logoVariant} className="h-9 w-auto" />
             </Link>
             <p className="mt-4 text-base text-muted-foreground max-w-sm leading-relaxed">
               An <strong className="copy-focus">enterprise AI suite</strong> that asks, automates and analyzes across

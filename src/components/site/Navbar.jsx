@@ -5,7 +5,7 @@ import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import Logo from "@/components/site/Logo";
 import { NAV_GROUPS, NAV_LINKS } from "@/components/site/navData";
 
-export default function Navbar() {
+export default function Navbar({ logoVariant }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState(null);
@@ -29,7 +29,7 @@ export default function Navbar() {
     >
       <nav className="mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between">
         <Link to="/#top" className="flex items-center">
-          <Logo className="h-7 sm:h-8 w-auto" />
+          <Logo variant={logoVariant} className="h-7 sm:h-8 w-auto" />
         </Link>
 
         <div className="hidden lg:flex items-center gap-6">

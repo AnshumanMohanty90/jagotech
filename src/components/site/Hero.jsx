@@ -44,8 +44,9 @@ export default function Hero() {
     <section id="top" className="relative overflow-hidden pt-28 sm:pt-32 pb-12 sm:pb-16">
       {/* Background layers */}
       <div className="absolute inset-0 grid-bg animate-grid-pan opacity-40" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(0,245,255,0.18),transparent_70%)]" />
-      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] rounded-full bg-primary/10 blur-[120px] animate-pulse-glow" />
+      <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[54rem] h-[34rem] rounded-full jago-gradient opacity-[0.16] blur-[130px] animate-pulse-glow" />
+      <div className="absolute -top-24 -left-40 w-[28rem] h-[28rem] rounded-full bg-primary/10 blur-[120px]" />
+      <div className="absolute top-8 -right-40 w-[30rem] h-[30rem] rounded-full bg-violet/10 blur-[130px]" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 w-full">
@@ -56,7 +57,7 @@ export default function Hero() {
           className="font-heading text-[clamp(2rem,4.6vw,3.25rem)] font-semibold leading-[1.12] tracking-tight text-balance"
         >
           <span className="block">AI agents that understand your business</span>
-          <span className="block text-primary text-glow">and get work done.</span>
+          <span className="block jago-text-gradient">and get work done.</span>
         </motion.h1>
 
         <div className="mt-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -100,7 +101,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.25 }}
             className="lg:col-span-6"
           >
-            <div className="rounded-2xl bg-card/30 backdrop-blur-xl p-4 sm:p-5 glow-cyan">
+            <div className="rounded-2xl border border-border bg-card/30 backdrop-blur-xl p-4 sm:p-5 glow-cyan">
               <div className="flex items-center justify-between px-1 pb-3">
                 <span className="inline-flex items-center gap-2 font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">
                   <Sparkles className="w-3.5 h-3.5 text-primary" />
