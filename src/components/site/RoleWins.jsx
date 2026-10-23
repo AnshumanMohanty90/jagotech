@@ -3,10 +3,20 @@ import { ROLES, CATEGORIES } from "@/components/site/roleWinsData";
 import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
 
+// "Ask · Predict · Analyze" -> "Uses Ask, Predict and Analyze"
+const usesText = (modules) => {
+  const mods = modules
+    .split("·")
+    .map((m) => m.trim())
+    .filter(Boolean);
+  if (mods.length === 0) return "";
+  if (mods.length === 1) return `Uses ${mods[0]}`;
+  return `Uses ${mods.slice(0, -1).join(", ")} and ${mods[mods.length - 1]}`;
+};
+
 export default function RoleWins({ withIntro = true, tinted = false }) {
   const [cat, setCat] = useState("all");
   const [activeId, setActiveId] = useState("ceo");
-  const [side, setSide] = useState("before");
 
   const filtered = ROLES.filter((r) => cat === "all" || r.category === cat);
   const active = filtered.find((r) => r.id === activeId) || filtered[0];
@@ -72,62 +82,21 @@ export default function RoleWins({ withIntro = true, tinted = false }) {
             </div>
           </div>
 
-          {/* Comparison with a Before / With Jago switch */}
+          {/* Before and With Jago, shown together */}
           <div className="min-w-0">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h3 className="font-heading text-2xl font-semibold leading-snug text-balance">{active.role}</h3>
-              <span className="font-mono text-xs leading-relaxed text-muted-foreground">{active.modules}</span>
+              <span className="text-[15px] text-muted-foreground">{usesText(active.modules)}</span>
             </div>
 
-            <div
-              className="mt-5 inline-grid grid-cols-2 relative rounded-lg border border-border p-1 min-w-[13rem]"
-              role="tablist"
-              aria-label="Before or With Jago"
-            >
-              <span
-                aria-hidden="true"
-                className={`absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] rounded-md bg-primary/10 transition-transform duration-300 ${
-                  side === "with" ? "translate-x-full" : "translate-x-0"
-                }`}
-              />
-              <button
-                type="button"
-                role="tab"
-                aria-selected={side === "before"}
-                onClick={() => setSide("before")}
-                className={`relative z-10 rounded-md py-2 text-sm font-semibold min-h-[44px] transition-colors ${
-                  side === "before" ? "text-primary" : "text-muted-foreground"
-                }`}
-              >
-                Before
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected={side === "with"}
-                onClick={() => setSide("with")}
-                className={`relative z-10 rounded-md py-2 text-sm font-semibold min-h-[44px] transition-colors ${
-                  side === "with" ? "text-primary" : "text-muted-foreground"
-                }`}
-              >
-                With Jago
-              </button>
-            </div>
-
-            <div className="mt-5 overflow-hidden min-w-0">
-              <div
-                className={`flex transition-transform duration-300 ${
-                  side === "with" ? "-translate-x-1/2" : "translate-x-0"
-                }`}
-              >
-                <div className="w-full flex-none min-w-0 px-0.5">
-                  <p className="site-label">Before</p>
-                  <p className="mt-2 text-base sm:text-lg leading-relaxed text-pretty">{active.before}</p>
-                </div>
-                <div className="w-full flex-none min-w-0 px-0.5">
-                  <p className="site-label">With Jago</p>
-                  <p className="mt-2 text-base sm:text-lg leading-relaxed text-pretty">{active.with}</p>
-                </div>
+            <div className="mt-5 space-y-5">
+              <div>
+                <p className="site-label">Before</p>
+                <p className="mt-2 text-base sm:text-lg leading-relaxed text-pretty text-slate-400">{active.before}</p>
+              </div>
+              <div>
+                <p className="site-label">With Jago</p>
+                <p className="mt-2 text-base sm:text-lg leading-relaxed text-pretty text-foreground">{active.with}</p>
               </div>
             </div>
           </div>

@@ -13,17 +13,33 @@ export default function Reveal({ children, className = "", id, ...rest }) {
       setShown(true);
       return;
     }
-    const io = new IntersectionObserver(
+    let done = false;
+    let io = null;
+    const show = () => {
+      if (done) return;
+      done = true;
+      setShown(true);
+      if (io) io.disconnect();
+    };
+    // Reveal any section already passed or in view, not only ones currently
+    // intersecting, so jumps and fast scrolling never leave a section hidden.
+    io = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setShown(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: "0px 0px -64px 0px" }
+        if (entry.boundingClientRect.top < window.innerHeight) show();
+      }
     );
     io.observe(el);
-    return () => io.disconnect();
+    // Fallbacks: reveal everything after 1.5s, and on anchor or scroll-restore jumps.
+    const fallback = window.setTimeout(show, 1500);
+    const onJump = () => show();
+    window.addEventListener("hashchange", onJump);
+    window.addEventListener("popstate", onJump);
+    return () => {
+      if (io) io.disconnect();
+      window.clearTimeout(fallback);
+      window.removeEventListener("hashchange", onJump);
+      window.removeEventListener("popstate", onJump);
+    };
   }, []);
 
   return (
