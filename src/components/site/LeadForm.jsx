@@ -13,8 +13,9 @@ const PERSONAL_DOMAINS = [
   "rediffmail.com", "yandex.com", "yandex.ru", "gmx.com", "mail.com",
 ];
 
-// Placeholder for the 8-week plan PDF. Swap this single URL when the file is ready.
-export const PLAN_PDF_URL = "/8-week-plan.pdf";
+// The 8-week plan PDF (stored publicly).
+export const PLAN_PDF_URL =
+  "https://media.base44.com/files/public/6ac78b627ed759581c8a0fea/051911c22_JagoAI_8-WeekPlan.pdf";
 
 const downloadPlanPdf = () => {
   const a = document.createElement("a");
