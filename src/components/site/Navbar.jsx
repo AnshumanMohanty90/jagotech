@@ -1,224 +1,375 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
 import Logo from "@/components/site/Logo";
 import { NAV_ITEMS } from "@/components/site/navData";
 
+const OPEN_DELAY = 120;
+const CLOSE_DELAY = 220;
+
 export default function Navbar({ logoVariant }) {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [openGroup, setOpenGroup] = useState(null);
+  const [openMenu, setOpenMenu] = useState(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [mobileGroup, setMobileGroup] = useState(null);
+  const openTimer = useRef(null);
+  const closeTimer = useRef(null);
+  const menuButtonRef = useRef(null);
+  const drawerRef = useRef(null);
+  const triggerRefs = useRef({});
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => () => {
+    window.clearTimeout(openTimer.current);
+    window.clearTimeout(closeTimer.current);
+  }, []);
+
+  // Close desktop menus on outside click
+  useEffect(() => {
+    if (!openMenu) return undefined;
+    const onDown = (e) => {
+      if (!e.target.closest("[data-nav-menu]")) setOpenMenu(null);
+    };
+    document.addEventListener("mousedown", onDown);
+    return () => document.removeEventListener("mousedown", onDown);
+  }, [openMenu]);
+
+  const clearTimers = () => {
+    window.clearTimeout(openTimer.current);
+    window.clearTimeout(closeTimer.current);
+  };
+
+  const openAfter = (label, delay) => {
+    clearTimers();
+    if (delay === 0) {
+      setOpenMenu(label);
+      return;
+    }
+    openTimer.current = window.setTimeout(() => setOpenMenu(label), delay);
+  };
+
+  const closeAfter = (delay) => {
+    clearTimers();
+    closeTimer.current = window.setTimeout(() => setOpenMenu(null), delay);
+  };
+
+  const closeMenu = (label, refocus) => {
+    clearTimers();
+    setOpenMenu(null);
+    if (refocus && label && triggerRefs.current[label]) triggerRefs.current[label].focus();
+  };
+
+  const closeDrawer = () => {
+    setDrawerOpen(false);
+    setMobileGroup(null);
+    if (menuButtonRef.current) menuButtonRef.current.focus();
+  };
+
+  // Drawer: lock scroll, trap focus, close on Escape
+  useEffect(() => {
+    if (!drawerOpen) return undefined;
+    document.body.style.overflow = "hidden";
+    const first = drawerRef.current?.querySelector("a[href], button:not([disabled])");
+    if (first) first.focus();
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeDrawer();
+        return;
+      }
+      if (e.key !== "Tab" || !drawerRef.current) return;
+      const focusables = Array.from(
+        drawerRef.current.querySelectorAll("a[href], button:not([disabled])")
+      );
+      if (!focusables.length) return;
+      const firstEl = focusables[0];
+      const lastEl = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === firstEl) {
+        e.preventDefault();
+        lastEl.focus();
+      } else if (!e.shiftKey && document.activeElement === lastEl) {
+        e.preventDefault();
+        firstEl.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [drawerOpen]);
+
+  const renderMenuLink = (l, compact = false) =>
+    l.external ? (
+      <a
+        key={l.label}
+        href={l.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => closeMenu()}
+        className="block rounded-lg px-2.5 py-2 hover:bg-secondary/60 transition-colors"
+      >
+        <span className="block text-sm font-medium text-foreground/90">{l.label}</span>
+        {l.desc && (
+          <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground/80">{l.desc}</span>
+        )}
+      </a>
+    ) : (
+      <Link
+        key={l.label}
+        to={l.href}
+        onClick={() => closeMenu()}
+        className={
+          compact
+            ? "block rounded-lg px-3 py-2.5 text-sm font-medium text-foreground/90 hover:bg-secondary/60 transition-colors"
+            : "block rounded-lg px-2.5 py-2 hover:bg-secondary/60 transition-colors"
+        }
+      >
+        {!compact && <span className="block text-sm font-medium text-foreground/90">{l.label}</span>}
+        {compact ? (
+          l.label
+        ) : (
+          l.desc && (
+            <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground/80">{l.desc}</span>
+          )
+        )}
+      </Link>
+    );
+
   return (
-    <motion.header
-      initial={{ y: -24, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? "backdrop-blur-xl bg-background/70 border-b border-border/60" : "bg-transparent"
+    <header
+      className={`sticky top-0 z-50 bg-background border-b transition-colors ${
+        scrolled ? "border-border" : "border-transparent"
       }`}
     >
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
+
       <nav className="mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center">
+        <Link to="/" className="flex items-center" aria-label="JagoTech home">
           <Logo variant={logoVariant} className="h-7 sm:h-8 w-auto" />
         </Link>
 
+        {/* Desktop navigation */}
         <div className="hidden lg:flex items-center gap-6">
-          {NAV_ITEMS.map((item) =>
-            item.type === "group" ? (
-              <div
-                key={item.label}
-                className="relative"
-                onMouseEnter={() => setOpenGroup(item.label)}
-                onMouseLeave={() => setOpenGroup(null)}
-              >
+          {NAV_ITEMS.map((item) => {
+            if (item.type === "link") {
+              return (
                 <Link
+                  key={item.label}
                   to={item.href}
-                  className="flex items-center gap-1 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="inline-flex min-h-[44px] items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {item.label}
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform ${openGroup === item.label ? "rotate-180" : ""}`}
-                  />
                 </Link>
+              );
+            }
 
-                <AnimatePresence>
-                  {openGroup === item.label && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 6 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 6 }}
-                      transition={{ duration: 0.18 }}
-                      className="absolute left-0 top-full pt-2 z-50"
-                    >
-                      <div className="flex gap-8 rounded-2xl border border-border bg-card/95 backdrop-blur-xl p-5 shadow-2xl shadow-background/60 min-w-[19rem]">
+            const open = openMenu === item.label;
+            return (
+              <div
+                key={item.label}
+                data-nav-menu
+                className="relative"
+                onMouseEnter={() => openAfter(item.label, OPEN_DELAY)}
+                onMouseLeave={() => closeAfter(CLOSE_DELAY)}
+              >
+                <button
+                  type="button"
+                  ref={(el) => {
+                    triggerRefs.current[item.label] = el;
+                  }}
+                  aria-haspopup="true"
+                  aria-expanded={open}
+                  aria-controls={`nav-panel-${item.label}`}
+                  onClick={() => (open ? closeMenu(item.label, true) : openAfter(item.label, 0))}
+                  onKeyDown={(e) => {
+                    if (e.key === "Escape" && open) closeMenu(item.label, true);
+                  }}
+                  className={`inline-flex min-h-[44px] items-center text-sm transition-colors ${
+                    open ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {item.label}
+                </button>
+
+                {open && (
+                  <div
+                    id={`nav-panel-${item.label}`}
+                    onKeyDown={(e) => {
+                      if (e.key === "Escape") {
+                        e.preventDefault();
+                        closeMenu(item.label, true);
+                      }
+                    }}
+                    className="absolute left-0 top-full pt-3 z-50"
+                  >
+                    {item.type === "mega" ? (
+                      <div className="grid grid-cols-3 gap-8 min-w-[42rem] rounded-xl border border-border bg-card/95 backdrop-blur-xl p-6 shadow-2xl shadow-background/60">
                         {item.columns.map((col) => (
-                          <div key={col.title} className="min-w-[12.5rem]">
+                          <div key={col.title} className="min-w-0">
                             <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
                               {col.title}
                             </p>
                             <div className="mt-3 space-y-1">
-                              {col.links.map((l) => (
-                                <Link
-                                  key={`${l.label}-${l.href}`}
-                                  to={l.href}
-                                  onClick={() => setOpenGroup(null)}
-                                  className="block rounded-lg px-2.5 py-1.5 hover:bg-secondary/60 transition-colors"
-                                >
-                                  <span className="block text-sm font-medium text-foreground/90">{l.label}</span>
-                                  {l.desc && (
-                                    <span className="mt-0.5 block text-xs leading-relaxed text-muted-foreground/80">
-                                      {l.desc}
-                                    </span>
-                                  )}
-                                </Link>
-                              ))}
+                              {col.links.map((l) => renderMenuLink(l))}
                             </div>
                           </div>
                         ))}
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                    ) : (
+                      <div className="min-w-[15rem] rounded-xl border border-border bg-card/95 backdrop-blur-xl p-3 shadow-2xl shadow-background/60">
+                        {item.links.map((l) => renderMenuLink(l, true))}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
-            ) : item.external ? (
-              <a
-                key={item.label}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {item.label}
-              </a>
-            ) : (
-              <Link
-                key={item.label}
-                to={item.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {item.label}
-              </Link>
-            )
-          )}
+            );
+          })}
 
           <Link to="/contact?intent=trial" className="site-cta-primary px-4 py-2 text-sm rounded-lg">
             Try it free for a week
           </Link>
         </div>
 
+        {/* Mobile menu button */}
         <button
-          onClick={() => setOpen((v) => !v)}
-          className="lg:hidden grid place-items-center w-10 h-10 rounded-lg border border-border bg-card/60"
-          aria-label="Toggle menu"
+          type="button"
+          ref={menuButtonRef}
+          onClick={() => setDrawerOpen(true)}
+          aria-expanded={drawerOpen}
+          aria-controls="mobile-menu"
+          className="lg:hidden inline-flex min-h-[44px] items-center px-3 rounded-lg border border-border bg-card/60 text-sm font-medium"
         >
-          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          Menu
         </button>
       </nav>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="lg:hidden overflow-hidden border-t border-border bg-background/95 backdrop-blur-xl"
+      {/* Mobile drawer */}
+      {drawerOpen && (
+        <div
+          className="fixed inset-0 z-[60] lg:hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site menu"
+        >
+          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={closeDrawer} />
+          <div
+            ref={drawerRef}
+            id="mobile-menu"
+            className="absolute inset-y-0 right-0 w-full max-w-sm bg-background border-l border-border flex flex-col"
           >
-            <div className="px-5 py-4 flex flex-col gap-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
-              {NAV_ITEMS.map((item) =>
-                item.type === "group" ? (
-                  <div key={item.label} className="border-b border-border/60 last:border-0">
-                    <button
-                      onClick={() => setMobileGroup((m) => (m === item.label ? null : item.label))}
-                      className="site-choice w-full flex items-center justify-between px-3 py-2.5 text-sm text-foreground/90"
+            <div className="flex items-center justify-between h-16 px-5 border-b border-border shrink-0">
+              <Logo variant={logoVariant} className="h-7 w-auto" />
+              <button
+                type="button"
+                onClick={closeDrawer}
+                className="inline-flex min-h-[44px] items-center px-3 text-sm font-medium"
+              >
+                Close
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto px-2 py-3">
+              {NAV_ITEMS.map((item) => {
+                if (item.type === "link") {
+                  return (
+                    <Link
+                      key={item.label}
+                      to={item.href}
+                      onClick={closeDrawer}
+                      className="flex min-h-[44px] items-center px-3 py-2.5 text-sm font-medium text-foreground/90 border-b border-border/60"
                     >
                       {item.label}
-                      <ChevronDown
-                        className={`w-4 h-4 transition-transform ${mobileGroup === item.label ? "rotate-180" : ""}`}
-                      />
+                    </Link>
+                  );
+                }
+
+                const groupOpen = mobileGroup === item.label;
+                return (
+                  <div key={item.label} className="border-b border-border/60">
+                    <button
+                      type="button"
+                      onClick={() => setMobileGroup((m) => (m === item.label ? null : item.label))}
+                      aria-expanded={groupOpen}
+                      className="site-choice w-full flex min-h-[44px] items-center justify-between px-3 py-2.5 text-sm font-medium text-foreground/90"
+                    >
+                      {item.label}
+                      <span aria-hidden="true" className="font-mono text-muted-foreground">
+                        {groupOpen ? "−" : "+"}
+                      </span>
                     </button>
-                    <AnimatePresence>
-                      {mobileGroup === item.label && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="pb-2 space-y-2">
-                            {item.columns.map((col) => (
+                    {groupOpen && (
+                      <div className="pb-3 space-y-4">
+                        {item.type === "mega"
+                          ? item.columns.map((col) => (
                               <div key={col.title}>
-                                <p className="px-3 pt-1 font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
+                                <p className="px-3 font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
                                   {col.title}
                                 </p>
-                                {col.links.map((l) => (
-                                  <Link
-                                    key={`${l.label}-${l.href}`}
-                                    to={l.href}
-                                    onClick={() => setOpen(false)}
-                                    className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-secondary"
-                                  >
-                                    {l.label}
-                                  </Link>
-                                ))}
+                                <div className="mt-1">
+                                  {col.links.map((l) =>
+                                    l.external ? (
+                                      <a
+                                        key={l.label}
+                                        href={l.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={closeDrawer}
+                                        className="flex min-h-[44px] items-center px-3 py-2 text-sm text-muted-foreground hover:text-foreground"
+                                      >
+                                        {l.label}
+                                      </a>
+                                    ) : (
+                                      <Link
+                                        key={l.label}
+                                        to={l.href}
+                                        onClick={closeDrawer}
+                                        className="flex min-h-[44px] items-center px-3 py-2 text-sm text-muted-foreground hover:text-foreground"
+                                      >
+                                        {l.label}
+                                      </Link>
+                                    )
+                                  )}
+                                </div>
                               </div>
+                            ))
+                          : item.links.map((l) => (
+                              <Link
+                                key={l.label}
+                                to={l.href}
+                                onClick={closeDrawer}
+                                className="flex min-h-[44px] items-center px-3 py-2 text-sm text-muted-foreground hover:text-foreground"
+                              >
+                                {l.label}
+                              </Link>
                             ))}
-                            <Link
-                              to={item.href}
-                              onClick={() => setOpen(false)}
-                              className="block px-3 py-1.5 text-sm font-semibold text-primary"
-                            >
-                              {item.label} overview
-                            </Link>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                      </div>
+                    )}
                   </div>
-                ) : item.external ? (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setOpen(false)}
-                    className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-secondary"
-                  >
-                    {item.label}
-                  </a>
-                ) : (
-                  <Link
-                    key={item.label}
-                    to={item.href}
-                    onClick={() => setOpen(false)}
-                    className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-secondary"
-                  >
-                    {item.label}
-                  </Link>
-                )
-              )}
+                );
+              })}
+            </div>
 
+            <div className="shrink-0 border-t border-border p-5">
               <Link
                 to="/contact?intent=trial"
-                onClick={() => setOpen(false)}
-                className="site-cta-primary mt-2 px-3 py-2.5 text-center text-sm rounded-lg"
+                onClick={closeDrawer}
+                className="site-cta-primary w-full px-4 py-3 text-sm rounded-lg"
               >
                 Try it free for a week
               </Link>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+          </div>
+        </div>
+      )}
+    </header>
   );
 }

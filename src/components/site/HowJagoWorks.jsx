@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 const MODULES = [
@@ -64,12 +63,6 @@ export default function HowJagoWorks() {
   return (
     <section id="how-jago-works" className="relative site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="How Jago Works" title="Ask, automate, analyze and predict.">
-          The full detail behind the four modules,{" "}
-          plus the engine underneath them.{" "}
-          All of it sits behind one login.
-        </SectionIntro>
-
         <div className="mt-6 sm:mt-8 grid md:grid-cols-2 gap-8 lg:gap-10">
           {MODULES.map((m, i) => (
             <motion.div

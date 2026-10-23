@@ -15,7 +15,7 @@ export default function PlatformPage() {
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      <main className="pt-16">
+      <main id="main-content">
         <PageHeader eyebrow="Platform" title="One platform for your systems, documents and voice.">
           Jago connects your sales, finance and HR systems, reads
           your documents and hears your voice notes.{" "}

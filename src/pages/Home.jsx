@@ -7,8 +7,9 @@ import Challenge from "@/components/site/Challenge";
 import WhatJagoDoes from "@/components/site/WhatJagoDoes";
 import HowItWorks from "@/components/site/HowItWorks";
 import CustomerStory from "@/components/site/CustomerStory";
-import WhyJago from "@/components/site/WhyJago";
 import RoleWins from "@/components/site/RoleWins";
+import Trust from "@/components/site/Trust";
+import PricingTeaser from "@/components/site/PricingTeaser";
 import CTA from "@/components/site/CTA";
 import Footer from "@/components/site/Footer";
 
@@ -20,15 +21,16 @@ export default function Home() {
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <ProofStrip />
         <Challenge />
         <WhatJagoDoes />
         <HowItWorks />
         <CustomerStory />
-        <WhyJago />
         <RoleWins />
+        <Trust />
+        <PricingTeaser />
         <CTA />
       </main>
       <Footer />

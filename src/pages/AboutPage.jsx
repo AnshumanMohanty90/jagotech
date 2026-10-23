@@ -1,16 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import usePageMeta from "@/hooks/usePageMeta";
 import Navbar from "@/components/site/Navbar";
 import PageHeader from "@/components/site/PageHeader";
+import CTA from "@/components/site/CTA";
 import Footer from "@/components/site/Footer";
-import usePageMeta from "@/hooks/usePageMeta";
 
 export default function AboutPage() {
   usePageMeta("About | Jago AI");
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      <main className="pt-16">
+      <main id="main-content">
         <PageHeader eyebrow="About" title="We build AI that Indian companies can trust with their data.">
           Jago AI was founded in Bengaluru in February 2026. We are recognised by Startup India and were
           chosen in the top 200 of more than 11,000 applicants to the UAE-India Start-Up Series 2.0.
@@ -25,12 +25,10 @@ export default function AboutPage() {
               Where we started: lending, where audit, collections and
               compliance work is heavy and the rules are strict.
             </p>
-            <Link to="/contact?intent=plan" className="site-cta-primary mt-8 px-5 py-3 rounded-xl">
-              Download the 8-week plan
-            </Link>
           </div>
         </section>
       </main>
+      <CTA />
       <Footer />
     </div>
   );

@@ -41,7 +41,7 @@ export default function Hero() {
   const typed = useTypewriter(PROMPTS);
 
   return (
-    <section id="top" className="relative overflow-hidden pt-24 sm:pt-32">
+    <section id="top" className="relative overflow-hidden pt-12 sm:pt-16">
       {/* Background layers */}
       <div className="absolute inset-0 grid-bg animate-grid-pan opacity-40" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
@@ -99,7 +99,16 @@ export default function Hero() {
             <motion.p
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.24 }}
+              transition={{ duration: 0.6, delay: 0.22 }}
+              className="mt-4 text-sm leading-relaxed text-muted-foreground"
+            >
+              No payment details needed.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.28 }}
               className="mt-5 font-mono text-xs leading-relaxed text-muted-foreground"
             >
               Live at a major lending NBFC · Works on WhatsApp, Slack and Teams ·{" "}

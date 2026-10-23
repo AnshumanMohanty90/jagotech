@@ -11,7 +11,7 @@ export default function SolutionsPage() {
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      <main className="pt-16">
+      <main id="main-content">
         <PageHeader eyebrow="Solutions" title="Start with the outcome you need.">
           Pick the work that hurts most. Jago runs it, and a person approves the key steps.
         </PageHeader>

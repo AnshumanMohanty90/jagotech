@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 const PLANS = [
@@ -55,11 +54,6 @@ export default function Pricing() {
   return (
     <section id="pricing" className="relative site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="Plans" title="Start with one team. Grow into the whole company.">
-          Clear prices in rupees.{" "}
-          Try any plan free for a week.
-        </SectionIntro>
-
         <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {PLANS.map((p, i) => (
             <motion.div

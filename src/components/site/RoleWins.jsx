@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ROLES, CATEGORIES } from "@/components/site/roleWinsData";
 import SectionIntro from "@/components/site/SectionIntro";
 
-export default function RoleWins() {
+export default function RoleWins({ withIntro = true }) {
   const [cat, setCat] = useState("all");
   const [activeId, setActiveId] = useState("ceo");
 
@@ -19,11 +19,13 @@ export default function RoleWins() {
   return (
     <section id="solutions" className="relative site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="Jago in your role" title="How teams use Jago">
-          <span className="text-sm">Examples of everyday use.</span>
-        </SectionIntro>
+        {withIntro && (
+          <SectionIntro eyebrow="Jago in your role" title="How teams use Jago">
+            <span className="text-sm">Examples of everyday use.</span>
+          </SectionIntro>
+        )}
 
-        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+        <div className={withIntro ? "mt-6 flex flex-wrap gap-x-6 gap-y-2" : "flex flex-wrap gap-x-6 gap-y-2"}>
           {CATEGORIES.map((c) => (
             <button
               key={c.id}

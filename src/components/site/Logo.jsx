@@ -4,5 +4,5 @@ import logoInkUrl from "@/assets/jago-logo-ink.svg";
 
 export default function Logo({ className = "h-8 w-auto", variant = "light" }) {
   const src = variant === "ink" ? logoInkUrl : logoUrl;
-  return <img src={src} alt="JagoTech" className={className} />;
+  return <img src={src} alt="JagoTech logo" width={112} height={30} className={className} />;
 }

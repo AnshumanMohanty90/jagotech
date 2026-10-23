@@ -30,8 +30,8 @@ export default function ContactPage() {
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      <main className="pt-16">
-        <PageHeader eyebrow="Contact" title={content.headline}>
+      <main id="main-content">
+        <PageHeader eyebrow="Contact" title={content.headline} showActions={false}>
           {content.sub}
         </PageHeader>
         <section className="relative site-section">

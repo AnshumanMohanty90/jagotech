@@ -11,7 +11,7 @@ export default function CompliancePage() {
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      <main className="pt-16">
+      <main id="main-content">
         <PageHeader eyebrow="Compliance" title="Built for India's data protection law.">
           Jago keeps a record of every action.{" "}
           JShield tracks consent and breaches, and the duties that

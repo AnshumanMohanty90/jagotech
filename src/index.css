@@ -5,7 +5,7 @@
 @layer base {
   :root {
     --background: 222 33% 3%;
-    --foreground: 210 40% 99%;
+    --foreground: 210 25% 95%;
     --card: 217 28% 7%;
     --card-foreground: 210 40% 99%;
     --popover: 217 28% 7%;
@@ -15,7 +15,7 @@
     --secondary: 217 28% 12%;
     --secondary-foreground: 210 40% 99%;
     --muted: 217 28% 12%;
-    --muted-foreground: 215 20% 65%;
+    --muted-foreground: 215 18% 72%;
     --accent: 183 100% 50%;
     --accent-foreground: 222 33% 3%;
     --destructive: 0 84% 60%;
@@ -165,5 +165,80 @@
   .mask-fade-edges {
     -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
     mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+}
+
+/* --- Site-wide readability and accessibility --- */
+html {
+  scroll-padding-top: 5rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: -10000px;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 0.5rem;
+  top: 0.5rem;
+  width: auto;
+  height: auto;
+  z-index: 100;
+  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-weight: 600;
+}
+
+/* One type scale for all pages: H1 56/36, H2 36/28, H3 20, body 17px */
+.site-typography h1 {
+  font-size: 2.25rem;
+  line-height: 1.12;
+}
+.site-typography h2 {
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+.site-typography h3 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+@media (min-width: 640px) {
+  .site-typography h1 {
+    font-size: 3.5rem;
+  }
+  .site-typography h2 {
+    font-size: 2.25rem;
+  }
+}
+.site-typography p:not(.font-mono):not(.font-heading) {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  max-width: 68ch;
+}
+
+/* Visible focus outline on every interactive element */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

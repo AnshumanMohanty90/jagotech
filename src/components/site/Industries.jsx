@@ -47,14 +47,7 @@ export default function Industries() {
   return (
     <section className="relative site-section">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="min-w-0">
-          <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">By industry</p>
-          <h3 className="mt-2 font-heading text-2xl sm:text-3xl font-semibold leading-tight tracking-tight text-balance">
-            Made for your industry.
-          </h3>
-        </div>
-
-        <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 sm:gap-10">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 sm:gap-10">
           {INDUSTRIES.map((it, i) => (
             <motion.div
               key={it.name}

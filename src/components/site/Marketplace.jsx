@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 const AGENTS = [
@@ -53,12 +52,6 @@ export default function Marketplace() {
   return (
     <section id="marketplace" className="relative site-section">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="Marketplace" title="Pick a single agent. Pay only as you use.">
-          Add one agent to your website or system, pay per use, and
-          expand when it proves its worth.{" "}
-          Agents cover documents, audio and images.
-        </SectionIntro>
-
         <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {AGENTS.map((b, i) => (
             <motion.div

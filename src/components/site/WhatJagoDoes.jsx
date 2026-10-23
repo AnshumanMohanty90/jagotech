@@ -1,29 +1,34 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 const MODULES = [
   {
     title: "Ask",
+    anchor: "ask",
     desc: "Get answers from your company data in seconds. \"What were North region sales against target?\"",
     bold: ["answers from your company data"],
     accent: ["in seconds"],
   },
   {
     title: "Automate",
+    anchor: "automate",
     desc: "Stop retyping the same data into three systems. Jago updates the records; you approve the important steps.",
     bold: ["Jago updates the records"],
     accent: ["you approve the important steps"],
   },
   {
     title: "Analyze",
+    anchor: "analyze",
     desc: "See why a number moved, with the reasons behind it. \"Why did South fall 4%?\"",
     bold: ["why a number moved"],
     accent: ["the reasons behind it"],
   },
   {
     title: "Predict",
+    anchor: "predict",
     desc: "Hear about a problem before it hits your results. Alerts arrive on WhatsApp.",
     bold: ["before it hits your results"],
     accent: ["Alerts arrive on WhatsApp"],
@@ -58,6 +63,14 @@ export default function WhatJagoDoes() {
               <p className="mt-3 text-base text-muted-foreground leading-relaxed">
                 <CopyEmphasis text={m.desc} bold={m.bold} accent={m.accent} />
               </p>
+              {m.anchor && (
+                <Link
+                  to={`/platform#${m.anchor}`}
+                  className="mt-4 self-start text-primary font-semibold underline underline-offset-4 decoration-primary/40 hover:decoration-primary"
+                >
+                  See how {m.title} works
+                </Link>
+              )}
               {m.link && (
                 <a
                   href={m.link}

@@ -1,48 +1,51 @@
 export const NAV_ITEMS = [
   {
-    type: "group",
-    label: "Platform",
-    href: "/platform",
+    type: "mega",
+    label: "Product",
     columns: [
       {
-        title: "Platform",
+        title: "Modules",
         links: [
-          { label: "Platform Overview", href: "/platform", desc: "Connect systems, give agents context, let them act" },
-          { label: "Security Controls", href: "/security", desc: "Who sees what, approvals and audit records" },
+          { label: "Ask", href: "/platform#ask", desc: "Get answers from your data in plain words" },
+          { label: "Analyze", href: "/platform#analyze", desc: "See why a number moved" },
+          { label: "Predict", href: "/platform#predict", desc: "Get a warning before a problem shows" },
+          { label: "Automate", href: "/platform#automate", desc: "Hand routine updates to Jago" },
+        ],
+      },
+      {
+        title: "Products",
+        links: [
+          { label: "JShield", href: "https://jshield.ai", desc: "Meet India's data protection law", external: true },
+          { label: "Marketplace", href: "/marketplace", desc: "Single AI agents, pay per use" },
+        ],
+      },
+      {
+        title: "Trust",
+        links: [
+          { label: "Security", href: "/security", desc: "How we protect your data" },
+          { label: "How Jago works", href: "/platform", desc: "Live in 8 weeks" },
         ],
       },
     ],
   },
   {
-    type: "group",
+    type: "dropdown",
     label: "Solutions",
-    href: "/solutions",
-    columns: [
-      {
-        title: "Solutions",
-        links: [
-          { label: "How Jago Works", href: "/how-jago-works", desc: "Ask, Automate, Analyze and Predict in detail" },
-          { label: "Role Wins", href: "/role-wins", desc: "What changes in each role's day" },
-          { label: "Industries", href: "/industries", desc: "Ready-made workflows for your sector" },
-        ],
-      },
+    links: [
+      { label: "By role", href: "/role-wins" },
+      { label: "By industry", href: "/industries" },
+      { label: "By use case", href: "/solutions" },
     ],
   },
-  { type: "link", label: "Marketplace", href: "/marketplace" },
-  {
-    type: "group",
-    label: "Pricing",
-    href: "/pricing",
-    columns: [
-      {
-        title: "Pricing",
-        links: [
-          { label: "Plans", href: "/pricing", desc: "Clear prices in rupees" },
-          { label: "Savings Calculator", href: "/pricing#roi", desc: "Estimate your savings" },
-        ],
-      },
-    ],
-  },
-  { type: "link", label: "JShield", href: "https://jshield.ai", external: true },
   { type: "link", label: "Customers", href: "/customers" },
+  { type: "link", label: "Pricing", href: "/pricing" },
+  {
+    type: "dropdown",
+    label: "Resources",
+    links: [
+      { label: "Blog", href: "/resources#blogs" },
+      { label: "Guides", href: "/resources#guides" },
+      { label: "Download the 8-week plan", href: "/contact?intent=plan" },
+    ],
+  },
 ];
