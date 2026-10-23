@@ -1,6 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Reveal from "@/components/site/Reveal";
 
 const DOES = [
   "Ranks every branch by risk, using live data",
@@ -11,66 +11,47 @@ const DOES = [
 
 export default function CustomersStory() {
   return (
-    <section className="relative site-section">
+    <Reveal className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="min-w-0">
-          <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">The problem</p>
-          <p className="mt-3 max-w-3xl text-base sm:text-lg leading-relaxed text-foreground/90 text-pretty">
+          <p className="site-label">The problem</p>
+          <p className="mt-3 max-w-3xl text-base sm:text-lg leading-relaxed text-pretty">
             Audits kept slipping. Risk reports used old data, and no tool showed which branches were likely
             to have problems. Auditors could not tell where to go first.
           </p>
         </div>
 
         <div className="mt-8 min-w-0">
-          <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">What Jago does</p>
-          <div className="mt-5 grid gap-6 sm:grid-cols-2 sm:gap-8">
-            {DOES.map((d, i) => (
-              <motion.div
-                key={d}
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.4, delay: i * 0.07 }}
-                className="site-col"
-              >
-                <p className="text-base leading-relaxed text-foreground/90">{d}</p>
-              </motion.div>
+          <p className="site-label">What Jago does</p>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 sm:gap-8">
+            {DOES.map((d) => (
+              <div key={d} className="pt-2 min-w-0">
+                <p className="text-base leading-relaxed">{d}</p>
+              </div>
             ))}
           </div>
         </div>
 
         <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-10">
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.4 }}
-            className="site-col"
-          >
-            <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">The scale</p>
+          <div className="min-w-0">
+            <p className="site-label">The scale</p>
             <p className="mt-3 font-heading text-lg sm:text-xl font-semibold leading-snug">
               1,600 branches · 160 auditors · five audit types · live data
             </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.4, delay: 0.08 }}
-            className="site-col"
-          >
-            <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">The cost</p>
-            <p className="mt-3 text-base leading-relaxed text-foreground/90 text-pretty">
+          </div>
+          <div className="min-w-0">
+            <p className="site-label">The cost</p>
+            <p className="mt-3 text-base leading-relaxed text-pretty">
               About Rs 13 of AI cost each time Jago checks a branch,
               before setup and hosting. Checking all 1,600 branches costs about{" "}
               Rs 21,000 in AI.
             </p>
-          </motion.div>
+          </div>
         </div>
 
         <div className="mt-8 min-w-0">
-          <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">What comes next</p>
-          <p className="mt-3 max-w-3xl text-base sm:text-lg leading-relaxed text-foreground/90 text-pretty">
+          <p className="site-label">What comes next</p>
+          <p className="mt-3 max-w-3xl text-base sm:text-lg leading-relaxed text-pretty">
             Staff will ask questions in local languages, customers will give consent on WhatsApp, and Jago
             will flag likely fraud for a person to check.
           </p>
@@ -80,6 +61,6 @@ export default function CustomersStory() {
           Try it free for a week
         </Link>
       </div>
-    </section>
+    </Reveal>
   );
 }

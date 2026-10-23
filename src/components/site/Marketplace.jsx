@@ -1,6 +1,7 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Reveal from "@/components/site/Reveal";
+import Accordion from "@/components/site/Accordion";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 const AGENTS = [
@@ -50,36 +51,39 @@ const AGENTS = [
 
 export default function Marketplace() {
   return (
-    <section id="marketplace" className="relative site-section">
+    <Reveal id="marketplace" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-          {AGENTS.map((b, i) => (
-            <motion.div
-              key={b.name}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4, delay: (i % 3) * 0.07 }}
-              className="site-col flex flex-col"
-            >
-              <span className="font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">{b.kind}</span>
-              <h2 className="mt-3 font-heading !text-xl font-semibold leading-snug text-balance">{b.name}</h2>
-              <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty flex-1">
-                <CopyEmphasis text={b.desc} bold={["structured records", "clauses, liabilities and terms", "ERP and CRM entries", "structured summaries and action triggers", "quality compliance", "forecasts close rates"]} italic={["with no manual page reviews"]} />
-              </p>
-              <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-                <span className="font-heading text-lg font-semibold">{b.price}</span>
-                <Link
-                  to={`/contact?intent=trial&task=${encodeURIComponent(b.name)}`}
-                  className="site-cta-secondary px-4 py-2.5 rounded-xl text-sm"
-                >
-                  {b.cta}
-                </Link>
-              </div>
-            </motion.div>
-          ))}
+        <div className="max-w-3xl">
+          <Accordion
+            firstOpen
+            items={AGENTS.map((b) => ({
+              key: b.name,
+              title: b.name,
+              body: (
+                <div className="min-w-0">
+                  <p className="site-label">{b.kind}</p>
+                  <p className="mt-2 text-base leading-relaxed text-pretty">
+                    <CopyEmphasis
+                      text={b.desc}
+                      bold={["structured records", "clauses, liabilities and terms", "ERP and CRM entries", "structured summaries and action triggers", "quality compliance", "forecasts close rates"]}
+                      italic={["with no manual page reviews"]}
+                    />
+                  </p>
+                  <div className="mt-4 flex flex-wrap items-center gap-4">
+                    <span className="font-heading text-lg font-semibold">{b.price}</span>
+                    <Link
+                      to={`/contact?intent=trial&task=${encodeURIComponent(b.name)}`}
+                      className="site-cta-secondary px-4 py-2.5 rounded-xl text-sm"
+                    >
+                      {b.cta}
+                    </Link>
+                  </div>
+                </div>
+              ),
+            }))}
+          />
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

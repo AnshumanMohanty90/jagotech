@@ -19,7 +19,7 @@ export default function PricingPage() {
         <Pricing />
         <Roi />
       </main>
-      <CTA />
+      <CTA tinted />
       <Footer />
     </div>
   );

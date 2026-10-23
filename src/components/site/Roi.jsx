@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
 
 const USD_TO_INR = 83;
@@ -22,7 +22,7 @@ export default function Roi() {
   const netRoi = ((vendorSavings + routingSavings) / platformLicense).toFixed(1);
 
   return (
-    <section id="roi" className="relative site-section">
+    <Reveal id="roi" className="relative">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Your estimated savings" title="See what you could save.">
           Enter your team size and current AI spend. We estimate what you save by replacing{" "}
@@ -30,20 +30,14 @@ export default function Roi() {
           one platform.
         </SectionIntro>
 
-        <div className="mt-6 sm:mt-8 grid lg:grid-cols-2 gap-8 lg:gap-12">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.45 }}
-            className="site-col"
-          >
+        <div className="mt-8 grid lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="site-col">
             {[
               { label: "People in your company", value: emp, set: setEmp, min: 100, max: 10000, step: 100, display: emp.toLocaleString("en-US") + " employees" },
               { label: "Separate tools you replace", value: tools, set: setTools, min: 1, max: 10, step: 1, display: tools + " tools" },
               { label: "Questions asked in a month", value: queries, set: setQueries, min: 10000, max: 1000000, step: 10000, display: queries.toLocaleString("en-US") + " questions" },
             ].map((s) => (
-              <div key={s.label}>
+              <div key={s.label} className="mt-6 first:mt-0">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="text-base font-medium leading-relaxed">{s.label}</span>
                   <span className="font-mono text-sm leading-relaxed text-primary">{s.display}</span>
@@ -60,32 +54,24 @@ export default function Roi() {
                 />
               </div>
             ))}
-            <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-8 text-sm leading-relaxed">
               Estimate only. Based on the numbers you enter. We confirm the real figure in your 8-week plan.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.45, delay: 0.08 }}
-            className="site-col flex flex-col"
-          >
-            <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-primary">Estimated annual savings</p>
-            <div className="mt-6 space-y-5">
+          <div className="site-col">
+            <p className="site-label">Estimated annual savings</p>
+            <div className="mt-6 space-y-8">
               <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-4">
-                <span className="text-base leading-relaxed text-muted-foreground">Savings from retiring separate tools</span>
+                <span className="text-base leading-relaxed max-w-xs">Savings from retiring separate tools</span>
                 <span className="font-heading text-2xl sm:text-3xl font-semibold text-emerald">{fmt(vendorSavings)}</span>
               </div>
-              <div className="h-px bg-border" />
               <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-4">
-                <span className="text-base leading-relaxed text-muted-foreground">Savings from using lower-cost AI for simple tasks</span>
+                <span className="text-base leading-relaxed max-w-xs">Savings from using lower-cost AI for simple tasks</span>
                 <span className="font-heading text-2xl sm:text-3xl font-semibold text-primary">{fmt(routingSavings)}</span>
               </div>
-              <div className="h-px bg-border" />
               <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-4">
-                <span className="text-base leading-relaxed text-muted-foreground">Return on what you spend</span>
+                <span className="text-base leading-relaxed max-w-xs">Return on what you spend</span>
                 <span className="font-heading text-3xl sm:text-4xl font-semibold text-violet">Rs {netRoi} back for every rupee you spend</span>
               </div>
             </div>
@@ -95,9 +81,9 @@ export default function Roi() {
             >
               Download the 8-week plan
             </Link>
-          </motion.div>
+          </div>
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

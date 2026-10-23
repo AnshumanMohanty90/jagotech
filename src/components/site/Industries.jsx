@@ -1,5 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion";
+import Reveal from "@/components/site/Reveal";
+import Accordion from "@/components/site/Accordion";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 const INDUSTRIES = [
@@ -45,25 +46,22 @@ const DEPARTMENTS = ["Customer Support", "Finance", "Operations", "HR", "IT", "M
 
 export default function Industries() {
   return (
-    <section className="relative site-section">
+    <Reveal className="relative site-section-alt">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 sm:gap-10">
-          {INDUSTRIES.map((it, i) => (
-            <motion.div
-              key={it.name}
-              id={it.slug}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4, delay: (i % 3) * 0.06 }}
-              className="site-col scroll-mt-24"
-            >
-              <h2 className="font-heading !text-xl font-semibold leading-snug text-balance">{it.name}</h2>
-              <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty">
-                <CopyEmphasis text={it.desc} bold={it.bold} />
-              </p>
-            </motion.div>
-          ))}
+        <div className="max-w-3xl">
+          <Accordion
+            firstOpen
+            items={INDUSTRIES.map((it) => ({
+              key: it.slug,
+              anchorId: it.slug,
+              title: it.name,
+              body: (
+                <p className="text-base leading-relaxed text-pretty">
+                  <CopyEmphasis text={it.desc} bold={it.bold} />
+                </p>
+              ),
+            }))}
+          />
         </div>
 
         {/* department marquee */}
@@ -80,6 +78,6 @@ export default function Industries() {
           </div>
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

@@ -44,17 +44,17 @@ export default function PillarCarousel() {
     <div
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      className="border-t border-border pt-5 min-w-0"
+      className="pt-5 min-w-0"
     >
       <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
         {PILLARS.map((pl, i) => (
           <button
             key={pl.id}
             onClick={() => setActive(i)}
-            className={`site-choice pb-1 font-heading text-sm font-semibold border-b-2 transition-colors ${
+            className={`site-choice px-1 py-2 font-heading text-sm sm:text-base font-semibold min-h-[44px] transition-colors ${
               i === active
-                ? "text-primary border-primary"
-                : "text-muted-foreground hover:text-foreground border-transparent"
+                ? "text-primary"
+                : "text-muted-foreground hover:text-foreground"
             }`}
           >
             {pl.label}
@@ -71,9 +71,9 @@ export default function PillarCarousel() {
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3 }}
           >
-            <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">{p.tag}</p>
+            <p className="site-label">{p.tag}</p>
             <h2 className="mt-1.5 font-heading !text-lg font-semibold leading-snug text-balance">{p.title}</h2>
-            <p className="mt-3 text-sm leading-relaxed text-foreground/80">{p.prompt}</p>
+            <p className="mt-3 text-sm leading-relaxed">{p.prompt}</p>
             <p className="mt-1.5 font-mono text-sm leading-relaxed text-primary">{p.output}</p>
           </motion.div>
         </AnimatePresence>

@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
@@ -35,33 +35,24 @@ const USE_CASES = [
 
 export default function UseCases() {
   return (
-    <section id="use-cases" className="relative scroll-mt-24 site-section">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+    <Reveal id="use-cases" className="relative scroll-mt-24 site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="By use case" title="The same platform, aimed at the result you need.">
           Start with the result you want.{" "}
           We set it up in 8 weeks.
         </SectionIntro>
 
-        <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
-          {USE_CASES.map((u, i) => (
-            <motion.div
-              key={u.id}
-              id={u.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4, delay: (i % 4) * 0.06 }}
-              className="site-col scroll-mt-24"
-            >
+        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+          {USE_CASES.map((u) => (
+            <div key={u.id} id={u.id} className="site-col scroll-mt-24">
               <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{u.title}</h3>
-              <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty">
+              <p className="mt-3 text-base leading-relaxed text-pretty">
                 <CopyEmphasis text={u.desc} bold={u.bold} accent={u.accent} />
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

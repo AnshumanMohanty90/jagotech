@@ -15,7 +15,7 @@ export default function RoleWinsPage() {
         <PageHeader eyebrow="Jago in your role" title="How teams use Jago">
           Examples of everyday use.
         </PageHeader>
-        <RoleWins withIntro={false} />
+        <RoleWins withIntro={false} tinted />
       </main>
       <CTA />
       <Footer />

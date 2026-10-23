@@ -15,7 +15,7 @@ export default function AboutPage() {
           Jago AI was founded in Bengaluru in February 2026. We are recognised by Startup India and were
           chosen in the top 200 of more than 11,000 applicants to the UAE-India Start-Up Series 2.0.
         </PageHeader>
-        <section className="site-section">
+        <section className="site-section site-section-alt">
           <div className="mx-auto max-w-4xl px-5 sm:px-8">
             <p className="text-base sm:text-lg leading-relaxed text-muted-foreground">
               What we do: we help Indian companies put AI to work on

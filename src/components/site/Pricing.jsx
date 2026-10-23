@@ -1,6 +1,7 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Reveal from "@/components/site/Reveal";
+import Accordion from "@/components/site/Accordion";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 
 const CUSTOM_PRICING_NOTE = "Priced on your team size and the modules you use.";
@@ -58,74 +59,60 @@ const INCLUDED = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="relative site-section">
+    <Reveal id="pricing" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-          {PLANS.map((p, i) => (
-            <motion.div
-              key={p.name}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.4, delay: (i % 3) * 0.08 }}
-              className="site-col flex flex-col"
-            >
-              <h2 className="font-heading !text-xl font-semibold leading-snug text-balance">{p.name}</h2>
-
-              <p className="mt-3 font-heading text-xl sm:text-2xl font-semibold leading-snug text-primary">
-                {p.price}
-              </p>
-
-              {p.priceNote && (
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground text-pretty">
-                  {p.priceNote}
-                </p>
-              )}
-
-              <p className="mt-3 text-base leading-relaxed text-muted-foreground text-pretty flex-1">
-                <CopyEmphasis text={p.desc} bold={["up to 10 people", "up to 50 people", "as many AI agents and people as you need", "personal data you hold", "your own servers"]} />
-              </p>
-
-              <div className="mt-6 flex flex-col items-start gap-3">
-                <Link
-                  to={p.href}
-                  className={`self-start px-4 py-2.5 rounded-xl text-sm ${
-                    p.primary ? "site-cta-primary" : "site-cta-secondary"
-                  }`}
-                >
-                  {p.cta}
-                </Link>
-                {p.trialHref && (
-                  <Link
-                    to={p.trialHref}
-                    className="text-sm leading-relaxed text-muted-foreground hover:text-primary underline-offset-4 hover:underline transition-colors"
-                  >
-                    Try it free for a week
-                  </Link>
-                )}
-              </div>
-            </motion.div>
-          ))}
+        <div className="max-w-3xl">
+          <Accordion
+            firstOpen
+            items={PLANS.map((p) => ({
+              key: p.name,
+              title: `${p.name} · ${p.price}`,
+              body: (
+                <div className="min-w-0">
+                  {p.priceNote && (
+                    <p className="text-sm leading-relaxed text-pretty">{p.priceNote}</p>
+                  )}
+                  <p className="mt-2 text-base leading-relaxed text-pretty">
+                    <CopyEmphasis text={p.desc} bold={["up to 10 people", "up to 50 people", "as many AI agents and people as you need", "personal data you hold", "your own servers"]} />
+                  </p>
+                  <div className="mt-4 flex flex-col items-start gap-3">
+                    <Link
+                      to={p.href}
+                      className={p.primary ? "site-cta-primary px-4 py-2.5 rounded-xl text-sm" : "site-cta-secondary px-4 py-2.5 rounded-xl text-sm"}
+                    >
+                      {p.cta}
+                    </Link>
+                    {p.trialHref && (
+                      <Link
+                        to={p.trialHref}
+                        className="text-sm leading-relaxed hover:text-primary underline-offset-4 hover:underline transition-colors"
+                      >
+                        Try it free for a week
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              ),
+            }))}
+          />
         </div>
 
-        <div className="mt-8 border-t border-border pt-6">
-          <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
-            Every plan includes
-          </p>
-          <p className="mt-3 text-base leading-relaxed text-foreground/90 text-pretty">
+        <div className="mt-8">
+          <p className="site-label">Every plan includes</p>
+          <p className="mt-3 text-base leading-relaxed text-pretty">
             {INCLUDED.join(" · ")}
           </p>
         </div>
 
         <div className="mt-8 flex flex-col gap-3">
-          <p className="text-sm leading-relaxed text-muted-foreground">
+          <p className="text-sm leading-relaxed">
             Built to a global security standard (SOC 2); certification under way.
           </p>
-          <p className="text-sm leading-relaxed text-muted-foreground">
+          <p className="text-sm leading-relaxed">
             WhatsApp, Slack and Teams may charge their own messaging fees.
           </p>
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

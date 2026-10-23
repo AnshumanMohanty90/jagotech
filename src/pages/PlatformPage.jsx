@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/site/Navbar";
 import PageHeader from "@/components/site/PageHeader";
 import PlatformOverview from "@/components/site/PlatformOverview";
+import ModuleSwitcher from "@/components/site/ModuleSwitcher";
 import AgentsOverview from "@/components/site/AgentsOverview";
 import Capabilities from "@/components/site/Capabilities";
 import Integrations from "@/components/site/Integrations";
@@ -21,13 +22,14 @@ export default function PlatformPage() {
           your documents and hears your voice notes.{" "}
           You choose which actions need a sign-off.
         </PageHeader>
+        <ModuleSwitcher />
         <PlatformOverview />
         <AgentsOverview />
         <Capabilities />
         <Integrations />
         <section className="site-section">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
-            <div className="border-t border-border pt-6 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
               <p className="max-w-2xl text-base leading-relaxed text-foreground/90">
                 Who can see and do what, with a record of every action.{" "}
                 Every change is logged with who approved it.
@@ -42,7 +44,7 @@ export default function PlatformPage() {
           </div>
         </section>
       </main>
-      <CTA />
+      <CTA tinted />
       <Footer />
     </div>
   );

@@ -39,7 +39,7 @@ export default function ContactPage() {
         <PageHeader eyebrow="Contact" title={content.headline} showActions={false}>
           {content.sub}
         </PageHeader>
-        <section className="relative site-section">
+        <section className="relative site-section site-section-alt">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <div className="rounded-3xl border border-primary/40 bg-card/50 backdrop-blur p-7 sm:p-9 glow-cyan">
               <LeadForm

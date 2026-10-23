@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 
+import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
 import LeadForm from "@/components/site/LeadForm";
@@ -52,69 +52,50 @@ export default function ResourceLibrary() {
 
   return (
     <>
-      <section id="blogs" className="relative scroll-mt-24 site-section">
+      <Reveal id="blogs" className="relative scroll-mt-24 site-section-alt">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <SectionIntro eyebrow="Blogs" title="Notes from teams doing it.">
             Short pieces on putting AI agents to work,{" "}
             not speculation about the future.
           </SectionIntro>
 
-          <div className="mt-6 sm:mt-8 grid md:grid-cols-3 gap-8 sm:gap-10">
-            {BLOGS.map((b, i) => (
-              <motion.article
-                key={b.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.45, delay: i * 0.08 }}
-                className="site-col"
-              >
+          <div className="mt-8 grid md:grid-cols-3 gap-8 sm:gap-10">
+            {BLOGS.map((b) => (
+              <article key={b.title} className="site-col">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <span className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">
-                    {b.tag}
-                  </span>
+                  <span className="site-label">{b.tag}</span>
                   <span className="font-mono text-xs leading-relaxed text-muted-foreground">{b.date}</span>
                 </div>
                 <h3 className="mt-4 font-heading text-xl font-semibold leading-snug text-balance">
                   {b.title}
                 </h3>
-                <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty">
+                <p className="mt-3 text-base leading-relaxed text-pretty">
                   <CopyEmphasis text={b.excerpt} />
                 </p>
-                <p className="mt-5 text-sm text-muted-foreground">Coming soon</p>
-              </motion.article>
+                <p className="mt-5 text-sm">Coming soon</p>
+              </article>
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
-      <section id="guides" className="relative scroll-mt-24 site-section">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+      <Reveal id="guides" className="relative scroll-mt-24">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <SectionIntro eyebrow="Guides" title="Working guides, ready when you are.">
             Short documents for the decisions you will actually face,{" "}
             written for managers in plain words.
           </SectionIntro>
 
-          <div className="mt-6 sm:mt-8 grid md:grid-cols-3 gap-8 sm:gap-10">
-            {GUIDES.map((g, i) => (
-              <motion.div
-                key={g.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.45, delay: i * 0.08 }}
-                className="site-col"
-              >
-                <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
-                  {g.meta}
-                </p>
+          <div className="mt-8 grid md:grid-cols-3 gap-8 sm:gap-10">
+            {GUIDES.map((g) => (
+              <div key={g.title} className="site-col">
+                <p className="site-label">{g.meta}</p>
                 <h3 className="mt-4 font-heading text-xl font-semibold leading-snug text-balance">
                   {g.title}
                 </h3>
-                <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty">{g.desc}</p>
+                <p className="mt-3 text-base leading-relaxed text-pretty">{g.desc}</p>
                 {openGuide === g.title ? (
-                  <div className="mt-5 border-t border-border pt-5">
+                  <div className="mt-5">
                     <LeadForm mini intent="guide" sourcePage="/resources" defaultTask={g.title} />
                   </div>
                 ) : (
@@ -125,11 +106,11 @@ export default function ResourceLibrary() {
                     Tell me when it is ready
                   </button>
                 )}
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
     </>
   );
 }

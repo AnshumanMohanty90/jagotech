@@ -14,7 +14,7 @@ export default function TermsPage() {
         <PageHeader eyebrow="Legal" title="Terms of Use">
           The terms for using the Jago AI website and service.
         </PageHeader>
-        <section className="site-section">
+        <section className="site-section site-section-alt">
           <div className="mx-auto max-w-4xl px-5 sm:px-8">
             <p className="text-base leading-relaxed text-muted-foreground">This page is being updated.</p>
           </div>

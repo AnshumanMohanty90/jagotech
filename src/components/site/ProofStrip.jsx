@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import Reveal from "@/components/site/Reveal";
 
 const STATS = [
   { v: "8 weeks", l: "to go live across your teams" },
@@ -10,24 +10,17 @@ const STATS = [
 
 export default function ProofStrip() {
   return (
-    <section className="relative site-section">
+    <Reveal className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10">
-          {STATS.map((s, i) => (
-            <motion.div
-              key={s.l}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.45, delay: i * 0.07 }}
-              className="site-col"
-            >
+          {STATS.map((s) => (
+            <div key={s.l} className="pt-6 min-w-0">
               <div className="font-heading text-2xl sm:text-3xl font-semibold text-primary">{s.v}</div>
-              <div className="mt-2 text-sm leading-relaxed text-muted-foreground text-pretty">{s.l}</div>
-            </motion.div>
+              <div className="mt-2 text-sm leading-relaxed text-pretty">{s.l}</div>
+            </div>
           ))}
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

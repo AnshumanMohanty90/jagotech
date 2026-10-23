@@ -1,7 +1,8 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
+import Accordion from "@/components/site/Accordion";
 
 const POINTS = [
   {
@@ -24,24 +25,19 @@ const POINTS = [
 
 export default function Trust() {
   return (
-    <section id="trust" className="relative site-section">
+    <Reveal id="trust" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Trust" title="Built for companies that handle customer data." />
 
-        <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
-          {POINTS.map((p, i) => (
-            <motion.div
-              key={p.t}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.45, delay: i * 0.07 }}
-              className="site-col"
-            >
-              <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{p.t}</h3>
-              <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty">{p.d}</p>
-            </motion.div>
-          ))}
+        <div className="mt-8 max-w-3xl">
+          <Accordion
+            firstOpen
+            items={POINTS.map((p) => ({
+              key: p.t,
+              title: p.t,
+              body: <p className="text-base leading-relaxed text-pretty">{p.d}</p>,
+            }))}
+          />
         </div>
 
         <Link
@@ -51,6 +47,6 @@ export default function Trust() {
           Read about security
         </Link>
       </div>
-    </section>
+    </Reveal>
   );
 }

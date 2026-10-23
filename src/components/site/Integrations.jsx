@@ -1,6 +1,7 @@
 import React from "react";
-import { motion } from "framer-motion";
+import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
+import Accordion from "@/components/site/Accordion";
 
 const INTEGRATIONS = [
   {
@@ -31,7 +32,7 @@ const INTEGRATIONS = [
 
 export default function Integrations() {
   return (
-    <section id="integrations" className="relative scroll-mt-24 site-section">
+    <Reveal id="integrations" className="relative scroll-mt-24 site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Integrations" title="Connected to the systems you already run.">
           Nothing gets replaced. Jago reads and writes in the systems you already have, and{" "}
@@ -39,22 +40,17 @@ export default function Integrations() {
           under your control.
         </SectionIntro>
 
-        <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-          {INTEGRATIONS.map((it, i) => (
-            <motion.div
-              key={it.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4, delay: (i % 3) * 0.06 }}
-              className="site-col"
-            >
-              <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{it.title}</h3>
-              <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty">{it.desc}</p>
-            </motion.div>
-          ))}
+        <div className="mt-8 max-w-3xl">
+          <Accordion
+            firstOpen
+            items={INTEGRATIONS.map((it) => ({
+              key: it.title,
+              title: it.title,
+              body: <p className="text-base leading-relaxed text-pretty">{it.desc}</p>,
+            }))}
+          />
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

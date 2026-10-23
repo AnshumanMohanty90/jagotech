@@ -1,54 +1,114 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
-import CopyEmphasis from "@/components/site/CopyEmphasis";
+import useInView from "@/hooks/useInView";
 
+// The 8-week plan: the same "We do, You do, You get" lines as the plan PDF.
 const PHASES = [
   {
-    title: "Weeks 1 to 2: Connect",
-    desc: "We link your sales, finance and HR systems and agree who can see what.",
-    bold: ["sales, finance and HR systems"],
-    accent: ["who can see what"],
+    label: "Weeks 1 to 2",
+    title: "Connect",
+    weDo: "Link Jago to your systems and set who sees what.",
+    youDo: "Give read access and name your approvers.",
+    youGet: "Answers to questions on your own data.",
   },
   {
-    title: "Weeks 3 to 5: Set up",
-    desc: "We build AI agents for your roles and test them on your own data.",
-    bold: ["AI agents for your roles"],
-    accent: ["your own data"],
+    label: "Weeks 3 to 5",
+    title: "Set up",
+    weDo: "Build AI agents for the roles involved and test them on your data.",
+    youDo: "Test with five to ten users and decide which actions need a sign-off.",
+    youGet: "Agents running the task, with sign-offs in place.",
   },
   {
-    title: "Weeks 6 to 8: Go live",
-    desc: "Your teams use Jago every day, and we show you what changed.",
-    bold: ["use Jago every day"],
-    italic: ["we show you what changed"],
+    label: "Weeks 6 to 8",
+    title: "Go live",
+    weDo: "Move your team onto Jago on WhatsApp, Slack or Teams and track the results.",
+    youDo: "Use Jago daily for the task and flag what to change.",
+    youGet: "Before and after numbers on hours, time and errors.",
   },
 ];
 
+// Segment widths for weeks 1-2, 3-5, 6-8 out of 8.
+const GROW = [2, 3, 3];
+
 export default function HowItWorks() {
+  const [active, setActive] = useState(0);
+  const [trackRef, inView] = useInView("0px 0px -15% 0px");
+  const p = PHASES[active];
+
+  // Eight week ticks; the cyan fill sweeps from week 1 to week 8 when in view.
+  const ticks = [];
+  PHASES.forEach((ph, pi) => {
+    for (let k = 0; k < GROW[pi]; k++) ticks.push(pi);
+  });
+
   return (
-    <section id="how" className="relative site-section">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+    <Reveal id="how" className="relative">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="How it works" title="Live in 8 weeks." />
 
-        <div className="mt-6 sm:mt-8 grid md:grid-cols-3 gap-8 sm:gap-10">
-          {PHASES.map((p, i) => (
-            <motion.div
-              key={p.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.45, delay: i * 0.08 }}
-              className="site-col"
-            >
-              <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{p.title}</h3>
-              <p className="mt-3 text-base text-muted-foreground leading-relaxed">
-                <CopyEmphasis text={p.desc} bold={p.bold} accent={p.accent} italic={p.italic} />
-              </p>
-            </motion.div>
-          ))}
+        <div ref={trackRef} className="mt-8 min-w-0">
+          {/* Progress track: weeks 1 to 8 */}
+          <div className="flex gap-1.5 min-w-0" aria-hidden="true">
+            {ticks.map((seg, i) => (
+              <div key={i} className="h-1.5 flex-1 rounded-full bg-secondary overflow-hidden">
+                <div
+                  className="h-full bg-primary"
+                  style={{
+                    width: inView ? "100%" : "0%",
+                    transition: "width 1000ms ease-out",
+                    transitionDelay: `${i * 120}ms`,
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Phase buttons */}
+          <div className="mt-5 flex gap-1.5 min-w-0">
+            {PHASES.map((ph, i) => {
+              const on = active === i;
+              return (
+                <button
+                  key={ph.label}
+                  type="button"
+                  aria-expanded={on}
+                  onClick={() => setActive(i)}
+                  style={{ flex: `${GROW[i]} 1 0%` }}
+                  className={`site-row site-choice min-w-0 rounded-lg px-3 py-3 text-left min-h-[44px] ${
+                    on ? "bg-[rgba(0,245,255,0.06)]" : ""
+                  }`}
+                >
+                  <span className="block text-xs leading-relaxed text-muted-foreground">{ph.label}</span>
+                  <span
+                    className={`mt-0.5 block font-heading text-base sm:text-lg font-semibold leading-snug ${
+                      on ? "text-primary" : "text-foreground"
+                    }`}
+                  >
+                    {ph.title}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Open phase: We do / You do / You get */}
+          <div className="mt-6 grid gap-5 sm:grid-cols-3 sm:gap-8 min-w-0">
+            <div>
+              <p className="site-label">We do</p>
+              <p className="mt-2 text-base leading-relaxed">{p.weDo}</p>
+            </div>
+            <div>
+              <p className="site-label">You do</p>
+              <p className="mt-2 text-base leading-relaxed">{p.youDo}</p>
+            </div>
+            <div>
+              <p className="site-label">You get</p>
+              <p className="mt-2 text-base leading-relaxed">{p.youGet}</p>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

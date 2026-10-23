@@ -1,6 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Reveal from "@/components/site/Reveal";
 
 const POINTS = [
   "You decide who can see and do what.",
@@ -13,24 +13,17 @@ const POINTS = [
 
 export default function SecurityPoints() {
   return (
-    <section className="relative site-section">
+    <Reveal className="relative site-section-alt">
       <div className="relative mx-auto max-w-4xl px-5 sm:px-8">
-        <ul className="border-t border-border">
-          {POINTS.map((p, i) => (
-            <motion.li
-              key={p}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="border-b border-border py-4 text-base sm:text-lg leading-relaxed text-foreground/90 text-pretty"
-            >
+        <ul className="max-w-none">
+          {POINTS.map((p) => (
+            <li key={p} className="py-4 text-base sm:text-lg leading-relaxed text-pretty min-h-[44px]">
               {p}
-            </motion.li>
+            </li>
           ))}
         </ul>
 
-        <p className="mt-6 text-base leading-relaxed text-muted-foreground text-pretty">
+        <p className="mt-6 text-base leading-relaxed text-pretty">
           Security certification (SOC 2 and ISO 27001, two global standards) is under way.
         </p>
 
@@ -38,6 +31,6 @@ export default function SecurityPoints() {
           Talk to us
         </Link>
       </div>
-    </section>
+    </Reveal>
   );
 }

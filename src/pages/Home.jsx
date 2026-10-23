@@ -4,7 +4,7 @@ import Navbar from "@/components/site/Navbar";
 import Hero from "@/components/site/Hero";
 import ProofStrip from "@/components/site/ProofStrip";
 import Challenge from "@/components/site/Challenge";
-import WhatJagoDoes from "@/components/site/WhatJagoDoes";
+import ModuleSwitcher from "@/components/site/ModuleSwitcher";
 import HowItWorks from "@/components/site/HowItWorks";
 import CustomerStory from "@/components/site/CustomerStory";
 import RoleWins from "@/components/site/RoleWins";
@@ -25,13 +25,13 @@ export default function Home() {
         <Hero />
         <ProofStrip />
         <Challenge />
-        <WhatJagoDoes />
+        <ModuleSwitcher />
         <HowItWorks />
         <CustomerStory />
         <RoleWins />
         <Trust />
         <PricingTeaser />
-        <CTA />
+        <CTA tinted />
       </main>
       <Footer />
     </div>

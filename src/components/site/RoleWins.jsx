@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ROLES, CATEGORIES } from "@/components/site/roleWinsData";
+import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
 
-export default function RoleWins({ withIntro = true }) {
+export default function RoleWins({ withIntro = true, tinted = false }) {
   const [cat, setCat] = useState("all");
   const [activeId, setActiveId] = useState("ceo");
+  const [side, setSide] = useState("before");
 
   const filtered = ROLES.filter((r) => cat === "all" || r.category === cat);
   const active = filtered.find((r) => r.id === activeId) || filtered[0];
@@ -17,7 +18,7 @@ export default function RoleWins({ withIntro = true }) {
   };
 
   return (
-    <section id="solutions" className="relative site-section">
+    <Reveal id="solutions" className={`relative ${tinted ? "site-section-alt" : ""}`}>
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         {withIntro && (
           <SectionIntro eyebrow="Jago in your role" title="How teams use Jago">
@@ -25,15 +26,17 @@ export default function RoleWins({ withIntro = true }) {
           </SectionIntro>
         )}
 
-        <div className={withIntro ? "mt-6 flex flex-wrap gap-x-6 gap-y-2" : "flex flex-wrap gap-x-6 gap-y-2"}>
+        <div className={`${withIntro ? "mt-8 " : ""}flex flex-wrap gap-x-5 gap-y-2`}>
           {CATEGORIES.map((c) => (
             <button
               key={c.id}
+              type="button"
               onClick={() => pickCat(c.id)}
-              className={`site-choice pb-1 border-b-2 text-sm font-medium transition-colors ${
+              aria-pressed={cat === c.id}
+              className={`site-choice rounded-lg px-2 py-2 text-sm font-semibold min-h-[44px] transition-colors ${
                 cat === c.id
-                  ? "text-primary border-primary"
-                  : "text-muted-foreground hover:text-foreground border-transparent"
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               {c.label}
@@ -41,55 +44,95 @@ export default function RoleWins({ withIntro = true }) {
           ))}
         </div>
 
-        <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
-          {filtered.map((r) => {
-            const on = r.id === active.id;
-            return (
+        <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,260px),minmax(0,1fr)] lg:gap-12">
+          {/* Role list */}
+          <div className="min-w-0">
+            <div className="flex flex-col max-h-96 overflow-y-auto pr-1" role="listbox" aria-label="Roles">
+              {filtered.map((r) => {
+                const on = r.id === active.id;
+                return (
+                  <button
+                    key={r.id}
+                    type="button"
+                    role="option"
+                    aria-selected={on}
+                    onClick={() => setActiveId(r.id)}
+                    className={`site-row site-choice flex items-center gap-3 rounded-lg px-3 py-2.5 text-left min-h-[44px] transition-colors ${
+                      on ? "text-foreground" : "text-muted-foreground"
+                    }`}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className={`h-5 w-1 rounded-full shrink-0 transition-colors ${on ? "bg-primary" : "bg-transparent"}`}
+                    />
+                    <span className="text-sm sm:text-base font-medium leading-snug">{r.role}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Comparison with a Before / With Jago switch */}
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <h3 className="font-heading text-2xl font-semibold leading-snug text-balance">{active.role}</h3>
+              <span className="font-mono text-xs leading-relaxed text-muted-foreground">{active.modules}</span>
+            </div>
+
+            <div
+              className="mt-5 inline-grid grid-cols-2 relative rounded-lg border border-border p-1 min-w-[13rem]"
+              role="tablist"
+              aria-label="Before or With Jago"
+            >
+              <span
+                aria-hidden="true"
+                className={`absolute top-1 bottom-1 left-1 w-[calc(50%-4px)] rounded-md bg-primary/10 transition-transform duration-300 ${
+                  side === "with" ? "translate-x-full" : "translate-x-0"
+                }`}
+              />
               <button
-                key={r.id}
-                onClick={() => setActiveId(r.id)}
-                className={`site-choice pb-1 border-b-2 text-sm transition-colors ${
-                  on
-                    ? "text-foreground border-primary"
-                    : "text-muted-foreground hover:text-foreground border-transparent"
+                type="button"
+                role="tab"
+                aria-selected={side === "before"}
+                onClick={() => setSide("before")}
+                className={`relative z-10 rounded-md py-2 text-sm font-semibold min-h-[44px] transition-colors ${
+                  side === "before" ? "text-primary" : "text-muted-foreground"
                 }`}
               >
-                {r.role}
+                Before
               </button>
-            );
-          })}
-        </div>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={side === "with"}
+                onClick={() => setSide("with")}
+                className={`relative z-10 rounded-md py-2 text-sm font-semibold min-h-[44px] transition-colors ${
+                  side === "with" ? "text-primary" : "text-muted-foreground"
+                }`}
+              >
+                With Jago
+              </button>
+            </div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active.id}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.3 }}
-            className="mt-6"
-          >
-            <div className="border-t border-border pt-6 min-w-0">
-              <div className="flex flex-wrap items-baseline justify-between gap-3">
-                <h3 className="font-heading text-2xl font-semibold leading-snug text-balance">{active.role}</h3>
-                <span className="font-mono text-xs leading-relaxed text-muted-foreground">{active.modules}</span>
-              </div>
-
-              <div className="mt-6 grid sm:grid-cols-2 gap-6">
-                <div className="min-w-0">
-                  <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">Before</p>
-                  <p className="mt-2 text-sm sm:text-base leading-relaxed text-muted-foreground text-pretty">{active.before}</p>
+            <div className="mt-5 overflow-hidden min-w-0">
+              <div
+                className={`flex transition-transform duration-300 ${
+                  side === "with" ? "-translate-x-1/2" : "translate-x-0"
+                }`}
+              >
+                <div className="w-full flex-none min-w-0 px-0.5">
+                  <p className="site-label">Before</p>
+                  <p className="mt-2 text-base sm:text-lg leading-relaxed text-pretty">{active.before}</p>
                 </div>
-                <div className="min-w-0 sm:border-l sm:border-border sm:pl-6">
-                  <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">With Jago</p>
-                  <p className="mt-2 text-sm sm:text-base leading-relaxed text-foreground/90 text-pretty">{active.with}</p>
+                <div className="w-full flex-none min-w-0 px-0.5">
+                  <p className="site-label">With Jago</p>
+                  <p className="mt-2 text-base sm:text-lg leading-relaxed text-pretty">{active.with}</p>
                 </div>
               </div>
             </div>
-          </motion.div>
-        </AnimatePresence>
-
+          </div>
+        </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

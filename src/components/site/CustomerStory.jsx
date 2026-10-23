@@ -1,8 +1,9 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
+import CountUp from "@/components/site/CountUp";
 
 const STORY = [
   {
@@ -33,25 +34,35 @@ const STORY = [
 
 export default function CustomerStory({ showLink = true }) {
   return (
-    <section id="story" className="relative site-section">
+    <Reveal id="story" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Customer story" title="A major lending NBFC now knows which branches to audit first" />
 
-        <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 gap-8 sm:gap-10">
-          {STORY.map((s, i) => (
-            <motion.div
-              key={s.label}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.45, delay: i * 0.07 }}
-              className="site-col"
-            >
-              <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-primary">{s.label}</p>
-              <p className="mt-3 text-base leading-relaxed text-foreground/90 text-pretty">
+        <div className="mt-8 flex flex-wrap gap-x-16 gap-y-8">
+          <div>
+            <CountUp
+              value={1600}
+              className="font-heading font-bold text-[56px] leading-none text-primary"
+            />
+            <p className="mt-1 text-base leading-relaxed">branches</p>
+          </div>
+          <div>
+            <CountUp
+              value={160}
+              className="font-heading font-bold text-[56px] leading-none text-primary"
+            />
+            <p className="mt-1 text-base leading-relaxed">auditors</p>
+          </div>
+        </div>
+
+        <div className="mt-8 grid sm:grid-cols-2 gap-8 sm:gap-10">
+          {STORY.map((s) => (
+            <div key={s.label} className="min-w-0">
+              <p className="site-label">{s.label}</p>
+              <p className="mt-3 text-base leading-relaxed text-pretty">
                 <CopyEmphasis text={s.text} bold={s.bold} accent={s.accent} italic={s.italic} />
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -63,6 +74,6 @@ export default function CustomerStory({ showLink = true }) {
           </div>
         )}
       </div>
-    </section>
+    </Reveal>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
 
 const LIFECYCLE = [
@@ -26,31 +26,24 @@ const DEPARTMENTS = ["Sales", "Customer Experience", "Operations", "Finance", "H
 
 export default function AgentsOverview() {
   return (
-    <section id="agents" className="relative scroll-mt-24 site-section">
+    <Reveal id="agents" className="relative scroll-mt-24 site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="AI agents" title="Agents that watch, check and do the work.">
           An agent is software that carries a job from question to finished
           work, inside your systems, under your rules.
         </SectionIntro>
 
-        <div className="mt-6 sm:mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
-          {LIFECYCLE.map((s, i) => (
-            <motion.div
-              key={s.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.45, delay: i * 0.08 }}
-              className="site-col"
-            >
+        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+          {LIFECYCLE.map((s) => (
+            <div key={s.title} className="site-col">
               <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{s.title}</h3>
-              <p className="mt-2 text-base text-muted-foreground leading-relaxed text-pretty">{s.desc}</p>
-            </motion.div>
+              <p className="mt-2 text-base leading-relaxed text-pretty">{s.desc}</p>
+            </div>
           ))}
         </div>
 
-        <div className="mt-8 border-t border-border pt-6 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
-          <p className="text-base leading-relaxed text-muted-foreground">
+        <div className="mt-8 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+          <p className="text-base leading-relaxed max-w-xl">
             Every department has its own agent.{" "}
             See what yours does.
           </p>
@@ -66,6 +59,6 @@ export default function AgentsOverview() {
           </div>
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }
