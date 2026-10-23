@@ -41,7 +41,7 @@ const AGENTS = [
     cta: "Request access",
   },
   {
-    kind: "Predict model · Zoho CRM native",
+    kind: "Predict model, Zoho CRM native",
     name: "Jasper: Sales Predict Model",
     desc: "Ranks deals by value, chance and urgency, flags stalled pipelines and forecasts close rates.",
     price: "Pilot model",

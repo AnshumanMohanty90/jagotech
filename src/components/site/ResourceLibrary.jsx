@@ -32,17 +32,17 @@ const BLOGS = [
 const GUIDES = [
   {
     title: "Choosing your first process",
-    meta: "Worksheet · Quick read",
+    meta: "Worksheet, Quick read",
     desc: "Find the process that eats the most hours, and frame it as a first win.",
   },
   {
     title: "Connecting your systems safely",
-    meta: "Playbook · Quick read",
+    meta: "Playbook, Quick read",
     desc: "What Jago reads, what it writes, and who approves, before anything changes.",
   },
   {
     title: "Measuring what changed",
-    meta: "Framework · Quick read",
+    meta: "Framework, Quick read",
     desc: "The hours, the cycle time and the error rate to track from week one.",
   },
 ];

@@ -72,7 +72,7 @@ export default function Footer({ logoVariant }) {
           <div className="lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
             {COLS.map((c) => (
               <div key={c.title}>
-                <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">{c.title}</p>
+                <p className="site-label">{c.title}</p>
                 <ul className="mt-4 space-y-2.5">
                   {c.links.map((l) => (
                     <li key={l.label}>

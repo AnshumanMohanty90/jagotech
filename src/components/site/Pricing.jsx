@@ -99,8 +99,8 @@ export default function Pricing() {
 
         <div className="mt-8">
           <p className="site-label">Every plan includes</p>
-          <p className="mt-3 text-base leading-relaxed text-pretty">
-            {INCLUDED.join(" · ")}
+          <p className="mt-3 text-[15px] leading-relaxed text-slate-300">
+            {INCLUDED.join(", ")}
           </p>
         </div>
 

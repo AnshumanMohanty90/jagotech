@@ -70,7 +70,7 @@ export default function Industries() {
             {[...DEPARTMENTS, ...DEPARTMENTS].map((d, i) => (
               <span
                 key={i}
-                className="shrink-0 font-mono text-xs uppercase tracking-wide text-muted-foreground"
+                className="shrink-0 site-label"
               >
                 {d}
               </span>

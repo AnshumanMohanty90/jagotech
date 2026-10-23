@@ -49,7 +49,7 @@ export default function AgentsOverview() {
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {DEPARTMENTS.map((d) => (
-              <span key={d} className="font-mono text-xs uppercase tracking-wide text-foreground/80">
+              <span key={d} className="site-label">
                 {d}
               </span>
             ))}
