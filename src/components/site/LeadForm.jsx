@@ -14,7 +14,7 @@ const PERSONAL_DOMAINS = [
 
 // The 8-week plan PDF (stored publicly).
 export const PLAN_PDF_URL =
-  "https://media.base44.com/files/public/6ac78b627ed759581c8a0fea/051911c22_JagoAI_8-WeekPlan.pdf";
+  "https://media.base44.com/files/public/6ac78b627ed759581c8a0fea/df70a7026_JagoAI_8-WeekPlan.pdf";
 
 const downloadPlanPdf = () => {
   const a = document.createElement("a");
