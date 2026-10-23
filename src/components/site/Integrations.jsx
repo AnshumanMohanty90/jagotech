@@ -49,7 +49,7 @@ export default function Integrations() {
               transition={{ duration: 0.4, delay: (i % 3) * 0.06 }}
               className="site-col"
             >
-              <h4 className="font-heading text-xl font-semibold leading-snug text-balance">{it.title}</h4>
+              <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{it.title}</h3>
               <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty">{it.desc}</p>
             </motion.div>
           ))}

@@ -58,7 +58,7 @@ export default function Industries() {
               transition={{ duration: 0.4, delay: (i % 3) * 0.06 }}
               className="site-col scroll-mt-24"
             >
-              <h4 className="font-heading text-xl font-semibold leading-snug text-balance">{it.name}</h4>
+              <h2 className="font-heading !text-xl font-semibold leading-snug text-balance">{it.name}</h2>
               <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty">
                 <CopyEmphasis text={it.desc} bold={it.bold} />
               </p>

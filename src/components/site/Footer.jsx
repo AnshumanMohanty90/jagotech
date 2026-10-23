@@ -72,7 +72,7 @@ export default function Footer({ logoVariant }) {
           <div className="lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8">
             {COLS.map((c) => (
               <div key={c.title}>
-                <h4 className="font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">{c.title}</h4>
+                <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">{c.title}</p>
                 <ul className="mt-4 space-y-2.5">
                   {c.links.map((l) => (
                     <li key={l.label}>
@@ -105,7 +105,7 @@ export default function Footer({ logoVariant }) {
               href="https://jshield.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:underline underline-offset-4 transition-colors"
+              className="text-primary underline underline-offset-4 hover:decoration-primary/60 transition-colors"
             >
               JShield
             </a>{" "}

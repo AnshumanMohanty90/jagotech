@@ -70,7 +70,7 @@ export default function Pricing() {
               transition={{ duration: 0.4, delay: (i % 3) * 0.08 }}
               className="site-col flex flex-col"
             >
-              <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{p.name}</h3>
+              <h2 className="font-heading !text-xl font-semibold leading-snug text-balance">{p.name}</h2>
 
               <p className="mt-3 font-heading text-xl sm:text-2xl font-semibold leading-snug text-primary">
                 {p.price}

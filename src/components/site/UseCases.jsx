@@ -54,7 +54,7 @@ export default function UseCases() {
               transition={{ duration: 0.4, delay: (i % 4) * 0.06 }}
               className="site-col scroll-mt-24"
             >
-              <h4 className="font-heading text-xl font-semibold leading-snug text-balance">{u.title}</h4>
+              <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{u.title}</h3>
               <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty">
                 <CopyEmphasis text={u.desc} bold={u.bold} accent={u.accent} />
               </p>

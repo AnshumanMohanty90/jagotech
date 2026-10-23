@@ -90,9 +90,9 @@ export default function Hero() {
           <div className="lg:col-span-6 min-w-0">
             <div className="rounded-2xl border border-border bg-card/30 backdrop-blur-xl p-4 sm:p-5 glow-cyan">
               <div className="flex items-center justify-between px-1 pb-3">
-                <span className="inline-flex items-center gap-2 font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">
+                <span className="inline-flex items-center gap-2 font-mono text-xs leading-relaxed tracking-wide text-muted-foreground">
                   <Sparkles className="w-3.5 h-3.5 text-primary" />
-                  Ask Jago · demo
+                  Ask Jago, sample data
                 </span>
                 <span className="font-mono text-xs leading-relaxed text-muted-foreground">
                   Sample data

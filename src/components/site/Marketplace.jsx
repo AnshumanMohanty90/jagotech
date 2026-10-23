@@ -63,7 +63,7 @@ export default function Marketplace() {
               className="site-col flex flex-col"
             >
               <span className="font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">{b.kind}</span>
-              <h3 className="mt-3 font-heading text-xl font-semibold leading-snug text-balance">{b.name}</h3>
+              <h2 className="mt-3 font-heading !text-xl font-semibold leading-snug text-balance">{b.name}</h2>
               <p className="mt-3 text-base text-muted-foreground leading-relaxed text-pretty flex-1">
                 <CopyEmphasis text={b.desc} bold={["structured records", "clauses, liabilities and terms", "ERP and CRM entries", "structured summaries and action triggers", "quality compliance", "forecasts close rates"]} italic={["with no manual page reviews"]} />
               </p>

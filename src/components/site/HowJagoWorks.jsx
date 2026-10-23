@@ -73,7 +73,7 @@ export default function HowJagoWorks() {
               transition={{ duration: 0.45, delay: (i % 2) * 0.08 }}
               className="site-col scroll-mt-24"
             >
-              <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{m.title}</h3>
+              <h2 className="font-heading !text-xl font-semibold leading-snug text-balance">{m.title}</h2>
               <p className="mt-4 text-base text-muted-foreground leading-relaxed text-pretty">
                 <CopyEmphasis text={m.desc} bold={m.bold} accent={m.accent} />
               </p>

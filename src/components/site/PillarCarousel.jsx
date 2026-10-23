@@ -72,7 +72,7 @@ export default function PillarCarousel() {
             transition={{ duration: 0.3 }}
           >
             <p className="font-mono text-xs leading-relaxed uppercase tracking-wide text-muted-foreground">{p.tag}</p>
-            <h3 className="mt-1.5 font-heading text-lg font-semibold leading-snug text-balance">{p.title}</h3>
+            <h2 className="mt-1.5 font-heading !text-lg font-semibold leading-snug text-balance">{p.title}</h2>
             <p className="mt-3 text-sm leading-relaxed text-foreground/80">{p.prompt}</p>
             <p className="mt-1.5 font-mono text-sm leading-relaxed text-primary">{p.output}</p>
           </motion.div>

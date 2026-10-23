@@ -39,7 +39,7 @@ const MODULES = [
     bold: ["within the law"],
     accent: ["proof ready for any audit"],
     link: "https://jshield.ai",
-    linkLabel: "Learn more",
+    linkLabel: "Read about JShield",
   },
 ];
 
