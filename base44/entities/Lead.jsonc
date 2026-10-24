@@ -32,6 +32,9 @@
     },
     "source_page": {
       "type": "string"
+    },
+    "submission_id": {
+      "type": "string"
     }
   },
   "required": [

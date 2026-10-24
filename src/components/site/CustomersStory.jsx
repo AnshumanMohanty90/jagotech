@@ -35,7 +35,7 @@ export default function CustomersStory() {
         <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-10">
           <div className="min-w-0">
             <p className="site-label">The scale</p>
-            <p className="mt-3 text-[15px] leading-relaxed text-slate-300">
+            <p className="mt-3 text-[16px] leading-relaxed text-slate-300">
               1,600 branches, 160 auditors, five audit types, live data
             </p>
           </div>

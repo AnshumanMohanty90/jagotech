@@ -42,14 +42,14 @@ export default function CustomerStory({ showLink = true }) {
           <div>
             <CountUp
               value={1600}
-              className="font-heading font-bold text-[56px] leading-none text-primary"
+              className="font-heading font-bold text-[48px] leading-none text-primary"
             />
             <p className="mt-1 text-base leading-relaxed">branches</p>
           </div>
           <div>
             <CountUp
               value={160}
-              className="font-heading font-bold text-[56px] leading-none text-primary"
+              className="font-heading font-bold text-[48px] leading-none text-primary"
             />
             <p className="mt-1 text-base leading-relaxed">auditors</p>
           </div>

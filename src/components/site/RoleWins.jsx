@@ -87,7 +87,7 @@ export default function RoleWins({ withIntro = true, tinted = false }) {
           <div className="min-w-0">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h3 className="font-heading text-2xl font-semibold leading-snug text-balance">{active.role}</h3>
-              <span className="text-[15px] text-muted-foreground">{usesText(active.modules)}</span>
+              <span className="text-[16px] text-muted-foreground">{usesText(active.modules)}</span>
             </div>
 
             <div className="mt-5 space-y-6">

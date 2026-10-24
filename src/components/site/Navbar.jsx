@@ -109,8 +109,8 @@ export default function Navbar({ logoVariant }) {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-background border-b transition-colors ${
-        scrolled ? "border-border" : "border-transparent"
+      className={`sticky top-0 z-50 bg-background transition-shadow ${
+        scrolled ? "shadow-[0_2px_16px_rgba(0,0,0,0.45)]" : ""
       }`}
     >
       <a href="#main-content" className="skip-link">

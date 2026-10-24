@@ -126,6 +126,18 @@
     color: hsl(var(--primary));
   }
 
+  /* Inline text links and small tabs: at least 24px tall, 44px on phones. */
+  .site-inline-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  @media (min-width: 640px) {
+    .site-inline-link {
+      min-height: 24px;
+    }
+  }
+
   .site-typography :where(p, li) {
     text-wrap: pretty;
   }
@@ -295,14 +307,14 @@ html {
   font-weight: 600;
 }
 
-/* One type scale for all pages: H1 56/36, H2 44/30, H3 22, body 17px */
+/* One type scale for all pages: H1 48/36, H2 30/24, H3 20, body 18px */
 .site-typography h1 {
   font-size: 2.25rem;
   line-height: 1.12;
 }
 .site-typography h2 {
   font-family: var(--font-heading);
-  font-size: 1.625rem;
+  font-size: 1.5rem;
   line-height: 1.15;
   font-weight: 700;
 }
@@ -314,14 +326,14 @@ html {
 }
 @media (min-width: 640px) {
   .site-typography h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
   .site-typography h2 {
-    font-size: 2.125rem;
+    font-size: 1.875rem;
   }
 }
 .site-typography p:not(.font-mono):not(.font-heading):not(.site-label):not([role="alert"]):not(.site-line) {
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   line-height: 1.6;
   color: #CBD5E1;
   max-width: 68ch;

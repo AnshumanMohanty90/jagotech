@@ -41,19 +41,17 @@ export default function ContactPage() {
         </PageHeader>
         <section className="relative site-section site-section-alt">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
-            <div className="rounded-3xl border border-primary/40 bg-card/50 backdrop-blur p-7 sm:p-9 glow-cyan">
-              <LeadForm
-                intent={intent}
-                defaultTask={presetTask}
-                planOfInterest={planOfInterest}
-                sourcePage={`/contact?intent=${intent}`}
-              />
-            </div>
+            <LeadForm
+              intent={intent}
+              defaultTask={presetTask}
+              planOfInterest={planOfInterest}
+              sourcePage={`/contact?intent=${intent}`}
+            />
             <p className="mt-6 text-center text-base leading-relaxed text-muted-foreground">
               Or write to us at{" "}
               <a
                 href="mailto:contact@jagoai.com"
-                className="copy-accent hover:underline underline-offset-4 transition-colors"
+                className="site-inline-link copy-accent hover:underline underline-offset-4 transition-colors"
               >
                 contact@jagoai.com
               </a>

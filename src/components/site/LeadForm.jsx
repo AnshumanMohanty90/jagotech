@@ -12,6 +12,11 @@ const PERSONAL_DOMAINS = [
   "rediffmail.com", "yandex.com", "yandex.ru", "gmx.com", "mail.com",
 ];
 
+const PERSONAL_EMAIL_MESSAGE =
+  "Please use your work email, not a Gmail, Yahoo or Outlook address.";
+const SAVE_FAILED_MESSAGE =
+  "We could not send this. Your details are still here; please try again or write to contact@jagoai.com.";
+
 // The 8-week plan PDF (stored publicly).
 export const PLAN_PDF_URL =
   "https://media.base44.com/files/public/6ac78b627ed759581c8a0fea/df70a7026_JagoAI_8-WeekPlan.pdf";
@@ -42,6 +47,12 @@ const INTENT_TEXT = {
 const PLANS_OF_INTEREST = ["Growth", "Enterprise", "JShield add-on", "Own servers"];
 
 const FIELD_ORDER = ["name", "workEmail", "company", "companySize", "planOfInterest", "mainTask"];
+
+// A unique id per submission, stored on the Lead.
+const newSubmissionId = () =>
+  window.crypto && window.crypto.randomUUID
+    ? window.crypto.randomUUID()
+    : `s-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
 const inputCls =
   "w-full rounded-xl border border-border bg-card/60 backdrop-blur px-4 py-3.5 text-base leading-relaxed placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/20 transition";
@@ -80,6 +91,7 @@ export default function LeadForm({
     companySize: "",
     mainTask: defaultTask,
     planOfInterest: PLANS_OF_INTEREST.includes(planOfInterest) ? planOfInterest : "",
+    website: "", // honeypot: humans never see or fill this
   });
   const [errors, setErrors] = useState({});
   const [sending, setSending] = useState(false);
@@ -102,6 +114,13 @@ export default function LeadForm({
     refs.current[key] = el;
   };
 
+  const checkPersonalEmail = () => {
+    const domain = form.workEmail.trim().toLowerCase().split("@")[1] || "";
+    if (PERSONAL_DOMAINS.includes(domain)) {
+      setErrors((prev) => ({ ...prev, workEmail: PERSONAL_EMAIL_MESSAGE }));
+    }
+  };
+
   const validate = () => {
     const next = {};
     if (!form.name.trim()) next.name = "Please enter your name.";
@@ -110,7 +129,7 @@ export default function LeadForm({
     if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/.test(trimmed)) {
       next.workEmail = "Please enter your work email.";
     } else if (PERSONAL_DOMAINS.includes(domain)) {
-      next.workEmail = "Please use your work email so we can set up your plan.";
+      next.workEmail = PERSONAL_EMAIL_MESSAGE;
     }
     if (!form.company.trim()) next.company = "Please enter your company.";
     if (!mini && !form.companySize) next.companySize = "Please select your company size.";
@@ -124,6 +143,13 @@ export default function LeadForm({
   const submit = async (e) => {
     e.preventDefault();
     if (sending) return;
+
+    // Honeypot filled: a bot, not a person. Show the normal thank-you, save nothing.
+    if (form.website.trim()) {
+      setSent(true);
+      return;
+    }
+
     const next = validate();
     setErrors(next);
     if (FIELD_ORDER.some((k) => next[k])) {
@@ -145,6 +171,7 @@ export default function LeadForm({
       const trimmed = form.workEmail.trim().toLowerCase();
       const res = await base44.functions.invoke("saveLead", {
         intent,
+        submissionId: newSubmissionId(),
         name: form.name.trim(),
         workEmail: trimmed,
         company: form.company.trim(),
@@ -160,7 +187,8 @@ export default function LeadForm({
       setSent(true);
     } catch {
       if (downloadWindow) downloadWindow.close();
-      setServerError("Something went wrong. Please try again in a moment.");
+      // Keep every value so the visitor can try again without retyping.
+      setServerError(SAVE_FAILED_MESSAGE);
     } finally {
       setSending(false);
     }
@@ -199,85 +227,84 @@ export default function LeadForm({
 
   return (
     <form onSubmit={submit} noValidate className="space-y-4">
-      <div className="grid sm:grid-cols-2 gap-4">
-        <Field id="name" label="Name" error={errors.name}>
-          <input
-            ref={ref("name")}
-            type="text"
+      <Field id="name" label="Name" error={errors.name}>
+        <input
+          ref={ref("name")}
+          type="text"
+          required
+          value={form.name}
+          onChange={set("name")}
+          autoComplete="name"
+          placeholder="Priya Sharma"
+          className={cls("name")}
+          {...a11y("name")}
+        />
+      </Field>
+      <Field id="workEmail" label="Work email" error={errors.workEmail}>
+        <input
+          ref={ref("workEmail")}
+          type="email"
+          required
+          value={form.workEmail}
+          onChange={set("workEmail")}
+          onBlur={checkPersonalEmail}
+          autoComplete="email"
+          placeholder="priya@yourcompany.com"
+          className={cls("workEmail")}
+          {...a11y("workEmail")}
+        />
+      </Field>
+      <Field id="company" label="Company" error={errors.company}>
+        <input
+          ref={ref("company")}
+          type="text"
+          required
+          value={form.company}
+          onChange={set("company")}
+          autoComplete="organization"
+          placeholder="Your company name"
+          className={cls("company")}
+          {...a11y("company")}
+        />
+      </Field>
+      {!mini && (
+        <Field id="companySize" label="Company size" error={errors.companySize}>
+          <select
+            ref={ref("companySize")}
             required
-            value={form.name}
-            onChange={set("name")}
-            autoComplete="name"
-            placeholder="Name"
-            className={cls("name")}
-            {...a11y("name")}
-          />
+            value={form.companySize}
+            onChange={set("companySize")}
+            className={`${cls("companySize")} text-muted-foreground`}
+            {...a11y("companySize")}
+          >
+            <option value="">Company size</option>
+            {SIZES.map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
+          </select>
         </Field>
-        <Field id="workEmail" label="Work email" error={errors.workEmail}>
-          <input
-            ref={ref("workEmail")}
-            type="email"
+      )}
+      {intent === "pricing" && (
+        <Field id="planOfInterest" label="Plan of interest" error={errors.planOfInterest}>
+          <select
+            ref={ref("planOfInterest")}
             required
-            value={form.workEmail}
-            onChange={set("workEmail")}
-            autoComplete="email"
-            placeholder="Work email"
-            className={cls("workEmail")}
-            {...a11y("workEmail")}
-          />
+            value={form.planOfInterest}
+            onChange={set("planOfInterest")}
+            className={`${cls("planOfInterest")} text-muted-foreground`}
+            {...a11y("planOfInterest")}
+          >
+            <option value="">Plan of interest</option>
+            {PLANS_OF_INTEREST.map((p) => (
+              <option key={p} value={p}>
+                {p}
+              </option>
+            ))}
+          </select>
         </Field>
-        <Field id="company" label="Company" error={errors.company}>
-          <input
-            ref={ref("company")}
-            type="text"
-            required
-            value={form.company}
-            onChange={set("company")}
-            autoComplete="organization"
-            placeholder="Company"
-            className={cls("company")}
-            {...a11y("company")}
-          />
-        </Field>
-        {!mini && (
-          <Field id="companySize" label="Company size" error={errors.companySize}>
-            <select
-              ref={ref("companySize")}
-              required
-              value={form.companySize}
-              onChange={set("companySize")}
-              className={`${cls("companySize")} text-muted-foreground`}
-              {...a11y("companySize")}
-            >
-              <option value="">Company size</option>
-              {SIZES.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </select>
-          </Field>
-        )}
-        {intent === "pricing" && (
-          <Field id="planOfInterest" label="Plan of interest" error={errors.planOfInterest}>
-            <select
-              ref={ref("planOfInterest")}
-              required
-              value={form.planOfInterest}
-              onChange={set("planOfInterest")}
-              className={`${cls("planOfInterest")} text-muted-foreground`}
-              {...a11y("planOfInterest")}
-            >
-              <option value="">Plan of interest</option>
-              {PLANS_OF_INTEREST.map((p) => (
-                <option key={p} value={p}>
-                  {p}
-                </option>
-              ))}
-            </select>
-          </Field>
-        )}
-      </div>
+      )}
       {!mini && (
         <Field id="mainTask" label="Which task takes your team the most time?" error={errors.mainTask}>
           <textarea
@@ -286,19 +313,29 @@ export default function LeadForm({
             required
             value={form.mainTask}
             onChange={set("mainTask")}
-            placeholder="Which task takes your team the most time?"
+            placeholder="For example, preparing the monthly sales pack"
             className={`${cls("mainTask")} w-full`}
             {...a11y("mainTask")}
           />
         </Field>
       )}
+      <input
+        type="text"
+        name="website"
+        value={form.website}
+        onChange={set("website")}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="sr-only"
+      />
       <div className="flex flex-col sm:flex-row sm:items-center gap-4">
         <button
           type="submit"
           disabled={sending}
           className="site-cta-primary px-5 py-3.5 rounded-xl text-sm disabled:opacity-60"
         >
-          {buttonLabel || INTENT_TEXT[intent].button}
+          {sending ? "Sending..." : buttonLabel || INTENT_TEXT[intent].button}
         </button>
         <p className="text-sm leading-relaxed text-muted-foreground">{note}</p>
       </div>

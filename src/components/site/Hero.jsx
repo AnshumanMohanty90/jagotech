@@ -86,16 +86,16 @@ export default function Hero() {
           <div className="lg:col-span-6 min-w-0">
             <div className="rounded-2xl border border-border bg-card/30 backdrop-blur-xl p-4 sm:p-5 glow-cyan">
               <div className="flex items-center justify-between px-1 pb-3">
-                <span className="inline-flex items-center gap-2 font-mono text-xs leading-relaxed tracking-wide text-muted-foreground">
+                <span className="inline-flex items-center gap-2 text-sm leading-relaxed tracking-wide text-muted-foreground">
                   <Sparkles className="w-3.5 h-3.5 text-primary" />
                   Ask Jago, sample data
                 </span>
-                <span className="font-mono text-xs leading-relaxed text-muted-foreground">
+                <span className="text-sm leading-relaxed text-muted-foreground">
                   Sample data
                 </span>
               </div>
               <AskDemo placeholder={typed} />
-              <p className="mt-3 px-1 font-mono text-xs leading-relaxed text-muted-foreground">
+              <p className="site-line mt-3 px-1 text-sm leading-relaxed text-muted-foreground">
                 Answers from sample data · 50+ languages ·{" "}
                 <span className="text-primary">text or voice</span>
               </p>

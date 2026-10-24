@@ -100,7 +100,7 @@ export default function ModuleSwitcher() {
                   />
                   <span className="font-heading text-lg font-semibold leading-snug">{mod.title}</span>
                 </span>
-                <span className="mt-1 pl-7 text-[15px] leading-relaxed text-muted-foreground">
+                <span className="mt-1 pl-7 text-[16px] leading-relaxed text-muted-foreground">
                   {mod.desc}
                 </span>
               </button>
@@ -117,7 +117,7 @@ export default function ModuleSwitcher() {
                 </p>
               </div>
               <p className="mt-3 text-base leading-relaxed text-foreground/80">{m.answer}</p>
-              <p className="mt-3 text-[15px] font-medium leading-relaxed text-foreground">
+              <p className="mt-3 text-[16px] font-medium leading-relaxed text-foreground">
                 {m.result}
               </p>
               <Link
@@ -137,7 +137,7 @@ export default function ModuleSwitcher() {
             href="https://jshield.ai"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary underline underline-offset-4 hover:decoration-primary/60 transition-colors"
+            className="site-inline-link text-primary underline underline-offset-4 hover:decoration-primary/60 transition-colors"
           >
             Read about JShield
           </a>

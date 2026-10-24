@@ -42,7 +42,7 @@ const COLS = [
 
 export default function Footer({ logoVariant }) {
   return (
-    <footer className="relative border-t border-border bg-background">
+    <footer className="relative site-section-alt">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 py-12">
         <div className="grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-3">
@@ -56,7 +56,7 @@ export default function Footer({ logoVariant }) {
             </p>
             <a
               href="mailto:contact@jagoai.com"
-              className="mt-3 inline-block text-sm text-primary hover:underline underline-offset-4 transition-colors"
+              className="site-inline-link mt-3 text-sm text-primary hover:underline underline-offset-4 transition-colors"
             >
               contact@jagoai.com
             </a>
@@ -74,12 +74,12 @@ export default function Footer({ logoVariant }) {
                           href={l.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm text-foreground/80 hover:text-primary transition-colors"
+                          className="site-inline-link text-sm text-foreground/80 hover:text-primary transition-colors"
                         >
                           {l.label}
                         </a>
                       ) : (
-                        <Link to={l.href} className="text-sm text-foreground/80 hover:text-primary transition-colors">
+                        <Link to={l.href} className="site-inline-link text-sm text-foreground/80 hover:text-primary transition-colors">
                           {l.label}
                         </Link>
                       )}
@@ -91,8 +91,8 @@ export default function Footer({ logoVariant }) {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[15px] font-medium leading-relaxed text-slate-300">
+        <div className="mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[16px] font-medium leading-relaxed text-slate-300">
             © 2026 Jago AI.{" "}
             <a
               href="https://jshield.ai"

@@ -7,7 +7,7 @@ export default function PlanColumn({ plan: p }) {
       <h3>{p.name}</h3>
       <p className="mt-3 font-heading text-lg font-semibold text-foreground">{p.price}</p>
       {p.priceNote && (
-        <p className="mt-2 text-[15px] leading-relaxed text-slate-300">{p.priceNote}</p>
+        <p className="mt-2 text-[16px] leading-relaxed text-slate-300">{p.priceNote}</p>
       )}
       <p className="mt-3 text-base leading-relaxed text-pretty">{p.desc}</p>
       <div className="mt-4 flex flex-col items-start gap-3">

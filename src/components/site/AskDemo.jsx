@@ -20,7 +20,7 @@ const TABS = [
 ];
 
 const TAB_CLS =
-  "site-choice font-mono text-xs leading-relaxed uppercase tracking-wide px-2.5 py-1.5 rounded-lg border transition-colors";
+  "site-choice site-inline-link text-sm leading-relaxed uppercase tracking-wide px-2.5 py-1.5 rounded-lg border transition-colors";
 const activeTabCls = (active) =>
   active
     ? `${TAB_CLS} text-primary bg-primary/10 border-primary/40`
@@ -81,7 +81,7 @@ export default function AskDemo({ placeholder, language }) {
               setTypedReply(false);
               setExampleShown(true);
             }}
-            className="mt-2 px-1 block text-left font-mono text-xs leading-relaxed text-muted-foreground hover:text-primary transition-colors"
+            className="site-inline-link mt-2 px-1 text-left text-sm leading-relaxed text-muted-foreground hover:text-primary transition-colors"
           >
             Try an example: {ASK.example}
           </button>
@@ -92,7 +92,7 @@ export default function AskDemo({ placeholder, language }) {
               text={
                 <>
                   This demo uses sample data.{" "}
-                  <Link to="/contact?intent=trial" className="text-primary underline underline-offset-4">
+                  <Link to="/contact?intent=trial" className="site-inline-link text-primary underline underline-offset-4">
                     Start a free week
                   </Link>{" "}
                   to ask questions about your own data.

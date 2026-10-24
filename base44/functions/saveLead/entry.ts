@@ -37,6 +37,7 @@ export default async function(req) {
     const intent = str(body.intent);
     const planOfInterest = str(body.planOfInterest);
     const sourcePage = str(body.sourcePage) || 'unknown';
+    const submissionId = str(body.submissionId);
 
     if (!name || !company || !mainTask || !INTENTS.includes(intent)) {
       return Response.json({ error: 'Missing required fields.' }, { status: 400 });
@@ -47,7 +48,15 @@ export default async function(req) {
       return Response.json({ error: 'Please use your work email so we can set up your plan.' }, { status: 400 });
     }
 
-    await base44.asServiceRole.entities.Lead.create({
+    // Same work email and intent within 10 minutes: update that Lead, do not create a duplicate.
+    const tenMinutesAgo = new Date(Date.now() - 10 * 60 * 1000).toISOString();
+    const existing = await base44.asServiceRole.entities.Lead.filter(
+      { work_email: workEmail, intent, created_date: { $gte: tenMinutesAgo } },
+      { sort: '-created_date', limit: 1 }
+    );
+    const recent = (existing.items || existing)[0];
+
+    const lead = {
       name,
       work_email: workEmail,
       company,
@@ -56,7 +65,14 @@ export default async function(req) {
       plan_of_interest: planOfInterest,
       intent,
       source_page: sourcePage,
-    });
+      submission_id: submissionId,
+    };
+
+    if (recent) {
+      await base44.asServiceRole.entities.Lead.update(recent.id, lead);
+    } else {
+      await base44.asServiceRole.entities.Lead.create(lead);
+    }
 
     let ownerEmail = '';
     try {
