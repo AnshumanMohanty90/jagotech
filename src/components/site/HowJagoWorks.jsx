@@ -6,10 +6,10 @@ const MODULES = [
   {
     id: "ask",
     title: "Ask",
-    desc: "Ask in plain words, by text or voice, in 50+ languages, on WhatsApp, Slack or Teams. Jago answers from every team's systems and files, including documents, call recordings and images, and shows the source.",
-    example: "\"How did each region do against target, and what are South customers complaining about?\"",
-    result: "One answer, drawn from several systems, with sources.",
-    bold: ["every team's systems and files"],
+    desc: "Ask in plain words, by text or voice, in 50+ languages, on WhatsApp, Slack or Teams. Jago answers from every team's systems and from the documents spread across email, Teams, Slack, WhatsApp and shared drives, and shows the source.",
+    example: "\"How did each region do against target, and what is holding South back?\"",
+    result: "One answer, from systems and documents across channels, with sources.",
+    bold: ["documents spread across email, Teams, Slack, WhatsApp and shared drives"],
     accent: ["50+ languages"],
   },
   {

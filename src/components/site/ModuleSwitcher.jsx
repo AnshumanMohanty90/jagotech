@@ -8,12 +8,12 @@ const MODULES = [
   {
     id: "ask",
     title: "Ask",
-    desc: "One question, answered from every team's systems and files, in your language, with the source.",
+    desc: "One question, in your language, answered from your systems and documents across every channel, with the source.",
     anchor: "ask",
-    example: "How did each region do against target in Q3, and what are customers in South complaining about?",
+    example: "How did each region do against target in Q3, and what is holding South back?",
     answer:
-      "North is 18% ahead of target and South is 4% behind. In South call recordings, the top complaint is late delivery. Sources: CRM, sales ledger and support call recordings.",
-    result: "One answer, from three systems and audio.",
+      "North is 18% ahead of target and South is 4% behind. The South review notes on Teams and the dispatch report shared on WhatsApp both point to late deliveries. Sources: CRM, sales ledger and two documents.",
+    result: "One answer, from systems and documents across channels.",
   },
   {
     id: "analyze",
