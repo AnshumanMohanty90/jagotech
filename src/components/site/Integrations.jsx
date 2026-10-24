@@ -18,11 +18,7 @@ const INTEGRATIONS = [
   },
   {
     title: "Documents",
-    desc: "Contracts, reports and PDFs, read and summarised.",
-  },
-  {
-    title: "Voice",
-    desc: "Meeting recordings and voice notes, written out and searchable.",
+    desc: "Contracts, reports and PDFs, read and summarised wherever they sit: email, Teams, Slack, WhatsApp or shared drives.",
   },
   {
     title: "Messaging channels",
