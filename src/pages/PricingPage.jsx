@@ -10,7 +10,7 @@ import Footer from "@/components/site/Footer";
 export default function PricingPage() {
   usePageMeta("Pricing | Jago AI");
   return (
-    <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />
       <main id="main-content">
         <PageHeader eyebrow="Plans" title="Start with one team. Grow into the whole company.">

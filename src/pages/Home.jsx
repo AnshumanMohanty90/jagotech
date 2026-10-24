@@ -11,6 +11,17 @@ import RoleWins from "@/components/site/RoleWins";
 import Trust from "@/components/site/Trust";
 import PricingTeaser from "@/components/site/PricingTeaser";
 import CTA from "@/components/site/CTA";
+import SectionNav from "@/components/site/SectionNav";
+
+const SECTIONS = [
+  { id: "problem", label: "The problem" },
+  { id: "modules", label: "Modules" },
+  { id: "how", label: "How it works" },
+  { id: "story", label: "Customer story" },
+  { id: "solutions", label: "By role" },
+  { id: "trust", label: "Trust" },
+  { id: "pricing-teaser", label: "Pricing" },
+];
 import Footer from "@/components/site/Footer";
 
 export default function Home() {
@@ -19,8 +30,9 @@ export default function Home() {
     "Jago AI puts AI agents to work in Indian companies in 8 weeks. Ask questions in 50+ languages, automate routine updates and get early warnings, with customer data kept within India's data law."
   );
   return (
-    <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />
+      <SectionNav items={SECTIONS} />
       <main id="main-content">
         <Hero />
         <ProofStrip />

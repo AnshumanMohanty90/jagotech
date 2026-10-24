@@ -9,7 +9,7 @@ import Footer from "@/components/site/Footer";
 export default function HowJagoWorksPage() {
   usePageMeta("How Jago Works | Jago AI");
   return (
-    <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />
       <main id="main-content">
         <PageHeader eyebrow="How Jago Works" title="Ask, automate, analyze and predict.">

@@ -9,12 +9,11 @@ import Footer from "@/components/site/Footer";
 export default function CustomersPage() {
   usePageMeta("Customers | Jago AI");
   return (
-    <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />
       <main id="main-content">
-        <PageHeader eyebrow="Customers" title="How a major lending NBFC decides which branches to audit first">
-          A non-bank lender (NBFC) with about Rs 11,000 crore of loans to small borrowers across 22 states,
-          mostly rural and semi-urban.
+        <PageHeader eyebrow="Customers" title="How a large lender decides which branches to audit first">
+          A large Indian lender with a branch network spread across many states.
         </PageHeader>
         <CustomersStory />
       </main>

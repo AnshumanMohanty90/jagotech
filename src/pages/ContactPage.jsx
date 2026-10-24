@@ -33,7 +33,7 @@ export default function ContactPage() {
   const content = INTENTS[intent] || INTENTS.plan;
 
   return (
-    <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />
       <main id="main-content">
         <PageHeader eyebrow="Contact" title={content.headline} showActions={false}>
