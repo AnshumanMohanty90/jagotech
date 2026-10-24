@@ -34,7 +34,7 @@ export default function Challenge() {
   return (
     <Reveal id="problem" className="relative">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="The problem" title="Your teams want to use AI. Three things stop them." />
+        <SectionIntro eyebrow="The problem" title="Your teams want to use AI." titleMuted="Three things stop them." />
 
         <div className="mt-6 grid md:grid-cols-3 gap-4 sm:gap-6">
           {STOPPERS.map((s, i) => (

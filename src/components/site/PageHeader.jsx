@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function PageHeader({ eyebrow, title, children, showActions = true }) {
   return (
     <section className="relative overflow-hidden pt-14 pb-14 sm:pt-[5.5rem] sm:pb-[5.5rem]">
-      <div className="absolute inset-0 grid-bg opacity-25 mask-fade-b" />
+      <div aria-hidden="true" className="absolute inset-0 hero-glow" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="min-w-0 max-w-5xl">
           <p className="site-label">{eyebrow}</p>

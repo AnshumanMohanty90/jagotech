@@ -109,7 +109,7 @@ export default function Navbar({ logoVariant }) {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-background transition-shadow ${
+      className={`sticky top-0 z-50 bg-background/80 backdrop-blur-md backdrop-saturate-150 transition-shadow ${
         scrolled ? "shadow-[0_2px_16px_rgba(0,0,0,0.45)]" : ""
       }`}
     >

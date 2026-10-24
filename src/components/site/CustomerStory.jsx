@@ -8,15 +8,14 @@ import CountUp from "@/components/site/CountUp";
 const STORY = [
   {
     label: "Who",
-    text: "A non-bank lender (NBFC) with about Rs 11,000 crore of loans to small borrowers across 22 states, mostly rural and semi-urban.",
-    bold: ["Rs 11,000 crore of loans"],
-    italic: ["mostly rural and semi-urban"],
+    text: "A large Indian lender with a branch network spread across many states.",
+    bold: ["large Indian lender"],
   },
   {
     label: "Before",
-    text: "160 auditors covered 1,600 branches on a fixed calendar, using old risk reports.",
-    bold: ["160 auditors covered 1,600 branches"],
-    italic: ["old risk reports"],
+    text: "Auditors visited branches on a fixed calendar, using risk reports that were weeks old.",
+    bold: ["on a fixed calendar"],
+    italic: ["weeks old"],
   },
   {
     label: "Now",
@@ -36,22 +35,20 @@ export default function CustomerStory({ showLink = true }) {
   return (
     <Reveal id="story" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="Customer story" title="A major lending NBFC now knows which branches to audit first" />
+        <SectionIntro eyebrow="Customer story" title="A large lender now knows" titleMuted="which branches to audit first." />
 
         <div className="mt-6 flex flex-wrap gap-x-16 gap-y-8">
           <div>
-            <CountUp
-              value={1600}
-              className="font-heading font-bold text-[48px] leading-none text-primary"
-            />
-            <p className="mt-1 text-base leading-relaxed">branches</p>
+            <p className="site-line font-heading font-bold text-[48px] leading-none text-foreground">
+              <CountUp value={1000} />+
+            </p>
+            <p className="mt-1 text-base leading-relaxed">branches ranked by risk</p>
           </div>
           <div>
-            <CountUp
-              value={160}
-              className="font-heading font-bold text-[48px] leading-none text-primary"
-            />
-            <p className="mt-1 text-base leading-relaxed">auditors</p>
+            <p className="site-line font-heading font-bold text-[48px] leading-none text-foreground">
+              Rs 13
+            </p>
+            <p className="mt-1 text-base leading-relaxed">AI cost per branch check</p>
           </div>
         </div>
 

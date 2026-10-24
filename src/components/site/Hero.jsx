@@ -41,7 +41,7 @@ export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pt-12 sm:pt-16">
       {/* Background layers */}
-      <div className="absolute inset-0 grid-bg animate-grid-pan opacity-40" />
+      <div aria-hidden="true" className="absolute inset-0 hero-glow" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 w-full">
@@ -56,12 +56,10 @@ export default function Hero() {
           {/* Left: copy and CTAs */}
           <div className="lg:col-span-6 min-w-0">
             <p className="max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed text-pretty break-words">
-              Jago connects to the systems you already use. Your teams{" "}
-              <strong className="copy-accent">ask questions</strong>,{" "}
-              <strong className="copy-focus">see why numbers move</strong>,{" "}
-              <strong className="copy-accent">get early warnings</strong> and{" "}
-              <strong className="copy-focus">hand routine updates</strong> to Jago. Customer data stays
-              within India's data law.
+              <strong className="copy-focus">Build AI agents in plain language</strong>, predict trends, and
+              analyze cross-department data across text, audio, image, and video. Query via key channels,{" "}
+              <strong className="copy-focus">automate workflows end-to-end</strong>, and scale safely with
+              multi-region Compliance AI.
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -78,7 +76,7 @@ export default function Hero() {
             </p>
 
             <p className="site-line mt-4 text-sm font-normal leading-relaxed text-slate-400 lg:whitespace-nowrap">
-              Live at a major lending NBFC, works on WhatsApp, Slack and Teams, in 50+ languages
+              Live at a large Indian lender, works on WhatsApp, Slack and Teams, in 50+ languages
             </p>
           </div>
 

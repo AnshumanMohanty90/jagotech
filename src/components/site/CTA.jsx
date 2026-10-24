@@ -5,7 +5,7 @@ import Reveal from "@/components/site/Reveal";
 export default function CTA({ tinted = false }) {
   return (
     <Reveal id="contact" className={`relative overflow-hidden ${tinted ? "site-section-alt" : ""}`}>
-      <div className="absolute inset-0 grid-bg opacity-30 mask-fade-edges" />
+      <div aria-hidden="true" className="absolute inset-0 hero-glow opacity-70" />
 
       <div className="relative mx-auto max-w-4xl px-5 sm:px-8 text-center">
         <h2 className="font-heading font-semibold leading-[1.15] tracking-tight text-balance">

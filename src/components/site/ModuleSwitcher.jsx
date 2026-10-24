@@ -8,7 +8,7 @@ const MODULES = [
   {
     id: "ask",
     title: "Ask",
-    desc: "Get the answer.",
+    desc: "Ask a question about your data in plain words and get the answer.",
     anchor: "ask",
     example: "Show regional sales performance against target for Q3.",
     answer:
@@ -18,7 +18,7 @@ const MODULES = [
   {
     id: "analyze",
     title: "Analyze",
-    desc: "See why it moved.",
+    desc: "Find out why a number went up or down, with the reasons listed.",
     anchor: "analyze",
     example: "Why did South region sales fall behind target last quarter?",
     answer:
@@ -28,7 +28,7 @@ const MODULES = [
   {
     id: "predict",
     title: "Predict",
-    desc: "See what comes next.",
+    desc: "Get an early warning when a deal, payment or target is at risk.",
     anchor: "predict",
     example: "Which deals will slip this quarter?",
     answer:
@@ -38,7 +38,7 @@ const MODULES = [
   {
     id: "automate",
     title: "Automate",
-    desc: "Act on it, with sign-off.",
+    desc: "Let Jago update your systems and send notes, after you approve.",
     anchor: "automate",
     example: "Update the CRM with this order and notify the finance team.",
     answer:
@@ -69,7 +69,7 @@ export default function ModuleSwitcher() {
   return (
     <Reveal id="modules" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="What Jago does" title="Four AI modules with one login, under your rules." />
+        <SectionIntro eyebrow="What Jago does" title="Four AI modules with one login," titleMuted="under your rules." />
 
         <div
           className="mt-6 grid gap-6 lg:grid-cols-2 lg:items-stretch"
