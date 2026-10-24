@@ -3,13 +3,18 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import { MotionConfig } from 'framer-motion';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, Fragment } from 'react';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
 import Home from '@/pages/Home';
 // Add page imports here
+
+// Self-hosted build (Cloudflare): no Base44 login or app-settings check; the site is public only.
+const SELF_HOSTED = Boolean(import.meta.env.VITE_LEAD_ENDPOINT);
+const useAuthState = SELF_HOSTED ? () => ({}) : useAuth;
+const AuthShell = SELF_HOSTED ? Fragment : AuthProvider;
 
 // Every page except Home loads on demand, so the home bundle stays small.
 const PricingPage = lazy(() => import('@/pages/PricingPage'));
@@ -34,7 +39,7 @@ const PageFallback = () => (
 );
 
 const AuthenticatedApp = () => {
-  const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
+  const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuthState();
 
   // Show loading spinner while checking app public settings or auth
   if (isLoadingPublicSettings || isLoadingAuth) {
@@ -85,7 +90,7 @@ const AuthenticatedApp = () => {
 function App() {
 
   return (
-    <AuthProvider>
+    <AuthShell>
       <QueryClientProvider client={queryClientInstance}>
         <Router>
           <ScrollToTop />
@@ -95,7 +100,7 @@ function App() {
         </Router>
         <Toaster />
       </QueryClientProvider>
-    </AuthProvider>
+    </AuthShell>
   )
 }
 
