@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
+import { submitLead } from "@/lib/submitLead";
 
 const SIZES = ["1 to 50", "51 to 200", "201 to 500", "501 to 1,000", "Over 1,000"];
 
@@ -169,7 +169,7 @@ export default function LeadForm({
     setServerError("");
     try {
       const trimmed = form.workEmail.trim().toLowerCase();
-      const res = await base44.functions.invoke("saveLead", {
+      const res = await submitLead({
         intent,
         submissionId: newSubmissionId(),
         name: form.name.trim(),
