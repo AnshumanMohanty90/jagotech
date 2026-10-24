@@ -360,3 +360,5 @@ textarea:focus-visible,
     scroll-behavior: auto !important;
   }
 }
+/* Phones: standalone arrow links get a 44px tap target. */
+@media (max-width: 639px) { main a:not(p a) { min-height: 44px; align-content: center; } }
