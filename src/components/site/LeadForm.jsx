@@ -235,7 +235,6 @@ export default function LeadForm({
           value={form.name}
           onChange={set("name")}
           autoComplete="name"
-          placeholder="Priya Sharma"
           className={cls("name")}
           {...a11y("name")}
         />
@@ -249,7 +248,6 @@ export default function LeadForm({
           onChange={set("workEmail")}
           onBlur={checkPersonalEmail}
           autoComplete="email"
-          placeholder="priya@yourcompany.com"
           className={cls("workEmail")}
           {...a11y("workEmail")}
         />
@@ -262,7 +260,6 @@ export default function LeadForm({
           value={form.company}
           onChange={set("company")}
           autoComplete="organization"
-          placeholder="Your company name"
           className={cls("company")}
           {...a11y("company")}
         />
@@ -313,7 +310,6 @@ export default function LeadForm({
             required
             value={form.mainTask}
             onChange={set("mainTask")}
-            placeholder="For example, preparing the monthly sales pack"
             className={`${cls("mainTask")} w-full`}
             {...a11y("mainTask")}
           />
