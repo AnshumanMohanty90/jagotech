@@ -117,16 +117,14 @@
     @apply pt-6 min-w-0;
   }
 
-  /* Section label: small uppercase mono in a muted tone, so the heading carries the weight
-     and cyan stays for actions and the active state. */
+  /* Section label: sentence case, 16px, weight 600, in a light grey so the jump to the
+     heading stays moderate and cyan stays for actions and the active state. */
   .site-label {
-    font-family: var(--font-mono);
-    font-size: 14px;
-    font-weight: 500;
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 600;
     line-height: 1.45;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #9AA4B2;
+    color: #A7B0BD;
   }
 
   /* Second clause of a heading, in a softer tone. */
