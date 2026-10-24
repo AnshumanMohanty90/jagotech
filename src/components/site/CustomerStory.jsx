@@ -46,9 +46,9 @@ export default function CustomerStory({ showLink = true }) {
           </div>
           <div>
             <p className="site-line font-heading font-bold text-[48px] leading-none text-foreground">
-              Rs 13
+              5
             </p>
-            <p className="mt-1 text-base leading-relaxed">AI cost per branch check</p>
+            <p className="mt-1 text-base leading-relaxed">audit types covered</p>
           </div>
         </div>
 

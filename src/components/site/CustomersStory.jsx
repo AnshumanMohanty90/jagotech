@@ -32,19 +32,11 @@ export default function CustomersStory() {
           </div>
         </div>
 
-        <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-10">
-          <div className="min-w-0">
-            <p className="site-label">The scale</p>
-            <p className="mt-3 text-[16px] leading-relaxed text-slate-300">
-              1,000+ branches, a large audit team, five audit types, live data
-            </p>
-          </div>
-          <div className="min-w-0">
-            <p className="site-label">The cost</p>
-            <p className="mt-3 text-base leading-relaxed text-pretty">
-              About Rs 13 of AI cost each time Jago checks a branch, before setup and hosting.
-            </p>
-          </div>
+        <div className="mt-8 min-w-0">
+          <p className="site-label">The scale</p>
+          <p className="mt-3 text-base leading-relaxed text-pretty">
+            1,000+ branches, a large audit team, five audit types, all checked on live data.
+          </p>
         </div>
 
         <div className="mt-8 min-w-0">
