@@ -84,7 +84,7 @@ export default function RoleWins({ withIntro = true, tinted = false }) {
           </div>
 
           {/* Before and With Jago, shown together */}
-          <div className="min-w-0">
+          <div className="min-w-0 lg:pt-1.5">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h3 className="font-heading text-2xl font-semibold leading-snug text-balance">{active.role}</h3>
               <span className="text-[16px] text-muted-foreground">{usesText(active.modules)}</span>

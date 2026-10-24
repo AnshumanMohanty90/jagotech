@@ -37,7 +37,7 @@ export default function Trust() {
           </Link>
         </div>
 
-        <div className="lg:col-span-7 min-w-0">
+        <div className="lg:col-span-7 min-w-0 lg:-mt-3.5">
           <Accordion
             firstOpen
             items={POINTS.map((p) => ({

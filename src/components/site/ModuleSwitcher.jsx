@@ -81,7 +81,7 @@ export default function ModuleSwitcher() {
           }}
         >
           {/* Left: the four modules, in the order a team uses Jago */}
-          <div role="tablist" aria-label="Jago modules" className="flex flex-col min-w-0">
+          <div role="tablist" aria-label="Jago modules" className="flex flex-col min-w-0 lg:pt-2">
             {MODULES.map((mod, i) => (
               <button
                 key={mod.id}

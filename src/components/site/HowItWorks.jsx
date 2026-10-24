@@ -65,7 +65,7 @@ export default function HowItWorks() {
           </div>
 
           {/* Phase buttons */}
-          <div className="mt-5 flex gap-1.5 min-w-0">
+          <div className="mt-5 grid grid-cols-3 gap-1.5 min-w-0 sm:flex">
             {PHASES.map((ph, i) => {
               const on = active === i;
               return (
@@ -75,11 +75,11 @@ export default function HowItWorks() {
                   aria-expanded={on}
                   onClick={() => setActive(i)}
                   style={{ flex: `${GROW[i]} 1 0%` }}
-                  className={`site-row site-choice min-w-0 rounded-lg px-3 py-3 text-left min-h-[44px] ${
+                  className={`site-row site-choice min-w-0 rounded-lg px-2.5 py-3 text-left min-h-[44px] sm:px-3 ${
                     on ? "bg-[rgba(0,245,255,0.06)]" : ""
                   }`}
                 >
-                  <span className="block text-xs leading-relaxed text-muted-foreground">{ph.label}</span>
+                  <span className="block whitespace-nowrap text-xs leading-relaxed text-muted-foreground">{ph.label}</span>
                   <span
                     className={`mt-0.5 block font-heading text-base sm:text-lg font-semibold leading-snug ${
                       on ? "text-primary" : "text-foreground"
