@@ -8,42 +8,42 @@ const MODULES = [
   {
     id: "ask",
     title: "Ask",
-    desc: "Ask a question about your data in plain words and get the answer.",
+    desc: "One question, answered from every team's systems and files, in your language, with the source.",
     anchor: "ask",
-    example: "Show regional sales performance against target for Q3.",
+    example: "How did each region do against target in Q3, and what are customers in South complaining about?",
     answer:
-      "North is 18% ahead of target. South is 4% behind. West and East are on target. Chart attached.",
-    result: "Answered in 2 seconds.",
+      "North is 18% ahead of target and South is 4% behind. In South call recordings, the top complaint is late delivery. Sources: CRM, sales ledger and support call recordings.",
+    result: "One answer, from three systems and audio.",
   },
   {
     id: "analyze",
     title: "Analyze",
-    desc: "Find out why a number went up or down, with the reasons listed.",
+    desc: "Jago tests the likely reasons a number moved and shows which ones your data supports.",
     anchor: "analyze",
-    example: "Why did South region sales fall behind target last quarter?",
+    example: "Why did South region miss its sales target last quarter?",
     answer:
-      "Two branches account for most of the gap: collections slowed in the last six weeks of the quarter and three large orders moved to the next quarter.",
-    result: "Answered in 2 seconds, with the reasons behind it.",
+      "I tested four likely reasons. Two hold up: collections slowed in the last six weeks, and three large orders moved to the next quarter. Price changes and staff turnover do not explain the gap.",
+    result: "4 reasons tested, 2 confirmed by your data.",
   },
   {
     id: "predict",
     title: "Predict",
-    desc: "Get an early warning when a deal, payment or target is at risk.",
+    desc: "Jago reads trends across departments and warns you what is likely to slip, and why.",
     anchor: "predict",
-    example: "Which deals will slip this quarter?",
+    example: "Which deals are likely to slip this quarter?",
     answer:
-      "Three deals are likely to slip: two are waiting on procurement sign-off and one has gone quiet for two weeks. An alert has gone to the deal owners on WhatsApp.",
-    result: "3 deals flagged. Alert logged.",
+      "Three deals are likely to slip. Two have waited on procurement sign-off longer than usual, and one buyer has gone quiet for two weeks. The deal owners have an alert on WhatsApp.",
+    result: "3 deals flagged, each with the signals behind it.",
   },
   {
     id: "automate",
     title: "Automate",
-    desc: "Let Jago update your systems and send notes, after you approve.",
+    desc: "Describe a workflow in plain words and Jago builds an agent that runs it, with your sign-off.",
     anchor: "automate",
-    example: "Update the CRM with this order and notify the finance team.",
+    example: "When a large order is booked, update the CRM, draft the invoice and tell finance on WhatsApp.",
     answer:
-      "Draft ready: the order is filled in the CRM and a note for the finance team is written. Nothing changes until you approve.",
-    result: "Order drafted. Waiting for your sign-off.",
+      "Agent built with three steps. It runs on every order above your limit, waits for your sign-off before the invoice goes out, and logs each run.",
+    result: "Agent ready. Sign-off set on the invoice step.",
   },
 ];
 

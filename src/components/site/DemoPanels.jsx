@@ -7,19 +7,19 @@ const SCRIPTED = {
     label: "Analyze",
     example: "Why did South region sales fall behind target last quarter?",
     answer:
-      "Two branches account for most of the gap: collections slowed in the last six weeks of the quarter and three large orders moved to the next quarter.",
+      "I tested four likely reasons. Two hold up: collections slowed in the last six weeks, and three large orders moved to the next quarter. Price changes do not explain the gap.",
   },
   predict: {
     label: "Predict",
     example: "Which branches are likely to miss target this month?",
     answer:
-      "Three branches are likely to miss target: Pune East, Nashik and Indore. Collections are 12% behind the usual pace. An alert has gone to the regional heads on WhatsApp.",
+      "Three branches are likely to miss target: Pune East, Nashik and Indore. The signal: collections are 12% behind their usual pace for this point in the month. The regional heads have an alert on WhatsApp.",
   },
   automate: {
     label: "Automate",
-    example: "Update the CRM with this order and notify the finance team.",
+    example: "When a large order is booked, update the CRM and tell finance.",
     answer:
-      "Draft ready: the order is filled in the CRM and a note for the finance team is written. Nothing changes until you approve.",
+      "Agent built with two steps. It runs on every large order, and nothing changes in the CRM until you approve. Each run is logged.",
   },
 };
 
