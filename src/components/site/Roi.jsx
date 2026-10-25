@@ -3,15 +3,12 @@ import { Link } from "react-router-dom";
 import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
 
-const USD_TO_INR = 83;
-const fmtInr = (inr) => {
-  if (inr >= 10000000) return `Rs ${(inr / 10000000).toFixed(1)} crore a year`;
-  if (inr >= 100000) return `Rs ${(inr / 100000).toFixed(1)} lakh a year`;
-  return `Rs ${Math.round(inr).toLocaleString("en-IN")} a year`;
-};
-const fmt = (n) => `${fmtInr(n * USD_TO_INR)} (about $${Math.round(n).toLocaleString("en-US")})`;
+import { useCurrency, formatLarge, CurrencyToggle } from "@/lib/currency";
 
 export default function Roi() {
+  const { currency, rate } = useCurrency();
+  // Savings are modelled in US dollars, then shown in the visitor's currency.
+  const fmt = (usdAmount) => `${formatLarge(usdAmount * rate, currency, rate)} a year`;
   const [emp, setEmp] = useState(1200);
   const [tools, setTools] = useState(4);
   const [queries, setQueries] = useState(250000);
@@ -60,7 +57,10 @@ export default function Roi() {
           </div>
 
           <div className="site-col">
-            <p className="site-label">Estimated annual savings</p>
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <p className="site-label">Estimated annual savings</p>
+              <CurrencyToggle />
+            </div>
             <div className="mt-6 space-y-8">
               <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-4">
                 <span className="text-base leading-relaxed max-w-xs">Savings from retiring separate tools</span>
@@ -72,7 +72,7 @@ export default function Roi() {
               </div>
               <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-4">
                 <span className="text-base leading-relaxed max-w-xs">Return on what you spend</span>
-                <span className="font-heading text-3xl sm:text-4xl font-semibold text-violet">Rs {netRoi} back for every rupee you spend</span>
+                <span className="font-heading text-3xl sm:text-4xl font-semibold text-violet">{currency === "INR" ? `Rs ${netRoi} back for every rupee you spend` : `$${netRoi} back for every dollar you spend`}</span>
               </div>
             </div>
             <Link

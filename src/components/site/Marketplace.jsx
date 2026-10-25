@@ -3,41 +3,42 @@ import { Link } from "react-router-dom";
 import Reveal from "@/components/site/Reveal";
 import Accordion from "@/components/site/Accordion";
 import CopyEmphasis from "@/components/site/CopyEmphasis";
+import { useCurrency, formatPrice, CurrencyToggle } from "@/lib/currency";
 
 const AGENTS = [
   {
     kind: "API + Widget",
     name: "Card Scanner Agent",
     desc: "Extract clean structured records from business cards and IDs straight into your CRM.",
-    price: "₹2.00 / scan",
+    priceInr: 2.00, unit: "scan",
     cta: "Request access",
   },
   {
     kind: "API + Widget",
     name: "Document Analysis Agent",
     desc: "Pull clauses, liabilities and terms out of legal contracts, with no manual page reviews.",
-    price: "₹5.00 / page",
+    priceInr: 5.00, unit: "page",
     cta: "Request access",
   },
   {
     kind: "API + Widget",
     name: "Email Parser Agent",
     desc: "Turn inbound customer inquiries and purchase orders into ERP and CRM entries.",
-    price: "₹1.00 / email",
+    priceInr: 1.00, unit: "email",
     cta: "Request access",
   },
   {
     kind: "API",
     name: "Voice-to-Text Transcription",
     desc: "Transcribe local-language audio into structured summaries and action triggers.",
-    price: "₹3.00 / min",
+    priceInr: 3.00, unit: "minute",
     cta: "Request access",
   },
   {
     kind: "API",
     name: "Image Analysis Agent",
     desc: "Inspect store shelves, warehouse racks and field photos for quality compliance.",
-    price: "₹3.00 / image",
+    priceInr: 3.00, unit: "image",
     cta: "Request access",
   },
   {
@@ -50,10 +51,12 @@ const AGENTS = [
 ];
 
 export default function Marketplace() {
+  const { currency, rate } = useCurrency();
   return (
     <Reveal id="marketplace" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="max-w-3xl">
+          <CurrencyToggle className="mb-4" />
           <Accordion
             firstOpen
             items={AGENTS.map((b) => ({
@@ -70,7 +73,7 @@ export default function Marketplace() {
                     />
                   </p>
                   <div className="mt-4 flex flex-wrap items-center gap-4">
-                    <span className="font-heading text-lg font-semibold">{b.price}</span>
+                    <span className="font-heading text-lg font-semibold">{b.priceInr != null ? `${formatPrice(b.priceInr, currency, rate, 2)} per ${b.unit}` : b.price}</span>
                     <Link
                       to={`/contact?intent=trial&task=${encodeURIComponent(b.name)}`}
                       className="site-cta-secondary px-4 py-2.5 rounded-xl text-sm"

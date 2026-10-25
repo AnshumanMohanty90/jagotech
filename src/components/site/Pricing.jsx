@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Reveal from "@/components/site/Reveal";
 import PlanColumn from "@/components/site/PlanColumn";
+import { useCurrency, formatPrice, CurrencyToggle } from "@/lib/currency";
 
 const PLANS = [
   {
     name: "Starter",
+    priceInr: 15000,
     price: "Rs 15,000 a month",
     desc: "Ask questions and see why numbers move, for up to 10 people.",
     cta: "Try it free for a week",
@@ -51,6 +53,8 @@ const INCLUDED = [
 ];
 
 export default function Pricing() {
+  const { currency, rate } = useCurrency();
+  const plans = PLANS.map((p) => (p.priceInr ? { ...p, price: `${formatPrice(p.priceInr, currency, rate)} a month` } : p));
   return (
     <Reveal id="pricing" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
@@ -58,15 +62,16 @@ export default function Pricing() {
         <p className="mt-3 text-[16px] leading-relaxed text-slate-300">
           Custom plans are priced on your team size and the modules you use.
         </p>
+        <CurrencyToggle className="mt-3" />
 
         <div className="mt-6 grid gap-6 sm:grid-cols-3">
-          {PLANS.slice(0, 3).map((p) => (
+          {plans.slice(0, 3).map((p) => (
             <PlanColumn key={p.name} plan={p} />
           ))}
         </div>
 
         <div className="mt-6 grid gap-6 sm:grid-cols-2">
-          {PLANS.slice(3).map((p) => (
+          {plans.slice(3).map((p) => (
             <PlanColumn key={p.name} plan={p} />
           ))}
         </div>
