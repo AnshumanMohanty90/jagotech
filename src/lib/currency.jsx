@@ -113,7 +113,7 @@ export function CurrencyToggle({ className = "" }) {
           aria-label={c === "INR" ? "Show prices in Indian rupees" : "Show prices in US dollars"}
           onClick={() => setCurrency(c)}
           className={`min-h-[44px] rounded-lg px-3 font-semibold transition-colors ${
-            currency === c ? "bg-primary/15 text-primary" : "text-foreground/70 hover:text-foreground"
+            currency === c ? "bg-primary/15 text-primary" : "text-foreground/90 hover:text-foreground"
           }`}
         >
           {c === "INR" ? "INR (Rs)" : "USD ($)"}
