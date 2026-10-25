@@ -94,7 +94,7 @@ export default function RoleWins({ withIntro = true, tinted = false }) {
             <div className="mt-5 space-y-6">
               <div>
                 <p className="site-label">Before</p>
-                <p className="mt-2 text-xl leading-relaxed text-pretty text-slate-400">{active.before}</p>
+                <p className="mt-2 text-xl leading-relaxed text-pretty text-slate-300">{active.before}</p>
               </div>
               <div>
                 <p className="site-label">With Jago</p>

@@ -18,14 +18,14 @@ export default function CTA({ tinted = false }) {
 
       <div className="relative mx-auto max-w-4xl px-5 sm:px-8 text-center">
         <h2 className="font-heading font-semibold leading-[1.15] tracking-tight text-balance">
-          Try Jago free for a week.
+          Try Jago <span className="text-primary">free for a week.</span>
         </h2>
         <p className="mt-4 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto text-pretty">
           Activate a trial workspace and see what Jago does on sample data. Want the roll-out plan
           first? Download the 8-week plan.
         </p>
 
-        <p className="mt-8 text-base font-semibold">What do you want to fix first?</p>
+        <p className="mt-8 font-heading text-lg font-semibold text-foreground">What do you want to fix first?</p>
         <div role="group" aria-label="What do you want to fix first?" className="mt-3 flex flex-wrap justify-center gap-2">
           {GOALS.map((g) => (
             <button
@@ -33,16 +33,20 @@ export default function CTA({ tinted = false }) {
               type="button"
               aria-pressed={goal === g.id}
               onClick={() => setGoal(g.id)}
-              className={`min-h-[44px] rounded-lg border px-4 text-[16px] transition-colors ${
-                goal === g.id ? "border-primary bg-primary/10 text-foreground" : "border-border text-foreground/80 hover:text-foreground"
-              }`}
+              className="site-chip"
             >
               {g.label}
             </button>
           ))}
         </div>
-        <p className="mt-3 min-h-[28px] text-base leading-relaxed" aria-live="polite">
-          {picked ? `A good place to start is ${picked.module}. We pass your choice to the team setting up your trial.` : ""}
+        <p className="site-line mx-auto mt-4 min-h-[28px] max-w-2xl text-base leading-relaxed text-slate-200" aria-live="polite">
+          {picked ? (
+            <>
+              <span className="font-semibold text-white">Start with {picked.module}.</span> We pass your choice to the team setting up your trial.
+            </>
+          ) : (
+            <span className="font-semibold text-white">Pick one to tailor your trial.</span>
+          )}
         </p>
 
         <div className="mt-5 flex flex-wrap items-center justify-center gap-3">

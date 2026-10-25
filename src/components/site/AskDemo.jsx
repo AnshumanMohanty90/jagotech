@@ -72,7 +72,7 @@ export default function AskDemo({ placeholder, language }) {
             <button
               type="submit"
               disabled={!value.trim()}
-              className="site-cta-primary shrink-0 gap-1.5 px-3.5 py-2 rounded-lg text-sm disabled:opacity-50"
+              className="site-cta-primary shrink-0 gap-1.5 px-3.5 py-2 rounded-lg text-sm "
             >
               Ask Jago
               <ArrowRight className="w-3.5 h-3.5" />

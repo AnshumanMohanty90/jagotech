@@ -6,7 +6,7 @@ import React from "react";
 export default function SectionIntro({ eyebrow, title, titleMuted, children }) {
   return (
     <div className="min-w-0 max-w-5xl">
-      <p className="site-label">{eyebrow}</p>
+      <p className="site-label site-eyebrow">{eyebrow}</p>
       <h2 className="mt-3 font-heading font-semibold leading-[1.15] tracking-tight text-balance">
         {title}
         {titleMuted ? <span className="title-muted"> {titleMuted}</span> : null}

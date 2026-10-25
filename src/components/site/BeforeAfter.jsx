@@ -42,7 +42,7 @@ export default function BeforeAfter() {
             <div
               role="group"
               aria-label="Show the answer"
-              className="mt-5 inline-flex rounded-xl border border-border bg-background/60 p-1"
+              className="mt-5 inline-flex gap-2"
             >
               {[
                 ["without", "Without Jago"],
@@ -54,9 +54,7 @@ export default function BeforeAfter() {
                   ref={key === "with" ? withRef : undefined}
                   aria-pressed={mode === key}
                   onClick={() => setMode(key)}
-                  className={`min-h-[44px] rounded-lg px-4 text-[16px] font-semibold transition-colors ${
-                    mode === key ? "bg-primary text-primary-foreground" : "text-foreground/75 hover:text-foreground"
-                  }`}
+                  className="site-chip"
                 >
                   {label}
                 </button>

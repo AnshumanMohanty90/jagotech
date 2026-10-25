@@ -57,7 +57,7 @@ export default function Footer({ logoVariant }) {
             </p>
             <a
               href="mailto:contact@jagoai.com"
-              className="site-inline-link mt-3 text-sm text-primary hover:underline underline-offset-4 transition-colors"
+              className="site-inline-link mt-3 text-sm text-foreground/90 hover:text-primary hover:underline underline-offset-4 transition-colors"
             >
               contact@jagoai.com
             </a>
@@ -75,12 +75,12 @@ export default function Footer({ logoVariant }) {
                           href={l.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="site-inline-link text-sm text-foreground/80 hover:text-primary transition-colors"
+                          className="site-inline-link text-sm text-foreground/90 hover:text-primary transition-colors"
                         >
                           {l.label}
                         </a>
                       ) : (
-                        <Link to={l.href} className="site-inline-link text-sm text-foreground/80 hover:text-primary transition-colors">
+                        <Link to={l.href} className="site-inline-link text-sm text-foreground/90 hover:text-primary transition-colors">
                           {l.label}
                         </Link>
                       )}

@@ -7,7 +7,7 @@ export default function PageHeader({ eyebrow, title, children, showActions = tru
       <div aria-hidden="true" className="absolute inset-0 hero-glow" />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="min-w-0 max-w-5xl">
-          <p className="site-label">{eyebrow}</p>
+          <p className="site-label site-eyebrow">{eyebrow}</p>
           <h1 className="mt-3 font-heading font-semibold leading-tight tracking-tight text-balance">
             {title}
           </h1>
