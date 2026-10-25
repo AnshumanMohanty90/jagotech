@@ -12,7 +12,7 @@ import CTA from "@/components/site/CTA";
 import Footer from "@/components/site/Footer";
 
 export default function PlatformPage() {
-  usePageMeta("Platform | Jago AI");
+  usePageMeta("Platform | Jago AI", "The Jago AI platform: Ask, Analyze, Predict and Automate, connected to your systems and documents across every channel.");
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />

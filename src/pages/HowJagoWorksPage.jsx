@@ -7,7 +7,7 @@ import CTA from "@/components/site/CTA";
 import Footer from "@/components/site/Footer";
 
 export default function HowJagoWorksPage() {
-  usePageMeta("How Jago Works | Jago AI");
+  usePageMeta("How Jago Works | Jago AI", "How Jago AI works: ask in plain words, test why numbers moved, see what comes next and automate workflows, with your sign-off on every action.");
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />

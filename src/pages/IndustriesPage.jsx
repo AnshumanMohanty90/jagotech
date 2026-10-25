@@ -7,7 +7,7 @@ import CTA from "@/components/site/CTA";
 import Footer from "@/components/site/Footer";
 
 export default function IndustriesPage() {
-  usePageMeta("Industries | Jago AI");
+  usePageMeta("Industries | Jago AI", "Jago AI for banks and lenders, supply chain, retail, healthcare, manufacturing and telecom, with the work each industry hands to Jago first.");
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />

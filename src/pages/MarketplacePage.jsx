@@ -7,7 +7,7 @@ import CTA from "@/components/site/CTA";
 import Footer from "@/components/site/Footer";
 
 export default function MarketplacePage() {
-  usePageMeta("Marketplace | Jago AI");
+  usePageMeta("Marketplace | Jago AI", "Ready-made Jago AI agents and connectors you can add to your workspace.");
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />

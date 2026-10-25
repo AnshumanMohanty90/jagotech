@@ -7,7 +7,7 @@ import CTA from "@/components/site/CTA";
 import Footer from "@/components/site/Footer";
 
 export default function SolutionsPage() {
-  usePageMeta("Solutions | Jago AI");
+  usePageMeta("Solutions | Jago AI", "Jago AI solutions by team and industry, each built on Ask, Analyze, Predict and Automate.");
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />

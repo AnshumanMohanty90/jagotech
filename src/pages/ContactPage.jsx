@@ -7,6 +7,10 @@ import Footer from "@/components/site/Footer";
 import usePageMeta from "@/hooks/usePageMeta";
 
 const INTENTS = {
+  contact: {
+    headline: "Contact Jago AI.",
+    sub: "Tell us why you are getting in touch and we will route your message to the right person.",
+  },
   plan: {
     headline: "Download the 8-week plan.",
     sub: "A one-page plan to put AI to work on one process in 8 weeks: what we do, what you do and what you get at each stage.",
@@ -18,6 +22,10 @@ const INTENTS = {
   enterprise: {
     headline: "Talk to us about Jago for your enterprise.",
   },
+  guide: {
+    headline: "Get the guide when it is ready.",
+    sub: "Leave your details and we will email you as soon as the guide is published.",
+  },
   pricing: {
     headline: "Get pricing for your company.",
     sub: "Tell us your team size and the work you want Jago to take on. We will send you a quote.",
@@ -25,12 +33,14 @@ const INTENTS = {
 };
 
 export default function ContactPage() {
-  usePageMeta("Contact | Jago AI");
+  usePageMeta("Contact | Jago AI", "Contact Jago AI for a demo, pricing, a free trial, partnerships or support.");
   const [params] = useSearchParams();
-  const intent = params.get("intent") || "plan";
+  const KNOWN = ["contact", "plan", "trial", "enterprise", "pricing", "guide"];
+  const raw = params.get("intent") || "contact";
+  const intent = KNOWN.includes(raw) ? raw : "contact";
   const presetTask = params.get("task") || "";
   const planOfInterest = params.get("plan") || "";
-  const content = INTENTS[intent] || INTENTS.plan;
+  const content = INTENTS[intent] || INTENTS.contact;
 
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">

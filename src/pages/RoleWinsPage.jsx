@@ -7,7 +7,7 @@ import CTA from "@/components/site/CTA";
 import Footer from "@/components/site/Footer";
 
 export default function RoleWinsPage() {
-  usePageMeta("Role Wins | Jago AI");
+  usePageMeta("Role Wins | Jago AI", "What Jago AI changes for each role, from the CEO and sales teams to HR, finance, procurement and marketing.");
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />

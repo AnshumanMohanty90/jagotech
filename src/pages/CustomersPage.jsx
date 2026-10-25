@@ -7,13 +7,13 @@ import CTA from "@/components/site/CTA";
 import Footer from "@/components/site/Footer";
 
 export default function CustomersPage() {
-  usePageMeta("Customers | Jago AI");
+  usePageMeta("Customers | Jago AI", "How a large lender used Jago AI to rank more than 1,000 branches by risk and decide which to audit first.");
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />
       <main id="main-content">
         <PageHeader eyebrow="Customers" title="How a large lender decides which branches to audit first">
-          A large Indian lender with a branch network spread across many states.
+          A large lender with a branch network spread across many regions.
         </PageHeader>
         <CustomersStory />
       </main>
