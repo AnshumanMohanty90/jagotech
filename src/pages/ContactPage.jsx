@@ -40,6 +40,7 @@ export default function ContactPage() {
   const intent = KNOWN.includes(raw) ? raw : "contact";
   const presetTask = params.get("task") || "";
   const planOfInterest = params.get("plan") || "";
+  const module = (params.get("module") || "").replace(/[^a-z]/g, "").slice(0, 12);
   const content = INTENTS[intent] || INTENTS.contact;
 
   return (
@@ -55,7 +56,7 @@ export default function ContactPage() {
               intent={intent}
               defaultTask={presetTask}
               planOfInterest={planOfInterest}
-              sourcePage={`/contact?intent=${intent}`}
+              sourcePage={`/contact?intent=${intent}${module ? `&module=${module}` : ""}`}
             />
             <p className="mt-6 text-center text-base leading-relaxed text-muted-foreground">
               Or write to us at{" "}

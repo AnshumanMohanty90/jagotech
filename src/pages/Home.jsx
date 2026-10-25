@@ -5,6 +5,7 @@ import Hero from "@/components/site/Hero";
 import ProofStrip from "@/components/site/ProofStrip";
 import Challenge from "@/components/site/Challenge";
 import ModuleSwitcher from "@/components/site/ModuleSwitcher";
+import BeforeAfter from "@/components/site/BeforeAfter";
 import HowItWorks from "@/components/site/HowItWorks";
 import CustomerStory from "@/components/site/CustomerStory";
 import RoleWins from "@/components/site/RoleWins";
@@ -15,6 +16,7 @@ import SectionNav from "@/components/site/SectionNav";
 
 const SECTIONS = [
   { id: "problem", label: "The problem" },
+  { id: "compare", label: "Before and after" },
   { id: "modules", label: "Modules" },
   { id: "how", label: "How it works" },
   { id: "story", label: "Customer story" },
@@ -37,6 +39,7 @@ export default function Home() {
         <Hero />
         <ProofStrip />
         <Challenge />
+        <BeforeAfter />
         <ModuleSwitcher />
         <HowItWorks />
         <CustomerStory />
