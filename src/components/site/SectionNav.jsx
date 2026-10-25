@@ -50,7 +50,7 @@ export default function SectionNav({ items, showAfter = "top" }) {
                   href={`#${it.id}`}
                   aria-current={on ? "true" : undefined}
                   tabIndex={visible ? 0 : -1}
-                  className={`site-choice inline-flex min-h-[36px] items-center rounded-full px-3.5 text-sm font-medium transition-colors ${
+                  className={`site-choice inline-flex min-h-[44px] items-center rounded-full px-3.5 text-sm font-medium transition-colors ${
                     on ? "bg-white/10 text-foreground" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >

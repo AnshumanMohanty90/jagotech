@@ -8,7 +8,7 @@ const POINTS = [
   "Every action is on record, ready for an audit.",
   "You choose which AI is used for each task.",
   "Jago can run on your own servers.",
-  "Your data stays in India.",
+  "You choose where your data is stored.",
 ];
 
 export default function SecurityPoints() {

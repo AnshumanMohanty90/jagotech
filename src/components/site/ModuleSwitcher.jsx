@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { tabKeys } from "@/lib/tabKeys";
 import { Link } from "react-router-dom";
 import { Sparkles, ArrowRight } from "lucide-react";
 import Reveal from "@/components/site/Reveal";
@@ -88,7 +89,9 @@ export default function ModuleSwitcher() {
                 type="button"
                 role="tab"
                 aria-selected={active === i}
+                tabIndex={active === i ? 0 : -1}
                 onClick={() => pick(i)}
+                onKeyDown={(e) => tabKeys(e, MODULES.length, i, pick)}
                 className={`site-row site-choice flex flex-col rounded-lg px-3 py-3 text-left min-h-[44px] transition-colors ${
                   active === i ? "text-foreground" : "text-muted-foreground"
                 }`}

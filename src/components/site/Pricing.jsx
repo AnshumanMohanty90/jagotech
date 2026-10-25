@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import Reveal from "@/components/site/Reveal";
 import PlanColumn from "@/components/site/PlanColumn";
 
-const CUSTOM_PRICING_NOTE = "Priced on your team size and the modules you use.";
-
 const PLANS = [
   {
     name: "Starter",
@@ -16,7 +14,6 @@ const PLANS = [
   {
     name: "Growth",
     price: "Custom pricing",
-    priceNote: CUSTOM_PRICING_NOTE,
     desc: "All four modules for up to 50 people, on WhatsApp, Slack and Teams.",
     cta: "Get pricing",
     href: "/contact?intent=pricing&plan=Growth",
@@ -25,7 +22,6 @@ const PLANS = [
   {
     name: "Enterprise",
     price: "Custom pricing",
-    priceNote: CUSTOM_PRICING_NOTE,
     desc: "Every module, with as many AI agents and people as you need.",
     cta: "Get pricing",
     href: "/contact?intent=pricing&plan=Enterprise",
@@ -34,7 +30,6 @@ const PLANS = [
   {
     name: "JShield add-on",
     price: "Custom pricing",
-    priceNote: CUSTOM_PRICING_NOTE,
     desc: "Customer consent, breach response and a record of the personal data you hold.",
     cta: "Get pricing",
     href: "/contact?intent=pricing&plan=JShield%20add-on",
@@ -42,7 +37,6 @@ const PLANS = [
   {
     name: "Own servers",
     price: "Custom pricing",
-    priceNote: CUSTOM_PRICING_NOTE,
     desc: "Jago runs on your own servers, with AI tuned to your data.",
     cta: "Get pricing",
     href: "/contact?intent=pricing&plan=Own%20servers",
@@ -61,6 +55,9 @@ export default function Pricing() {
     <Reveal id="pricing" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <h2 className="font-heading text-balance">Plans</h2>
+        <p className="mt-3 text-[16px] leading-relaxed text-slate-300">
+          Custom plans are priced on your team size and the modules you use.
+        </p>
 
         <div className="mt-6 grid gap-6 sm:grid-cols-3">
           {PLANS.slice(0, 3).map((p) => (

@@ -36,6 +36,7 @@ export default function RoleWins({ withIntro = true, tinted = false }) {
             <span className="text-sm">Examples of everyday use.</span>
           </SectionIntro>
         )}
+        {!withIntro && <h2 className="sr-only">Everyday use by role</h2>}
 
         <div className={`${withIntro ? "mt-6 " : ""}flex flex-wrap gap-x-5 gap-y-2`}>
           {CATEGORIES.map((c) => (

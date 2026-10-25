@@ -20,6 +20,15 @@ export default function Navbar({ logoVariant }) {
   const drawerRef = useRef(null);
   const triggerRefs = useRef({});
 
+  // Close the phone drawer when the screen grows to desktop width (for example a tablet rotating).
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setDrawerOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
@@ -109,7 +118,9 @@ export default function Navbar({ logoVariant }) {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-background/80 backdrop-blur-md backdrop-saturate-150 transition-shadow ${
+      className={`sticky top-0 z-50 transition-shadow ${
+        drawerOpen ? "bg-background" : "bg-background/80 backdrop-blur-md backdrop-saturate-150"
+      } ${
         scrolled ? "shadow-[0_2px_16px_rgba(0,0,0,0.45)]" : ""
       }`}
     >
@@ -118,7 +129,7 @@ export default function Navbar({ logoVariant }) {
       </a>
 
       <nav className="relative mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center" aria-label="JagoTech home">
+        <Link to="/" className="flex min-h-[44px] items-center" aria-label="Jago AI home">
           <Logo variant={logoVariant} className="h-7 sm:h-8 w-auto" />
         </Link>
 
@@ -266,7 +277,7 @@ export default function Navbar({ logoVariant }) {
                         {item.type === "mega"
                           ? item.columns.map((col) => (
                               <div key={col.title}>
-                                <p className="px-3 font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
+                                <p className="px-3 text-xs font-semibold leading-relaxed text-muted-foreground">
                                   {col.title}
                                 </p>
                                 <div className="mt-1">

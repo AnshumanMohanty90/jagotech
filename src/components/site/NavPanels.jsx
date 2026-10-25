@@ -45,7 +45,7 @@ export default function NavPanel({ item, closeMenu }) {
       <div className="grid grid-cols-3 gap-8 rounded-xl border border-border bg-card/95 backdrop-blur-xl p-6 shadow-2xl shadow-background/60">
         {item.columns.map((col) => (
           <div key={col.title} className="min-w-0">
-            <p className="font-mono text-xs leading-relaxed uppercase tracking-widest text-muted-foreground">
+            <p className="text-xs font-semibold leading-relaxed text-muted-foreground">
               {col.title}
             </p>
             <div className="mt-3 space-y-1">

@@ -6,8 +6,8 @@ import Accordion from "@/components/site/Accordion";
 
 const POINTS = [
   {
-    t: "Data stays in India",
-    d: "Your data is stored in India, or on your own servers if you prefer.",
+    t: "Data residency you control",
+    d: "Your data is stored in our India region by default, or on your own servers if you prefer.",
   },
   {
     t: "You approve key actions",

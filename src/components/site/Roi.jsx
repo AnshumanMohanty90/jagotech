@@ -49,7 +49,7 @@ export default function Roi() {
                   step={s.step}
                   value={s.value}
                   onChange={(e) => s.set(Number(e.target.value))}
-                  className="mt-3 w-full accent-primary"
+                  className="mt-1 h-11 w-full cursor-pointer accent-primary"
                   aria-label={s.label}
                 />
               </div>

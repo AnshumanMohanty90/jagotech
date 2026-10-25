@@ -5,7 +5,7 @@ const STATS = [
   { v: "8 weeks", l: "to go live across your teams" },
   { v: "50+", l: "languages, typed or spoken" },
   { v: "15", l: "job roles with ready-made AI agents" },
-  { v: "1,000+", l: "branches checked for risk at a large Indian lender" },
+  { v: "1,000+", l: "branches checked for risk at a large lender" },
 ];
 
 export default function ProofStrip() {
