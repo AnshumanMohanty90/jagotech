@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation, useNavigationType } from "react-router-dom";
 
 const getHashId = (hash) => {
@@ -14,16 +14,27 @@ const getHashId = (hash) => {
 export default function ScrollToTop() {
   const { pathname, hash } = useLocation();
   const navigationType = useNavigationType();
+  const firstLoad = useRef(true);
 
   useEffect(() => {
-    if (navigationType === "POP") return;
+    const isFirst = firstLoad.current;
+    firstLoad.current = false;
+    if (navigationType === "POP" && !(isFirst && hash)) return;
 
     if (hash) {
       const id = getHashId(hash);
-      const timer = window.setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      let tries = 0;
+      const timer = window.setInterval(() => {
+        const el = document.getElementById(id);
+        tries += 1;
+        if (el) {
+          el.scrollIntoView({ behavior: isFirst ? "auto" : "smooth" });
+          window.clearInterval(timer);
+        } else if (tries > 40) {
+          window.clearInterval(timer);
+        }
       }, 50);
-      return () => window.clearTimeout(timer);
+      return () => window.clearInterval(timer);
     }
 
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
