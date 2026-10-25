@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Reveal from "@/components/site/Reveal";
 
+const GOALS = [
+  { id: "ask", label: "Get answers faster", module: "Ask" },
+  { id: "analyze", label: "Understand why numbers move", module: "Analyze" },
+  { id: "predict", label: "See problems before they happen", module: "Predict" },
+  { id: "automate", label: "Take routine work off my team", module: "Automate" },
+];
+
 export default function CTA({ tinted = false }) {
+  const [goal, setGoal] = useState(null);
+  const picked = GOALS.find((g) => g.id === goal);
   return (
     <Reveal id="contact" className={`relative overflow-hidden ${tinted ? "site-section-alt" : ""}`}>
       <div aria-hidden="true" className="absolute inset-0 hero-glow opacity-70" />
@@ -16,9 +25,32 @@ export default function CTA({ tinted = false }) {
           first? Download the 8-week plan.
         </p>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Link to="/contact?intent=trial" className="site-cta-primary px-5 py-3 rounded-xl">
-            Try it free for a week
+        <p className="mt-8 text-base font-semibold">What do you want to fix first?</p>
+        <div role="group" aria-label="What do you want to fix first?" className="mt-3 flex flex-wrap justify-center gap-2">
+          {GOALS.map((g) => (
+            <button
+              key={g.id}
+              type="button"
+              aria-pressed={goal === g.id}
+              onClick={() => setGoal(g.id)}
+              className={`min-h-[44px] rounded-lg border px-4 text-[16px] transition-colors ${
+                goal === g.id ? "border-primary bg-primary/10 text-foreground" : "border-border text-foreground/80 hover:text-foreground"
+              }`}
+            >
+              {g.label}
+            </button>
+          ))}
+        </div>
+        <p className="mt-3 min-h-[28px] text-base leading-relaxed" aria-live="polite">
+          {picked ? `A good place to start is ${picked.module}. We pass your choice to the team setting up your trial.` : ""}
+        </p>
+
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            to={picked ? `/contact?intent=trial&module=${picked.id}` : "/contact?intent=trial"}
+            className="site-cta-primary px-5 py-3 rounded-xl"
+          >
+            {picked ? `Try ${picked.module} free for a week` : "Try it free for a week"}
           </Link>
           <Link to="/contact?intent=plan" className="site-cta-secondary px-5 py-3 rounded-xl">
             Download the 8-week plan

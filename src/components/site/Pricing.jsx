@@ -8,6 +8,7 @@ const PLANS = [
   {
     name: "Starter",
     priceInr: 15000,
+    priceUsd: 199,
     price: "Rs 15,000 a month",
     desc: "Ask questions and see why numbers move, for up to 10 people.",
     cta: "Try it free for a week",
@@ -54,7 +55,7 @@ const INCLUDED = [
 
 export default function Pricing() {
   const { currency, rate } = useCurrency();
-  const plans = PLANS.map((p) => (p.priceInr ? { ...p, price: `${formatPrice(p.priceInr, currency, rate)} a month` } : p));
+  const plans = PLANS.map((p) => (p.priceInr ? { ...p, price: `${formatPrice(p.priceInr, currency, rate, 0, p.priceUsd)} a month` } : p));
   return (
     <Reveal id="pricing" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
