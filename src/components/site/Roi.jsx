@@ -8,7 +8,7 @@ import { useCurrency, formatLarge, CurrencyToggle } from "@/lib/currency";
 export default function Roi() {
   const { currency, rate } = useCurrency();
   // Savings are modelled in US dollars, then shown in the visitor's currency.
-  const fmt = (usdAmount) => `${formatLarge(usdAmount * rate, currency, rate)} a year`;
+  const fmt = (usdAmount) => formatLarge(usdAmount * rate, currency, rate);
   const [emp, setEmp] = useState(1200);
   const [tools, setTools] = useState(4);
   const [queries, setQueries] = useState(250000);
@@ -19,7 +19,7 @@ export default function Roi() {
   const netRoi = ((vendorSavings + routingSavings) / platformLicense).toFixed(1);
 
   return (
-    <Reveal id="roi" className="relative">
+    <Reveal id="roi" className="relative" data-hide-sticky>
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Your estimated savings" title="See what you could save.">
           Enter your team size and current AI spend. We estimate what you save by replacing{" "}
@@ -37,7 +37,7 @@ export default function Roi() {
               <div key={s.label} className="mt-6 first:mt-0">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="text-base font-medium leading-relaxed">{s.label}</span>
-                  <span className="font-mono text-sm leading-relaxed text-primary">{s.display}</span>
+                  <span className="text-sm font-semibold leading-relaxed text-primary tabular">{s.display}</span>
                 </div>
                 <input
                   type="range"
@@ -58,23 +58,21 @@ export default function Roi() {
 
           <div className="site-col">
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <p className="site-label">Estimated annual savings</p>
+              <p className="site-label">Your estimate</p>
               <CurrencyToggle />
             </div>
-            <div className="mt-6 space-y-8">
-              <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-4">
-                <span className="text-base leading-relaxed max-w-xs">Savings from retiring separate tools</span>
-                <span className="font-heading text-2xl sm:text-3xl font-semibold text-emerald">{fmt(vendorSavings)}</span>
-              </div>
-              <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-4">
-                <span className="text-base leading-relaxed max-w-xs">Savings from using lower-cost AI for simple tasks</span>
-                <span className="font-heading text-2xl sm:text-3xl font-semibold text-primary">{fmt(routingSavings)}</span>
-              </div>
-              <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-4">
-                <span className="text-base leading-relaxed max-w-xs">Return on what you spend</span>
-                <span className="font-heading text-3xl sm:text-4xl font-semibold text-violet">{currency === "INR" ? `Rs ${netRoi} back for every rupee you spend` : `$${netRoi} back for every dollar you spend`}</span>
-              </div>
-            </div>
+            <dl className="mt-6 grid grid-cols-1 gap-y-1 min-[420px]:grid-cols-[minmax(0,1fr)_auto] min-[420px]:items-baseline min-[420px]:gap-x-6 min-[420px]:gap-y-6">
+              {[
+                ["Yearly savings from retiring separate tools", fmt(vendorSavings)],
+                ["Yearly savings from using lower-cost AI for simple tasks", fmt(routingSavings)],
+                [currency === "INR" ? "Back for every rupee you spend" : "Back for every dollar you spend", currency === "INR" ? `Rs ${netRoi}` : `$${netRoi}`],
+              ].map(([label, value]) => (
+                <React.Fragment key={label}>
+                  <dt className="text-base leading-relaxed text-pretty">{label}</dt>
+                  <dd className="roi-figure font-heading text-2xl sm:text-3xl font-semibold text-foreground whitespace-nowrap mb-4 min-[420px]:mb-0 min-[420px]:text-right">{value}</dd>
+                </React.Fragment>
+              ))}
+            </dl>
             <Link
               to="/contact?intent=plan"
               className="site-cta-primary mt-8 self-start px-5 py-3 rounded-xl"

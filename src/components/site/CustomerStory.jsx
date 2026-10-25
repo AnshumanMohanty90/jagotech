@@ -39,13 +39,13 @@ export default function CustomerStory({ showLink = true }) {
 
         <div className="mt-6 flex flex-wrap gap-x-16 gap-y-8">
           <div>
-            <p className="site-line font-heading font-bold text-[48px] leading-none text-foreground">
+            <p className="site-line font-heading font-semibold text-[24px] sm:text-[30px] leading-tight tabular text-foreground">
               <CountUp value={1000} />+
             </p>
             <p className="mt-1 text-base leading-relaxed">branches ranked by risk</p>
           </div>
           <div>
-            <p className="site-line font-heading font-bold text-[48px] leading-none text-foreground">
+            <p className="site-line font-heading font-semibold text-[24px] sm:text-[30px] leading-tight tabular text-foreground">
               5
             </p>
             <p className="mt-1 text-base leading-relaxed">audit types covered</p>

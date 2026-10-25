@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import useInView from "@/hooks/useInView";
 
-// Counts from 0 up to `value` once, when the number scrolls into view.
+// Counts up to `value` once, when the number scrolls into view. The final figure is laid out
+// invisibly underneath, so the space is reserved and nothing shifts while digits change, and the
+// figure keeps the font's normal (proportional) digits.
 export default function CountUp({ value, duration = 800, className = "" }) {
   const [ref, inView] = useInView();
   const [n, setN] = useState(0);
+  const final = value.toLocaleString("en-IN");
 
   useEffect(() => {
     if (!inView) return;
@@ -24,8 +27,10 @@ export default function CountUp({ value, duration = 800, className = "" }) {
   }, [inView, value, duration]);
 
   return (
-    <span ref={ref} className={className}>
-      {n.toLocaleString("en-IN")}
+    <span ref={ref} className={`countup ${className}`}>
+      <span className="sr-only">{final}</span>
+      <span aria-hidden="true" className="countup-final">{final}</span>
+      <span aria-hidden="true" className="countup-live">{n.toLocaleString("en-IN")}</span>
     </span>
   );
 }
