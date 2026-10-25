@@ -29,7 +29,7 @@ const FRAMEWORKS = [
       "Who can see and do what, set by you",
       "A record of every action",
       "A person approves the key steps",
-      "Your data stays in India",
+      "You choose where your data is stored",
     ],
   },
 ];
@@ -46,8 +46,8 @@ export default function Compliance() {
           </h2>
           <p className="mt-3 max-w-[75ch] text-base sm:text-lg leading-relaxed text-pretty">
             <CopyEmphasis
-              text="JShield is our companion product for India's data protection law. It tracks consent, breaches and the duties that start on 13 May 2027, alongside your Jago agents."
-              bold={["companion product for India's data protection law"]}
+              text="JShield is our companion product for data protection laws, from India's DPDP Act to GDPR and SOC 2. It tracks consent, breaches and every duty with a deadline, alongside your Jago agents."
+              bold={["companion product for data protection laws"]}
               accent={["consent, breaches"]}
               italic={["alongside your Jago agents"]}
             />
@@ -93,7 +93,7 @@ export default function Compliance() {
                   <CopyEmphasis
                     text={f.desc}
                     bold={["The main duties apply from 13 May 2027", "built to it"]}
-                    accent={["certification is under way", "Your data stays in India"]}
+                    accent={["certification is under way"]}
                   />
                 </p>
                 <ul className="mt-5 space-y-2.5">

@@ -6,10 +6,10 @@ import CopyEmphasis from "@/components/site/CopyEmphasis";
 const STOPPERS = [
   {
     t: "Customer data leaks",
-    d: "Staff paste customer details into public AI tools. That can break India's data law.",
+    d: "Staff paste customer details into public AI tools. That can break data protection laws.",
     answer: "Jago keeps customer data inside your systems",
     bold: ["customer details into public AI tools"],
-    accent: ["India's data law"],
+    accent: ["data protection laws"],
   },
   {
     t: "No one is checking",
@@ -29,38 +29,22 @@ const STOPPERS = [
 ];
 
 export default function Challenge() {
-  const [tapped, setTapped] = useState(null);
-
   return (
     <Reveal id="problem" className="relative">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="The problem" title="Your teams want to use AI." titleMuted="Three things stop them." />
 
         <div className="mt-6 grid md:grid-cols-3 gap-4 sm:gap-6">
-          {STOPPERS.map((s, i) => (
-            <button
-              key={s.t}
-              type="button"
-              aria-expanded={tapped === i}
-              onClick={() => setTapped((t) => (t === i ? null : i))}
-              className="site-row site-choice group rounded-xl px-4 py-4 text-left min-h-[44px]"
-            >
+          {STOPPERS.map((s) => (
+            <div key={s.t} className="site-row min-w-0">
               <h3 className="font-heading text-xl font-semibold leading-snug text-balance">
                 {s.t}
               </h3>
               <p className="mt-3 text-base leading-relaxed">
                 <CopyEmphasis text={s.d} bold={s.bold} accent={s.accent} italic={s.italic} />
               </p>
-              <p
-                className={`site-label mt-3 transition-opacity duration-150 ${
-                  tapped === i
-                    ? "opacity-100"
-                    : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100"
-                }`}
-              >
-                {s.answer}
-              </p>
-            </button>
+              <p className="site-label mt-3">{s.answer}</p>
+            </div>
           ))}
         </div>
       </div>

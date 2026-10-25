@@ -35,7 +35,8 @@ const COLS = [
     title: "Legal",
     links: [
       { label: "Privacy policy", href: "/privacy" },
-      { label: "Terms", href: "/terms" },
+      { label: "Terms of use", href: "/terms" },
+      { label: "Refund policy", href: "/refund-policy" },
     ],
   },
 ];
@@ -46,12 +47,12 @@ export default function Footer({ logoVariant }) {
       <div className="mx-auto max-w-7xl px-5 sm:px-8 py-12">
         <div className="grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-3">
-            <Link to="/#top" className="inline-block">
+            <Link to="/#top" className="inline-flex min-h-[44px] items-center" aria-label="Jago AI home">
               <Logo variant={logoVariant} className="h-9 w-auto" />
             </Link>
             <p className="mt-4 text-base text-muted-foreground max-w-sm leading-relaxed">
-              Jago AI puts AI to work in Indian companies,{" "}
-              with customer data kept within India's data law.{" "}
+              Jago AI puts AI to work across companies,{" "}
+              with customer data kept within data protection laws.{" "}
               Bengaluru, India.
             </p>
             <a

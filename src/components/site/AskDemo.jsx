@@ -1,4 +1,5 @@
 import React, { useState, lazy, Suspense } from "react";
+import { tabKeys } from "@/lib/tabKeys";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import AnswerBox from "@/components/site/AnswerBox";
@@ -20,7 +21,7 @@ const TABS = [
 ];
 
 const TAB_CLS =
-  "site-choice site-inline-link text-sm leading-relaxed uppercase tracking-wide px-2.5 py-1.5 rounded-lg border transition-colors";
+  "site-choice site-inline-link text-sm leading-relaxed px-2.5 py-1.5 rounded-lg border transition-colors";
 const activeTabCls = (active) =>
   active
     ? `${TAB_CLS} text-primary bg-primary/10 border-primary/40`
@@ -42,12 +43,14 @@ export default function AskDemo({ placeholder, language }) {
   return (
     <>
       <div className="flex flex-wrap items-center gap-1.5 px-1 pb-3" role="tablist" aria-label="Demo modes">
-        {TABS.map((t) => (
+        {TABS.map((t, i) => (
           <button
             key={t.id}
             role="tab"
             aria-selected={tab === t.id}
+            tabIndex={tab === t.id ? 0 : -1}
             onClick={() => setTab(t.id)}
+            onKeyDown={(e) => tabKeys(e, TABS.length, i, (n) => setTab(TABS[n].id))}
             className={activeTabCls(tab === t.id)}
           >
             {t.label}
@@ -63,7 +66,7 @@ export default function AskDemo({ placeholder, language }) {
               value={value}
               onChange={(e) => setValue(e.target.value.slice(0, 300))}
               placeholder={placeholder}
-              className="flex-1 min-w-0 bg-transparent outline-none font-body text-base leading-relaxed text-foreground placeholder:text-muted-foreground/70"
+              className="flex-1 min-w-0 min-h-[44px] bg-transparent outline-none font-body text-base leading-relaxed text-foreground placeholder:text-muted-foreground/70"
               aria-label="Ask Jago a question"
             />
             <button

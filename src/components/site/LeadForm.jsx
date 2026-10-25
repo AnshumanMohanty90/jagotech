@@ -15,13 +15,18 @@ const PERSONAL_DOMAINS = [
 const PERSONAL_EMAIL_MESSAGE =
   "Please use your work email, not a Gmail, Yahoo or Outlook address.";
 const SAVE_FAILED_MESSAGE =
-  "We could not send this. Your details are still here; please try again or write to contact@jagoai.com.";
+  "We could not send this. Your details are still here. Please try again or write to";
+const CONTACT_EMAIL = "contact@jagoai.com";
 
 // The 8-week plan PDF (stored publicly).
 export const PLAN_PDF_URL =
   "https://media.base44.com/files/public/6ac78b627ed759581c8a0fea/df70a7026_JagoAI_8-WeekPlan.pdf";
 
 const INTENT_TEXT = {
+  contact: {
+    button: "Send message",
+    thanks: "Thank you. We have your message and will reply to your work email.",
+  },
   plan: {
     button: "Download the plan",
     thanks: "Thank you. Your download has started.",
@@ -46,7 +51,18 @@ const INTENT_TEXT = {
 
 const PLANS_OF_INTEREST = ["Growth", "Enterprise", "JShield add-on", "Own servers"];
 
-const FIELD_ORDER = ["name", "workEmail", "company", "companySize", "planOfInterest", "mainTask"];
+export const CONTACT_REASONS = [
+  "Book a demo",
+  "Pricing and plans",
+  "Start a free trial",
+  "Partnership",
+  "Customer support",
+  "Media and press",
+  "Careers",
+  "Something else",
+];
+
+const FIELD_ORDER = ["reason", "name", "workEmail", "company", "companySize", "planOfInterest", "mainTask"];
 
 // A unique id per submission, stored on the Lead.
 const newSubmissionId = () =>
@@ -84,6 +100,9 @@ export default function LeadForm({
   mini = false,
 }) {
   const { pathname } = useLocation();
+  const TEXT = INTENT_TEXT[intent] || INTENT_TEXT.contact;
+  const submissionIdRef = useRef("");
+  const errorRef = useRef(null);
   const [form, setForm] = useState({
     name: "",
     workEmail: "",
@@ -91,6 +110,7 @@ export default function LeadForm({
     companySize: "",
     mainTask: defaultTask,
     planOfInterest: PLANS_OF_INTEREST.includes(planOfInterest) ? planOfInterest : "",
+    reason: "",
     website: "", // honeypot: humans never see or fill this
   });
   const [errors, setErrors] = useState({});
@@ -134,8 +154,12 @@ export default function LeadForm({
     if (!form.company.trim()) next.company = "Please enter your company.";
     if (!mini && !form.companySize) next.companySize = "Please select your company size.";
     if (intent === "pricing" && !form.planOfInterest) next.planOfInterest = "Please select a plan.";
+    if (intent === "contact" && !form.reason) next.reason = "Please choose why you are contacting us.";
     if (!mini && !form.mainTask.trim()) {
-      next.mainTask = "Please tell us the task that takes your team the most time.";
+      next.mainTask =
+        intent === "contact"
+          ? "Please tell us how we can help."
+          : "Please tell us the task that takes your team the most time.";
     }
     return next;
   };
@@ -170,13 +194,18 @@ export default function LeadForm({
     try {
       const trimmed = form.workEmail.trim().toLowerCase();
       const res = await submitLead({
-        intent,
-        submissionId: newSubmissionId(),
+        // General contact messages are saved as enterprise leads, with the reason first.
+        intent: intent === "contact" ? "enterprise" : intent,
+        submissionId: (submissionIdRef.current ||= newSubmissionId()),
         name: form.name.trim(),
         workEmail: trimmed,
         company: form.company.trim(),
         companySize: mini ? "" : form.companySize,
-        mainTask: mini ? defaultTask : form.mainTask.trim(),
+        mainTask: mini
+          ? defaultTask
+          : intent === "contact"
+            ? `${form.reason}: ${form.mainTask.trim()}`
+            : form.mainTask.trim(),
         planOfInterest: intent === "pricing" ? form.planOfInterest : "",
         sourcePage: sourcePage || pathname,
       });
@@ -189,6 +218,7 @@ export default function LeadForm({
       if (downloadWindow) downloadWindow.close();
       // Keep every value so the visitor can try again without retyping.
       setServerError(SAVE_FAILED_MESSAGE);
+      window.setTimeout(() => errorRef.current?.focus(), 0);
     } finally {
       setSending(false);
     }
@@ -220,13 +250,32 @@ export default function LeadForm({
   if (sent) {
     return (
       <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="text-base leading-relaxed text-foreground/90">
-        {thankYou || INTENT_TEXT[intent].thanks}
+        {thankYou || TEXT.thanks}
       </motion.div>
     );
   }
 
   return (
     <form onSubmit={submit} noValidate className="space-y-4">
+      {intent === "contact" && (
+        <Field id="reason" label="Why are you contacting us?" error={errors.reason}>
+          <select
+            ref={ref("reason")}
+            required
+            value={form.reason}
+            onChange={set("reason")}
+            className={`${cls("reason")} ${form.reason ? "" : "text-muted-foreground"}`}
+            {...a11y("reason")}
+          >
+            <option value="">Select a reason</option>
+            {CONTACT_REASONS.map((r) => (
+              <option key={r} value={r}>
+                {r}
+              </option>
+            ))}
+          </select>
+        </Field>
+      )}
       <Field id="name" label="Name" error={errors.name}>
         <input
           ref={ref("name")}
@@ -235,6 +284,7 @@ export default function LeadForm({
           value={form.name}
           onChange={set("name")}
           autoComplete="name"
+          maxLength={120}
           className={cls("name")}
           {...a11y("name")}
         />
@@ -248,6 +298,7 @@ export default function LeadForm({
           onChange={set("workEmail")}
           onBlur={checkPersonalEmail}
           autoComplete="email"
+          maxLength={160}
           className={cls("workEmail")}
           {...a11y("workEmail")}
         />
@@ -260,6 +311,7 @@ export default function LeadForm({
           value={form.company}
           onChange={set("company")}
           autoComplete="organization"
+          maxLength={160}
           className={cls("company")}
           {...a11y("company")}
         />
@@ -303,11 +355,16 @@ export default function LeadForm({
         </Field>
       )}
       {!mini && (
-        <Field id="mainTask" label="Which task takes your team the most time?" error={errors.mainTask}>
+        <Field
+          id="mainTask"
+          label={intent === "contact" ? "How can we help?" : "Which task takes your team the most time?"}
+          error={errors.mainTask}
+        >
           <textarea
             ref={ref("mainTask")}
             rows={4}
             required
+            maxLength={2000}
             value={form.mainTask}
             onChange={set("mainTask")}
             className={`${cls("mainTask")} w-full`}
@@ -331,13 +388,17 @@ export default function LeadForm({
           disabled={sending}
           className="site-cta-primary px-5 py-3.5 rounded-xl text-sm disabled:opacity-60"
         >
-          {sending ? "Sending..." : buttonLabel || INTENT_TEXT[intent].button}
+          {sending ? "Sending..." : buttonLabel || TEXT.button}
         </button>
         <p className="text-sm leading-relaxed text-muted-foreground">{note}</p>
       </div>
       {serverError && (
-        <p role="alert" className="text-sm leading-relaxed text-destructive">
-          {serverError}
+        <p ref={errorRef} tabIndex={-1} role="alert" className="text-sm leading-relaxed text-destructive outline-none">
+          {serverError}{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`} className="whitespace-nowrap underline underline-offset-2">
+            {CONTACT_EMAIL}
+          </a>
+          .
         </p>
       )}
     </form>

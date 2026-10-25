@@ -8,8 +8,8 @@ import CountUp from "@/components/site/CountUp";
 const STORY = [
   {
     label: "Who",
-    text: "A large Indian lender with a branch network spread across many states.",
-    bold: ["large Indian lender"],
+    text: "A large lender with a branch network spread across many regions.",
+    bold: ["large lender"],
   },
   {
     label: "Before",

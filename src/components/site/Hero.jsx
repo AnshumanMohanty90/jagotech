@@ -46,7 +46,7 @@ export default function Hero() {
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 w-full">
         {/* Everything above the fold renders immediately: no entrance animations. */}
-        <p className="site-label">AI agents for Indian companies</p>
+        <p className="site-label">AI agents for growing companies</p>
 
         <h1 className="mt-3 max-w-4xl font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight text-balance">
           Put AI to work across your company <span className="text-primary">in 8 weeks.</span>
@@ -76,7 +76,7 @@ export default function Hero() {
             </p>
 
             <p className="site-line mt-4 text-sm font-normal leading-relaxed text-slate-400 lg:whitespace-nowrap">
-              Live at a large Indian lender, works on WhatsApp, Slack and Teams, in 50+ languages
+              Live at a large lender, works on WhatsApp, Slack and Teams, in 50+ languages
             </p>
           </div>
 
