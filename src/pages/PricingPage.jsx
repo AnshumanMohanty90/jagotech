@@ -14,7 +14,7 @@ export default function PricingPage() {
       <Navbar />
       <main id="main-content">
         <PageHeader eyebrow="Plans" title="Start with one team. Grow into the whole company.">
-          Clear prices in rupees. Try any plan free for a week.
+          Clear prices, shown in your currency. Try any plan free for a week.
         </PageHeader>
         <Pricing />
         <Roi />
