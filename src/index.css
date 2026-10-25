@@ -397,3 +397,13 @@ a[href^="mailto:"] {
   p { text-wrap: pretty; }
   li { text-wrap: balance; }
 }
+
+/* Before and after switch: content fades in once per change */
+.compare-in { animation: compare-in 0.25s ease-out both; }
+@keyframes compare-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .compare-in { animation: none; } .sticky-cta { transition: none; } }
+
+@media (max-width: 767px) {
+  html.sticky-on { scroll-padding-bottom: 96px; }
+  html.sticky-on body { padding-bottom: 76px; }
+}

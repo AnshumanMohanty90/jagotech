@@ -8,6 +8,7 @@ import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
+import StickyCta from './components/site/StickyCta';
 import Home from '@/pages/Home';
 // Add page imports here
 
@@ -96,6 +97,7 @@ function App() {
       <QueryClientProvider client={queryClientInstance}>
         <Router>
           <ScrollToTop />
+          <StickyCta />
           <MotionConfig reducedMotion="user">
             <AuthenticatedApp />
           </MotionConfig>
