@@ -407,3 +407,12 @@ a[href^="mailto:"] {
   html.sticky-on { scroll-padding-bottom: 96px; }
   html.sticky-on body { padding-bottom: 76px; }
 }
+
+/* Numbers: lining, equal-width figures so stats line up and count-ups never shift */
+.roi-figure, .tabular { font-variant-numeric: lining-nums proportional-nums; }
+/* Count-up: final figure reserves the width underneath the changing digits */
+.countup { display: inline-grid; justify-items: start; }
+.countup > span:not(.sr-only) { grid-area: 1 / 1; }
+.countup-final { visibility: hidden; }
+.countup > span[aria-hidden] { user-select: none; }
+body { font-variant-numeric: lining-nums; }
