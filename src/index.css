@@ -382,3 +382,18 @@ textarea:focus-visible,
 }
 /* Phones: standalone arrow links get a 44px tap target. */
 @media (max-width: 639px) { main a:not(p a) { min-height: 44px; align-content: center; } }
+
+/* Phones: keep page titles to three lines or fewer */
+@media (max-width: 479px) {
+  .site-typography h1 {
+    font-size: 1.875rem;
+  }
+}
+a[href^="mailto:"] {
+  white-space: nowrap;
+}
+
+@layer base {
+  p { text-wrap: pretty; }
+  li { text-wrap: balance; }
+}

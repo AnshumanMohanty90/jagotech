@@ -31,6 +31,7 @@ const RoleWinsPage = lazy(() => import('@/pages/RoleWinsPage'));
 const IndustriesPage = lazy(() => import('@/pages/IndustriesPage'));
 const PrivacyPage = lazy(() => import('@/pages/PrivacyPage'));
 const TermsPage = lazy(() => import('@/pages/TermsPage'));
+const RefundPage = lazy(() => import('@/pages/RefundPage'));
 
 const PageFallback = () => (
   <div className="fixed inset-0 flex items-center justify-center">
@@ -81,6 +82,7 @@ const AuthenticatedApp = () => {
       <Route path="/industries" element={<Suspense fallback={<PageFallback />}><IndustriesPage /></Suspense>} />
       <Route path="/privacy" element={<Suspense fallback={<PageFallback />}><PrivacyPage /></Suspense>} />
       <Route path="/terms" element={<Suspense fallback={<PageFallback />}><TermsPage /></Suspense>} />
+      <Route path="/refund-policy" element={<Suspense fallback={<PageFallback />}><RefundPage /></Suspense>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
