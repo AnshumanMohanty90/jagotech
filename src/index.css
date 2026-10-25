@@ -31,8 +31,8 @@
 @layer base {
   :root {
     --background: 220 14% 4%;
-    --foreground: 210 25% 95%;
-    --card: 220 11% 8%;
+    --foreground: 210 33% 97%;
+    --card: 218 18% 9%;
     --card-foreground: 210 40% 99%;
     --popover: 220 11% 8%;
     --popover-foreground: 210 40% 99%;
@@ -41,12 +41,12 @@
     --secondary: 220 9% 12%;
     --secondary-foreground: 210 40% 99%;
     --muted: 220 9% 12%;
-    --muted-foreground: 218 12% 68%;
+    --muted-foreground: 214 22% 80%;
     --accent: 183 100% 50%;
     --accent-foreground: 220 14% 4%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 99%;
-    --border: 220 9% 17%;
+    --border: 218 16% 22%;
     --input: 220 9% 17%;
     --ring: 183 100% 50%;
     --emerald: 160 84% 39%;
@@ -110,7 +110,36 @@
 
   /* Alternating section background: a one-step lift in tone, no lines between sections. */
   .site-section-alt {
-    background-color: #0E1013;
+    background-color: #0F1318;
+  }
+
+  /* Choice buttons (goals, switches, filters): bright text, clear hover, solid selected state */
+  .site-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 0.75rem;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.02);
+    color: #F5F7FA;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+  }
+  @media (hover: hover) {
+    .site-chip:hover {
+      border-color: rgba(0, 242, 255, 0.6);
+      background-color: rgba(0, 242, 255, 0.06);
+    }
+  }
+  /* Selected: tinted, never solid, so it never looks like the primary button */
+  .site-chip[aria-pressed="true"] {
+    border-color: hsl(var(--primary));
+    background-color: rgba(0, 242, 255, 0.22);
+    color: #F5F7FA;
+    font-weight: 600;
   }
 
   .site-col {
@@ -124,12 +153,16 @@
     font-size: 16px;
     font-weight: 600;
     line-height: 1.45;
-    color: #A7B0BD;
+    color: #F5F7FA;
+  }
+  /* Section eyebrow: the one small cyan cue per section */
+  .site-eyebrow {
+    color: hsl(var(--primary));
   }
 
   /* Second clause of a heading, in a softer tone. */
   .title-muted {
-    color: #8B95A3;
+    color: inherit;
   }
 
   /* In-page section navigation bar under the header. */
@@ -193,8 +226,15 @@
   }
 
   .site-cta-secondary {
-    @apply border-primary/35 bg-primary/5 text-foreground hover:border-primary/70 hover:bg-primary/10;
-    box-shadow: inset 0 1px 0 hsl(var(--primary) / 0.08);
+    @apply text-foreground;
+    border-width: 1.5px;
+    border-color: rgba(245, 247, 250, 0.65);
+    background-color: transparent;
+    color: #F5F7FA;
+  }
+  .site-cta-secondary:hover {
+    border-color: #F5F7FA;
+    background-color: rgba(245, 247, 250, 0.08);
   }
 
   .site-cta-primary:disabled {
@@ -355,7 +395,7 @@ html {
 .site-typography p:not(.font-mono):not(.font-heading):not(.site-label):not([role="alert"]):not(.site-line) {
   font-size: 1.125rem;
   line-height: 1.6;
-  color: #CBD5E1;
+  color: #DDE4EE;
   max-width: 68ch;
 }
 
@@ -416,3 +456,20 @@ a[href^="mailto:"] {
 .countup-final { visibility: hidden; }
 .countup > span[aria-hidden] { user-select: none; }
 body { font-variant-numeric: lining-nums; }
+
+/* Primary actions carry a moving arrow so they read as the next step */
+.site-cta-primary::after {
+  content: "\2192";
+  margin-left: 0.5rem;
+  transition: transform 150ms ease;
+}
+.site-cta-primary:hover::after { transform: translateX(3px); }
+.site-cta-primary:has(svg)::after { content: none; }
+.site-cta-primary:disabled { background-image: none; background-color: rgba(0, 242, 255, 0.18); color: #9FEFF5; opacity: 1; border-color: rgba(0, 242, 255, 0.3); }
+@media (prefers-reduced-motion: reduce) { .site-cta-primary::after { transition: none; } }
+/* Closing call to action: a stronger pool of brand light */
+#contact .hero-glow {
+  background:
+    radial-gradient(60% 70% at 50% 0%, rgba(0, 245, 255, 0.16), transparent 70%),
+    radial-gradient(40% 60% at 85% 100%, rgba(0, 245, 255, 0.06), transparent 70%);
+}
