@@ -13,27 +13,27 @@ const GROUPS = [
     faqs: [
       {
         q: "Do you charge for AI tokens?",
-        a: "No. Your plan price covers the AI that the people on your plan use in their normal work, so you never get a separate token bill. If your use grows far beyond your plan, we talk to you before anything changes.",
+        a: "No. Normal use by the people on your plan is included. If your use is far above normal, we talk to you before any extra charge.",
       },
       {
         q: "Which AI models does Jago use?",
-        a: "Jago picks the right AI for each task from more than 100 AI models. Simple tasks run on lower-cost AI and harder ones on stronger AI, which keeps your cost down. On Enterprise and Own servers, you choose which AI is used for each task.",
+        a: "Jago picks the right AI model for each task, and a lower-cost one for simple work. On Enterprise and Own servers, you choose.",
       },
       {
-        q: "Can we bring our own AI model or AI account?",
-        a: "Yes, on Enterprise and Own servers. Tell us the model or account you use, and we leave that AI cost out of your price.",
+        q: "Can we bring our own AI model?",
+        a: "Yes, on Enterprise and Own servers. You pay your AI provider directly, and we take that cost out of your price.",
       },
       {
-        q: "How does Predict make its forecasts?",
-        a: "Predict reads trends across your sales, finance and operations data, warns you about what is likely to slip and shows the signals behind each warning. The models built for your company are kept only while you are a customer and are never used to train shared models. Predict comes with Growth, Enterprise and Own servers.",
+        q: "How does Predict make forecasts?",
+        a: "It reads your sales, finance and operations data and warns you about likely misses, with the reasons. It comes with Growth and above.",
       },
       {
-        q: "Is there a limit on Automate agent runs?",
-        a: "On Team, agents cover the normal work of your 25 people, and every run is on record. If an agent needs to run at high volume, for example on every order or every email, we price it on Growth by the number of agents and runs.",
+        q: "Is there a limit on agent runs?",
+        a: "Team covers normal daily work. An agent that runs on every order or email is priced separately, from Growth.",
       },
       {
         q: "Is our data used to train AI?",
-        a: "No. Your data is not used to train shared or general AI models without your written consent. It is stored in our India region by default, or on your own servers, and is deleted or returned when you leave.",
+        a: "No, not without your written consent. Your data stays in our India region or on your own servers.",
         link: { to: "/security", label: "Read about security" },
       },
     ],
@@ -44,23 +44,23 @@ const GROUPS = [
     faqs: [
       {
         q: "What does each plan cover?",
-        a: "Starter covers Ask and Analyze for up to 10 people. Team adds Automate and WhatsApp, Slack and Teams for up to 25 people. Growth adds Predict for 26 to 200 people. Enterprise covers any number of people and agents. JShield adds data protection compliance, and Own servers runs Jago inside your company.",
+        a: "Starter has Ask and Analyze for 10\u00a0people. Team adds Automate and chat apps for 25. Growth adds Predict for up to 200. Enterprise has no limit on people.",
       },
       {
-        q: "Who counts as a person on a plan?",
-        a: "Anyone who signs in to ask questions, see reports or approve steps. AI agents are not counted as people.",
+        q: "Who counts as a person?",
+        a: "Anyone who signs in. AI agents do not count.",
       },
       {
         q: "Do WhatsApp, Slack and Teams cost extra?",
-        a: "Jago's plan price covers Jago. WhatsApp, Slack and Teams may charge their own messaging fees.",
+        a: "They may charge their own messaging fees. Jago adds none.",
       },
       {
         q: "What files can we upload?",
-        a: "Files up to 5 MB each, in PDF, DOCX, XLSX, CSV, JSON, TXT and other common formats.",
+        a: "PDF, Word, Excel, CSV and text files, up to 5 MB each.",
       },
       {
         q: "How are Marketplace agents priced?",
-        a: "Marketplace agents are sold one at a time, and you pay only for what you use, such as per scan, per page or per minute. They are separate from these plans.",
+        a: "By use, such as per scan or per page, separate from these plans.",
         link: { to: "/marketplace", label: "See the Marketplace" },
       },
     ],
@@ -71,20 +71,24 @@ const GROUPS = [
     faqs: [
       {
         q: "What do we get in the free week?",
-        a: "A trial workspace with sample data, so you can see what Jago does before you connect your own systems. No payment details are needed.",
+        a: "A workspace with sample data. No payment details needed.",
       },
       {
-        q: "Can we pay monthly, and is GST extra?",
-        a: "Yes. Each plan shows the yearly price and the higher month-to-month price. Rupee prices do not include GST. Customers in India pay in rupees and everyone else pays in US dollars.",
+        q: "Can we pay monthly?",
+        a: "Yes. Monthly billing costs about 25% more than yearly.",
+      },
+      {
+        q: "Is GST extra?",
+        a: "Yes, on rupee prices. Dollar prices have no GST.",
       },
       {
         q: "Can we cancel?",
-        a: "Yes, there is no long lock-in. A monthly plan stays active to the end of the month you have paid for. A yearly plan ends at the end of its term, and prepaid yearly fees are not refunded. If you cancel a monthly plan within 7 days of the first charge without real use, you get a full refund.",
+        a: "Yes. A monthly plan runs to the end of the paid month. Yearly fees are not refunded. If you have not used a monthly plan, cancel within 7 days for a full refund.",
         link: { to: "/refund-policy", label: "Read the refund policy" },
       },
       {
         q: "What if we outgrow our plan?",
-        a: "Move to the next plan when you need more people or modules. Your workspace and data stay as they are.",
+        a: "Move up a plan. Your workspace and data stay as they are.",
       },
     ],
   },
@@ -105,7 +109,7 @@ export default function PricingFaq() {
     <Reveal id="pricing-faq" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 grid gap-6 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-5 min-w-0">
-          <SectionIntro eyebrow="Pricing questions" title="What your plan covers" titleMuted="and how usage works." />
+          <SectionIntro eyebrow="Pricing questions" title="What your plan covers." />
           <div className="mt-6 flex flex-wrap gap-2" role="tablist" aria-label="Pricing question groups">
             {GROUPS.map((g, i) => (
               <button
