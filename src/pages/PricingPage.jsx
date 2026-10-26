@@ -4,6 +4,7 @@ import Navbar from "@/components/site/Navbar";
 import PageHeader from "@/components/site/PageHeader";
 import Pricing from "@/components/site/Pricing";
 import Roi from "@/components/site/Roi";
+import PricingFaq from "@/components/site/PricingFaq";
 import CTA from "@/components/site/CTA";
 import Footer from "@/components/site/Footer";
 
@@ -18,6 +19,7 @@ export default function PricingPage() {
         </PageHeader>
         <Pricing />
         <Roi />
+        <PricingFaq />
       </main>
       <CTA tinted />
       <Footer />
