@@ -5,6 +5,7 @@ import PageHeader from "@/components/site/PageHeader";
 import LeadForm from "@/components/site/LeadForm";
 import Footer from "@/components/site/Footer";
 import usePageMeta from "@/hooks/usePageMeta";
+import { findAgent } from "@/components/site/marketplaceData";
 
 const INTENTS = {
   contact: {
@@ -35,13 +36,19 @@ const INTENTS = {
 export default function ContactPage() {
   usePageMeta("Contact | Jago AI", "Contact Jago AI for a demo, pricing, a free trial, partnerships or support.");
   const [params] = useSearchParams();
-  const KNOWN = ["contact", "plan", "trial", "enterprise", "pricing", "guide"];
+  const KNOWN = ["contact", "plan", "trial", "enterprise", "pricing", "guide", "buy"];
   const raw = params.get("intent") || "contact";
-  const intent = KNOWN.includes(raw) ? raw : "contact";
+  const agent = findAgent(params.get("agent") || "");
+  const intent = KNOWN.includes(raw) && (raw !== "buy" || agent) ? raw : "contact";
   const presetTask = params.get("task") || "";
   const planOfInterest = params.get("plan") || "";
   const module = (params.get("module") || "").replace(/[^a-z]/g, "").slice(0, 12);
-  const content = INTENTS[intent] || INTENTS.contact;
+  const content =
+    intent === "buy"
+      ? agent.pilot
+        ? { headline: `Request a pilot of ${agent.name.replace(/^Jasper: /, "Jasper ")}.`, sub: "Tell us about your sales pipeline in Zoho CRM. We will email you the next steps to set up the pilot." }
+        : { headline: `Buy the ${agent.name}.`, sub: `Tell us roughly how many ${agent.units} you expect each month. We will email you the next steps to start, priced per ${agent.unit} as shown in the marketplace.` }
+      : INTENTS[intent] || INTENTS.contact;
 
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
@@ -54,9 +61,10 @@ export default function ContactPage() {
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <LeadForm
               intent={intent}
+              agent={agent}
               defaultTask={presetTask}
               planOfInterest={planOfInterest}
-              sourcePage={`/contact?intent=${intent}${module ? `&module=${module}` : ""}`}
+              sourcePage={`/contact?intent=${intent}${module ? `&module=${module}` : ""}${intent === "buy" ? `&agent=${agent.id}` : ""}`}
             />
             <p className="mt-6 text-center text-base leading-relaxed text-muted-foreground">
               Or write to us at{" "}
