@@ -64,9 +64,25 @@ module.exports = {
   				ring: 'hsl(var(--sidebar-ring))'
   			}
   		},
+  		fontWeight: { medium: '600' },
+  		fontSize: {
+  			xs: ['0.75rem', { lineHeight: '1.3' }],
+  			sm: ['0.875rem', { lineHeight: '1.3' }],
+  			base: ['1rem', { lineHeight: '1.3' }],
+  			lg: ['1.125rem', { lineHeight: '1.25' }],
+  			xl: ['1.25rem', { lineHeight: '1.2' }],
+  			'2xl': ['1.5rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+  			'3xl': ['2rem', { lineHeight: '1.15', letterSpacing: '-0.02em' }],
+  			'4xl': ['2.25rem', { lineHeight: '1.15', letterSpacing: '-0.02em' }],
+  			'5xl': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+  			'6xl': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+  			'7xl': ['6rem', { lineHeight: '1', letterSpacing: '-0.03em' }],
+  			'8xl': ['8rem', { lineHeight: '1', letterSpacing: '-0.03em' }]
+  		},
   		fontFamily: {
   			heading: ['var(--font-heading)'],
   			body: ['var(--font-body)'],
+  			ui: ['var(--font-ui)'],
   			display: ['var(--font-display)'],
   			mono: ['var(--font-mono)']
   		},

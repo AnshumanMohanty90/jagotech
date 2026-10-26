@@ -72,7 +72,7 @@ export default function HowJagoWorks() {
               </p>
               <div className="mt-5 pt-4">
                 <p className="text-sm leading-relaxed">{m.example}</p>
-                <p className="mt-2 font-mono text-sm leading-relaxed text-primary">{m.result}</p>
+                <p className="mt-2 font-ui text-sm leading-relaxed text-primary">{m.result}</p>
               </div>
             </div>
           ))}
