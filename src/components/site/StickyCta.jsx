@@ -32,10 +32,10 @@ export default function StickyCta() {
   }, [pathname]);
 
   useEffect(() => {
-    if (closed || /^\/(contact|login|register|forgot|reset|oauth)/.test(pathname)) document.documentElement.classList.remove("sticky-on");
+    if (closed || /^\/(contact|marketplace|login|register|forgot|reset|oauth)/.test(pathname)) document.documentElement.classList.remove("sticky-on");
   }, [closed, pathname]);
 
-  if (closed || /^\/(contact|login|register|forgot|reset|oauth)/.test(pathname)) return null;
+  if (closed || /^\/(contact|marketplace|login|register|forgot|reset|oauth)/.test(pathname)) return null;
 
   return (
     <div

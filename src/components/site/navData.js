@@ -16,7 +16,6 @@ export const NAV_ITEMS = [
         title: "Products",
         links: [
           { label: "JShield", href: "https://jshield.ai", desc: "Meet India's data protection law", external: true },
-          { label: "Marketplace", href: "/marketplace", desc: "Single AI agents, pay per use" },
         ],
       },
       {
@@ -37,6 +36,7 @@ export const NAV_ITEMS = [
       { label: "By use case", href: "/solutions" },
     ],
   },
+  { type: "link", label: "Marketplace", href: "/marketplace" },
   { type: "link", label: "Customers", href: "/customers" },
   { type: "link", label: "Pricing", href: "/pricing" },
 ];

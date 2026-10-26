@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "@/components/site/Logo";
 import { NAV_ITEMS } from "@/components/site/navData";
 
@@ -10,6 +10,11 @@ const OPEN_DELAY = 120;
 const CLOSE_DELAY = 220;
 
 export default function Navbar({ logoVariant }) {
+  const { pathname } = useLocation();
+  // Marketplace agents are bought per use, so the header points to sales, not the module trial.
+  const cta = pathname.startsWith("/marketplace")
+    ? { to: "/contact", label: "Talk to us" }
+    : { to: "/contact?intent=trial", label: "Try it free for a week" };
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -200,8 +205,8 @@ export default function Navbar({ logoVariant }) {
             );
           })}
 
-          <Link to="/contact?intent=trial" className="site-cta-primary px-4 py-2 text-sm rounded-lg">
-            Try it free for a week
+          <Link to={cta.to} className="site-cta-primary px-4 py-2 text-sm rounded-lg">
+            {cta.label}
           </Link>
         </div>
 
@@ -326,11 +331,11 @@ export default function Navbar({ logoVariant }) {
 
             <div className="shrink-0 border-t border-border p-5">
               <Link
-                to="/contact?intent=trial"
+                to={cta.to}
                 onClick={closeDrawer}
                 className="site-cta-primary w-full px-4 py-3 text-sm rounded-lg"
               >
-                Try it free for a week
+                {cta.label}
               </Link>
             </div>
           </div>

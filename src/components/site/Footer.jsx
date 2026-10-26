@@ -10,6 +10,7 @@ const COLS = [
       { label: "Automate", href: "/platform#automate" },
       { label: "Analyze", href: "/platform#analyze" },
       { label: "Predict", href: "/platform#predict" },
+      { label: "Marketplace", href: "/marketplace" },
       { label: "JShield", href: "https://jshield.ai", external: true },
     ],
   },

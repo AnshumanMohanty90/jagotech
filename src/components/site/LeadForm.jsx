@@ -43,6 +43,10 @@ const INTENT_TEXT = {
     button: "Notify me",
     thanks: "Thank you. We will email you when this guide is ready.",
   },
+  buy: {
+    button: "Send my order",
+    thanks: "Thank you. Your order is in. We will email you the next steps to start using the agent.",
+  },
   pricing: {
     button: "Get my quote",
     thanks: "Thank you. We will email your quote to you.",
@@ -98,6 +102,7 @@ export default function LeadForm({
   thankYou,
   note = "We do not share your details.",
   mini = false,
+  agent = null,
 }) {
   const { pathname } = useLocation();
   const TEXT = INTENT_TEXT[intent] || INTENT_TEXT.contact;
@@ -159,7 +164,11 @@ export default function LeadForm({
       next.mainTask =
         intent === "contact"
           ? "Please tell us how we can help."
-          : "Please tell us the task that takes your team the most time.";
+          : intent === "buy"
+            ? agent?.pilot
+              ? "Please tell us about your sales pipeline."
+              : "Please tell us your expected monthly use."
+            : "Please tell us the task that takes your team the most time.";
     }
     return next;
   };
@@ -195,7 +204,7 @@ export default function LeadForm({
       const trimmed = form.workEmail.trim().toLowerCase();
       const res = await submitLead({
         // General contact messages are saved as enterprise leads, with the reason first.
-        intent: intent === "contact" ? "enterprise" : intent,
+        intent: intent === "contact" || intent === "buy" ? "enterprise" : intent,
         submissionId: (submissionIdRef.current ||= newSubmissionId()),
         name: form.name.trim(),
         workEmail: trimmed,
@@ -205,7 +214,9 @@ export default function LeadForm({
           ? defaultTask
           : intent === "contact"
             ? `${form.reason}: ${form.mainTask.trim()}`
-            : form.mainTask.trim(),
+            : intent === "buy"
+              ? `${agent?.pilot ? "Pilot request" : "Buy"}: ${agent?.name}. ${form.mainTask.trim()}`
+              : form.mainTask.trim(),
         planOfInterest: intent === "pricing" ? form.planOfInterest : "",
         sourcePage: sourcePage || pathname,
       });
@@ -357,7 +368,15 @@ export default function LeadForm({
       {!mini && (
         <Field
           id="mainTask"
-          label={intent === "contact" ? "How can we help?" : "Which task takes your team the most time?"}
+          label={
+            intent === "contact"
+              ? "How can we help?"
+              : intent === "buy"
+                ? agent?.pilot
+                  ? "How many open deals do you track in Zoho CRM, and what do you want Jasper to help with?"
+                  : `Roughly how many ${agent?.units} a month, and where will you use the agent?`
+                : "Which task takes your team the most time?"
+          }
           error={errors.mainTask}
         >
           <textarea
@@ -388,7 +407,7 @@ export default function LeadForm({
           disabled={sending}
           className="site-cta-primary px-5 py-3.5 rounded-xl text-sm disabled:opacity-60"
         >
-          {sending ? "Sending..." : buttonLabel || TEXT.button}
+          {sending ? "Sending..." : buttonLabel || (intent === "buy" && agent?.pilot ? "Request my pilot" : TEXT.button)}
         </button>
         <p className="text-sm leading-relaxed text-muted-foreground">{note}</p>
       </div>

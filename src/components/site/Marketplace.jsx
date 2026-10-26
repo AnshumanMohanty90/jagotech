@@ -1,92 +1,137 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { Play } from "lucide-react";
 import Reveal from "@/components/site/Reveal";
 import Accordion from "@/components/site/Accordion";
-import CopyEmphasis from "@/components/site/CopyEmphasis";
+import AgentArt from "@/components/site/AgentArt";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useCurrency, formatPrice, CurrencyToggle } from "@/lib/currency";
+import { AGENTS, agentFaqs } from "@/components/site/marketplaceData";
 
-const AGENTS = [
-  {
-    kind: "API + Widget",
-    name: "Card Scanner Agent",
-    desc: "Extract clean structured records from business cards and IDs straight into your CRM.",
-    priceInr: 2.00, unit: "scan",
-    cta: "Request access",
-  },
-  {
-    kind: "API + Widget",
-    name: "Document Analysis Agent",
-    desc: "Pull clauses, liabilities and terms out of legal contracts, with no manual page reviews.",
-    priceInr: 5.00, unit: "page",
-    cta: "Request access",
-  },
-  {
-    kind: "API + Widget",
-    name: "Email Parser Agent",
-    desc: "Turn inbound customer inquiries and purchase orders into ERP and CRM entries.",
-    priceInr: 1.00, unit: "email",
-    cta: "Request access",
-  },
-  {
-    kind: "API",
-    name: "Voice-to-Text Transcription",
-    desc: "Transcribe local-language audio into structured summaries and action triggers.",
-    priceInr: 3.00, unit: "minute",
-    cta: "Request access",
-  },
-  {
-    kind: "API",
-    name: "Image Analysis Agent",
-    desc: "Inspect store shelves, warehouse racks and field photos for quality compliance.",
-    priceInr: 3.00, unit: "image",
-    cta: "Request access",
-  },
-  {
-    kind: "Predict model, Zoho CRM native",
-    name: "Jasper: Sales Predict Model",
-    desc: "Ranks deals by value, chance and urgency, flags stalled pipelines and forecasts close rates.",
-    price: "Pilot model",
-    cta: "Request a pilot",
-  },
-];
+const buyHref = (a) => `/contact?intent=buy&agent=${encodeURIComponent(a.id)}`;
+const buyLabel = (a) => (a.pilot ? "Request a pilot" : "Buy");
+
+function BuyButton({ agent, className = "" }) {
+  return (
+    <Link to={buyHref(agent)} className={`site-cta-primary rounded-xl px-5 py-2.5 text-sm ${className}`}>
+      {buyLabel(agent)}
+    </Link>
+  );
+}
 
 export default function Marketplace() {
   const { currency, rate } = useCurrency();
+  const [panel, setPanel] = useState(null); // { agent, type: "video" | "faq" }
+  const triggerRef = useRef(null);
+  const openPanel = (e, agent, type) => {
+    triggerRef.current = e.currentTarget;
+    setPanel({ agent, type });
+  };
+  const priceText = (a) => (a.pilot ? "Pilot model" : formatPrice(a.priceInr, currency, rate, 2));
+  const open = panel?.agent;
+
   return (
     <Reveal id="marketplace" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="max-w-3xl">
-          <CurrencyToggle className="mb-4" />
-          <Accordion
-            firstOpen
-            items={AGENTS.map((b) => ({
-              key: b.name,
-              title: b.name,
-              body: (
-                <div className="min-w-0">
-                  <p className="site-label">{b.kind}</p>
-                  <p className="mt-2 text-base leading-relaxed text-pretty">
-                    <CopyEmphasis
-                      text={b.desc}
-                      bold={["structured records", "clauses, liabilities and terms", "ERP and CRM entries", "structured summaries and action triggers", "quality compliance", "forecasts close rates"]}
-                      italic={["with no manual page reviews"]}
-                    />
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <p className="site-label">{AGENTS.length} agents, priced per use</p>
+          <CurrencyToggle />
+        </div>
+
+        <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {AGENTS.map((a) => (
+            <li key={a.id} className="agent-card flex min-w-0 flex-col overflow-hidden rounded-2xl border border-border bg-card">
+              <div className="aspect-[16/9] w-full border-b border-border">
+                <AgentArt id={a.id} />
+              </div>
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
+                <p className="text-sm font-semibold text-primary">{a.kind}</p>
+                <h2 className="mt-1.5 font-heading text-xl font-semibold leading-snug text-balance">{a.name}</h2>
+                <p className="mt-2 text-base leading-relaxed text-pretty text-foreground/90">{a.desc}</p>
+                <div className="mt-auto pt-5">
+                  <p className="font-heading text-lg font-semibold">
+                    {a.pilot ? "Pilot model" : <>{priceText(a)} <span className="whitespace-nowrap">per {a.unit}</span></>}
                   </p>
-                  <div className="mt-4 flex flex-wrap items-center gap-4">
-                    <span className="font-heading text-lg font-semibold">{b.priceInr != null ? `${formatPrice(b.priceInr, currency, rate, 2)} per ${b.unit}` : b.price}</span>
-                    <Link
-                      to={`/contact?intent=trial&task=${encodeURIComponent(b.name)}`}
-                      className="site-cta-secondary px-4 py-2.5 rounded-xl text-sm"
+                  <div className="mt-4 grid grid-cols-[minmax(0,1fr)_auto] gap-2.5">
+                    <BuyButton agent={a} className="col-span-2 w-full" />
+                    <button
+                      type="button"
+                      onClick={(e) => openPanel(e, a, "video")}
+                      className="site-cta-secondary min-w-0 justify-center gap-2 rounded-xl px-3 py-2.5 text-sm"
                     >
-                      {b.cta}
-                    </Link>
+                      <Play aria-hidden="true" className="h-4 w-4 shrink-0" />
+                      <span className="whitespace-nowrap">See how it works</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(e) => openPanel(e, a, "faq")}
+                      className="site-cta-secondary rounded-xl px-5 py-2.5 text-sm"
+                    >
+                      FAQs
+                    </button>
                   </div>
                 </div>
-              ),
-            }))}
-          />
-        </div>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
+
+      <Dialog open={!!panel} onOpenChange={(v) => !v && setPanel(null)}>
+        <DialogContent
+          onCloseAutoFocus={(e) => {
+            if (triggerRef.current) {
+              e.preventDefault();
+              triggerRef.current.focus();
+            }
+          }}
+          className="focus:outline-none max-h-[88vh] w-[calc(100%-2rem)] max-w-2xl overflow-y-auto rounded-2xl border-border bg-card p-6 sm:p-8">
+          {open && panel.type === "video" && (
+            <>
+              <DialogTitle className="pr-8 font-heading text-xl font-semibold leading-snug">
+                {open.name}: how it works
+              </DialogTitle>
+              <DialogDescription className="text-base leading-relaxed text-foreground/90">
+                A short explainer video for this agent is on its way.
+              </DialogDescription>
+              <div className="relative mt-2 aspect-video w-full overflow-hidden rounded-xl border border-border">
+                <AgentArt id={open.id} />
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-background/75">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full border border-primary/70 bg-background/80">
+                    <Play aria-hidden="true" className="ml-0.5 h-6 w-6 text-primary" />
+                  </span>
+                  <span className="font-heading text-base font-semibold">Video coming soon</span>
+                </div>
+              </div>
+              <div className="mt-2 flex flex-wrap gap-2.5">
+                <BuyButton agent={open} />
+                <button type="button" onClick={() => setPanel({ agent: open, type: "faq" })} className="site-cta-secondary rounded-xl px-4 py-2.5 text-sm">
+                  Read the FAQs
+                </button>
+              </div>
+            </>
+          )}
+          {open && panel.type === "faq" && (
+            <>
+              <DialogTitle className="pr-8 font-heading text-xl font-semibold leading-snug">
+                {open.name}: FAQs
+              </DialogTitle>
+              <DialogDescription className="sr-only">Common questions about this agent</DialogDescription>
+              <Accordion
+                firstOpen
+                items={agentFaqs(open, priceText(open)).map((f) => ({
+                  key: f.q,
+                  title: f.q,
+                  body: <p className="text-base leading-relaxed text-pretty">{f.a}</p>,
+                }))}
+              />
+              <div className="mt-2 flex flex-wrap gap-2.5">
+                <BuyButton agent={open} />
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </Reveal>
   );
 }
