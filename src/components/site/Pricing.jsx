@@ -72,7 +72,7 @@ export default function Pricing() {
       ? {
           ...p,
           price: `${formatPrice(p.priceInr, currency, rate, 0, p.priceUsd)} a month`,
-          priceNote: `Billed yearly, or ${formatPrice(p.monthlyInr, currency, rate, 0, p.monthlyUsd)} a month if you pay monthly.`,
+          priceNote: `Billed yearly. ${formatPrice(p.monthlyInr, currency, rate, 0, p.monthlyUsd)} a month if billed\u00a0monthly.`,
         }
       : p
   );
