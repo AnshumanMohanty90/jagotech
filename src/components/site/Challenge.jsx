@@ -10,8 +10,6 @@ const STOPPERS = [
     answer: "Jago keeps customer data inside your systems",
     color: "#00f2ff",
     Icon: ShieldOff,
-    // Arc node position inside the 387px diagram.
-    node: { left: 280, top: 0 },
   },
   {
     t: "No one is checking",
@@ -19,7 +17,6 @@ const STOPPERS = [
     answer: "A person approves key steps and every action is logged",
     color: "#ff6b35",
     Icon: AlertTriangle,
-    node: { left: 350, top: 148 },
   },
   {
     t: "Costs pile up",
@@ -27,33 +24,8 @@ const STOPPERS = [
     answer: "One platform, with low-cost AI for simple tasks",
     color: "#9b59b6",
     Icon: TrendingUp,
-    node: { left: 298, top: 287 },
   },
 ];
-
-// Arc diagram: three problem nodes orbiting "Every AI Project".
-function ArcDiagram() {
-  return (
-    <div aria-hidden="true" className="relative hidden lg:block shrink-0 w-[387px] h-[343px]">
-      <svg className="absolute inset-0" width="387" height="343" viewBox="0 0 387 343" fill="none">
-        <path d="M308 28 C 392 70 392 130 378 176 C 372 230 360 280 326 315" stroke="rgba(0,242,255,0.25)" strokeWidth="2" strokeDasharray="4 6" strokeLinecap="round" />
-      </svg>
-      <div className="absolute left-[92px] top-[141px] w-[185px] h-[60px] flex flex-col items-center justify-center text-center font-ui text-[13px] font-bold text-white/60">
-        <span>Every</span>
-        <span>AI Project</span>
-      </div>
-      {STOPPERS.map(({ t, color, Icon, node }) => (
-        <div
-          key={t}
-          className="absolute flex items-center justify-center w-14 h-14 rounded-full border-2 bg-[#1a1f2e]"
-          style={{ left: node.left, top: node.top, borderColor: color }}
-        >
-          <Icon className="w-6 h-6" style={{ color }} />
-        </div>
-      ))}
-    </div>
-  );
-}
 
 export default function Challenge() {
   return (
@@ -61,15 +33,24 @@ export default function Challenge() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="The problem" title="Your teams want to use AI. Three things stop them." />
 
-        <div className="mt-10 flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-[72px]">
-          <ArcDiagram />
+        <ol className="mx-auto mt-10 max-w-[720px] min-w-0">
+          {STOPPERS.map((s, i) => (
+            <li key={s.t} className="site-row min-w-0 flex gap-5 sm:gap-6">
+              {/* Straight rail: each node lines up with its step, joined by one vertical line */}
+              <div aria-hidden="true" className="flex shrink-0 flex-col items-center">
+                <span
+                  className="flex h-14 w-14 items-center justify-center rounded-full border-2 bg-[#1a1f2e]"
+                  style={{ borderColor: s.color }}
+                >
+                  <s.Icon className="h-6 w-6" style={{ color: s.color }} />
+                </span>
+                {i < STOPPERS.length - 1 && <span className="w-0.5 flex-1 bg-[rgba(0,242,255,0.25)]" />}
+              </div>
 
-          <ol className="w-full lg:w-[596px] min-w-0 flex flex-col gap-10">
-            {STOPPERS.map((s, i) => (
-              <li key={s.t} className="site-row min-w-0 flex flex-col gap-1.5">
+              <div className={`min-w-0 flex flex-col gap-1.5 ${i < STOPPERS.length - 1 ? "pb-10" : ""}`}>
                 <div className="flex items-center gap-2.5">
                   <span
-                    className="flex items-center justify-center w-7 h-7 rounded-full font-ui text-[13px] font-bold"
+                    className="flex h-7 w-7 items-center justify-center rounded-full font-ui text-[13px] font-bold"
                     style={{ backgroundColor: s.color, color: i === 0 ? "#0b0d10" : "#fff" }}
                   >
                     {i + 1}
@@ -83,13 +64,13 @@ export default function Challenge() {
                   className="site-line inline-flex items-center gap-2 self-start rounded-lg px-3 py-1.5 font-ui text-[13px] font-bold leading-snug"
                   style={{ color: s.color, backgroundColor: `${s.color}17` }}
                 >
-                  <CheckCircle className="w-3.5 h-3.5 shrink-0" />
+                  <CheckCircle className="h-3.5 w-3.5 shrink-0" />
                   {s.answer}
                 </p>
-              </li>
-            ))}
-          </ol>
-        </div>
+              </div>
+            </li>
+          ))}
+        </ol>
       </div>
     </Reveal>
   );
