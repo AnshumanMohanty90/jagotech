@@ -13,11 +13,11 @@ export default function Hero() {
         <div className="flex min-w-0 flex-col items-center text-center xl:items-start xl:text-left">
           <p className="site-label site-eyebrow">AI agents for growing companies</p>
 
-          <h1 className="mt-4 font-heading text-3xl sm:text-4xl xl:text-5xl !font-semibold !leading-[1.12] !tracking-[-0.025em] text-balance">
+          <h1 className="mt-4 font-heading text-3xl sm:text-4xl xl:!text-[42px] !font-semibold !leading-[1.15] !tracking-[-0.025em] text-balance">
             Put AI to work across your company <span className="text-primary">in 8 weeks.</span>
           </h1>
 
-          <p className="mt-4 max-w-xl text-base sm:text-lg text-muted-foreground text-pretty break-words">
+          <p className="mt-5 max-w-xl text-base sm:text-lg text-muted-foreground text-pretty break-words">
             <strong className="copy-focus">Build AI agents in plain language</strong>, predict trends, and
             analyze cross-department data across text, audio, image, and video. Query via key channels,{" "}
             <strong className="copy-focus">automate workflows end-to-end</strong>, and scale safely with
