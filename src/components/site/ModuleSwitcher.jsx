@@ -77,7 +77,7 @@ export default function ModuleSwitcher() {
         <SectionIntro eyebrow="What Jago does" title="Four AI modules with one login, under your rules." />
 
         <div
-          className="mx-auto mt-10 flex max-w-[1016px] flex-col gap-6"
+          className="mx-auto mt-10 flex max-w-[1216px] flex-col gap-6"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onFocus={() => setPaused(true)}
@@ -86,7 +86,7 @@ export default function ModuleSwitcher() {
           }}
         >
           {/* The four modules, in the order a team uses Jago */}
-          <div role="tablist" aria-label="Jago modules" className="grid gap-6 md:grid-cols-2">
+          <div role="tablist" aria-label="Jago modules" className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {MODULES.map((mod, i) => {
               const on = active === i;
               return (
@@ -98,7 +98,7 @@ export default function ModuleSwitcher() {
                   tabIndex={on ? 0 : -1}
                   onClick={() => pick(i)}
                   onKeyDown={(e) => tabKeys(e, MODULES.length, i, pick)}
-                  className={`site-choice flex min-h-[44px] flex-col gap-4 rounded-2xl border bg-[rgba(19,22,27,0.3)] p-5 text-left md:h-[320px] ${
+                  className={`site-choice flex min-h-[44px] flex-col gap-4 rounded-2xl border bg-[rgba(19,22,27,0.3)] p-5 text-left lg:min-h-[260px] ${
                     on ? "border-primary" : "border-[#2f3641]"
                   }`}
                 >
@@ -111,7 +111,7 @@ export default function ModuleSwitcher() {
                       {mod.title}
                     </span>
                   </span>
-                  <span className="text-base leading-[26px] text-[#c1cbd7]">{mod.desc}</span>
+                  <span className="text-base font-normal leading-[26px] text-[#c1cbd7]">{mod.desc}</span>
                 </button>
               );
             })}
