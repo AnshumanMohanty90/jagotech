@@ -40,13 +40,13 @@ export default function PricingTeaser() {
           <div className="flex flex-col sm:flex-row items-stretch justify-center gap-4">
             <Link
               to="/contact?intent=trial"
-              className="inline-flex h-11 flex-1 items-center justify-center rounded-xl bg-primary font-ui text-sm font-bold text-primary-foreground"
+              className="inline-flex h-11 flex-1 basis-0 items-center justify-center rounded-xl bg-primary font-ui text-sm font-bold text-primary-foreground"
             >
               Start free trial
             </Link>
             <Link
               to="/pricing"
-              className="inline-flex h-11 items-center justify-center rounded-xl border border-primary bg-[#0f1317] px-5 font-ui text-sm font-semibold text-primary"
+              className="inline-flex h-11 flex-1 basis-0 items-center justify-center rounded-xl border border-primary bg-[#0f1317] px-5 font-ui text-sm font-semibold text-primary"
             >
               See pricing
             </Link>
