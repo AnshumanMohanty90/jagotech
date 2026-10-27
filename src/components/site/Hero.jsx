@@ -1,43 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { Sparkles } from "lucide-react";
-import AskDemo from "@/components/site/AskDemo";
-
-const PROMPTS = [
-  "Finance: which invoices risk slipping past due?",
-  "Sales: which deals will slip this quarter?",
-  "Operations: why is line 4 downtime rising?",
-];
-
-function useTypewriter(strings, typeMs = 55, pauseMs = 1400) {
-  const [text, setText] = useState("");
-  const [idx, setIdx] = useState(0);
-  const [deleting, setDeleting] = useState(false);
-
-  useEffect(() => {
-    const current = strings[idx % strings.length];
-    let t;
-    if (!deleting && text === current) {
-      t = setTimeout(() => setDeleting(true), pauseMs);
-    } else if (deleting && text === "") {
-      setDeleting(false);
-      setIdx((i) => i + 1);
-    } else {
-      t = setTimeout(() => {
-        setText((prev) =>
-          deleting ? current.slice(0, prev.length - 1) : current.slice(0, prev.length + 1)
-        );
-      }, deleting ? typeMs / 2 : typeMs);
-    }
-    return () => clearTimeout(t);
-  }, [text, deleting, idx, strings, typeMs, pauseMs]);
-
-  return text;
-}
 
 export default function Hero() {
-  const typed = useTypewriter(PROMPTS);
-
   return (
     <section id="top" className="relative overflow-hidden pt-12 sm:pt-16">
       {/* Background layers */}
@@ -59,22 +23,17 @@ export default function Hero() {
           multi-region Compliance AI.
         </p>
 
-        {/* Live demo */}
-        <div className="mt-10 sm:mt-14 w-full max-w-[1039px] text-left">
-          <div className="rounded-3xl border border-border bg-card/30 backdrop-blur-xl p-4 sm:p-5 glow-cyan">
-            <div className="flex items-center justify-between px-1 pb-3">
-              <span className="inline-flex items-center gap-2 text-sm tracking-wide text-muted-foreground">
-                <Sparkles className="w-3.5 h-3.5 text-primary" />
-                Ask Jago, sample data
-              </span>
-              <span className="text-sm text-muted-foreground">Sample data</span>
-            </div>
-            <AskDemo placeholder={typed} />
-            <p className="site-line mt-3 px-1 text-sm text-muted-foreground">
-              Answers from sample data · 50+ languages ·{" "}
-              <span className="text-primary">text or voice</span>
-            </p>
-          </div>
+        {/* Overview video */}
+        <div className="mt-10 sm:mt-14 w-full max-w-[1039px] overflow-hidden rounded-3xl border border-border bg-black glow-cyan">
+          <video
+            className="block w-full aspect-video"
+            src="/videos/jago-overview.mp4"
+            poster="/videos/jago-overview-poster.jpg"
+            controls
+            playsInline
+            preload="metadata"
+            aria-label="Jago AI overview video"
+          />
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
