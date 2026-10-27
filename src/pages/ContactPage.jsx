@@ -14,7 +14,7 @@ const INTENTS = {
   },
   plan: {
     headline: "Download the 8-week plan.",
-    sub: "A one-page plan to put AI to work on one process in 8 weeks: what we do, what you do and what you get at each stage.",
+    sub: "A one-page plan for one process: what we do, what you do and what you get at each\u00a0stage.",
   },
   trial: {
     headline: "Try Jago free for a week.",

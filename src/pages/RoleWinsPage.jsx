@@ -12,8 +12,8 @@ export default function RoleWinsPage() {
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />
       <main id="main-content">
-        <PageHeader eyebrow="Jago in your role" title="How teams use Jago">
-          Examples of everyday use.
+        <PageHeader eyebrow="Jago in your role" title="See what changes for each role with&nbsp;Jago.">
+          Pick a role to compare the work before and with&nbsp;Jago.
         </PageHeader>
         <RoleWins withIntro={false} tinted />
       </main>

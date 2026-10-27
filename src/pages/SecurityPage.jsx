@@ -12,7 +12,7 @@ export default function SecurityPage() {
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />
       <main id="main-content">
-        <PageHeader eyebrow="Security" title="Your data stays under your control.">
+        <PageHeader eyebrow="Security" title="Your data stays under your&nbsp;control.">
           Jago is built for companies that handle customer data every day.
         </PageHeader>
         <SecurityPoints />

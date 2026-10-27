@@ -12,8 +12,8 @@ export default function CustomersPage() {
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />
       <main id="main-content">
-        <PageHeader eyebrow="Customers" title="How a large lender decides which branches to audit first">
-          A large lender with a branch network spread across many regions.
+        <PageHeader eyebrow="Customers" title="A large lender uses Jago to decide which branches to audit&nbsp;first.">
+          The lender has more than 1,000 branches spread across many&nbsp;regions.
         </PageHeader>
         <CustomersStory />
       </main>

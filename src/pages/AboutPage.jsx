@@ -18,12 +18,12 @@ export default function AboutPage() {
         <section className="site-section site-section-alt">
           <div className="mx-auto flex max-w-[1024px] flex-col gap-4 px-5 sm:px-8 sm:flex-row">
             <p className="site-line flex-1 rounded-2xl border border-[#2f3641] bg-[rgba(19,22,27,0.3)] p-6 text-base sm:text-lg leading-[1.6] text-[#dde4ee]">
-              What we do: we help companies put AI to work on
-              real tasks, with customer data handled within data protection laws.
+              What we do: we help companies put AI to work on daily tasks, with controls built for data
+              protection&nbsp;laws.
             </p>
             <p className="site-line flex-1 rounded-2xl border border-[#2f3641] bg-[rgba(19,22,27,0.3)] p-6 text-base sm:text-lg leading-[1.6] text-[#dde4ee]">
-              Where we started: lending, where audit, collections and
-              compliance work is heavy and the rules are strict.
+              Where we started: lending, where audit, collections and compliance work is heavy and the
+              rules are&nbsp;strict.
             </p>
           </div>
         </section>

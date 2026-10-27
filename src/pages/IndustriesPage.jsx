@@ -12,8 +12,8 @@ export default function IndustriesPage() {
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />
       <main id="main-content">
-        <PageHeader eyebrow="By industry" title="Made for your industry.">
-          Ready-made workflows for your sector.
+        <PageHeader eyebrow="By industry" title="Jago can take on common work in six&nbsp;industries.">
+          Open your industry to see the work teams hand to Jago&nbsp;first.
         </PageHeader>
         <Industries />
       </main>

@@ -14,8 +14,8 @@ export default function PricingPage() {
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />
       <main id="main-content">
-        <PageHeader eyebrow="Plans" title="Start with one team. Grow into the whole company.">
-          Clear prices, shown in your currency. Try any plan free for a week.
+        <PageHeader eyebrow="Plans" title="Start with one team and add people and modules as you&nbsp;grow.">
+          Prices are shown in your currency. Try any plan free for a&nbsp;week.
         </PageHeader>
         <Pricing />
         <Roi />
