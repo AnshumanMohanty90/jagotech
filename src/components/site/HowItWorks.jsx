@@ -53,46 +53,46 @@ export default function HowItWorks() {
             </div>
           </div>
 
-          <ol className="relative flex flex-col gap-6 p-6">
-            <span aria-hidden="true" className="absolute left-[43px] top-8 bottom-14 w-0.5 rounded-full bg-[rgba(0,242,255,0.2)]" />
+          <ol className="grid gap-8 p-6 md:grid-cols-3 md:gap-6">
             {PHASES.map((ph, i) => {
               const on = active === i;
               return (
-                <li key={ph.label} className="relative flex gap-6">
-                  <div className="flex w-10 shrink-0 justify-center">
+                <li key={ph.label} className="relative flex min-w-0 flex-col">
+                  {/* Rail node, joined to its neighbours by a horizontal line on wide screens */}
+                  <div aria-hidden="true" className="relative mb-4 flex h-4 items-center">
+                    {i < PHASES.length - 1 && (
+                      <span className="absolute -right-6 left-4 top-1/2 hidden h-0.5 -translate-y-1/2 bg-[rgba(0,242,255,0.2)] md:block" />
+                    )}
                     <span
-                      aria-hidden="true"
-                      className={`relative z-10 mt-1 h-4 w-4 rounded-full border-2 ${
-                        on ? "border-primary bg-primary" : "border-[#1c1e21] bg-[#111418]"
+                      className={`relative z-10 h-4 w-4 rounded-full border-2 ${
+                        on ? "border-primary bg-primary" : "border-primary/60 bg-[#0b0d10]"
                       }`}
                     />
                   </div>
                   <button
                     type="button"
-                    aria-expanded={on}
+                    aria-pressed={on}
                     onClick={() => setActive(i)}
-                    className={`site-choice min-w-0 flex-1 rounded-[20px] border p-6 text-left ${
+                    className={`site-choice flex min-w-0 flex-1 flex-col rounded-[20px] border p-6 text-left ${
                       on ? "border-primary bg-[rgba(0,245,255,0.06)]" : "border-[#1c1e21] bg-[#111418]"
                     }`}
                   >
                     <span
-                      className={`inline-block rounded-full px-2.5 py-1.5 font-ui text-xs font-semibold ${
+                      className={`self-start rounded-full px-2.5 py-1.5 font-ui text-xs font-semibold ${
                         on ? "bg-[rgba(0,242,255,0.1)] text-primary" : "bg-[#1c1e21] text-[#c1cbd7]"
                       }`}
                     >
                       {ph.label}
                     </span>
                     <span className="mt-2 block font-ui text-2xl font-bold leading-[1.25] text-foreground">{ph.title}</span>
-                    {on && (
-                      <span className="mt-5 flex flex-col gap-4">
-                        {DETAIL.map(([label, key]) => (
-                          <span key={key} className="flex flex-col gap-1.5">
-                            <span className="font-ui text-xs font-semibold uppercase tracking-[0.8px] text-primary">{label}</span>
-                            <span className="font-ui text-base font-medium leading-6 text-[#dde4ee]">{ph[key]}</span>
-                          </span>
-                        ))}
-                      </span>
-                    )}
+                    <span className="mt-5 flex flex-col gap-4">
+                      {DETAIL.map(([label, key]) => (
+                        <span key={key} className="flex flex-col gap-1.5">
+                          <span className="font-ui text-xs font-semibold uppercase tracking-[0.8px] text-primary">{label}</span>
+                          <span className="font-ui text-base font-medium leading-6 text-[#dde4ee]">{ph[key]}</span>
+                        </span>
+                      ))}
+                    </span>
                   </button>
                 </li>
               );
