@@ -29,9 +29,11 @@ export default function Hero() {
             className="block w-full aspect-video"
             src="/videos/jago-overview.mp4"
             poster="/videos/jago-overview-poster.jpg"
+            autoPlay
+            muted
             controls
             playsInline
-            preload="metadata"
+            preload="auto"
             aria-label="Jago AI overview video"
           />
         </div>
