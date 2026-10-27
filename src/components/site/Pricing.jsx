@@ -12,7 +12,7 @@ const PLANS = [
     priceUsd: 219,
     monthlyInr: 19999,
     monthlyUsd: 269,
-    desc: "Ask questions and see why numbers move, for up to 10\u00a0people.",
+    desc: "Ask and Analyze for up to 10\u00a0people.",
     cta: "Try it free for a week",
     href: "/contact?intent=trial",
   },
@@ -30,7 +30,7 @@ const PLANS = [
   {
     name: "Growth",
     price: "Custom pricing",
-    desc: "All four modules, including Predict, for 26 to 200\u00a0people.",
+    desc: "All four modules for 26 to 200\u00a0people.",
     cta: "Get pricing",
     href: "/contact?intent=pricing&plan=Growth",
     trialHref: "/contact?intent=trial",
@@ -38,7 +38,7 @@ const PLANS = [
   {
     name: "Enterprise",
     price: "Custom pricing",
-    desc: "Every module for any number of people and AI agents, with your choice of AI model.",
+    desc: "All four modules for any number of people and AI agents, with your choice of AI\u00a0model.",
     cta: "Get pricing",
     href: "/contact?intent=pricing&plan=Enterprise",
   },
@@ -59,7 +59,7 @@ const PLANS = [
 ];
 
 const INCLUDED = [
-  "Who-sees-what controls",
+  "Control over who sees what",
   "A record of every action",
   "Document and data analysis",
   "No long lock-in",
@@ -71,7 +71,7 @@ export default function Pricing() {
     p.priceInr
       ? {
           ...p,
-          price: `${formatPrice(p.priceInr, currency, rate, 0, p.priceUsd)} a month`,
+          price: `${formatPrice(p.priceInr, currency, rate, 0, p.priceUsd)} a month`,
           priceNote: `Billed yearly. ${formatPrice(p.monthlyInr, currency, rate, 0, p.monthlyUsd)} a month if billed\u00a0monthly.`,
         }
       : p
@@ -80,7 +80,7 @@ export default function Pricing() {
     <Reveal id="pricing" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="text-center">
-        <h2 className="font-heading text-balance">Plans</h2>
+        <h2 className="font-heading text-balance">Pick a plan by team size and the modules you&nbsp;need.</h2>
         <p className="site-line mt-3 text-base leading-6 text-[#dde4ee]">
           Custom plans are priced on your team size and the modules you use.
         </p>
@@ -111,7 +111,7 @@ export default function Pricing() {
             <p className="text-sm leading-relaxed">Rupee prices do not include GST.</p>
           )}
           <p className="text-sm leading-relaxed">
-            Built to a global security standard (SOC 2); certification under way.
+            We are preparing for a SOC 2 audit and ISO 27001&nbsp;certification.
           </p>
           <p className="text-sm leading-relaxed">
             WhatsApp, Slack and Teams may charge their own messaging fees.

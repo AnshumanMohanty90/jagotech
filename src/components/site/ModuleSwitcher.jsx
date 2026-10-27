@@ -10,18 +10,18 @@ const MODULES = [
     id: "ask",
     Icon: MessageSquare,
     title: "Ask",
-    desc: "One question, in your language, answered from your systems and documents across every channel, with the source.",
+    desc: "Jago answers questions in your language from your systems, with\u00a0sources.",
     anchor: "ask",
     example: "How did each region do against target in Q3, and what is holding South back?",
     answer:
       "North is 18% ahead of target and South is 4% behind. The South review notes on Teams and the dispatch report shared on WhatsApp both point to late deliveries. Sources: CRM, sales ledger and two documents.",
-    result: "One answer, from systems and documents across channels.",
+    result: "Jago gives one answer from your systems and documents, wherever they were\u00a0shared.",
   },
   {
     id: "analyze",
     Icon: Search,
     title: "Analyze",
-    desc: "Jago tests the likely reasons a number moved and shows which ones your data supports.",
+    desc: "Jago tests why a number moved and shows which reasons\u00a0hold.",
     anchor: "analyze",
     example: "Why did South region miss its sales target last quarter?",
     answer:
@@ -32,7 +32,7 @@ const MODULES = [
     id: "predict",
     Icon: TrendingUp,
     title: "Predict",
-    desc: "Jago reads trends across departments and warns you what is likely to slip, and why.",
+    desc: "Jago warns you what is likely to slip, and\u00a0why.",
     anchor: "predict",
     example: "Which deals are likely to slip this quarter?",
     answer:
@@ -43,7 +43,7 @@ const MODULES = [
     id: "automate",
     Icon: Workflow,
     title: "Automate",
-    desc: "Describe a workflow in plain words and Jago builds an agent that runs it, with your sign-off.",
+    desc: "Jago runs routine tasks you describe in plain words, with your\u00a0sign-off.",
     anchor: "automate",
     example: "When a large order is booked, update the CRM, draft the invoice and tell finance on WhatsApp.",
     answer:
@@ -74,7 +74,7 @@ export default function ModuleSwitcher() {
   return (
     <Reveal id="modules" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="What Jago does" title="Four AI modules with one login, under your rules." />
+        <SectionIntro eyebrow="What Jago does" title="Four modules answer questions, explain numbers, flag risks and run routine&nbsp;work." />
 
         <div
           className="mx-auto mt-10 flex max-w-[1216px] flex-col gap-6"
@@ -135,7 +135,7 @@ export default function ModuleSwitcher() {
         </div>
 
         <p className="mt-6 text-center text-base leading-relaxed">
-          Add <span className="copy-focus">JShield</span> to keep customer data within the law.{" "}
+          Add <span className="copy-focus">JShield</span> to manage consent and data protection&nbsp;duties.{" "}
           <a
             href="https://jshield.ai"
             target="_blank"

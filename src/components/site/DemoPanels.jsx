@@ -11,7 +11,7 @@ const SCRIPTED = {
   },
   predict: {
     label: "Predict",
-    example: "Which branches are likely to miss target this month?",
+    example: "Which branches are likely to miss target this month?",
     answer:
       "Three branches are likely to miss target: Pune East, Nashik and Indore. The signal: collections are 12% behind their usual pace for this point in the month. The regional heads have an alert on WhatsApp.",
   },

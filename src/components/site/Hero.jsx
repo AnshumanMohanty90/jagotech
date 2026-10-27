@@ -18,10 +18,9 @@ export default function Hero() {
           </h1>
 
           <p className="mt-5 max-w-xl text-base sm:text-lg text-muted-foreground text-pretty break-words">
-            <strong className="copy-focus">Build AI agents in plain language</strong>, predict trends, and
-            analyze cross-department data across text, audio, image, and video. Query via key channels,{" "}
-            <strong className="copy-focus">automate workflows end-to-end</strong>, and scale safely with
-            multi-region Compliance AI.
+            Jago <strong className="copy-focus">answers questions from your data</strong>, explains why
+            numbers move, warns of risks and{" "}
+            <strong className="copy-focus">runs routine work</strong> you&nbsp;approve.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 xl:justify-start">

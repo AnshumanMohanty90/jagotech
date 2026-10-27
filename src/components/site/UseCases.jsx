@@ -6,28 +6,28 @@ import CopyEmphasis from "@/components/site/CopyEmphasis";
 const USE_CASES = [
   {
     id: "employee-productivity",
-    title: "Team Productivity",
-    desc: "Your team asks questions and gets answers from your own systems, so the morning is not spent hunting for numbers.",
+    title: "Team productivity",
+    desc: "Jago answers staff questions from your own systems, so no one hunts for\u00a0numbers.",
     bold: ["answers from your own systems"],
   },
   {
     id: "customer-experience",
-    title: "Customer Experience",
-    desc: "Jago reads complaints from every channel and language, groups them by cause, and routes them to the right person.",
+    title: "Customer experience",
+    desc: "Jago groups complaints from every channel by cause and routes\u00a0them.",
     bold: ["every channel and language"],
     accent: ["groups them by cause"],
   },
   {
     id: "workflow-automation",
-    title: "Workflow Automation",
-    desc: "Jago moves work between your systems and assigns it, so nothing waits in a queue for someone to notice.",
+    title: "Routine work",
+    desc: "Jago moves work between systems and assigns it, so nothing\u00a0waits.",
     bold: ["moves work between your systems"],
-    accent: ["nothing waits in a queue"],
+    accent: ["nothing waits"],
   },
   {
     id: "decision-support",
-    title: "Business Decision Support",
-    desc: "Ask a business question in plain words, get the number, and see the reason behind it.",
+    title: "Business decisions",
+    desc: "Jago gives the number behind a business question, with the\u00a0reason.",
     bold: ["in plain words"],
     accent: ["the reason behind it"],
   },
@@ -37,9 +37,8 @@ export default function UseCases() {
   return (
     <Reveal id="use-cases" className="relative scroll-mt-24 site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="By use case" title="The same platform, aimed at the result you need.">
-          Start with the result you want.{" "}
-          We set it up in 8 weeks.
+        <SectionIntro eyebrow="By use case" title="You can start with one of these four&nbsp;results.">
+          We set up the one you pick in 8&nbsp;weeks.
         </SectionIntro>
 
         <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">

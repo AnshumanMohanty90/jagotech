@@ -6,10 +6,10 @@ export const NAV_ITEMS = [
       {
         title: "Modules",
         links: [
-          { label: "Ask", href: "/platform#ask", desc: "One answer from every team's data" },
-          { label: "Analyze", href: "/platform#analyze", desc: "Test why a number moved" },
+          { label: "Ask", href: "/platform#ask", desc: "Get answers from every team's data" },
+          { label: "Analyze", href: "/platform#analyze", desc: "Find out why a number moved" },
           { label: "Predict", href: "/platform#predict", desc: "See what will slip, and why" },
-          { label: "Automate", href: "/platform#automate", desc: "Build agents in plain words" },
+          { label: "Automate", href: "/platform#automate", desc: "Run routine work with your sign-off" },
         ],
       },
       {

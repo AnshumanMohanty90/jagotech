@@ -23,7 +23,7 @@ const PHASES = [
     title: "Go live",
     weDo: "Move your team onto Jago on WhatsApp, Slack or Teams and track the results.",
     youDo: "Use Jago daily for the task and flag what to change.",
-    youGet: "Before and after numbers on hours, time and errors.",
+    youGet: "Before and after numbers on hours saved and\u00a0errors.",
   },
 ];
 
@@ -39,16 +39,16 @@ export default function HowItWorks() {
   return (
     <Reveal id="how" className="relative">
       <div className="relative mx-auto max-w-[1216px] px-5 sm:px-8">
-        <SectionIntro eyebrow="How it works" title="Live in 8 weeks." />
+        <SectionIntro eyebrow="How it works" title="You go live in 8 weeks, in three&nbsp;stages." />
 
         <div className="mt-10 overflow-hidden rounded-3xl border border-[#1c1e21] bg-[#0b0d10]">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1c1e21] px-6 py-5">
             <div className="flex flex-col gap-0.5">
-              <p className="site-line font-ui text-sm font-semibold text-primary">Rollout timeline</p>
-              <p className="site-line text-[13px] text-[#c1cbd7]">Three ordered milestones from kickoff to launch</p>
+              <p className="site-line font-ui text-sm font-semibold text-primary">Your 8-week plan</p>
+              <p className="site-line text-[13px] text-[#c1cbd7]">Each stage shows what we do, what you do and what you get.</p>
             </div>
             <div className="flex items-center gap-2 font-ui text-xs font-semibold">
-              <span className="rounded-full bg-[rgba(0,245,255,0.06)] px-2.5 py-1.5 text-primary">Weeks 1–8</span>
+              <span className="rounded-full bg-[rgba(0,245,255,0.06)] px-2.5 py-1.5 text-primary">Weeks 1 to 8</span>
               <span className="rounded-full bg-[#111418] px-2.5 py-1.5 text-[#c1cbd7]">3 stages</span>
             </div>
           </div>

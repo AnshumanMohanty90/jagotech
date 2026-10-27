@@ -12,8 +12,8 @@ const JSHIELD_POINTS = [
 const FRAMEWORKS = [
   {
     tag: "The DPDP Act",
-    title: "India's data protection law, in plain words.",
-    desc: "The law sets duties for every company that holds personal data. The main duties apply from 13 May 2027, and fines can reach Rs 250 crore. JShield tracks each duty for you.",
+    title: "These are four of the main duties under the DPDP\u00a0Act.",
+    desc: "JShield tracks each of these duties for you.",
     points: [
       "Ask for consent and keep the proof",
       "Keep personal data safe",
@@ -23,8 +23,8 @@ const FRAMEWORKS = [
   },
   {
     tag: "SOC 2",
-    title: "Built to a global security standard.",
-    desc: "SOC 2 is a global security standard. Jago is built to it, and certification is under way. We will show the certificate when it is issued.",
+    title: "Jago is preparing for a SOC 2 audit, a widely used security\u00a0check.",
+    desc: "We will share the report once it is\u00a0issued.",
     points: [
       "Who can see and do what, set by you",
       "A record of every action",
@@ -40,13 +40,13 @@ export default function Compliance() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         {/* JShield spotlight */}
         <div className="mx-auto min-w-0 max-w-[1024px] rounded-2xl border border-[#2f3641] bg-[rgba(19,22,27,0.3)] p-6 text-center sm:p-8">
-          <p className="site-label site-eyebrow">Companion product</p>
+          <p className="site-label site-eyebrow">Add-on</p>
           <h2 className="mt-3 font-heading text-balance">
-            JShield
+            JShield tracks consent, breaches and legal deadlines for&nbsp;you.
           </h2>
           <p className="mx-auto mt-4 max-w-[772px] text-base sm:text-lg text-pretty">
             <CopyEmphasis
-              text="JShield is our companion product for data protection laws, from India's DPDP Act to GDPR and SOC 2. It tracks consent, breaches and every duty with a deadline, alongside your Jago agents."
+              text="JShield works alongside your Jago agents and tracks your duties under the DPDP Act and GDPR, and your SOC 2 controls."
               bold={["companion product for data protection laws"]}
               accent={["consent, breaches"]}
               italic={["alongside your Jago agents"]}
@@ -73,9 +73,9 @@ export default function Compliance() {
 
         {/* DPDP duties and SOC 2 */}
         <div className="mt-16">
-          <SectionIntro eyebrow="Compliance" title="What the law asks of you.">
+          <SectionIntro eyebrow="Compliance" title="India's DPDP Act sets duties for every company that holds personal&nbsp;data.">
             <CopyEmphasis
-              text="India's data protection law, the DPDP Act, applies to every company that holds personal data. The main duties start on 13 May 2027, and fines can reach Rs 250 crore."
+              text="The main duties start on 13 May 2027, and fines can reach Rs 250 crore."
               bold={["every company that holds personal data"]}
               accent={["13 May 2027", "Rs 250 crore"]}
               italic={["the DPDP Act"]}
@@ -93,7 +93,7 @@ export default function Compliance() {
                   <CopyEmphasis
                     text={f.desc}
                     bold={["The main duties apply from 13 May 2027", "built to it"]}
-                    accent={["certification is under way"]}
+                    accent={["share the report"]}
                   />
                 </p>
                 <ul className="mt-5 space-y-2.5">

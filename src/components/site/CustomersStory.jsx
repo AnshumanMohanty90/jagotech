@@ -20,8 +20,8 @@ export default function CustomersStory() {
         <div className={CARD}>
           <p className={LABEL}>The problem</p>
           <p className={TEXT}>
-            Audits kept slipping. Risk reports used old data, and no tool showed which branches were likely
-            to have problems. Auditors could not tell where to go first.
+            Audits kept slipping. Risk reports used old data, and auditors could not tell which branches to
+            visit&nbsp;first.
           </p>
         </div>
 

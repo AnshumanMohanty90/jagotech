@@ -4,7 +4,7 @@ import useInView from "@/hooks/useInView";
 // Counts up to `value` once, when the number scrolls into view. The final figure is laid out
 // invisibly underneath, so the space is reserved and nothing shifts while digits change, and the
 // figure keeps the font's normal (proportional) digits.
-export default function CountUp({ value, duration = 800, className = "" }) {
+export default function CountUp({ value, duration = 800, className = "", suffix = "" }) {
   const [ref, inView] = useInView();
   const [n, setN] = useState(0);
   const final = value.toLocaleString("en-IN");
@@ -26,11 +26,21 @@ export default function CountUp({ value, duration = 800, className = "" }) {
     return () => cancelAnimationFrame(raf);
   }, [inView, value, duration]);
 
+  // Once the count has finished, render the figure as plain text so it reads as one unit.
+  if (inView && n === value) {
+    return (
+      <span ref={ref} className={className || undefined}>
+        {final}
+        {suffix}
+      </span>
+    );
+  }
+
   return (
     <span ref={ref} className={`countup ${className}`}>
-      <span className="sr-only">{final}</span>
-      <span aria-hidden="true" className="countup-final">{final}</span>
-      <span aria-hidden="true" className="countup-live">{n.toLocaleString("en-IN")}</span>
+      <span className="sr-only">{final}{suffix}</span>
+      <span aria-hidden="true" className="countup-final">{final}{suffix}</span>
+      <span aria-hidden="true" className="countup-live">{n.toLocaleString("en-IN")}{suffix}</span>
     </span>
   );
 }

@@ -7,7 +7,7 @@ const POINTS = [
   "You decide who can see and do what.",
   "A person approves the key steps before anything changes.",
   "Every action is on record, ready for an audit.",
-  "You choose which AI is used for each task.",
+  "On Enterprise and own-server plans, you choose which AI is used for each\u00a0task.",
   "Jago can run on your own servers.",
   "You choose where your data is stored.",
 ];
@@ -29,7 +29,7 @@ export default function SecurityPoints() {
         </ul>
 
         <p className="mx-auto max-w-[772px] text-center text-base text-pretty">
-          Security certification (SOC 2 and ISO 27001, two global standards) is under way.
+          We are preparing for a SOC 2 audit and ISO 27001&nbsp;certification.
         </p>
 
         <Link to="/contact?intent=enterprise" className="site-cta-primary px-5 py-3 rounded-xl">

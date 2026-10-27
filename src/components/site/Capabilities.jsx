@@ -9,22 +9,22 @@ const CAPS = [
   {
     id: "ask",
     title: "Ask",
-    desc: "Ask a question in plain words and get the number from your own data.",
-  },
-  {
-    id: "predict",
-    title: "Predict",
-    desc: "Get a message on WhatsApp when a number starts to slip.",
+    desc: "Ask in plain words and get the number from your own\u00a0data.",
   },
   {
     id: "analyze",
     title: "Analyze",
-    desc: "See why a number moved, with the reasons behind it.",
+    desc: "See why a number moved, with the reasons behind\u00a0it.",
+  },
+  {
+    id: "predict",
+    title: "Predict",
+    desc: "Get a WhatsApp message when a number starts to\u00a0slip.",
   },
   {
     id: "automate",
     title: "Automate",
-    desc: "Let Jago update your systems, after a person approves the key steps.",
+    desc: "Let Jago update your systems after a person approves key\u00a0steps.",
   },
 ];
 
@@ -35,8 +35,8 @@ export default function Capabilities() {
   return (
     <Reveal id="capabilities" className="relative scroll-mt-24">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="The four modules" title="Four modules, one login.">
-          Each one works on your data, under your rules.{" "}
+        <SectionIntro eyebrow="The four modules" title="Watch a short video of each module at&nbsp;work.">
+          Each module works on your data, under your rules.{" "}
           <Link to="/how-jago-works" className="text-primary font-semibold underline underline-offset-4 decoration-primary/30 hover:decoration-primary">
             See How Jago Works
           </Link>{" "}

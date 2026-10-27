@@ -4,7 +4,7 @@ import { ROLES, CATEGORIES } from "@/components/site/roleWinsData";
 import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
 
-// "Ask · Predict · Analyze" -> "Uses Ask, Predict and Analyze"
+// "Ask · Analyze · Predict" -> "Uses Ask, Analyze and Predict"
 const usesText = (modules) => {
   const mods = modules
     .split("·")
@@ -32,8 +32,8 @@ export default function RoleWins({ withIntro = true, tinted = false }) {
     <Reveal id="solutions" className={`relative ${tinted ? "site-section-alt" : ""}`}>
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         {withIntro && (
-          <SectionIntro eyebrow="Jago in your role" title="How teams use Jago">
-            <span className="text-sm leading-5">Examples of everyday use.</span>
+          <SectionIntro eyebrow="Jago in your role" title="See what changes for each role with&nbsp;Jago.">
+            <span className="text-sm leading-5">Pick a role to compare the work before and with&nbsp;Jago.</span>
           </SectionIntro>
         )}
         {!withIntro && <h2 className="sr-only">Everyday use by role</h2>}

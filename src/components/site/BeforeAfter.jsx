@@ -25,7 +25,7 @@ const WITH = {
     ["Collections slowed in the last six weeks", "One of the two reasons that hold up."],
     ["Three large orders moved to next quarter", "Price changes and staff turnover do not explain the gap."],
   ],
-  next: "Want an alert when collections slow again? Jago can monitor this for you.",
+  next: "Jago can alert you if collections slow again.",
 };
 
 export default function BeforeAfter() {
@@ -123,7 +123,7 @@ export default function BeforeAfter() {
                   to="/contact?intent=trial&module=analyze"
                   className="mt-5 flex min-h-[44px] items-center justify-center rounded-xl bg-primary px-7 py-3.5 text-center font-ui text-[15px] font-bold leading-[22px] text-primary-foreground"
                 >
-                  Try it on sample data free for a week →
+                  Try it free for a week on sample data
                 </Link>
               </div>
             ) : (

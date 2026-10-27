@@ -6,38 +6,38 @@ const MODULES = [
   {
     id: "ask",
     title: "Ask",
-    desc: "Ask in plain words, by text or voice, in 50+ languages, on WhatsApp, Slack or Teams. Jago answers from every team's systems and from the documents spread across email, Teams, Slack, WhatsApp and shared drives, and shows the source.",
+    desc: "Ask by text or voice in 50+ languages, on WhatsApp, Slack or Teams. Jago answers from your systems and documents, and shows the\u00a0source.",
     example: "\"How did each region do against target, and what is holding South back?\"",
-    result: "One answer, from systems and documents across channels, with sources.",
-    bold: ["documents spread across email, Teams, Slack, WhatsApp and shared drives"],
+    result: "You get one answer with its\u00a0sources.",
+    bold: ["your systems and documents"],
     accent: ["50+ languages"],
-  },
-  {
-    id: "automate",
-    title: "Automate",
-    desc: "Describe a workflow in plain words and Jago builds an agent that runs it end to end across your systems. You choose which steps need a sign-off, and every run is on record.",
-    example: "\"When a large order is booked, update the CRM, draft the invoice and tell finance.\"",
-    result: "An agent that runs on every new order, with your sign-off.",
-    bold: ["Jago builds an agent"],
-    accent: ["You choose which steps need a sign-off"],
   },
   {
     id: "analyze",
     title: "Analyze",
-    desc: "When a number moves, Jago lists the likely reasons, tests each one against your data across departments and shows which ones hold up, with the numbers it used.",
+    desc: "When a number moves, Jago lists the likely reasons, tests each against your data and shows which hold up, with the\u00a0numbers.",
     example: "\"Why did South miss target?\"",
-    result: "Four reasons tested, two confirmed, with the numbers.",
-    bold: ["tests each one against your data"],
-    accent: ["which ones hold up"],
+    result: "Jago tests four reasons and confirms two, with the\u00a0numbers.",
+    bold: ["tests each against your data"],
+    accent: ["which hold up"],
   },
   {
     id: "predict",
     title: "Predict",
-    desc: "Jago reads trends across sales, finance and operations, warns you about what is likely to slip and shows the signals behind each warning, so you can act before month end.",
-    example: "\"Which branches are likely to miss target this month?\"",
-    result: "An alert on WhatsApp, with the reasons, before month end.",
+    desc: "Jago reads trends across sales, finance and operations and warns you what is likely to slip, with the signals behind each\u00a0warning.",
+    example: "\"Which branches are likely to miss target this month?\"",
+    result: "You get a WhatsApp alert with the reasons before month\u00a0end.",
     bold: ["what is likely to slip"],
     accent: ["the signals behind each warning"],
+  },
+  {
+    id: "automate",
+    title: "Automate",
+    desc: "Describe a task in plain words and Jago builds an agent that runs it across your systems. You choose which steps need sign-off, and every run is\u00a0recorded.",
+    example: "\"When a large order is booked, update the CRM, draft the invoice and tell finance.\"",
+    result: "Jago runs an agent on every new order, with your\u00a0sign-off.",
+    bold: ["Jago builds an agent"],
+    accent: ["You choose which steps need sign-off"],
   },
 ];
 
@@ -79,10 +79,10 @@ export default function HowJagoWorks() {
         </div>
 
         <div className="site-col mt-6 !p-6">
-          <h3 className="!font-ui !text-lg !font-bold !leading-[1.375] text-balance">Jago Compute</h3>
+          <h3 className="!font-ui !text-lg !font-bold !leading-[1.375] text-balance">Jago finds which part of the business moved a&nbsp;number.</h3>
           <p className="site-line mt-3 text-base leading-6 text-[#dde4ee] text-pretty">
-            Averages hide problems. Jago looks one level down, by
-            region, product or team, and shows where a number really moved.
+            Jago looks one level below the total, by region, product or team, and shows
+            the&nbsp;cause.
           </p>
           <div className="mt-6 grid gap-6 md:grid-cols-3">
             {COMPUTE_EXAMPLES.map((c) => (
@@ -101,11 +101,10 @@ export default function HowJagoWorks() {
         </div>
 
         <div className="site-col mt-6 !p-6">
-          <h3 className="!font-ui !text-lg !font-bold !leading-[1.375] text-balance">Ease of Use</h3>
+          <h3 className="!font-ui !text-lg !font-bold !leading-[1.375] text-balance">Your team uses Jago in WhatsApp, Slack and&nbsp;Teams.</h3>
           <p className="site-line mt-3 text-base leading-6 text-[#dde4ee] text-pretty">
-            Your team works in WhatsApp, Slack and Teams, typed or
-            spoken, in 50+ languages. There is no new screen to
-            learn and no coding to write. A person approves the key steps.
+            People type or speak in 50+ languages. There is no new screen to learn and no code to write.
+            A person approves the key&nbsp;steps.
           </p>
         </div>
       </div>

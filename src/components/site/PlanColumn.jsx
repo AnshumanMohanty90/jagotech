@@ -5,7 +5,7 @@ export default function PlanColumn({ plan: p }) {
   return (
     <div className="site-col flex flex-col">
       <h3 className="!font-ui !text-lg !font-bold !leading-[1.375]">{p.name}</h3>
-      <p className="site-line mt-3 font-heading text-xl font-bold leading-snug text-foreground">{p.price}</p>
+      <p className="site-line mt-3 font-ui text-xl font-bold leading-snug text-foreground">{p.price}</p>
       {p.priceNote && (
         <p className="site-line mt-2 text-sm leading-5 text-[#c1cbd7]">{p.priceNote}</p>
       )}

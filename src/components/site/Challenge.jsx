@@ -5,23 +5,23 @@ import SectionIntro from "@/components/site/SectionIntro";
 
 const STOPPERS = [
   {
-    t: "Customer data leaks",
-    d: "Staff paste customer details into public AI tools. That can break data protection laws.",
-    answer: "Jago keeps customer data inside your systems",
+    t: "Customer data leaks out",
+    d: "Staff paste customer data into public AI tools, against data protection\u00a0law.",
+    answer: "Jago stores customer data in our India region or on your own\u00a0servers",
     color: "#00f2ff",
     Icon: ShieldOff,
   },
   {
-    t: "No one is checking",
-    d: "AI acts without a person approving, and nothing is on record if a regulator asks.",
-    answer: "A person approves key steps and every action is logged",
+    t: "No one checks the AI",
+    d: "AI acts without approval, and nothing is on record for a\u00a0regulator.",
+    answer: "Jago asks a person to approve key steps and logs every\u00a0action",
     color: "#00f2ff",
     Icon: AlertTriangle,
   },
   {
-    t: "Costs pile up",
-    d: "Every department pays for its own AI tool, and expensive AI does even simple jobs.",
-    answer: "One platform, with low-cost AI for simple tasks",
+    t: "AI costs pile up",
+    d: "Each department pays for its own tool, and costly AI does simple\u00a0jobs.",
+    answer: "Jago runs every team on one platform and uses low-cost AI for simple\u00a0tasks",
     color: "#00f2ff",
     Icon: TrendingUp,
   },
@@ -31,7 +31,7 @@ export default function Challenge() {
   return (
     <Reveal id="problem" className="relative">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="The problem" title="Your teams want to use AI. Three things stop them." />
+        <SectionIntro eyebrow="The problem" title="Three risks stop most teams from using AI at&nbsp;work." />
 
         <ol className="mx-auto mt-10 grid max-w-[1100px] min-w-0 gap-10 md:grid-cols-3 md:gap-12">
           {STOPPERS.map((s, i) => (

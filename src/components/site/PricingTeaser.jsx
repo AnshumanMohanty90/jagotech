@@ -11,21 +11,21 @@ export default function PricingTeaser() {
   return (
     <Reveal id="pricing-teaser" className="relative pb-0">
       <div className="relative mx-auto max-w-[1024px] px-5 sm:px-8 flex flex-col gap-8">
-        <SectionIntro large eyebrow="Pricing" title={`Plans from ${price} a month.`}>
-          Try any plan free for a week. Enterprise and own-server plans are also available.
+        <SectionIntro large eyebrow="Pricing" title={`Plans start at ${price} a\u00a0month.`}>
+          Try any plan free for a week.
         </SectionIntro>
 
         <div className="flex flex-col gap-6 rounded-3xl border border-[#1e293b] bg-[#0f1317] p-6 sm:p-8 shadow-[0_16px_20px_rgba(0,0,0,0.4)]">
           <div className="flex flex-col items-center gap-2 text-center">
-            <p className="site-line font-ui text-xs font-semibold leading-5 text-primary">Starting plan</p>
-            <p className="site-line text-sm leading-5 text-[#dde4ee]">Monthly billing · 7-day free trial</p>
+            <p className="site-line font-ui text-xs font-semibold leading-5 text-primary">Starter plan</p>
+            <p className="site-line text-sm leading-5 text-[#dde4ee]">Billed yearly · 7-day free trial</p>
           </div>
 
-          <div className="flex items-baseline justify-center gap-3">
-            <span className="font-heading text-[56px] sm:text-[64px] font-bold leading-none tracking-[-0.028em] text-foreground">
+          <div className="flex items-baseline justify-center gap-2">
+            <span className="font-ui text-[32px] sm:text-[36px] font-bold leading-none text-foreground">
               {price}
             </span>
-            <span className="font-ui text-base font-medium leading-6 text-[#dde4ee]">/mo</span>
+            <span className="font-ui text-[32px] sm:text-[36px] font-bold leading-none text-foreground">a month</span>
           </div>
 
           <div className="flex items-center gap-3 rounded-2xl border border-[#1e293b] bg-[#0b0f14] p-4">
@@ -33,7 +33,7 @@ export default function PricingTeaser() {
               <Info className="h-4 w-4 text-primary" aria-hidden="true" />
             </span>
             <p className="site-line flex-1 text-center text-xs leading-5 text-[#dde4ee]">
-              Enterprise and own-server plans are also available.
+              Team, Growth, Enterprise and own-server plans are also&nbsp;available.
             </p>
           </div>
 
@@ -48,7 +48,7 @@ export default function PricingTeaser() {
               to="/pricing"
               className="inline-flex h-11 flex-1 basis-0 items-center justify-center rounded-xl border border-primary bg-[#0f1317] px-5 font-ui text-sm font-semibold text-primary"
             >
-              See pricing
+              See all plans
             </Link>
           </div>
         </div>

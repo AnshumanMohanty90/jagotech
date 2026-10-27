@@ -21,12 +21,11 @@ export default function CTA({ tinted = false }) {
           Try Jago <span className="text-primary">free for a week.</span>
         </h2>
         <p className="text-base sm:text-lg max-w-[772px] mx-auto text-pretty">
-          Activate a trial workspace and see what Jago does on sample data. Want the roll-out plan
-          first? Download the 8-week plan.
+          Get a trial workspace with sample data, or download the 8-week plan&nbsp;first.
         </p>
 
-        <p className="site-line pt-4 font-ui text-lg font-semibold leading-7 text-foreground">What do you want to fix first?</p>
-        <div role="group" aria-label="What do you want to fix first?" className="grid w-full gap-3 sm:grid-cols-2">
+        <p className="site-line pt-4 font-ui text-lg font-semibold leading-7 text-foreground">Pick what you want to fix first.</p>
+        <div role="group" aria-label="Pick what you want to fix first" className="grid w-full gap-3 sm:grid-cols-2">
           {GOALS.map((g) => (
             <button
               key={g.id}
@@ -42,10 +41,10 @@ export default function CTA({ tinted = false }) {
         <p className="site-line mx-auto min-h-[26px] max-w-2xl text-base leading-[26px] text-slate-200" aria-live="polite">
           {picked ? (
             <>
-              <span className="font-semibold text-white">Start with {picked.module}.</span> We pass your choice to the team setting up your trial.
+              <span className="font-semibold text-white">Start with {picked.module}.</span> We set up your trial around this&nbsp;choice.
             </>
           ) : (
-            <span className="font-ui font-semibold text-white">Pick one to tailor your trial.</span>
+            <span className="font-ui font-semibold text-white">We set up your trial around your&nbsp;choice.</span>
           )}
         </p>
 

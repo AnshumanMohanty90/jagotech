@@ -7,9 +7,9 @@ const COLS = [
     title: "Product",
     links: [
       { label: "Ask", href: "/platform#ask" },
-      { label: "Automate", href: "/platform#automate" },
       { label: "Analyze", href: "/platform#analyze" },
       { label: "Predict", href: "/platform#predict" },
+      { label: "Automate", href: "/platform#automate" },
       { label: "Marketplace", href: "/marketplace" },
       { label: "JShield", href: "https://jshield.ai", external: true },
     ],
@@ -52,8 +52,8 @@ export default function Footer({ logoVariant }) {
               <Logo variant={logoVariant} className="h-9 w-auto" />
             </Link>
             <p className="mt-4 site-line text-lg text-[#dde4ee] max-w-sm leading-[1.6]">
-              Jago AI puts AI to work across companies,{" "}
-              with customer data kept within data protection laws.{" "}
+              Jago AI helps companies put AI to work on daily tasks, with controls built for data
+              protection laws.{" "}
               Bengaluru, India.
             </p>
             <a

@@ -30,26 +30,26 @@ export default function CustomerStory({ showLink = true }) {
   return (
     <Reveal id="story" className="relative site-section-alt">
       <div className="relative mx-auto max-w-[1216px] px-5 sm:px-8 flex flex-col gap-6">
-        <SectionIntro eyebrow="Customer story" title="A large lender now knows which branches to audit first." />
+        <SectionIntro eyebrow="Customer story" title="A large lender now knows which branches to audit&nbsp;first." />
 
         <div className="grid gap-6 lg:grid-cols-[5fr_7fr]">
           <div className="grid gap-6">
             <div className={`${CARD} flex flex-col gap-2`}>
               <p className={`${LABEL} text-primary`}>Outcome</p>
-              <p className="site-line font-heading font-bold text-[32px] sm:text-[36px] leading-[1.1] tabular text-foreground">
-                <CountUp value={1000} />+ branches ranked by risk
+              <p className="site-line font-ui font-bold text-[32px] sm:text-[36px] leading-[1.1] tabular text-foreground">
+                <span className="whitespace-nowrap"><CountUp value={1000} suffix="+" /> branches</span>
               </p>
               <p className="site-line text-base leading-6 text-[#dde4ee]">
-                Every branch is scored on live data so the highest-risk locations are prioritized first.
+                Every branch is scored on live data, so auditors visit the riskiest&nbsp;first.
               </p>
             </div>
             <div className={`${CARD} flex flex-col gap-2`}>
               <p className={`${LABEL} text-primary`}>Coverage</p>
-              <p className="site-line font-heading font-bold text-[32px] sm:text-[36px] leading-[1.1] tabular text-foreground">
-                5 audit types covered
+              <p className="site-line font-ui font-bold text-[32px] sm:text-[36px] leading-[1.1] tabular text-foreground">
+                5 audit types
               </p>
               <p className="site-line text-base leading-6 text-[#dde4ee]">
-                A single system supports multiple audit workflows across the branch network.
+                One system covers all five audit types across the branch&nbsp;network.
               </p>
             </div>
           </div>
@@ -72,7 +72,7 @@ export default function CustomerStory({ showLink = true }) {
 
         {showLink && (
           <Link to="/customers" className="site-cta-secondary w-full px-5 py-3 rounded-xl font-bold">
-            Read the story
+            Read the full story
           </Link>
         )}
       </div>

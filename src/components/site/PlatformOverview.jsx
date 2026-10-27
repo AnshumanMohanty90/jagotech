@@ -6,19 +6,19 @@ import CopyEmphasis from "@/components/site/CopyEmphasis";
 const STEPS = [
   {
     title: "Connect",
-    desc: "Your sales, finance and HR systems, your documents and your voice notes, in one place.",
+    desc: "Jago links your sales, finance and HR systems, documents and voice\u00a0notes.",
     bold: ["sales, finance and HR systems"],
   },
   {
-    title: "Understand",
-    desc: "Jago learns your data, your rules and how your team works.",
+    title: "Learn",
+    desc: "Jago learns your data, your rules and how your team\u00a0works.",
     bold: ["your data, your rules"],
     accent: ["how your team works"],
   },
   {
     title: "Act",
-    desc: "Jago creates, updates, assigns and notifies. Every change is logged with who approved it.",
-    bold: ["Every change is logged with who approved it"],
+    desc: "Jago creates, updates, assigns and notifies, and logs who approved each\u00a0change.",
+    bold: ["logs who approved each change"],
   },
 ];
 
@@ -28,9 +28,9 @@ export default function PlatformOverview() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro
           eyebrow="Platform overview"
-          title="Connect your systems. Let Jago do the work."
+          title="Jago connects to your systems, learns your rules and then&nbsp;acts."
         >
-          Jago sits on top of the tools you already run and carries the work from question to done.
+          Jago works on top of the tools you already&nbsp;use.
         </SectionIntro>
 
         <div className="mt-10 grid md:grid-cols-3 gap-8 sm:gap-10">
@@ -46,11 +46,10 @@ export default function PlatformOverview() {
 
         <div className="mt-10 flex flex-col items-center text-center gap-5">
           <p className="text-base leading-relaxed max-w-xl mx-auto">
-            One agent per job, ready in 8 weeks.{" "}
-            Meet them.
+            Each job gets its own AI agent, ready in 8&nbsp;weeks.
           </p>
           <a href="#agents" className="site-cta-secondary px-4 py-2.5 rounded-xl text-sm ">
-            Explore AI agents
+            See the agents
           </a>
         </div>
       </div>

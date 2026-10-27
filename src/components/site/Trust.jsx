@@ -17,12 +17,12 @@ const POINTS = [
   {
     t: "Every action is logged",
     q: "Are all actions logged?",
-    d: "A record of who did what, ready for an audit.",
+    d: "Yes. Jago records who did what, ready for an audit.",
   },
   {
     t: "Data law built in",
     q: "Is data law built into the product?",
-    d: "Consent and access rules from JShield apply to every answer.",
+    d: "Yes, with JShield, an add-on. It applies your consent and access rules to every\u00a0answer.",
   },
 ];
 
@@ -32,10 +32,10 @@ export default function Trust() {
       <div className="relative mx-auto grid max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-12 lg:items-start lg:gap-12">
         <div className="min-w-0 lg:col-span-5 lg:sticky lg:top-32">
           <div className="text-left">
-            <p className="site-label site-eyebrow">Trust &amp; security FAQs</p>
-            <h2 className="mt-3 font-heading text-balance">Built for companies that handle customer data.</h2>
+            <p className="site-label site-eyebrow">Trust and security</p>
+            <h2 className="mt-3 font-heading text-balance">Jago keeps customer data under your&nbsp;control.</h2>
             <p className="site-line mt-4 text-base sm:text-lg text-[#dde4ee] text-pretty">
-              Review the security facts below and continue to the security overview.
+              Here are four answers on where your data lives and who approves&nbsp;what.
             </p>
           </div>
           <Link

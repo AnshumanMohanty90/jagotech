@@ -240,10 +240,10 @@ export default function Marketplace() {
             <div className="flex flex-col gap-2.5">
               <p className="site-line font-ui text-[13px] font-semibold text-primary">Jago Marketplace</p>
               <h1 className="font-heading text-balance !text-[32px] sm:!text-[46px] !leading-[1.15]">
-                Pick a single agent. Pay only as you use.
+                Add one ready-made agent and pay only for what you&nbsp;use.
               </h1>
               <p className="site-line text-base leading-6 text-[#c1cbd7]">
-                Add one agent to your website or system, pay per use, and expand when it proves its worth.
+                Each agent plugs into your website or systems and is priced per&nbsp;use.
               </p>
             </div>
 
@@ -316,7 +316,7 @@ export default function Marketplace() {
           {/* Results header */}
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <h2 className="font-heading !text-[22px] !leading-[30px]">Explore AI agents</h2>
+              <h2 className="font-heading !text-[22px] !leading-[30px]">Find the agent for your task</h2>
               <span className="text-[13px] text-[#c1cbd7]">{results.length} result{results.length === 1 ? "" : "s"}</span>
             </div>
             <div className="flex flex-wrap items-center gap-3">
@@ -401,8 +401,8 @@ export default function Marketplace() {
                               <span className="font-ui text-base font-bold text-[#f59e0b]">Pilot model</span>
                             ) : (
                               <>
-                                <span className="font-heading text-[22px] font-bold text-foreground">{priceText(a)}</span>
-                                <span className="text-[13px] text-[#c1cbd7]"> / {a.unit}</span>
+                                <span className="font-ui text-base font-bold text-foreground">{priceText(a)}</span>
+                                <span className="font-ui text-base font-bold text-[#c1cbd7]"> per {a.unit}</span>
                               </>
                             )}
                           </p>
@@ -453,7 +453,7 @@ export default function Marketplace() {
                 {open.name}: how it works
               </DialogTitle>
               <DialogDescription className="text-base leading-relaxed text-foreground/90">
-                A short explainer video for this agent is on its way.
+                A short video for this agent is coming soon.
               </DialogDescription>
               <div className="relative mt-2 aspect-video w-full overflow-hidden rounded-xl border border-border">
                 <AgentArt id={open.id} />

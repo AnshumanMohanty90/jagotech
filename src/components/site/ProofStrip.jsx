@@ -15,7 +15,7 @@ export default function ProofStrip() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10">
           {STATS.map((s) => (
             <div key={s.l} className="min-w-0">
-              <div className="font-heading text-[24px] sm:text-[30px] leading-tight font-semibold text-foreground tabular">
+              <div className="font-ui text-[24px] sm:text-[30px] leading-tight font-semibold text-foreground tabular">
                 {s.v}
               </div>
               <div className="mt-1.5 text-[16px] leading-relaxed text-pretty">{s.l}</div>

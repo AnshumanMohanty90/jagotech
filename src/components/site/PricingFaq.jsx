@@ -12,8 +12,8 @@ const GROUPS = [
     label: "AI usage",
     faqs: [
       {
-        q: "Do you charge for AI tokens?",
-        a: "No. Normal use by the people on your plan is included. If your use is far above normal, we talk to you before any extra charge.",
+        q: "How are AI tokens charged?",
+        a: "Normal use is included in your plan. We agree any charge for very heavy use with you\u00a0first.",
       },
       {
         q: "Which AI models does Jago use?",
@@ -44,7 +44,7 @@ const GROUPS = [
     faqs: [
       {
         q: "What does each plan cover?",
-        a: "Starter has Ask and Analyze for 10\u00a0people. Team adds Automate and chat apps for 25. Growth adds Predict for up to 200. Enterprise has no limit on people.",
+        a: "Starter has Ask and Analyze for 10\u00a0people, Team adds Automate and chat apps for 25, and Growth adds Predict for up to 200. Enterprise has no limit on people.",
       },
       {
         q: "Who counts as a person?",
@@ -83,7 +83,7 @@ const GROUPS = [
       },
       {
         q: "Can we cancel?",
-        a: "Yes. A monthly plan runs to the end of the paid month. Yearly fees are not refunded. If you have not used a monthly plan, cancel within 7 days for a full refund.",
+        a: "Yes. A monthly plan runs to the end of the paid month, or is fully refunded if unused and cancelled within 7 days. Yearly fees are not refunded.",
         link: { to: "/refund-policy", label: "Read the refund policy" },
       },
       {
@@ -109,7 +109,7 @@ export default function PricingFaq() {
     <Reveal id="pricing-faq" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 grid gap-6 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-5 min-w-0">
-          <SectionIntro eyebrow="Pricing questions" title="What your plan covers." />
+          <SectionIntro eyebrow="Pricing questions" title="Here are answers on AI use, plans and&nbsp;billing." />
           <div className="mt-6 flex flex-wrap gap-2" role="tablist" aria-label="Pricing question groups">
             {GROUPS.map((g, i) => (
               <button

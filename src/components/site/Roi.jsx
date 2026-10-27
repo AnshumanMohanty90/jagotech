@@ -21,10 +21,8 @@ export default function Roi() {
   return (
     <Reveal id="roi" className="relative" data-hide-sticky>
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="Your estimated savings" title="See what you could save.">
-          Enter your team size and current AI spend. We estimate what you save by replacing{" "}
-          separate tools with{" "}
-          one platform.
+        <SectionIntro eyebrow="Your estimated savings" title="Estimate what you save by moving to one&nbsp;platform.">
+          Enter your team size, the tools you replace and your monthly questions to see a yearly&nbsp;estimate.
         </SectionIntro>
 
         <div className="mt-6 grid lg:grid-cols-2 gap-8 lg:gap-12">
@@ -52,7 +50,7 @@ export default function Roi() {
               </div>
             ))}
             <p className="mt-8 text-sm leading-relaxed">
-              Estimate only. Based on the numbers you enter. We confirm the real figure in your 8-week plan.
+              This is an estimate based on your inputs. We confirm the real figure in your 8-week&nbsp;plan.
             </p>
           </div>
 
@@ -69,7 +67,7 @@ export default function Roi() {
               ].map(([label, value]) => (
                 <React.Fragment key={label}>
                   <dt className="text-base leading-relaxed text-pretty">{label}</dt>
-                  <dd className="roi-figure font-heading text-2xl sm:text-3xl font-semibold text-foreground whitespace-nowrap mb-4 min-[420px]:mb-0 min-[420px]:text-right">{value}</dd>
+                  <dd className="roi-figure font-ui text-lg sm:text-xl font-semibold text-foreground whitespace-nowrap mb-4 min-[420px]:mb-0 min-[420px]:text-right">{value}</dd>
                 </React.Fragment>
               ))}
             </dl>
