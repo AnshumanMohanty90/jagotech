@@ -51,7 +51,7 @@ export default function Footer({ logoVariant }) {
             <Link to="/#top" className="inline-flex min-h-[44px] items-center" aria-label="Jago AI home">
               <Logo variant={logoVariant} className="h-9 w-auto" />
             </Link>
-            <p className="mt-4 text-base text-muted-foreground max-w-sm leading-relaxed">
+            <p className="mt-4 site-line text-lg text-[#dde4ee] max-w-sm leading-[1.6]">
               Jago AI puts AI to work across companies,{" "}
               with customer data kept within data protection laws.{" "}
               Bengaluru, India.
@@ -94,7 +94,7 @@ export default function Footer({ logoVariant }) {
         </div>
 
         <div className="mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[16px] font-medium leading-relaxed text-slate-300">
+          <p className="text-lg font-medium leading-[1.6] text-[#dde4ee]">
             © 2026 Jago AI.{" "}
             <a
               href="https://jshield.ai"
