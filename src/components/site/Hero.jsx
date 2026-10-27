@@ -23,8 +23,17 @@ export default function Hero() {
           multi-region Compliance AI.
         </p>
 
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <Link to="/contact?intent=trial" className="site-cta-primary px-5 py-3 rounded-xl">
+            Try it free for a week
+          </Link>
+          <Link to="/contact?intent=plan" className="site-cta-secondary px-5 py-3 rounded-xl">
+            Download the 8-week plan
+          </Link>
+        </div>
+
         {/* Overview video */}
-        <div className="mt-10 sm:mt-14 w-full max-w-[1039px] overflow-hidden rounded-3xl border border-border bg-black glow-cyan">
+        <div className="mt-8 sm:mt-10 w-full max-w-[1039px] overflow-hidden rounded-3xl border border-border bg-black glow-cyan">
           <video
             className="block w-full aspect-video"
             src="/videos/jago-overview.mp4"
@@ -36,15 +45,6 @@ export default function Hero() {
             preload="auto"
             aria-label="Jago AI overview video"
           />
-        </div>
-
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <Link to="/contact?intent=trial" className="site-cta-primary px-5 py-3 rounded-xl">
-            Try it free for a week
-          </Link>
-          <Link to="/contact?intent=plan" className="site-cta-secondary px-5 py-3 rounded-xl">
-            Download the 8-week plan
-          </Link>
         </div>
       </div>
     </section>
