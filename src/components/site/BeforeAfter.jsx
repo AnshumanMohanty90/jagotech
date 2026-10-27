@@ -37,9 +37,9 @@ export default function BeforeAfter() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionIntro eyebrow="Before and after" title="One question, two ways to answer it." />
 
-        <div className="mx-auto mt-10 max-w-[640px] overflow-hidden rounded-[20px] border border-[#2f3641] bg-[#13161b]">
+        <div className="mx-auto mt-8 max-w-[1100px] overflow-hidden rounded-[20px] border border-[#2f3641] bg-[#13161b] lg:grid lg:grid-cols-[5fr_7fr]">
           {/* Chat preview */}
-          <div className="flex min-h-[240px] flex-col gap-4 bg-[#0d0f13] px-5 py-6 sm:px-9 sm:py-8">
+          <div className="flex min-h-[240px] flex-col justify-center gap-4 bg-[#0d0f13] px-5 py-6 sm:px-9 sm:py-8">
             <div className="flex justify-end">
               <p className="site-line max-w-[440px] rounded-[14px] rounded-br-[4px] border border-[#2f3641] bg-[#1e2530] px-4 py-3 font-ui text-sm font-medium leading-[22px] text-[#dde4ee]">
                 {QUESTION}
@@ -70,10 +70,10 @@ export default function BeforeAfter() {
             )}
           </div>
 
-          <div className="h-px bg-[#2f3641]" />
+          <div className="h-px bg-[#2f3641] lg:hidden" />
 
           {/* Answer */}
-          <div className="px-5 pb-9 pt-8 sm:px-9" aria-live="polite">
+          <div className="px-5 pb-8 pt-6 sm:px-9 lg:border-l lg:border-[#2f3641]" aria-live="polite">
             <div role="group" aria-label="Show the answer" className="flex gap-2.5">
               {[
                 ["without", "Without Jago"],
@@ -97,7 +97,7 @@ export default function BeforeAfter() {
 
             {isWith ? (
               <div key="with" className="compare-in">
-                <div className="flex items-center gap-2.5 pt-6">
+                <div className="flex items-center gap-2.5 pt-5">
                   <Sparkles aria-hidden="true" className="h-[18px] w-[18px] text-primary" />
                   <span className="font-ui text-sm font-bold leading-5 text-primary">Jago AI</span>
                 </div>

@@ -29,23 +29,23 @@ const LABEL = "site-line font-ui text-sm font-bold leading-5";
 export default function CustomerStory({ showLink = true }) {
   return (
     <Reveal id="story" className="relative site-section-alt">
-      <div className="relative mx-auto max-w-[1024px] px-5 sm:px-8 flex flex-col gap-8">
+      <div className="relative mx-auto max-w-[1216px] px-5 sm:px-8 flex flex-col gap-6">
         <SectionIntro eyebrow="Customer story" title="A large lender now knows which branches to audit first." />
 
-        <div className="flex flex-col gap-6">
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className={`${CARD} flex flex-col gap-3`}>
+        <div className="grid gap-6 lg:grid-cols-[5fr_7fr]">
+          <div className="grid gap-6">
+            <div className={`${CARD} flex flex-col gap-2`}>
               <p className={`${LABEL} text-primary`}>Outcome</p>
-              <p className="site-line font-heading font-bold text-[32px] sm:text-[42px] leading-[1.1] tabular text-foreground">
+              <p className="site-line font-heading font-bold text-[32px] sm:text-[36px] leading-[1.1] tabular text-foreground">
                 <CountUp value={1000} />+ branches ranked by risk
               </p>
               <p className="site-line text-base leading-6 text-[#dde4ee]">
                 Every branch is scored on live data so the highest-risk locations are prioritized first.
               </p>
             </div>
-            <div className={`${CARD} flex flex-col gap-3`}>
+            <div className={`${CARD} flex flex-col gap-2`}>
               <p className={`${LABEL} text-primary`}>Coverage</p>
-              <p className="site-line font-heading font-bold text-[32px] sm:text-[42px] leading-[1.1] tabular text-foreground">
+              <p className="site-line font-heading font-bold text-[32px] sm:text-[36px] leading-[1.1] tabular text-foreground">
                 5 audit types covered
               </p>
               <p className="site-line text-base leading-6 text-[#dde4ee]">
@@ -56,7 +56,7 @@ export default function CustomerStory({ showLink = true }) {
 
           <div className={`${CARD} flex flex-col gap-4`}>
             <p className={`${LABEL} text-primary`}>The story</p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid flex-1 gap-4 sm:grid-cols-2">
               {STORY.map((s) => (
                 <div
                   key={s.label}

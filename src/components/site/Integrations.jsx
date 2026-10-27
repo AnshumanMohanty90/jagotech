@@ -1,6 +1,5 @@
 import React from "react";
 import Reveal from "@/components/site/Reveal";
-import SectionIntro from "@/components/site/SectionIntro";
 import Accordion from "@/components/site/Accordion";
 
 const INTEGRATIONS = [
@@ -29,14 +28,17 @@ const INTEGRATIONS = [
 export default function Integrations() {
   return (
     <Reveal id="integrations" className="relative scroll-mt-24 site-section-alt">
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="Integrations" title="Connected to the systems you already run.">
-          Nothing gets replaced. Jago reads and writes in the systems you already have, and{" "}
-          who can see and do what stays{" "}
-          under your control.
-        </SectionIntro>
+      <div className="relative mx-auto grid max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-12 lg:items-start lg:gap-12">
+        <div className="min-w-0 lg:col-span-5 lg:sticky lg:top-32">
+          <p className="site-label site-eyebrow">Integrations</p>
+          <h2 className="mt-3 font-heading text-balance">Connected to the systems you already run.</h2>
+          <p className="site-line mt-4 text-base sm:text-lg text-[#dde4ee] text-pretty">
+            Nothing gets replaced. Jago reads and writes in the systems you already have, and who can see and do
+            what stays under your control.
+          </p>
+        </div>
 
-        <div className="mx-auto mt-10 max-w-3xl">
+        <div className="min-w-0 lg:col-span-7">
           <Accordion
             variant="card"
             firstOpen

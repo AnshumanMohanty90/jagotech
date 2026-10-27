@@ -59,7 +59,7 @@ export default function RoleWins({ withIntro = true, tinted = false }) {
         <div className="mt-4 grid gap-6 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-12 lg:items-start">
           {/* Role list */}
           <div className="min-w-0 overflow-hidden rounded-2xl border border-[#1f2937] bg-[#0b0d10]">
-            <div className="flex flex-col max-h-[360px] lg:max-h-[696px] overflow-y-auto pr-1" role="listbox" aria-label="Roles">
+            <div className="flex flex-col max-h-[360px] lg:max-h-[440px] overflow-y-auto pr-1" role="listbox" aria-label="Roles">
               {filtered.map((r) => {
                 const on = r.id === active.id;
                 return (
