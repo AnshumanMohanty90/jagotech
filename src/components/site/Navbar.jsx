@@ -174,7 +174,7 @@ export default function Navbar({ logoVariant }) {
                   onKeyDown={(e) => {
                     if (e.key === "Escape" && open) closeMenu(item.label, true);
                   }}
-                  className={`inline-flex min-h-[44px] items-center text-sm transition-colors ${
+                  className={`inline-flex min-h-[44px] items-center text-sm font-normal transition-colors ${
                     open ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                   }`}
                 >

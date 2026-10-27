@@ -17,7 +17,7 @@ export default function CTA({ tinted = false }) {
       <div aria-hidden="true" className="absolute inset-0 hero-glow opacity-70" />
 
       <div className="relative mx-auto max-w-4xl px-5 sm:px-8 text-center">
-        <h2 className="font-heading font-semibold leading-[1.15] tracking-tight text-balance">
+        <h2 className="font-heading text-balance">
           Try Jago <span className="text-primary">free for a week.</span>
         </h2>
         <p className="mt-4 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto text-pretty">
@@ -25,7 +25,7 @@ export default function CTA({ tinted = false }) {
           first? Download the 8-week plan.
         </p>
 
-        <p className="mt-8 font-heading text-lg font-semibold text-foreground">What do you want to fix first?</p>
+        <p className="mt-8 font-ui text-lg font-semibold leading-7 text-foreground">What do you want to fix first?</p>
         <div role="group" aria-label="What do you want to fix first?" className="mt-3 flex flex-wrap justify-center gap-2">
           {GOALS.map((g) => (
             <button
@@ -45,7 +45,7 @@ export default function CTA({ tinted = false }) {
               <span className="font-semibold text-white">Start with {picked.module}.</span> We pass your choice to the team setting up your trial.
             </>
           ) : (
-            <span className="font-semibold text-white">Pick one to tailor your trial.</span>
+            <span className="font-ui font-semibold text-white">Pick one to tailor your trial.</span>
           )}
         </p>
 

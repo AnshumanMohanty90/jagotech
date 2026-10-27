@@ -64,7 +64,6 @@ module.exports = {
   				ring: 'hsl(var(--sidebar-ring))'
   			}
   		},
-  		fontWeight: { medium: '600' },
   		fontSize: {
   			xs: ['0.75rem', { lineHeight: '1.3' }],
   			sm: ['0.875rem', { lineHeight: '1.3' }],

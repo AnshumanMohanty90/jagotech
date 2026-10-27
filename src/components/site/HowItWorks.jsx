@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
-import useInView from "@/hooks/useInView";
 
 // The 8-week plan: the same "We do, You do, You get" lines as the plan PDF.
 const PHASES = [
@@ -28,85 +27,77 @@ const PHASES = [
   },
 ];
 
-// Segment widths for weeks 1-2, 3-5, 6-8 out of 8.
-const GROW = [2, 3, 3];
+const DETAIL = [
+  ["We do", "weDo"],
+  ["You do", "youDo"],
+  ["You get", "youGet"],
+];
 
 export default function HowItWorks() {
   const [active, setActive] = useState(0);
-  const [trackRef, inView] = useInView("0px 0px -15% 0px");
-  const p = PHASES[active];
-
-  // Eight week ticks; the cyan fill sweeps from week 1 to week 8 when in view.
-  const ticks = [];
-  PHASES.forEach((ph, pi) => {
-    for (let k = 0; k < GROW[pi]; k++) ticks.push(pi);
-  });
 
   return (
     <Reveal id="how" className="relative">
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+      <div className="relative mx-auto max-w-[1216px] px-5 sm:px-8">
         <SectionIntro eyebrow="How it works" title="Live in 8 weeks." />
 
-        <div ref={trackRef} className="mt-6 min-w-0">
-          {/* Progress track: weeks 1 to 8 */}
-          <div className="flex gap-1.5 min-w-0" aria-hidden="true">
-            {ticks.map((seg, i) => (
-              <div key={i} className="h-1.5 flex-1 rounded-full bg-secondary overflow-hidden">
-                <div
-                  className="h-full bg-primary"
-                  style={{
-                    width: inView ? "100%" : "0%",
-                    transition: "width 1000ms ease-out",
-                    transitionDelay: `${i * 120}ms`,
-                  }}
-                />
-              </div>
-            ))}
+        <div className="mt-10 overflow-hidden rounded-3xl border border-[#1c1e21] bg-[#0b0d10]">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1c1e21] px-6 py-5">
+            <div className="flex flex-col gap-0.5">
+              <p className="site-line font-ui text-sm font-semibold text-primary">Rollout timeline</p>
+              <p className="site-line text-[13px] text-[#c1cbd7]">Three ordered milestones from kickoff to launch</p>
+            </div>
+            <div className="flex items-center gap-2 font-ui text-xs font-semibold">
+              <span className="rounded-full bg-[rgba(0,245,255,0.06)] px-2.5 py-1.5 text-primary">Weeks 1–8</span>
+              <span className="rounded-full bg-[#111418] px-2.5 py-1.5 text-[#c1cbd7]">3 stages</span>
+            </div>
           </div>
 
-          {/* Phase buttons */}
-          <div className="mt-5 grid grid-cols-3 gap-1.5 min-w-0 sm:flex">
+          <ol className="relative flex flex-col gap-6 p-6">
+            <span aria-hidden="true" className="absolute left-[43px] top-8 bottom-14 w-0.5 rounded-full bg-[rgba(0,242,255,0.2)]" />
             {PHASES.map((ph, i) => {
               const on = active === i;
               return (
-                <button
-                  key={ph.label}
-                  type="button"
-                  aria-expanded={on}
-                  onClick={() => setActive(i)}
-                  style={{ flex: `${GROW[i]} 1 0%` }}
-                  className={`site-row site-choice min-w-0 rounded-lg px-2.5 py-3 text-left min-h-[44px] sm:px-3 ${
-                    on ? "bg-[rgba(0,245,255,0.06)]" : ""
-                  }`}
-                >
-                  <span className="block whitespace-nowrap text-xs leading-relaxed text-muted-foreground">{ph.label}</span>
-                  <span
-                    className={`mt-0.5 block font-heading text-base sm:text-lg font-semibold leading-snug ${
-                      on ? "text-primary" : "text-foreground"
+                <li key={ph.label} className="relative flex gap-6">
+                  <div className="flex w-10 shrink-0 justify-center">
+                    <span
+                      aria-hidden="true"
+                      className={`relative z-10 mt-1 h-4 w-4 rounded-full border-2 ${
+                        on ? "border-primary bg-primary" : "border-[#1c1e21] bg-[#111418]"
+                      }`}
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    aria-expanded={on}
+                    onClick={() => setActive(i)}
+                    className={`site-choice min-w-0 flex-1 rounded-[20px] border p-6 text-left ${
+                      on ? "border-primary bg-[rgba(0,245,255,0.06)]" : "border-[#1c1e21] bg-[#111418]"
                     }`}
                   >
-                    {ph.title}
-                  </span>
-                </button>
+                    <span
+                      className={`inline-block rounded-full px-2.5 py-1.5 font-ui text-xs font-semibold ${
+                        on ? "bg-[rgba(0,242,255,0.1)] text-primary" : "bg-[#1c1e21] text-[#c1cbd7]"
+                      }`}
+                    >
+                      {ph.label}
+                    </span>
+                    <span className="mt-2 block font-ui text-2xl font-bold leading-[1.25] text-foreground">{ph.title}</span>
+                    {on && (
+                      <span className="mt-5 flex flex-col gap-4">
+                        {DETAIL.map(([label, key]) => (
+                          <span key={key} className="flex flex-col gap-1.5">
+                            <span className="font-ui text-xs font-semibold uppercase tracking-[0.8px] text-primary">{label}</span>
+                            <span className="font-ui text-base font-medium leading-6 text-[#dde4ee]">{ph[key]}</span>
+                          </span>
+                        ))}
+                      </span>
+                    )}
+                  </button>
+                </li>
               );
             })}
-          </div>
-
-          {/* Open phase: We do / You do / You get */}
-          <div className="mt-6 grid gap-5 sm:grid-cols-3 sm:gap-8 min-w-0">
-            <div>
-              <p className="site-label">We do</p>
-              <p className="mt-2 text-base leading-relaxed">{p.weDo}</p>
-            </div>
-            <div>
-              <p className="site-label">You do</p>
-              <p className="mt-2 text-base leading-relaxed">{p.youDo}</p>
-            </div>
-            <div>
-              <p className="site-label">You get</p>
-              <p className="mt-2 text-base leading-relaxed">{p.youGet}</p>
-            </div>
-          </div>
+          </ol>
         </div>
       </div>
     </Reveal>

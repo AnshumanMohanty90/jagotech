@@ -7,18 +7,22 @@ import Accordion from "@/components/site/Accordion";
 const POINTS = [
   {
     t: "Data residency you control",
+    q: "Where is customer data stored by default?",
     d: "Your data is stored in our India region by default, or on your own servers if you prefer.",
   },
   {
     t: "You approve key actions",
+    q: "Who approves key actions?",
     d: "You choose which actions need a sign-off before anything changes.",
   },
   {
     t: "Every action is logged",
+    q: "Are all actions logged?",
     d: "A record of who did what, ready for an audit.",
   },
   {
     t: "Data law built in",
+    q: "Is data law built into the product?",
     d: "Consent and access rules from JShield apply to every answer.",
   },
 ];
@@ -26,29 +30,24 @@ const POINTS = [
 export default function Trust() {
   return (
     <Reveal id="trust" className="relative site-section-alt">
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 grid gap-6 lg:grid-cols-12 lg:gap-12">
-        <div className="lg:col-span-5 min-w-0">
-          <SectionIntro eyebrow="Trust" title="Built for companies" titleMuted="that handle customer data." />
-          <Link
-            to="/security"
-            className="mt-6 hidden lg:inline-block text-primary font-semibold underline underline-offset-4 decoration-primary/40 hover:decoration-primary"
-          >
-            Read about security
-          </Link>
-        </div>
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <SectionIntro eyebrow="Trust & security FAQs" title="Built for companies that handle customer data.">
+          <span className="text-base">Review the security facts below and continue to the security overview.</span>
+        </SectionIntro>
 
-        <div className="lg:col-span-7 min-w-0 lg:-mt-3.5">
+        <div className="mt-6">
           <Accordion
+            variant="card"
             firstOpen
             items={POINTS.map((p) => ({
               key: p.t,
-              title: p.t,
-              body: <p className="text-base leading-relaxed text-pretty">{p.d}</p>,
+              title: p.q,
+              body: <p className="site-line text-base leading-6 text-[#dde4ee]">{p.d}</p>,
             }))}
           />
           <Link
             to="/security"
-            className="mt-6 inline-block lg:hidden text-primary font-semibold underline underline-offset-4 decoration-primary/40 hover:decoration-primary"
+            className="mt-6 inline-block font-ui text-primary font-semibold underline underline-offset-4"
           >
             Read about security
           </Link>

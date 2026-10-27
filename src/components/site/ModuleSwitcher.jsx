@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { tabKeys } from "@/lib/tabKeys";
 import { Link } from "react-router-dom";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { Sparkles, MessageSquare, Search, TrendingUp, Workflow } from "lucide-react";
 import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
 
 const MODULES = [
   {
     id: "ask",
+    Icon: MessageSquare,
     title: "Ask",
     desc: "One question, in your language, answered from your systems and documents across every channel, with the source.",
     anchor: "ask",
@@ -18,6 +19,7 @@ const MODULES = [
   },
   {
     id: "analyze",
+    Icon: Search,
     title: "Analyze",
     desc: "Jago tests the likely reasons a number moved and shows which ones your data supports.",
     anchor: "analyze",
@@ -28,6 +30,7 @@ const MODULES = [
   },
   {
     id: "predict",
+    Icon: TrendingUp,
     title: "Predict",
     desc: "Jago reads trends across departments and warns you what is likely to slip, and why.",
     anchor: "predict",
@@ -38,6 +41,7 @@ const MODULES = [
   },
   {
     id: "automate",
+    Icon: Workflow,
     title: "Automate",
     desc: "Describe a workflow in plain words and Jago builds an agent that runs it, with your sign-off.",
     anchor: "automate",
@@ -70,10 +74,10 @@ export default function ModuleSwitcher() {
   return (
     <Reveal id="modules" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionIntro eyebrow="What Jago does" title="Four AI modules with one login," titleMuted="under your rules." />
+        <SectionIntro eyebrow="What Jago does" title="Four AI modules with one login, under your rules." />
 
         <div
-          className="mt-6 grid gap-6 lg:grid-cols-2 lg:items-stretch"
+          className="mx-auto mt-10 flex max-w-[1016px] flex-col gap-6"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onFocus={() => setPaused(true)}
@@ -81,60 +85,56 @@ export default function ModuleSwitcher() {
             if (!e.currentTarget.contains(e.relatedTarget)) setPaused(false);
           }}
         >
-          {/* Left: the four modules, in the order a team uses Jago */}
-          <div role="tablist" aria-label="Jago modules" className="flex flex-col min-w-0 lg:pt-2">
-            {MODULES.map((mod, i) => (
-              <button
-                key={mod.id}
-                type="button"
-                role="tab"
-                aria-selected={active === i}
-                tabIndex={active === i ? 0 : -1}
-                onClick={() => pick(i)}
-                onKeyDown={(e) => tabKeys(e, MODULES.length, i, pick)}
-                className={`site-row site-choice flex flex-col rounded-lg px-3 py-3 text-left min-h-[44px] transition-colors ${
-                  active === i ? "text-foreground" : "text-muted-foreground"
-                }`}
-              >
-                <span className="flex items-center gap-3 min-w-0">
-                  <span
-                    aria-hidden="true"
-                    className={`h-6 w-1 rounded-full shrink-0 transition-colors ${active === i ? "bg-primary" : "bg-transparent"}`}
-                  />
-                  <span className="font-heading text-lg font-semibold leading-snug">{mod.title}</span>
-                </span>
-                <span className="mt-1 pl-7 text-[16px] leading-relaxed text-muted-foreground">
-                  {mod.desc}
-                </span>
-              </button>
-            ))}
+          {/* The four modules, in the order a team uses Jago */}
+          <div role="tablist" aria-label="Jago modules" className="grid gap-6 md:grid-cols-2">
+            {MODULES.map((mod, i) => {
+              const on = active === i;
+              return (
+                <button
+                  key={mod.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={on}
+                  tabIndex={on ? 0 : -1}
+                  onClick={() => pick(i)}
+                  onKeyDown={(e) => tabKeys(e, MODULES.length, i, pick)}
+                  className={`site-choice flex min-h-[44px] flex-col gap-4 rounded-2xl border bg-[rgba(19,22,27,0.3)] p-5 text-left md:h-[320px] ${
+                    on ? "border-primary" : "border-[#2f3641]"
+                  }`}
+                >
+                  <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-[rgba(0,242,255,0.22)] bg-[rgba(0,242,255,0.07)]">
+                    <mod.Icon aria-hidden="true" className="h-8 w-8 text-primary" />
+                  </span>
+                  <span className="flex items-center gap-3">
+                    <span aria-hidden="true" className={`h-6 w-1 rounded-full ${on ? "bg-primary" : "bg-[#2f3641]"}`} />
+                    <span className={`font-ui text-lg font-bold leading-[1.375] ${on ? "text-foreground" : "text-[#c1cbd7]"}`}>
+                      {mod.title}
+                    </span>
+                  </span>
+                  <span className="text-base leading-[26px] text-[#c1cbd7]">{mod.desc}</span>
+                </button>
+              );
+            })}
           </div>
 
-          {/* Right: scripted sample panel for the selected module */}
-          <div className="min-w-0" role="tabpanel">
-            <div className="h-full rounded-2xl border border-border bg-card/30 p-5">
-              <div className="flex items-start gap-3 min-w-0">
-                <Sparkles aria-hidden="true" className="w-5 h-5 text-primary shrink-0 mt-1" />
-                <p className="min-w-0 font-body text-base leading-relaxed text-foreground/90">
-                  {m.example}
-                </p>
-              </div>
-              <p className="mt-3 text-base leading-relaxed text-foreground/80">{m.answer}</p>
-              <p className="mt-3 text-[16px] font-medium leading-relaxed text-foreground">
-                {m.result}
-              </p>
-              <Link
-                to={`/platform#${m.anchor}`}
-                className="site-row site-choice mt-4 inline-flex items-center gap-1.5 -mx-2 rounded-lg px-2 py-2 text-primary font-semibold underline underline-offset-4 decoration-primary/40 hover:decoration-primary min-h-[44px]"
-              >
-                See how {m.title} works
-                <ArrowRight aria-hidden="true" className="site-row-arrow w-4 h-4" />
-              </Link>
+          {/* Scripted sample panel for the selected module */}
+          <div role="tabpanel" className="flex flex-col gap-4 rounded-2xl border border-[#2f3641] bg-[rgba(19,22,27,0.3)] p-5">
+            <div className="flex items-center gap-3 min-w-0">
+              <Sparkles aria-hidden="true" className="h-5 w-5 shrink-0 text-primary" />
+              <p className="site-line min-w-0 text-lg leading-[1.6] text-[#dde4ee]">{m.example}</p>
             </div>
+            <p className="site-line text-lg leading-[1.6] text-[#dde4ee]">{m.answer}</p>
+            <p className="site-line text-lg font-medium leading-[1.6] text-[#dde4ee]">{m.result}</p>
+            <Link
+              to={`/platform#${m.anchor}`}
+              className="site-choice -mx-2 inline-flex min-h-[44px] items-center self-start rounded-xl p-2 font-ui font-bold text-primary underline"
+            >
+              See how {m.title} works
+            </Link>
           </div>
         </div>
 
-        <p className="mt-6 text-base leading-relaxed">
+        <p className="mt-6 text-center text-base leading-relaxed">
           Add <span className="copy-focus">JShield</span> to keep customer data within the law.{" "}
           <a
             href="https://jshield.ai"
