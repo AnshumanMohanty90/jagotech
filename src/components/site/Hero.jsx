@@ -8,7 +8,7 @@ export default function Hero() {
       <div aria-hidden="true" className="absolute inset-0 hero-glow" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
 
-      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-10 px-5 sm:px-8 xl:grid-cols-2 xl:gap-12">
+      <div className="relative mx-auto grid w-full max-w-7xl items-end gap-10 px-5 sm:px-8 xl:grid-cols-[1fr_1.1fr] xl:gap-12">
         {/* Everything above the fold renders immediately: no entrance animations. */}
         <div className="flex min-w-0 flex-col items-center text-center xl:items-start xl:text-left">
           <p className="site-label site-eyebrow">AI agents for growing companies</p>
