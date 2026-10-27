@@ -15,14 +15,14 @@ const STOPPERS = [
     t: "No one is checking",
     d: "AI acts without a person approving, and nothing is on record if a regulator asks.",
     answer: "A person approves key steps and every action is logged",
-    color: "#ff6b35",
+    color: "#00f2ff",
     Icon: AlertTriangle,
   },
   {
     t: "Costs pile up",
     d: "Every department pays for its own AI tool, and expensive AI does even simple jobs.",
     answer: "One platform, with low-cost AI for simple tasks",
-    color: "#9b59b6",
+    color: "#00f2ff",
     Icon: TrendingUp,
   },
 ];
@@ -50,19 +50,19 @@ export default function Challenge() {
                 </span>
               </div>
 
-              <div className="mt-5 flex min-w-0 flex-col items-center gap-2">
+              <div className="mt-5 flex min-w-0 flex-1 flex-col items-center gap-2">
                 <span
                   className="flex h-7 w-7 items-center justify-center rounded-full font-ui text-[13px] font-bold"
-                  style={{ backgroundColor: s.color, color: i === 0 ? "#0b0d10" : "#fff" }}
+                  style={{ backgroundColor: s.color, color: "#090a0c" }}
                 >
                   {i + 1}
                 </span>
-                <h3 className="!font-ui !text-[22px] !font-bold !leading-tight text-balance" style={{ color: s.color }}>
+                <h3 className="!font-ui !text-[22px] !font-bold !leading-tight text-balance text-foreground">
                   {s.t}
                 </h3>
-                <p className="site-line text-[15px] leading-6 text-[#8896a9]">{s.d}</p>
+                <p className="site-line text-base leading-6 text-[#dde4ee]">{s.d}</p>
                 <p
-                  className="site-line inline-flex items-center justify-center gap-2 rounded-lg px-3 py-1.5 text-center font-ui text-[13px] font-bold leading-snug"
+                  className="site-line mt-auto inline-flex items-center justify-center gap-2 rounded-lg px-3 py-1.5 text-center font-ui text-[13px] font-bold leading-snug"
                   style={{ color: s.color, backgroundColor: `${s.color}17` }}
                 >
                   <CheckCircle className="h-3.5 w-3.5 shrink-0" />
