@@ -33,7 +33,7 @@ export default function PlatformOverview() {
           Jago sits on top of the tools you already run and carries the work from question to done.
         </SectionIntro>
 
-        <div className="mt-6 grid md:grid-cols-3 gap-8 sm:gap-10">
+        <div className="mt-10 grid md:grid-cols-3 gap-8 sm:gap-10">
           {STEPS.map((s) => (
             <div key={s.title} className="site-col">
               <h3 className="!font-ui !text-lg !font-bold !leading-[1.375] text-balance">{s.title}</h3>
@@ -44,12 +44,12 @@ export default function PlatformOverview() {
           ))}
         </div>
 
-        <div className="mt-8 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
-          <p className="text-base leading-relaxed max-w-xl">
+        <div className="mt-10 flex flex-col items-center text-center gap-5">
+          <p className="text-base leading-relaxed max-w-xl mx-auto">
             One agent per job, ready in 8 weeks.{" "}
             Meet them.
           </p>
-          <a href="#agents" className="site-cta-secondary px-4 py-2.5 rounded-xl text-sm self-start lg:self-auto">
+          <a href="#agents" className="site-cta-secondary px-4 py-2.5 rounded-xl text-sm ">
             Explore AI agents
           </a>
         </div>

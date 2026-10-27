@@ -11,15 +11,15 @@ export default function PageNotFound() {
       <Navbar />
       <main id="main-content" className="flex-1">
         <section className="site-section">
-          <div className="mx-auto max-w-3xl px-5 sm:px-8">
-            <p className="site-label">Page not found</p>
-            <h1 className="mt-3 font-heading font-semibold leading-tight tracking-tight text-balance">
+          <div className="mx-auto max-w-3xl px-5 sm:px-8 text-center">
+            <p className="site-label site-eyebrow">Page not found</p>
+            <h1 className="mt-4 font-heading text-balance">
               We could not find that page.
             </h1>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            <p className="mt-4 text-base sm:text-lg">
               The link may be old or mistyped. Start from the home page or get in touch.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link to="/" className="site-cta-primary px-5 py-3 rounded-xl">
                 Go to the home page
               </Link>

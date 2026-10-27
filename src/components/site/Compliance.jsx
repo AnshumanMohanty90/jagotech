@@ -39,12 +39,12 @@ export default function Compliance() {
     <Reveal id="compliance" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         {/* JShield spotlight */}
-        <div className="min-w-0">
-          <p className="site-label">Companion product</p>
-          <h2 className="mt-3 font-heading font-semibold leading-[1.15] tracking-tight text-balance">
+        <div className="mx-auto min-w-0 max-w-[1024px] rounded-2xl border border-[#2f3641] bg-[rgba(19,22,27,0.3)] p-6 text-center sm:p-8">
+          <p className="site-label site-eyebrow">Companion product</p>
+          <h2 className="mt-3 font-heading text-balance">
             JShield
           </h2>
-          <p className="mt-3 max-w-[75ch] text-base sm:text-lg leading-relaxed text-pretty">
+          <p className="mx-auto mt-4 max-w-[772px] text-base sm:text-lg text-pretty">
             <CopyEmphasis
               text="JShield is our companion product for data protection laws, from India's DPDP Act to GDPR and SOC 2. It tracks consent, breaches and every duty with a deadline, alongside your Jago agents."
               bold={["companion product for data protection laws"]}
@@ -54,12 +54,12 @@ export default function Compliance() {
           </p>
           <ul className="mt-6 grid gap-4 sm:grid-cols-3 sm:gap-6">
             {JSHIELD_POINTS.map((point) => (
-              <li key={point} className="min-w-0 text-sm sm:text-base leading-relaxed">
+              <li key={point} className="min-w-0 rounded-xl border border-[rgba(245,247,250,0.1)] bg-[#0f1318] p-4 text-left font-ui text-sm font-medium leading-6 text-[#dde4ee]">
                 {point}
               </li>
             ))}
           </ul>
-          <div className="mt-7 flex flex-wrap items-center gap-3">
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <a
               href="https://jshield.ai/"
               target="_blank"
@@ -72,7 +72,7 @@ export default function Compliance() {
         </div>
 
         {/* DPDP duties and SOC 2 */}
-        <div className="mt-8">
+        <div className="mt-16">
           <SectionIntro eyebrow="Compliance" title="What the law asks of you.">
             <CopyEmphasis
               text="India's data protection law, the DPDP Act, applies to every company that holds personal data. The main duties start on 13 May 2027, and fines can reach Rs 250 crore."
@@ -82,14 +82,14 @@ export default function Compliance() {
             />
           </SectionIntro>
 
-          <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:gap-10">
+          <div className="mx-auto mt-10 grid max-w-[1024px] gap-6 lg:grid-cols-2">
             {FRAMEWORKS.map((f) => (
               <div key={f.tag} className="site-col">
                 <p className="site-label">{f.tag}</p>
-                <h3 className="mt-3 font-heading text-xl sm:text-2xl font-semibold leading-snug text-balance">
+                <h3 className="mt-3 !font-ui !text-lg !font-bold !leading-[1.375] text-balance">
                   {f.title}
                 </h3>
-                <p className="mt-3 text-base leading-relaxed text-pretty">
+                <p className="site-line mt-3 text-base leading-6 text-[#dde4ee] text-pretty">
                   <CopyEmphasis
                     text={f.desc}
                     bold={["The main duties apply from 13 May 2027", "built to it"]}
@@ -107,7 +107,7 @@ export default function Compliance() {
             ))}
           </div>
 
-          <p className="mt-8 max-w-[75ch] text-sm sm:text-base leading-relaxed">
+          <p className="mx-auto mt-8 max-w-[772px] text-center text-base">
             <CopyEmphasis
               text="A person approves the key steps before anything changes, and every action is on record, ready for an audit."
               bold={["A person approves the key steps"]}

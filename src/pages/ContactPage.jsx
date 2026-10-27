@@ -59,6 +59,7 @@ export default function ContactPage() {
         </PageHeader>
         <section className="relative site-section site-section-alt">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
+            <div className="rounded-3xl border border-[#2f3641] bg-[rgba(19,22,27,0.3)] p-5 sm:p-8">
             <LeadForm
               intent={intent}
               agent={agent}
@@ -66,6 +67,7 @@ export default function ContactPage() {
               planOfInterest={planOfInterest}
               sourcePage={`/contact?intent=${intent}${module ? `&module=${module}` : ""}${intent === "buy" ? `&agent=${agent.id}` : ""}`}
             />
+            </div>
             <p className="mt-6 text-center text-base leading-relaxed text-muted-foreground">
               Or write to us at{" "}
               <a

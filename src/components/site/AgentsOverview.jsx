@@ -33,7 +33,7 @@ export default function AgentsOverview() {
           work, inside your systems, under your rules.
         </SectionIntro>
 
-        <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           {LIFECYCLE.map((s) => (
             <div key={s.title} className="site-col">
               <h3 className="!font-ui !text-lg !font-bold !leading-[1.375] text-balance">{s.title}</h3>
@@ -42,12 +42,12 @@ export default function AgentsOverview() {
           ))}
         </div>
 
-        <div className="mt-8 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
-          <p className="text-base leading-relaxed max-w-xl">
+        <div className="mt-10 flex flex-col items-center text-center gap-5">
+          <p className="text-base leading-relaxed max-w-xl mx-auto">
             Every department has its own agent.{" "}
             See what yours does.
           </p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             {DEPARTMENTS.map((d) => (
               <span key={d} className="site-label">
                 {d}

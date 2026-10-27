@@ -36,13 +36,14 @@ export default function Integrations() {
           under your control.
         </SectionIntro>
 
-        <div className="mt-6 max-w-3xl">
+        <div className="mx-auto mt-10 max-w-3xl">
           <Accordion
+            variant="card"
             firstOpen
             items={INTEGRATIONS.map((it) => ({
               key: it.title,
               title: it.title,
-              body: <p className="text-base leading-relaxed text-pretty">{it.desc}</p>,
+              body: <p className="site-line text-base leading-6 text-[#dde4ee]">{it.desc}</p>,
             }))}
           />
         </div>

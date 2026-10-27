@@ -38,7 +38,7 @@ export default function Capabilities() {
           for the full detail.
         </SectionIntro>
 
-        <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           {CAPS.map((c) => (
             <div key={c.id} id={c.id} className="site-col scroll-mt-24">
               <h3 className="!font-ui !text-lg !font-bold !leading-[1.375] text-balance">{c.title}</h3>

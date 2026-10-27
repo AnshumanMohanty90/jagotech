@@ -48,15 +48,16 @@ export default function Industries() {
   return (
     <Reveal className="relative site-section-alt">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="max-w-3xl">
+        <div className="mx-auto max-w-3xl">
           <Accordion
+            variant="card"
             firstOpen
             items={INDUSTRIES.map((it) => ({
               key: it.slug,
               anchorId: it.slug,
               title: it.name,
               body: (
-                <p className="text-base leading-relaxed text-pretty">
+                <p className="site-line text-base leading-6 text-[#dde4ee] text-pretty">
                   <CopyEmphasis text={it.desc} bold={it.bold} />
                 </p>
               ),
@@ -65,7 +66,7 @@ export default function Industries() {
         </div>
 
         {/* department marquee */}
-        <div className="mt-8 relative overflow-hidden mask-fade-edges py-2">
+        <div className="mt-10 relative overflow-hidden mask-fade-edges py-2">
           <div className="flex gap-10 w-max animate-marquee">
             {[...DEPARTMENTS, ...DEPARTMENTS].map((d, i) => (
               <span

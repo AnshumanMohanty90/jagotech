@@ -79,13 +79,15 @@ export default function Pricing() {
   return (
     <Reveal id="pricing" className="relative site-section-alt">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="text-center">
         <h2 className="font-heading text-balance">Plans</h2>
-        <p className="mt-3 text-[16px] leading-relaxed text-slate-300">
+        <p className="site-line mt-3 text-base leading-6 text-[#dde4ee]">
           Custom plans are priced on your team size and the modules you use.
         </p>
-        <CurrencyToggle className="mt-3" />
+        <CurrencyToggle className="mt-4 justify-center" />
+        </div>
 
-        <div className="mt-6 grid gap-6 sm:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-3">
           {plans.slice(0, 3).map((p) => (
             <PlanColumn key={p.name} plan={p} />
           ))}
@@ -97,14 +99,14 @@ export default function Pricing() {
           ))}
         </div>
 
-        <div className="mt-8">
+        <div className="mt-10 text-center">
           <p className="site-label">Every plan includes</p>
-          <p className="mt-3 text-[16px] leading-relaxed text-slate-300">
+          <p className="site-line mt-3 text-base leading-6 text-[#dde4ee]">
             {INCLUDED.join(", ")}
           </p>
         </div>
 
-        <div className="mt-8 flex flex-col gap-3">
+        <div className="mt-8 flex flex-col items-center gap-3 text-center">
           {currency === "INR" && (
             <p className="text-sm leading-relaxed">Rupee prices do not include GST.</p>
           )}

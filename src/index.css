@@ -152,8 +152,11 @@
     font-weight: 600;
   }
 
+  /* Content card, as used across the home page design. */
   .site-col {
-    @apply pt-6 min-w-0;
+    @apply min-w-0 rounded-2xl p-5;
+    border: 1px solid #2f3641;
+    background-color: rgba(19, 22, 27, 0.3);
   }
 
   /* Section label: sentence case, 16px, weight 600, in a light grey so the jump to the

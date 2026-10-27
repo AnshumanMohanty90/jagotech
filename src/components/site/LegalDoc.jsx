@@ -21,13 +21,13 @@ function Linked({ text }) {
 
 function Block({ item }) {
   if (typeof item === "string") {
-    return <p className="max-w-[72ch] text-base leading-relaxed text-muted-foreground text-pretty"><Linked text={item} /></p>;
+    return <p className="site-line max-w-[72ch] text-base leading-6 text-[#dde4ee] text-pretty"><Linked text={item} /></p>;
   }
   if (item.h) {
-    return <h3 className="pt-2 font-heading text-lg font-semibold text-foreground">{item.h}</h3>;
+    return <h3 className="pt-2 !font-ui !text-lg !font-bold !leading-[1.375] text-foreground">{item.h}</h3>;
   }
   return (
-    <ul className="max-w-[72ch] list-disc space-y-2 pl-5 text-base leading-relaxed text-muted-foreground marker:text-primary">
+    <ul className="max-w-[72ch] list-disc space-y-2 pl-5 text-base leading-6 text-[#dde4ee] marker:text-primary">
       {item.list.map((li) => (
         <li key={li} className="text-pretty"><Linked text={li} /></li>
       ))}
@@ -46,16 +46,16 @@ export default function LegalDoc({ doc }) {
           {`Last updated ${d.updated}.`}
         </PageHeader>
         <section className="site-section site-section-alt">
-          <div className="mx-auto max-w-4xl px-5 sm:px-8">
-            <div className="flex flex-col gap-4">
+          <div className="mx-auto max-w-[1024px] px-5 sm:px-8">
+            <div className="flex flex-col gap-4 rounded-2xl border border-[#2f3641] bg-[rgba(19,22,27,0.3)] p-6">
               {d.intro.map((p) => (
                 <Block key={p} item={p} />
               ))}
             </div>
-            <div className="mt-10 flex flex-col gap-10">
+            <div className="mt-6 flex flex-col gap-6">
               {d.sections.map(([h, body]) => (
-                <section key={h} className="flex flex-col gap-4">
-                  <h2 className="font-heading text-xl sm:text-2xl font-semibold tracking-tight text-balance">{h}</h2>
+                <section key={h} className="flex flex-col gap-4 rounded-2xl border border-[#2f3641] bg-[rgba(19,22,27,0.3)] p-6">
+                  <h2 className="font-heading !text-xl text-balance">{h}</h2>
                   {body.map((item, i) => (
                     <Block key={i} item={item} />
                   ))}
