@@ -37,7 +37,7 @@ export default function Challenge() {
         <div className="mt-6 grid md:grid-cols-3 gap-4 sm:gap-6">
           {STOPPERS.map((s) => (
             <div key={s.t} className="site-row min-w-0">
-              <h3 className="font-heading text-xl font-semibold leading-snug text-balance">
+              <h3 className="!font-ui !text-[22px] !font-bold !leading-tight text-balance">
                 {s.t}
               </h3>
               <p className="mt-3 text-base leading-relaxed">

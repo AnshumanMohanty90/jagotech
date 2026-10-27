@@ -81,7 +81,7 @@ export default function HowItWorks() {
                 >
                   <span className="block whitespace-nowrap text-xs leading-relaxed text-muted-foreground">{ph.label}</span>
                   <span
-                    className={`mt-0.5 block font-heading text-base sm:text-lg font-semibold leading-snug ${
+                    className={`mt-0.5 block font-ui text-base sm:text-2xl font-bold leading-tight ${
                       on ? "text-primary" : "text-foreground"
                     }`}
                   >

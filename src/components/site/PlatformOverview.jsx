@@ -36,7 +36,7 @@ export default function PlatformOverview() {
         <div className="mt-6 grid md:grid-cols-3 gap-8 sm:gap-10">
           {STEPS.map((s) => (
             <div key={s.title} className="site-col">
-              <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{s.title}</h3>
+              <h3 className="!font-ui !text-lg !font-bold !leading-[1.375] text-balance">{s.title}</h3>
               <p className="mt-3 text-base leading-relaxed text-pretty">
                 <CopyEmphasis text={s.desc} bold={s.bold} accent={s.accent} />
               </p>

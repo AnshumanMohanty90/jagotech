@@ -36,7 +36,7 @@ export default function AgentsOverview() {
         <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           {LIFECYCLE.map((s) => (
             <div key={s.title} className="site-col">
-              <h3 className="font-heading text-xl font-semibold leading-snug text-balance">{s.title}</h3>
+              <h3 className="!font-ui !text-lg !font-bold !leading-[1.375] text-balance">{s.title}</h3>
               <p className="mt-2 text-base leading-relaxed text-pretty">{s.desc}</p>
             </div>
           ))}

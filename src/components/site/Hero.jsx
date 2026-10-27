@@ -48,7 +48,7 @@ export default function Hero() {
         {/* Everything above the fold renders immediately: no entrance animations. */}
         <p className="site-label site-eyebrow">AI agents for growing companies</p>
 
-        <h1 className="mt-4 max-w-5xl font-heading text-3xl sm:text-4xl lg:text-5xl !font-semibold leading-[1.12] tracking-[-0.025em] text-balance">
+        <h1 className="mt-4 max-w-[1199px] font-heading text-3xl sm:text-4xl lg:text-5xl !font-semibold !leading-[1.12] !tracking-[-0.025em] text-balance">
           Put AI to work across your company <span className="text-primary">in 8 weeks.</span>
         </h1>
 
