@@ -1,7 +1,6 @@
 import React from "react";
 import usePageMeta from "@/hooks/usePageMeta";
 import Navbar from "@/components/site/Navbar";
-import PageHeader from "@/components/site/PageHeader";
 import Marketplace from "@/components/site/Marketplace";
 import Footer from "@/components/site/Footer";
 
@@ -11,9 +10,6 @@ export default function MarketplacePage() {
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />
       <main id="main-content">
-        <PageHeader eyebrow="Marketplace" title="Pick a single agent. Pay only as you use." showActions={false}>
-          Add one agent to your website or system, pay per use, and expand when it proves its worth.
-        </PageHeader>
         <Marketplace />
       </main>
       <Footer />
