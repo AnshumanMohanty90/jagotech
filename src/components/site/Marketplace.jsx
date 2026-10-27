@@ -21,13 +21,53 @@ function BuyButton({ agent, className = "" }) {
 
 // Catalogue facts for filtering, per agent. Images are the card artwork; Jasper uses an icon tile.
 const META = {
-  "card-scanner": { category: "Productivity Tools", color: "#f5f7fa", image: "/marketplace/card-scanner.webp" },
-  "document-analysis": { category: "Vision & Documents", color: "#00f2ff", image: "/marketplace/document-analysis.webp" },
-  "email-parser": { category: "Email & Parsing", color: "#60a5fa", image: "/marketplace/email-parser.webp" },
-  "voice-to-text": { category: "Voice & Audio", color: "#a78bfa", image: "/marketplace/voice-to-text.webp" },
-  "image-analysis": { category: "Image & Visual", color: "#34d399", image: "/marketplace/image-analysis.webp" },
-  jasper: { category: "Sales & Prediction", color: "#f59e0b", image: null },
+  "card-scanner": { group: "Productivity", category: "Productivity", color: "#f5f7fa", image: "/marketplace/card-scanner.webp" },
+  "document-analysis": { group: "Productivity", category: "Vision & Documents", color: "#00f2ff", image: "/marketplace/document-analysis.webp" },
+  "email-parser": { group: "Productivity", category: "Email & Parsing", color: "#60a5fa", image: "/marketplace/email-parser.webp" },
+  "voice-to-text": { group: "Productivity", category: "Voice & Audio", color: "#a78bfa", image: "/marketplace/voice-to-text.webp" },
+  "image-analysis": { group: "Productivity", category: "Image & Visual", color: "#34d399", image: "/marketplace/image-analysis.webp" },
+  jasper: { group: "Sales", category: "Sales & Prediction", color: "#f59e0b", image: null },
 };
+// Category headers in order; sub-categories sit under their header.
+const GROUPS = ["Productivity", "Marketing", "Sales", "Customer service"];
+const SUBS = { Productivity: ["Vision & Documents", "Email & Parsing", "Voice & Audio", "Image & Visual"] };
+
+function CategoryFilter({ groups, cats, toggleGroup, toggleCat, counts }) {
+  const [open, setOpen] = useState(true);
+  const row = (label, checked, onChange, n, sub) => (
+    <label
+      key={label}
+      className={`flex min-h-[30px] items-center gap-2 text-[13px] ${sub ? "pl-6" : "font-semibold text-foreground"} ${
+        n ? "cursor-pointer" : "cursor-not-allowed opacity-50"
+      } ${sub ? "text-[#c1cbd7]" : ""}`}
+    >
+      <input type="checkbox" checked={checked} onChange={onChange} disabled={!n} className="h-[18px] w-[18px] shrink-0 accent-[#00f2ff]" />
+      <span className="site-line min-w-0 flex-1">{label}</span>
+      <span className="text-xs font-normal text-[#c1cbd7]">{n}</span>
+    </label>
+  );
+  return (
+    <div className="flex flex-col gap-1">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        className="site-choice flex h-8 w-full items-center justify-between font-ui text-[13px] font-semibold text-foreground"
+      >
+        Category
+        {open ? <ChevronUp aria-hidden="true" className="h-4 w-4" /> : <ChevronDown aria-hidden="true" className="h-4 w-4" />}
+      </button>
+      {open &&
+        GROUPS.map((g) => (
+          <div key={g} className="flex flex-col">
+            {row(g, groups.includes(g), () => toggleGroup(g), counts[g] || 0, false)}
+            {(SUBS[g] || []).map((c) => row(c, groups.includes(g) || cats.includes(c), () => toggleCat(c, g), counts[c] || 0, true))}
+          </div>
+        ))}
+    </div>
+  );
+}
+
 const POPULAR = ["card scanner", "documents", "email parsing", "transcribe", "image analysis", "sales predict"];
 const SORTS = [
   ["popular", "Most popular"],
@@ -81,6 +121,7 @@ export default function Marketplace() {
   const [panel, setPanel] = useState(null); // { agent, type: "video" | "faq" }
   const [query, setQuery] = useState("");
   const [cats, setCats] = useState([]);
+  const [groups, setGroups] = useState([]);
   const [works, setWorks] = useState([]);
   const [avail, setAvail] = useState([]);
   const [sort, setSort] = useState("popular");
@@ -95,11 +136,10 @@ export default function Marketplace() {
   const open = panel?.agent;
   const toggle = (set) => (v) => set((cur) => (cur.includes(v) ? cur.filter((x) => x !== v) : [...cur, v]));
 
-  const categories = Object.values(META).map((m) => m.category);
   const counts = useMemo(() => {
     const c = {};
     AGENTS.forEach((a) => {
-      [META[a.id].category, ...worksOf(a), statusOf(a)].forEach((k) => (c[k] = (c[k] || 0) + 1));
+      [...new Set([META[a.id].group, META[a.id].category, ...worksOf(a), statusOf(a)])].forEach((k) => (c[k] = (c[k] || 0) + 1));
     });
     return c;
   }, []);
@@ -108,25 +148,30 @@ export default function Marketplace() {
     const q = query.trim().toLowerCase();
     let list = AGENTS.filter((a) => {
       const meta = META[a.id];
-      if (cats.length && !cats.includes(meta.category)) return false;
+      if ((cats.length || groups.length) && !groups.includes(meta.group) && !cats.includes(meta.category)) return false;
       if (works.length && !works.some((w) => worksOf(a).includes(w))) return false;
       if (avail.length && !avail.includes(statusOf(a))) return false;
-      if (q && !`${a.name} ${a.desc} ${meta.category} ${a.kind}`.toLowerCase().includes(q)) return false;
+      if (q && !`${a.name} ${a.desc} ${meta.group} ${meta.category} ${a.kind}`.toLowerCase().includes(q)) return false;
       return true;
     });
     if (sort === "low") list = [...list].sort((a, b) => (a.priceInr ?? Infinity) - (b.priceInr ?? Infinity));
     if (sort === "high") list = [...list].sort((a, b) => (b.priceInr ?? -1) - (a.priceInr ?? -1));
     if (sort === "name") list = [...list].sort((a, b) => a.name.localeCompare(b.name));
     return list;
-  }, [query, cats, works, avail, sort]);
+  }, [query, cats, groups, works, avail, sort]);
 
   const clearAll = () => {
     setQuery("");
     setCats([]);
+    setGroups([]);
     setWorks([]);
     setAvail([]);
   };
-  const shortcuts = ["Productivity Tools", "Email & Parsing", "Sales & Prediction"];
+  const shortcuts = [
+    { label: "Productivity", group: true, color: "#00f2ff" },
+    { label: "Email & Parsing", group: false, color: "#60a5fa" },
+    { label: "Sales", group: true, color: "#f59e0b" },
+  ];
 
   return (
     <Reveal id="marketplace" className="relative site-section-alt">
@@ -150,7 +195,12 @@ export default function Marketplace() {
             </div>
           </div>
           <div className={`${showFilters ? "flex" : "hidden"} flex-col gap-5 lg:flex`}>
-            <FilterGroup title="Category" options={categories} selected={cats} toggle={toggle(setCats)} counts={counts} />
+            <CategoryFilter groups={groups} cats={cats} toggleGroup={toggle(setGroups)} toggleCat={(c, g) => {
+              if (groups.includes(g)) {
+                setGroups((cur) => cur.filter((x) => x !== g));
+                setCats((cur) => [...cur.filter((x) => !SUBS[g].includes(x)), ...SUBS[g].filter((x) => x !== c)]);
+              } else toggle(setCats)(c);
+            }} counts={counts} />
             <div className="h-px bg-[#2f3641]" />
             <FilterGroup title="Works with" options={["API", "Website widget", "Zoho native"]} selected={works} toggle={toggle(setWorks)} counts={counts} />
             <div className="h-px bg-[#2f3641]" />
@@ -211,14 +261,17 @@ export default function Marketplace() {
             </div>
 
             <div className="grid gap-4 md:grid-cols-3">
-              {shortcuts.map((c) => {
-                const meta = Object.values(META).find((m) => m.category === c);
+              {shortcuts.map(({ label: c, group, color }) => {
+                const meta = { color };
                 const n = counts[c] || 0;
                 return (
                   <button
                     key={c}
                     type="button"
-                    onClick={() => setCats([c])}
+                    onClick={() => {
+                      setGroups(group ? [c] : []);
+                      setCats(group ? [] : [c]);
+                    }}
                     className="site-choice flex h-20 items-center gap-3.5 rounded-xl border bg-[#131b20] p-[18px] text-left"
                     style={{ borderColor: `${meta.color}33` }}
                   >
