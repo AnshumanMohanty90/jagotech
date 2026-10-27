@@ -16,30 +16,30 @@ export default function CTA({ tinted = false }) {
     <Reveal id="contact" className={`relative overflow-hidden ${tinted ? "site-section-alt" : ""}`}>
       <div aria-hidden="true" className="absolute inset-0 hero-glow opacity-70" />
 
-      <div className="relative mx-auto max-w-4xl px-5 sm:px-8 text-center">
+      <div className="relative mx-auto flex max-w-[896px] flex-col items-center gap-4 px-5 sm:px-8 text-center">
         <h2 className="font-heading text-balance">
           Try Jago <span className="text-primary">free for a week.</span>
         </h2>
-        <p className="mt-4 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto text-pretty">
+        <p className="text-base sm:text-lg max-w-[772px] mx-auto text-pretty">
           Activate a trial workspace and see what Jago does on sample data. Want the roll-out plan
           first? Download the 8-week plan.
         </p>
 
-        <p className="mt-8 font-ui text-lg font-semibold leading-7 text-foreground">What do you want to fix first?</p>
-        <div role="group" aria-label="What do you want to fix first?" className="mt-3 flex flex-wrap justify-center gap-2">
+        <p className="site-line pt-4 font-ui text-lg font-semibold leading-7 text-foreground">What do you want to fix first?</p>
+        <div role="group" aria-label="What do you want to fix first?" className="grid w-full gap-3 sm:grid-cols-2">
           {GOALS.map((g) => (
             <button
               key={g.id}
               type="button"
               aria-pressed={goal === g.id}
               onClick={() => setGoal(g.id)}
-              className="site-chip"
+              className="site-chip w-full"
             >
               {g.label}
             </button>
           ))}
         </div>
-        <p className="site-line mx-auto mt-4 min-h-[28px] max-w-2xl text-base leading-relaxed text-slate-200" aria-live="polite">
+        <p className="site-line mx-auto min-h-[26px] max-w-2xl text-base leading-[26px] text-slate-200" aria-live="polite">
           {picked ? (
             <>
               <span className="font-semibold text-white">Start with {picked.module}.</span> We pass your choice to the team setting up your trial.
@@ -49,7 +49,7 @@ export default function CTA({ tinted = false }) {
           )}
         </p>
 
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
           <Link
             to={picked ? `/contact?intent=trial&module=${picked.id}` : "/contact?intent=trial"}
             className="site-cta-primary px-5 py-3 rounded-xl"
