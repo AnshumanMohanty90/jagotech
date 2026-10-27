@@ -33,16 +33,16 @@ export default function Hero() {
         </div>
 
         {/* Overview video */}
-        <div className="mt-8 sm:mt-10 w-full max-w-[1039px] overflow-hidden rounded-3xl border border-border bg-black glow-cyan">
+        <div className="mt-8 sm:mt-10 w-full max-w-[820px] overflow-hidden rounded-3xl border border-border bg-black glow-cyan">
           <video
             className="block w-full aspect-video"
-            src="/videos/jago-overview.mp4"
+            src="/videos/jago-overview-720p.mp4"
             poster="/videos/jago-overview-poster.jpg"
             autoPlay
             muted
             controls
             playsInline
-            preload="auto"
+            preload="metadata"
             aria-label="Jago AI overview video"
           />
         </div>

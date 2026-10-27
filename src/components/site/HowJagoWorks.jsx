@@ -62,15 +62,15 @@ const COMPUTE_EXAMPLES = [
 export default function HowJagoWorks() {
   return (
     <Reveal id="how-jago-works" className="relative site-section-alt">
-      <div className="relative mx-auto max-w-[1024px] px-5 sm:px-8">
-        <div className="grid md:grid-cols-2 gap-6">
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {MODULES.map((m) => (
-            <div key={m.id} className="site-col scroll-mt-24">
+            <div key={m.id} className="site-col flex scroll-mt-24 flex-col">
               <h2 className="!font-ui !text-lg !font-bold !leading-[1.375] !tracking-normal text-balance">{m.title}</h2>
               <p className="site-line mt-4 text-base leading-6 text-[#dde4ee] text-pretty">
                 <CopyEmphasis text={m.desc} bold={m.bold} accent={m.accent} />
               </p>
-              <div className="mt-5 pt-4">
+              <div className="mt-auto pt-5">
                 <p className="site-line text-sm leading-5 text-[#c1cbd7]">{m.example}</p>
                 <p className="mt-2 font-ui text-sm leading-relaxed text-primary">{m.result}</p>
               </div>
