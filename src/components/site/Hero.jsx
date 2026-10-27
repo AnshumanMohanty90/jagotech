@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-12 sm:pt-16">
+    <section id="top" className="relative overflow-hidden pt-12 pb-10 sm:pt-16 sm:pb-16">
       {/* Background layers */}
       <div aria-hidden="true" className="absolute inset-0 hero-glow" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
