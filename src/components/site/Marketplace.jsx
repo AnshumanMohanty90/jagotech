@@ -34,7 +34,8 @@ const SUBS = { Productivity: ["Vision & Documents", "Email & Parsing", "Voice & 
 
 function CategoryFilter({ groups, cats, toggleGroup, toggleCat, counts }) {
   const [open, setOpen] = useState(true);
-  const row = (label, checked, onChange, n, sub) => (
+  const [expanded, setExpanded] = useState({ Productivity: true });
+  const row = (label, checked, onChange, n, sub, extra = null) => (
     <label
       key={label}
       className={`flex min-h-[30px] items-center gap-2 text-[13px] ${sub ? "pl-6" : "font-semibold text-foreground"} ${
@@ -42,7 +43,9 @@ function CategoryFilter({ groups, cats, toggleGroup, toggleCat, counts }) {
       } ${sub ? "text-[#c1cbd7]" : ""}`}
     >
       <input type="checkbox" checked={checked} onChange={onChange} disabled={!n} className="h-[18px] w-[18px] shrink-0 accent-[#00f2ff]" />
-      <span className="site-line min-w-0 flex-1">{label}</span>
+      <span className={`site-line min-w-0 ${extra ? "" : "flex-1"}`}>{label}</span>
+      {extra}
+      {extra && <span className="flex-1" />}
       <span className="text-xs font-normal text-[#c1cbd7]">{n}</span>
     </label>
   );
@@ -60,8 +63,30 @@ function CategoryFilter({ groups, cats, toggleGroup, toggleCat, counts }) {
       {open &&
         GROUPS.map((g) => (
           <div key={g} className="flex flex-col">
-            {row(g, groups.includes(g), () => toggleGroup(g), counts[g] || 0, false)}
-            {(SUBS[g] || []).map((c) => row(c, groups.includes(g) || cats.includes(c), () => toggleCat(c, g), counts[c] || 0, true))}
+            {row(
+              g,
+              groups.includes(g),
+              () => toggleGroup(g),
+              counts[g] || 0,
+              false,
+              SUBS[g] ? (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setExpanded((x) => ({ ...x, [g]: !x[g] }));
+                  }}
+                  aria-expanded={!!expanded[g]}
+                  aria-label={`${expanded[g] ? "Hide" : "Show"} ${g} types`}
+                  className="site-choice -my-1 flex h-8 w-8 shrink-0 items-center justify-center text-foreground"
+                >
+                  {expanded[g] ? <ChevronUp aria-hidden="true" className="h-4 w-4" /> : <ChevronDown aria-hidden="true" className="h-4 w-4" />}
+                </button>
+              ) : null
+            )}
+            {expanded[g] &&
+              (SUBS[g] || []).map((c) => row(c, groups.includes(g) || cats.includes(c), () => toggleCat(c, g), counts[c] || 0, true))}
           </div>
         ))}
     </div>
@@ -169,8 +194,9 @@ export default function Marketplace() {
   };
   const shortcuts = [
     { label: "Productivity", group: true, color: "#00f2ff" },
-    { label: "Email & Parsing", group: false, color: "#60a5fa" },
+    { label: "Marketing", group: true, color: "#60a5fa" },
     { label: "Sales", group: true, color: "#f59e0b" },
+    { label: "Customer service", group: true, color: "#a78bfa" },
   ];
 
   return (
@@ -260,7 +286,7 @@ export default function Marketplace() {
               </div>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
               {shortcuts.map(({ label: c, group, color }) => {
                 const meta = { color };
                 const n = counts[c] || 0;
@@ -268,16 +294,17 @@ export default function Marketplace() {
                   <button
                     key={c}
                     type="button"
+                    disabled={!n}
                     onClick={() => {
                       setGroups(group ? [c] : []);
                       setCats(group ? [] : [c]);
                     }}
-                    className="site-choice flex h-20 items-center gap-3.5 rounded-xl border bg-[#131b20] p-[18px] text-left"
+                    className="site-choice flex h-20 items-center gap-2 rounded-xl border bg-[#131b20] p-[14px] text-left disabled:cursor-not-allowed disabled:opacity-50 sm:gap-3.5 sm:p-[18px]"
                     style={{ borderColor: `${meta.color}33` }}
                   >
                     <span className="min-w-0 flex-1">
-                      <span className="site-line block font-ui text-[13px] font-semibold text-foreground">{c}</span>
-                      <span className="block text-xs text-[#c1cbd7]">{n} agent{n === 1 ? "" : "s"}</span>
+                      <span className="block whitespace-nowrap font-ui text-[13px] font-semibold text-foreground">{c}</span>
+                      <span className="block text-xs text-[#c1cbd7]">{n ? `${n} agent${n === 1 ? "" : "s"}` : "Coming soon"}</span>
                     </span>
                     <span aria-hidden="true" style={{ color: meta.color }}>→</span>
                   </button>
