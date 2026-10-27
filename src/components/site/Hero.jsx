@@ -46,14 +46,6 @@ export default function Hero() {
             Download the 8-week plan
           </Link>
         </div>
-
-        <p className="site-line mt-4 text-base font-semibold text-slate-50">
-          No payment details needed.
-        </p>
-
-        <p className="site-line mt-3 text-sm font-normal text-slate-300">
-          Live at a large lender, works on WhatsApp, Slack and Teams, in 50+ languages
-        </p>
       </div>
     </section>
   );
