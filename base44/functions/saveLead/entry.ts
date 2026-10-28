@@ -81,7 +81,7 @@ export default async function(req) {
       ownerEmail = '';
     }
 
-    const recipients = ['contact@jagoai.com'];
+    const recipients = ['contact@jagotech.ai'];
     if (ownerEmail && !recipients.includes(ownerEmail)) {
       recipients.push(ownerEmail);
     }
