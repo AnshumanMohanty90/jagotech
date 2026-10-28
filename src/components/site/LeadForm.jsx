@@ -16,7 +16,7 @@ const PERSONAL_EMAIL_MESSAGE =
   "Please use your work email, not a Gmail, Yahoo or Outlook address.";
 const SAVE_FAILED_MESSAGE =
   "We could not send this. Your details are still here. Please try again or write to";
-const CONTACT_EMAIL = "contact@jagoai.com";
+const CONTACT_EMAIL = "contact@jagotech.ai";
 
 // The 8-week plan PDF (stored publicly).
 export const PLAN_PDF_URL =
@@ -32,7 +32,7 @@ const INTENT_TEXT = {
     thanks: "Thank you. Your download has started.",
   },
   trial: {
-    button: "Activate my free week",
+    button: "Book my free trial",
     thanks: "Thank you. Your trial request is in. We will email your login details to you.",
   },
   enterprise: {
@@ -251,7 +251,7 @@ export default function LeadForm({
             Download again
           </a>
           <Link to="/contact?intent=trial" className="site-cta-primary px-5 py-3 rounded-xl">
-            Try it free for a week
+            Book a free trial
           </Link>
         </div>
       </motion.div>

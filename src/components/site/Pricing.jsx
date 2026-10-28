@@ -13,7 +13,7 @@ const PLANS = [
     monthlyInr: 19999,
     monthlyUsd: 269,
     desc: "Ask and Analyze for up to 10\u00a0people.",
-    cta: "Try it free for a week",
+    cta: "Book a free trial",
     href: "/contact?intent=trial",
   },
   {
@@ -23,7 +23,7 @@ const PLANS = [
     monthlyInr: 49999,
     monthlyUsd: 659,
     desc: "Ask, Analyze and Automate for up to 25\u00a0people, on WhatsApp, Slack and Teams.",
-    cta: "Try it free for a week",
+    cta: "Book a free trial",
     href: "/contact?intent=trial",
     primary: true,
   },

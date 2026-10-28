@@ -123,7 +123,7 @@ export default function BeforeAfter() {
                   to="/contact?intent=trial&module=analyze"
                   className="mt-5 flex min-h-[44px] items-center justify-center rounded-xl bg-primary px-7 py-3.5 text-center font-ui text-[15px] font-bold leading-[22px] text-primary-foreground"
                 >
-                  Try it free for a week on sample data
+                  Book a free trial on sample data
                 </Link>
               </div>
             ) : (

@@ -29,7 +29,7 @@ const COLS = [
       { label: "Pricing", href: "/pricing" },
       { label: "Security", href: "/security" },
       { label: "About", href: "/about" },
-      { label: "Contact", href: "/contact" },
+      { label: "Book a free trial", href: "/contact?intent=trial" },
     ],
   },
   {
@@ -57,10 +57,10 @@ export default function Footer({ logoVariant }) {
               Bengaluru, India.
             </p>
             <a
-              href="mailto:contact@jagoai.com"
+              href="mailto:contact@jagotech.ai"
               className="site-inline-link mt-3 text-sm text-foreground/90 hover:text-primary hover:underline underline-offset-4 transition-colors"
             >
-              contact@jagoai.com
+              contact@jagotech.ai
             </a>
           </div>
 

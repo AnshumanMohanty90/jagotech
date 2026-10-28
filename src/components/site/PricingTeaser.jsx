@@ -42,7 +42,7 @@ export default function PricingTeaser() {
               to="/contact?intent=trial"
               className="inline-flex h-11 flex-1 basis-0 items-center justify-center rounded-xl bg-primary font-ui text-sm font-bold text-primary-foreground"
             >
-              Start free trial
+              Book a free trial
             </Link>
             <Link
               to="/pricing"

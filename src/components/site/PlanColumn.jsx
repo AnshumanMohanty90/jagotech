@@ -22,7 +22,7 @@ export default function PlanColumn({ plan: p }) {
             to={p.trialHref}
             className="text-sm leading-relaxed hover:text-primary underline-offset-4 hover:underline transition-colors"
           >
-            Try it free for a week
+            Book a free trial
           </Link>
         )}
       </div>

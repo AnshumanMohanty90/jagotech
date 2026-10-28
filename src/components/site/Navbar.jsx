@@ -11,10 +11,8 @@ const CLOSE_DELAY = 220;
 
 export default function Navbar({ logoVariant }) {
   const { pathname } = useLocation();
-  // Marketplace agents are bought per use, so the header points to sales, not the module trial.
-  const cta = pathname.startsWith("/marketplace")
-    ? { to: "/contact", label: "Talk to us" }
-    : { to: "/contact?intent=trial", label: "Try it free for a week" };
+  // Every page leads to booking the free trial.
+  const cta = { to: "/contact?intent=trial", label: "Book a free trial" };
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);

@@ -96,7 +96,7 @@ export default function AskDemo({ placeholder, language }) {
                 <>
                   This demo uses sample data.{" "}
                   <Link to="/contact?intent=trial" className="site-inline-link text-primary underline underline-offset-4">
-                    Start a free week
+                    Book a free trial
                   </Link>{" "}
                   to ask questions about your own data.
                 </>

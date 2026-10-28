@@ -32,8 +32,8 @@ export default function SecurityPoints() {
           We are preparing for a SOC 2 audit and ISO 27001&nbsp;certification.
         </p>
 
-        <Link to="/contact?intent=enterprise" className="site-cta-primary px-5 py-3 rounded-xl">
-          Talk to us
+        <Link to="/contact?intent=trial" className="site-cta-primary px-5 py-3 rounded-xl">
+          Book a free trial
         </Link>
       </div>
     </Reveal>

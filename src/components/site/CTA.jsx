@@ -53,7 +53,7 @@ export default function CTA({ tinted = false }) {
             to={picked ? `/contact?intent=trial&module=${picked.id}` : "/contact?intent=trial"}
             className="site-cta-primary px-5 py-3 rounded-xl"
           >
-            {picked ? `Try ${picked.module} free for a week` : "Try it free for a week"}
+            {picked ? `Book a free ${picked.module} trial` : "Book a free trial"}
           </Link>
           <Link to="/contact?intent=plan" className="site-cta-secondary px-5 py-3 rounded-xl">
             Download the 8-week plan

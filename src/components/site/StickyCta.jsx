@@ -47,7 +47,7 @@ export default function StickyCta() {
     >
       <div className="flex items-center gap-3">
         <Link to="/contact?intent=trial" tabIndex={show ? 0 : -1} className="site-cta-primary flex-1 justify-center px-4 py-3 rounded-xl text-center">
-          Try Jago free for a week
+          Book a free trial
         </Link>
         <button
           type="button"
