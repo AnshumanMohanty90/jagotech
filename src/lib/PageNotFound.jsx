@@ -17,14 +17,14 @@ export default function PageNotFound() {
               We could not find that page.
             </h1>
             <p className="mt-4 text-base sm:text-lg">
-              The link may be old or mistyped. Start from the home page or get in touch.
+              The link may be old or mistyped. Start from the home page or book a free trial.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link to="/" className="site-cta-primary px-5 py-3 rounded-xl">
                 Go to the home page
               </Link>
-              <Link to="/contact" className="site-cta-secondary px-5 py-3 rounded-xl">
-                Contact us
+              <Link to="/contact?intent=trial" className="site-cta-secondary px-5 py-3 rounded-xl">
+                Book a free trial
               </Link>
             </div>
           </div>
