@@ -17,7 +17,7 @@ const INTENTS = {
     sub: "A one-page plan for one process: what we do, what you do and what you get at each\u00a0stage.",
   },
   trial: {
-    headline: "Try Jago free for a week.",
+    headline: "Book your free one-week trial.",
     sub: "Activate a trial workspace and try Ask, Analyze, Predict and Automate on sample data. No payment details needed.",
   },
   enterprise: {
@@ -34,12 +34,12 @@ const INTENTS = {
 };
 
 export default function ContactPage() {
-  usePageMeta("Contact | Jago AI", "Contact Jago AI for a demo, pricing, a free trial, partnerships or support.");
+  usePageMeta("Book a free trial | Jago AI", "Book a free one-week trial of Jago AI: try Ask, Analyze, Predict and Automate on sample data.");
   const [params] = useSearchParams();
   const KNOWN = ["contact", "plan", "trial", "enterprise", "pricing", "guide", "buy"];
-  const raw = params.get("intent") || "contact";
+  const raw = params.get("intent") || "trial";
   const agent = findAgent(params.get("agent") || "");
-  const intent = KNOWN.includes(raw) && (raw !== "buy" || agent) ? raw : "contact";
+  const intent = KNOWN.includes(raw) && (raw !== "buy" || agent) ? raw : "trial";
   const presetTask = params.get("task") || "";
   const planOfInterest = params.get("plan") || "";
   const module = (params.get("module") || "").replace(/[^a-z]/g, "").slice(0, 12);
@@ -54,7 +54,7 @@ export default function ContactPage() {
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />
       <main id="main-content">
-        <PageHeader eyebrow="Contact" title={content.headline} showActions={false}>
+        <PageHeader eyebrow={intent === "trial" ? "Free trial" : "Contact"} title={content.headline} showActions={false}>
           {content.sub}
         </PageHeader>
         <section className="relative site-section site-section-alt">
@@ -71,10 +71,10 @@ export default function ContactPage() {
             <p className="mt-6 text-center text-base leading-relaxed text-muted-foreground">
               Or write to us at{" "}
               <a
-                href="mailto:contact@jagoai.com"
+                href="mailto:contact@jagotech.ai"
                 className="site-inline-link copy-accent hover:underline underline-offset-4 transition-colors"
               >
-                contact@jagoai.com
+                contact@jagotech.ai
               </a>
             </p>
           </div>
