@@ -2,6 +2,9 @@ import React from "react";
 import { X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
 
+// Video file versions: bump when a video is replaced so browsers fetch the new file.
+const VERSION = { ask: "v2", analyze: "v3", predict: "v3", automate: "v3" };
+
 // Pop-up player for a module's "how it works" video. `module` is { id, title } or null.
 export default function ModuleVideoDialog({ module, onClose, triggerRef }) {
   return (
@@ -28,8 +31,8 @@ export default function ModuleVideoDialog({ module, onClose, triggerRef }) {
             <video
               key={module.id}
               className="block aspect-video w-full bg-black"
-              src={`/videos/modules/${module.id}-v2.mp4`}
-              poster={`/videos/modules/${module.id}-v2-poster.jpg`}
+              src={`/videos/modules/${module.id}-${VERSION[module.id]}.mp4`}
+              poster={`/videos/modules/${module.id}-${VERSION[module.id]}-poster.jpg`}
               controls
               autoPlay
               playsInline

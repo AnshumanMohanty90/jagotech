@@ -37,8 +37,8 @@ export default function Hero() {
         <div className="mx-auto w-full max-w-[720px] min-w-0 overflow-hidden rounded-3xl border border-border bg-black glow-cyan xl:max-w-none">
           <video
             className="block w-full aspect-video"
-            src="/videos/jago-overview-v2.mp4"
-            poster="/videos/jago-overview-v2-poster.jpg"
+            src="/videos/jago-overview-v3.mp4"
+            poster="/videos/jago-overview-v3-poster.jpg"
             autoPlay
             muted
             controls
