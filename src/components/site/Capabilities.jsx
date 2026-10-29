@@ -89,8 +89,8 @@ export default function Capabilities() {
               <video
                 key={active.id}
                 className="block aspect-video w-full bg-black"
-                src={`/videos/modules/${active.id}.mp4`}
-                poster={`/videos/modules/${active.id}-poster.jpg`}
+                src={`/videos/modules/${active.id}-v2.mp4`}
+                poster={`/videos/modules/${active.id}-v2-poster.jpg`}
                 controls
                 autoPlay
                 playsInline
