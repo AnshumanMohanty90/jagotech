@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { tabKeys } from "@/lib/tabKeys";
-import { Link } from "react-router-dom";
-import { Sparkles, MessageSquare, Search, TrendingUp, Workflow } from "lucide-react";
+import { Sparkles, MessageSquare, Search, TrendingUp, Workflow, Play } from "lucide-react";
+import ModuleVideoDialog from "@/components/site/ModuleVideoDialog";
 import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
 
@@ -56,6 +56,8 @@ export default function ModuleSwitcher() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const [stopped, setStopped] = useState(false);
+  const [video, setVideo] = useState(null);
+  const triggerRef = useRef(null);
 
   // Auto-advance every 6 seconds; pauses on hover or focus, stops for good once a visitor clicks.
   useEffect(() => {
@@ -125,12 +127,18 @@ export default function ModuleSwitcher() {
             </div>
             <p className="site-line text-lg leading-[1.6] text-[#dde4ee]">{m.answer}</p>
             <p className="site-line text-lg font-medium leading-[1.6] text-[#dde4ee]">{m.result}</p>
-            <Link
-              to={`/platform#${m.anchor}`}
-              className="site-choice -mx-2 inline-flex min-h-[44px] items-center self-start rounded-xl p-2 font-ui font-bold text-primary underline"
+            <button
+              type="button"
+              onClick={(e) => {
+                triggerRef.current = e.currentTarget;
+                setStopped(true);
+                setVideo(m);
+              }}
+              className="site-choice -mx-2 inline-flex min-h-[44px] items-center gap-2 self-start rounded-xl p-2 font-ui font-bold text-primary underline"
             >
+              <Play aria-hidden="true" className="h-4 w-4" />
               See how {m.title} works
-            </Link>
+            </button>
           </div>
         </div>
 
@@ -146,6 +154,7 @@ export default function ModuleSwitcher() {
           </a>
         </p>
       </div>
+      <ModuleVideoDialog module={video} onClose={() => setVideo(null)} triggerRef={triggerRef} />
     </Reveal>
   );
 }
