@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
 
 // Video file versions: bump when a video is replaced so browsers fetch the new file.
-const VERSION = { ask: "v2", analyze: "v3", predict: "v3", automate: "v3" };
+const VERSION = { ask: "v3", analyze: "v3", predict: "v3", automate: "v3" };
 
 // Pop-up player for a module's "how it works" video. `module` is { id, title } or null.
 export default function ModuleVideoDialog({ module, onClose, triggerRef }) {
