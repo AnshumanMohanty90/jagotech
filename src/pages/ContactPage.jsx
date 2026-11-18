@@ -17,8 +17,8 @@ const INTENTS = {
     sub: "A one-page plan for one process: what we do, what you do and what you get at each\u00a0stage.",
   },
   trial: {
-    headline: "Book your free one-week trial.",
-    sub: "Activate a trial workspace and try Ask, Analyze, Predict and Automate on sample data. No payment details needed.",
+    headline: "Book a demo.",
+    sub: "Tell us about your team and the work you want Jago to take on. We will set up a demo around it. No payment details needed.",
   },
   enterprise: {
     headline: "Talk to us about Jago for your enterprise.",
@@ -34,7 +34,7 @@ const INTENTS = {
 };
 
 export default function ContactPage() {
-  usePageMeta("Book a free trial | Jago AI", "Book a free one-week trial of Jago AI: try Ask, Analyze, Predict and Automate on sample data.");
+  usePageMeta("Book a demo | Jago AI", "Book a demo of Jago AI: see Ask, Analyze, Predict and Automate working on your own work.");
   const [params] = useSearchParams();
   const KNOWN = ["contact", "plan", "trial", "enterprise", "pricing", "guide", "buy"];
   const raw = params.get("intent") || "trial";
@@ -54,7 +54,7 @@ export default function ContactPage() {
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />
       <main id="main-content">
-        <PageHeader eyebrow={intent === "trial" ? "Free trial" : "Contact"} title={content.headline} showActions={false}>
+        <PageHeader eyebrow={intent === "trial" ? "Demo" : "Contact"} title={content.headline} showActions={false}>
           {content.sub}
         </PageHeader>
         <section className="relative site-section site-section-alt">

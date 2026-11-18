@@ -32,8 +32,8 @@ const INTENT_TEXT = {
     thanks: "Thank you. Your download has started.",
   },
   trial: {
-    button: "Book my free trial",
-    thanks: "Thank you. Your trial request is in. We will email your login details to you.",
+    button: "Book my demo",
+    thanks: "Thank you. Your demo request is in. We will email you to confirm a time.",
   },
   enterprise: {
     button: "Send",
@@ -58,7 +58,6 @@ const PLANS_OF_INTEREST = ["Growth", "Enterprise", "JShield add-on", "Own server
 export const CONTACT_REASONS = [
   "Book a demo",
   "Pricing and plans",
-  "Start a free trial",
   "Partnership",
   "Customer support",
   "Media and press",
@@ -251,7 +250,7 @@ export default function LeadForm({
             Download again
           </a>
           <Link to="/contact?intent=trial" className="site-cta-primary px-5 py-3 rounded-xl">
-            Book a free trial
+            Book a demo
           </Link>
         </div>
       </motion.div>

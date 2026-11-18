@@ -18,10 +18,10 @@ export default function CTA({ tinted = false }) {
 
       <div className="relative mx-auto flex max-w-[896px] flex-col items-center gap-4 px-5 sm:px-8 text-center">
         <h2 className="font-heading text-balance">
-          Try Jago <span className="text-primary">free for a week.</span>
+          See Jago <span className="text-primary">in action.</span>
         </h2>
         <p className="text-base sm:text-lg max-w-[772px] mx-auto text-pretty">
-          Get a trial workspace with sample data, or download the 8-week plan&nbsp;first.
+          Book a demo to see Jago on your own work, or download the 8-week plan&nbsp;first.
         </p>
 
         <p className="site-line pt-4 font-ui text-lg font-semibold leading-7 text-foreground">Pick what you want to fix first.</p>
@@ -41,10 +41,10 @@ export default function CTA({ tinted = false }) {
         <p className="site-line mx-auto min-h-[26px] max-w-2xl text-base leading-[26px] text-slate-200" aria-live="polite">
           {picked ? (
             <>
-              <span className="font-semibold text-white">Start with {picked.module}.</span> We set up your trial around this&nbsp;choice.
+              <span className="font-semibold text-white">Start with {picked.module}.</span> We build your demo around this&nbsp;choice.
             </>
           ) : (
-            <span className="font-ui font-semibold text-white">We set up your trial around your&nbsp;choice.</span>
+            <span className="font-ui font-semibold text-white">We build your demo around your&nbsp;choice.</span>
           )}
         </p>
 
@@ -53,7 +53,7 @@ export default function CTA({ tinted = false }) {
             to={picked ? `/contact?intent=trial&module=${picked.id}` : "/contact?intent=trial"}
             className="site-cta-primary px-5 py-3 rounded-xl"
           >
-            {picked ? `Book a free ${picked.module} trial` : "Book a free trial"}
+            {picked ? `Book a ${picked.module} demo` : "Book a demo"}
           </Link>
           <Link to="/contact?intent=plan" className="site-cta-secondary px-5 py-3 rounded-xl">
             Download the 8-week plan

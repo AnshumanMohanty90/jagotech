@@ -52,14 +52,14 @@ export default function DemoPanels({ tab, language }) {
               <div className="mt-3 flex items-center gap-2">
                 <button
                   type="button"
-                  onClick={() => setActionNote("This is a demo. Start a free week to try it on your data.")}
+                  onClick={() => setActionNote("This is a demo. Book a demo to see it on your data.")}
                   className="site-cta-primary px-3.5 py-2 rounded-lg text-sm"
                 >
                   Approve
                 </button>
                 <button
                   type="button"
-                  onClick={() => setActionNote("This is a demo. Start a free week to try it on your data.")}
+                  onClick={() => setActionNote("This is a demo. Book a demo to see it on your data.")}
                   className="site-cta-secondary px-3.5 py-2 rounded-lg text-sm"
                 >
                   Edit

@@ -70,8 +70,8 @@ const GROUPS = [
     label: "Billing",
     faqs: [
       {
-        q: "What do we get in the free week?",
-        a: "A workspace with sample data. No payment details needed.",
+        q: "What happens in the demo?",
+        a: "We show Ask, Analyze, Predict and Automate working on your kind of data. No payment details needed.",
       },
       {
         q: "Can we pay monthly?",

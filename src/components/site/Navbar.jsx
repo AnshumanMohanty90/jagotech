@@ -11,8 +11,8 @@ const CLOSE_DELAY = 220;
 
 export default function Navbar({ logoVariant }) {
   const { pathname } = useLocation();
-  // Every page leads to booking the free trial.
-  const cta = { to: "/contact?intent=trial", label: "Book a free trial" };
+  // Every page leads to booking a demo.
+  const cta = { to: "/contact?intent=trial", label: "Book a demo" };
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);

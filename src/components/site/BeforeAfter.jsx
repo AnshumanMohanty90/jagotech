@@ -5,7 +5,7 @@ import Reveal from "@/components/site/Reveal";
 import SectionIntro from "@/components/site/SectionIntro";
 
 // One real question, answered two ways. The visitor flips between the usual manual chase
-// and the Jago answer, then takes the trial.
+// and the Jago answer, then books a demo.
 const QUESTION = "Why did South region miss its sales target last quarter?";
 
 const WITHOUT = [
@@ -123,7 +123,7 @@ export default function BeforeAfter() {
                   to="/contact?intent=trial&module=analyze"
                   className="mt-5 flex min-h-[44px] items-center justify-center rounded-xl bg-primary px-7 py-3.5 text-center font-ui text-[15px] font-bold leading-[22px] text-primary-foreground"
                 >
-                  Book a free trial on sample data
+                  Book a demo
                 </Link>
               </div>
             ) : (

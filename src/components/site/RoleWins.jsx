@@ -105,7 +105,7 @@ export default function RoleWins({ withIntro = true, tinted = false }) {
 
               <div>
                 <Link to="/contact?intent=trial" className="site-cta-primary px-5 py-3 rounded-xl">
-                  Book a free trial
+                  Book a demo
                 </Link>
               </div>
             </div>

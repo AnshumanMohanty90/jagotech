@@ -25,7 +25,7 @@ export default function Hero() {
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3 xl:justify-start">
             <Link to="/contact?intent=trial" className="site-cta-primary px-5 py-3 rounded-xl">
-              Book a free trial
+              Book a demo
             </Link>
             <Link to="/contact?intent=plan" className="site-cta-secondary px-5 py-3 rounded-xl">
               Download the 8-week plan

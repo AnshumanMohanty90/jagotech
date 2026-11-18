@@ -12,13 +12,13 @@ export default function PricingTeaser() {
     <Reveal id="pricing-teaser" className="relative pb-0">
       <div className="relative mx-auto max-w-[1024px] px-5 sm:px-8 flex flex-col gap-8">
         <SectionIntro large eyebrow="Pricing" title={`Plans start at ${price} a\u00a0month.`}>
-          Try any plan free for a week.
+          Book a demo to see which plan fits.
         </SectionIntro>
 
         <div className="flex flex-col gap-6 rounded-3xl border border-[#1e293b] bg-[#0f1317] p-6 sm:p-8 shadow-[0_16px_20px_rgba(0,0,0,0.4)]">
           <div className="flex flex-col items-center gap-2 text-center">
             <p className="site-line font-ui text-xs font-semibold leading-5 text-primary">Starter plan</p>
-            <p className="site-line text-sm leading-5 text-[#dde4ee]">Billed yearly · 7-day free trial</p>
+            <p className="site-line text-sm leading-5 text-[#dde4ee]">Billed yearly</p>
           </div>
 
           <div className="flex items-baseline justify-center gap-2">
@@ -42,7 +42,7 @@ export default function PricingTeaser() {
               to="/contact?intent=trial"
               className="inline-flex h-11 flex-1 basis-0 items-center justify-center rounded-xl bg-primary font-ui text-sm font-bold text-primary-foreground"
             >
-              Book a free trial
+              Book a demo
             </Link>
             <Link
               to="/pricing"

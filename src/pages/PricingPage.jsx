@@ -9,13 +9,13 @@ import CTA from "@/components/site/CTA";
 import Footer from "@/components/site/Footer";
 
 export default function PricingPage() {
-  usePageMeta("Pricing | Jago AI", "Jago AI pricing by team size and modules, with a free week to try Ask, Analyze, Predict and Automate on sample data.");
+  usePageMeta("Pricing | Jago AI", "Jago AI pricing by team size and modules, with a demo of Ask, Analyze, Predict and Automate.");
   return (
     <div className="site-typography relative min-h-screen bg-background text-foreground overflow-x-clip">
       <Navbar />
       <main id="main-content">
         <PageHeader eyebrow="Plans" title="Start with one team and add people and modules as you&nbsp;grow.">
-          Prices are shown in your currency. Try any plan free for a&nbsp;week.
+          Prices are shown in your currency. Book a demo to see any plan in&nbsp;action.
         </PageHeader>
         <Pricing />
         <Roi />
